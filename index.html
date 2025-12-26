@@ -20,25 +20,15 @@
 *{margin:0;padding:0;box-sizing:border-box;font-family:Inter,Segoe UI,sans-serif}
 body{background:var(--bg-light);color:var(--text-dark);overflow-x:hidden;line-height:1.6}
 
-/* ================= HERO BG ================= */
+/* HERO BG */
 .hero-bg{
 position:absolute;top:0;left:0;width:100%;height:85vh;
 background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
 clip-path:ellipse(150% 100% at 50% 0%);
 z-index:-1
 }
-.mesh-blob{
-position:absolute;width:420px;height:420px;
-background:radial-gradient(circle,var(--success),transparent 70%);
-filter:blur(80px);opacity:.2;border-radius:50%;
-animation:move 20s infinite alternate
-}
-@keyframes move{
-from{transform:translate(-10%,-10%)}
-to{transform:translate(30%,20%)}
-}
 
-/* ================= NAV ================= */
+/* HEADER */
 header{
 position:sticky;top:0;z-index:1000;
 background:var(--white);
@@ -51,27 +41,27 @@ display:flex;align-items:center;justify-content:space-between
 .logo-group{display:flex;align-items:center;gap:12px}
 .logo-icon{
 width:42px;height:42px;background:var(--primary);
-border-radius:10px;display:flex;align-items:center;
-justify-content:center;color:white;font-weight:800;font-size:22px
+border-radius:10px;color:white;
+display:flex;align-items:center;justify-content:center;font-weight:800
 }
 .logo-text{font-size:24px;font-weight:800;color:var(--primary)}
 
 .menu{display:flex;gap:20px}
 .menu a{text-decoration:none;font-weight:600;font-size:14px;color:var(--text-dark)}
-.menu a:hover{color:var(--accent)}
 
+.auth-btns{display:flex;align-items:center;gap:10px}
 .auth-btns button{
-padding:10px 20px;border-radius:6px;
-border:none;font-weight:700;cursor:pointer
+padding:8px 16px;border-radius:6px;border:none;font-weight:700;cursor:pointer
 }
+
 .hamburger{display:none;font-size:26px;cursor:pointer}
 
-/* ================= HERO ================= */
+/* HERO */
 .hero{color:white;text-align:center;padding:110px 20px}
 .hero h1{font-size:48px;margin-bottom:15px}
 .hero p{font-size:18px;opacity:.9}
 
-/* ================= SEARCH ================= */
+/* SEARCH */
 .search-container{
 background:var(--white);padding:30px;border-radius:15px;
 box-shadow:0 10px 40px rgba(0,0,0,.1);
@@ -81,11 +71,10 @@ max-width:1000px;margin:-50px auto 0
 .search-group{flex:1;min-width:200px}
 .search-group label{font-size:12px;font-weight:700;color:var(--text-muted)}
 .search-group input{
-width:100%;padding:12px;
-border:1px solid var(--border-light);border-radius:8px
+width:100%;padding:12px;border:1px solid var(--border-light);border-radius:8px
 }
 
-/* ================= COMMON ================= */
+/* COMMON */
 section{padding:60px 20px}
 .container{max-width:1300px;margin:auto}
 .section-title{
@@ -103,53 +92,52 @@ gap:25px
 .card{
 background:var(--white);
 border:1px solid var(--border-light);
-padding:30px;border-radius:12px;
-transition:.3s ease
+padding:30px;border-radius:12px
 }
-.card:hover{
-transform:translateY(-5px);
-box-shadow:0 10px 25px rgba(0,0,0,.08)
-}
-
 .card-img{
-width:100%;height:180px;
-object-fit:cover;border-radius:8px;
-margin-bottom:20px
+width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:20px
 }
 
-.detail-list{
-list-style:none;border-top:1px solid #eee;
-padding-top:15px
-}
-.detail-list li{font-size:13px;margin-bottom:8px}
-.detail-list li::before{content:"✓ ";color:var(--success);font-weight:800}
+.detail-list{list-style:none;border-top:1px solid #eee;padding-top:15px}
+.detail-list li::before{content:"✓ ";color:var(--success)}
 
-/* ================= BUTTON ================= */
 .btn{
 padding:12px 28px;border-radius:6px;
 font-weight:700;border:none;cursor:pointer
 }
 .btn-accent{background:var(--accent);color:white}
 
-/* ================= COMPANY LOGOS ================= */
-.company-logos img{
-filter:none;opacity:1;transition:.3s
-}
+/* COMPANY LOGOS */
+.company-logos{justify-items:center}
+.company-logos img{transition:.3s}
 .company-logos img:hover{transform:scale(1.08)}
 
-/* ================= REVEAL ================= */
-.reveal{opacity:0;transform:translateY(30px);transition:.8s ease-out}
-.reveal.active{opacity:1;transform:translateY(0)}
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(30px);transition:.8s}
+.reveal.active{opacity:1;transform:none}
 
-/* ================= MOBILE ================= */
+/* MOBILE SLIDE MENU */
 @media(max-width:900px){
 .menu{
-display:none;flex-direction:column;
-position:absolute;top:65px;right:20px;
-background:white;padding:20px;border-radius:14px
+position:fixed;top:0;left:-100%;
+width:100%;height:100%;
+background:#0f0f12;
+padding:90px 30px;
+flex-direction:column;
+gap:22px;
+transition:left .4s ease;
+z-index:999
 }
-.menu.show{display:flex}
+.menu.show{left:0}
+.menu a{color:#fff;font-size:18px}
+
 .hamburger{display:block}
+
+.close-menu{
+position:absolute;top:20px;right:20px;
+font-size:28px;color:white;cursor:pointer
+}
+
 .hero h1{font-size:36px}
 }
 </style>
@@ -157,7 +145,7 @@ background:white;padding:20px;border-radius:14px
 
 <body>
 
-<div class="hero-bg"><div class="mesh-blob"></div></div>
+<div class="hero-bg"></div>
 
 <header>
 <nav class="nav">
@@ -167,6 +155,9 @@ background:white;padding:20px;border-radius:14px
 </div>
 
 <div class="menu">
+<div class="close-menu" onclick="toggleMenu()">✕</div>
+<a href="index.html">Home 1</a>
+<a href="home2.html">Home 2</a>
 <a href="jobs.html">Jobs</a>
 <a href="recruiters.html">Recruiters</a>
 <a href="career.html">Career Services</a>
@@ -182,9 +173,8 @@ background:white;padding:20px;border-radius:14px
 <div class="auth-btns">
 <button style="background:none;color:var(--primary)">Login</button>
 <button style="background:var(--primary);color:white">Register</button>
-</div>
-
 <div class="hamburger" onclick="toggleMenu()">☰</div>
+</div>
 </nav>
 </header>
 
@@ -197,14 +187,13 @@ background:white;padding:20px;border-radius:14px
 
 <div class="container">
 <div class="search-container">
-<div class="search-group"><label>Skills / Designation</label><input placeholder="Java Developer, UX Designer"></div>
-<div class="search-group"><label>Location</label><input placeholder="Bangalore, Remote"></div>
-<div class="search-group"><label>Experience</label><input placeholder="2 Years"></div>
+<div class="search-group"><label>Skills</label><input></div>
+<div class="search-group"><label>Location</label><input></div>
+<div class="search-group"><label>Experience</label><input></div>
 <button class="btn btn-accent">Search Jobs</button>
 </div>
 </div>
 
-<!-- ================= TRENDING CATEGORIES ================= -->
 <section class="reveal">
 <div class="container">
 <div class="section-title">
@@ -219,7 +208,7 @@ background:white;padding:20px;border-radius:14px
 <p>Building the digital future with code and architecture.</p>
 <ul class="detail-list">
 <li>Full Stack Developers</li>
-<li>Cloud Architects (AWS/Azure)</li>
+<li>Cloud Architects</li>
 <li>Cybersecurity Specialists</li>
 </ul>
 </div>
@@ -249,30 +238,28 @@ background:white;padding:20px;border-radius:14px
 </div>
 </section>
 
-<!-- ================= WHY SMARTHIRE ================= -->
-<section class="reveal" style="background:#f9fbff;">
+<section class="reveal" style="background:#fff;">
 <div class="container">
 <div class="section-title">
-<h2>Why Choose SmartHire?</h2>
-<p>Inspired by Shine.com, built smarter.</p>
+<h2>SmartHire Recruitment Ecosystem</h2>
+<p>Our systematic approach to finding you the perfect job.</p>
 </div>
 
 <div class="grid">
-<div class="card"><h3>Verified Recruiters</h3><p>Safe and trusted hiring experience.</p></div>
-<div class="card"><h3>AI Job Matching</h3><p>Better matches, faster calls.</p></div>
-<div class="card"><h3>Career Growth Tools</h3><p>Resume, interview and profile boost.</p></div>
+<div class="card"><h3>AI Match</h3><p>Smart profile matching.</p></div>
+<div class="card"><h3>Smart Screening</h3><p>Automated video assessments.</p></div>
+<div class="card"><h3>Direct Connect</h3><p>Chat with hiring managers.</p></div>
 </div>
 </div>
 </section>
 
-<!-- ================= TOP COMPANIES ================= -->
 <section class="reveal">
 <div class="container" style="text-align:center;">
 <div class="section-title" style="border:none;">
 <h2>Top Companies Hiring Now</h2>
 </div>
 
-<div class="grid company-logos" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr));align-items:center;">
+<div class="grid company-logos">
 <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" width="100">
 <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" width="100">
 <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" width="100">
@@ -282,93 +269,56 @@ background:white;padding:20px;border-radius:14px
 </div>
 </section>
 
-<!-- ================= ALERT ================= -->
 <section class="reveal">
 <div class="container">
-<div class="card" style="display:flex;flex-wrap:wrap;gap:30px;align-items:center;background:#fff9f0;border:1px dashed var(--accent);">
-<div style="flex:1;">
-<h2 style="color:var(--primary);">Never Miss an Opportunity!</h2>
-<p>Subscribe to our Smart Alerts and get the latest jobs matching your profile directly in your inbox.</p>
+<div class="card" style="display:flex;gap:30px;align-items:center;background:#fff9f0;border:1px dashed var(--accent);">
+<div>
+<h2 style="color:var(--primary)">Never Miss an Opportunity!</h2>
+<p>Subscribe to job alerts matching your profile.</p>
 </div>
-<div style="display:flex;gap:10px;">
-<input type="email" placeholder="Enter your email" style="padding:12px;border-radius:6px;border:1px solid #ddd;">
 <button class="btn btn-accent">Activate Alerts</button>
 </div>
 </div>
-</div>
 </section>
 
-<!-- ================= STATS ================= -->
 <section class="reveal">
 <div class="container">
 <div class="grid">
-<div class="card"><h3>1M+ Active Jobs</h3><p>Updated every 15 minutes.</p></div>
-<div class="card"><h3>50k+ Recruiters</h3><p>Verified and active on platform.</p></div>
-<div class="card"><h3>150+ Cities</h3><p>Global and local opportunities.</p></div>
+<div class="card"><h3>1M+ Active Jobs</h3></div>
+<div class="card"><h3>50k+ Recruiters</h3></div>
+<div class="card"><h3>150+ Cities</h3></div>
 </div>
 </div>
 </section>
 
-<!-- ================= FOOTER ================= -->
 <footer style="background:#1a1e26;color:white;padding:60px 20px;">
 <div class="container">
-<div class="grid">
-<div>
-<h3>About SmartHire</h3>
-<p style="font-size:14px;opacity:0.6;">
-SmartHire is the world's most advanced job portal utilizing neural matching to connect global talent with high-growth opportunities.
-</p>
-</div>
-<div>
-<h3>Quick Links</h3>
-<ul style="list-style:none;font-size:14px;opacity:0.8;line-height:2;">
-<li>Browse Jobs</li>
-<li>Success Stories</li>
-<li>Employer Solutions</li>
-<li>Privacy Policy</li>
-</ul>
-</div>
-<div>
-<h3>Follow Us</h3>
-<div style="display:flex;gap:15px;">
-<span>FB</span><span>LN</span><span>TW</span><span>IG</span>
-</div>
-</div>
-</div>
-<div style="text-align:center;margin-top:50px;font-size:12px;opacity:0.4;">
+<p style="text-align:center;opacity:.6">
 © 2026 SmartHire Recruitment Solutions Pvt Ltd. All rights reserved.
-</div>
+</p>
 </div>
 </footer>
 
 <script>
-/* Reveal animation */
-const reveals=document.querySelectorAll('.reveal');
-window.addEventListener('scroll',()=>{
-reveals.forEach(r=>{
-if(r.getBoundingClientRect().top<window.innerHeight-50){
-r.classList.add('active');
-}
-});
-});
-window.dispatchEvent(new Event('scroll'));
-
-/* Hamburger */
 function toggleMenu(){
-document.querySelector('.menu').classList.toggle('show');
+document.querySelector('.menu').classList.toggle('show')
 }
 
-/* Auto counter */
-let count=0;
-const target=500000;
-const el=document.getElementById("jobCount");
-const counter=setInterval(()=>{
-count+=5000;
-el.textContent=count.toLocaleString();
-if(count>=target){
-el.textContent="500,000";
-clearInterval(counter);
+document.querySelectorAll('.reveal').forEach(el=>{
+window.addEventListener('scroll',()=>{
+if(el.getBoundingClientRect().top<window.innerHeight-50){
+el.classList.add('active')
 }
+})
+})
+
+let c=0;
+const t=500000;
+const el=document.getElementById("jobCount");
+const i=setInterval(()=>{
+c+=5000;
+el.textContent=c.toLocaleString();
+if(c>=t){el.textContent="500,000";clearInterval(i)}
 },20);
 </script>
 
