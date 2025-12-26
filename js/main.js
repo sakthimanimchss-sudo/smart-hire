@@ -1,14 +1,20 @@
 /* =====================================================
-   SmartHire - Final JavaScript
-   Purpose: Navbar, Hamburger, Text Animation Control
+   SmartHire – Final JavaScript
+   Purpose:
+   - Hamburger & mobile menu
+   - Section reveal on scroll
+   - Navbar blur on scroll
+   - Search input UX
+   - Safe text animation control
 ===================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* ================= HAMBURGER MENU ================= */
+  /* ================= NAVBAR & HAMBURGER ================= */
   const hamburger = document.getElementById("hamburger");
   const mobileMenu = document.getElementById("mobileMenu");
   const closeMenu = document.getElementById("closeMenu");
+  const navbar = document.querySelector(".navbar");
 
   if (hamburger && mobileMenu) {
     hamburger.addEventListener("click", () => {
@@ -24,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* Close menu when clicking a link */
+  /* Close menu when clicking any mobile link */
   document.querySelectorAll(".mobile-menu a").forEach(link => {
     link.addEventListener("click", () => {
       mobileMenu.classList.remove("active");
@@ -32,48 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  /* ================= SECTION REVEAL ================= */
-  const sections = document.querySelectorAll(".section");
-
-  const revealOnScroll = () => {
-    sections.forEach(section => {
-      const top = section.getBoundingClientRect().top;
-      const triggerPoint = window.innerHeight - 120;
-
-      if (top < triggerPoint) {
-        section.classList.add("active");
-
-        /* Title jump ONLY ONCE */
-        const title = section.querySelector("h2");
-        if (title && !title.classList.contains("jumped")) {
-          title.classList.add("jumped");
-          setTimeout(() => title.classList.remove("jumped"), 700);
-        }
-      }
-    });
-  };
-
-  window.addEventListener("scroll", revealOnScroll);
-  revealOnScroll();
-
-  /* ================= STAGGER TEXT (OPTIONAL SAFE) ================= */
-  document.querySelectorAll(".section p").forEach((para, index) => {
-    para.style.animationDelay = `${index * 0.08}s`;
-  });
-
-  /* ================= SEARCH BOX FOCUS UX ================= */
-  document.querySelectorAll(".search-box input").forEach(input => {
-    input.addEventListener("focus", () => {
-      input.style.boxShadow = "0 0 0 2px rgba(56,189,248,0.6)";
-    });
-    input.addEventListener("blur", () => {
-      input.style.boxShadow = "none";
-    });
-  });
-
   /* ================= NAVBAR SCROLL EFFECT ================= */
-  const navbar = document.querySelector(".navbar");
-
   window.addEventListener("scroll", () => {
     if (window.scrollY > 10) {
       navbar.style.background = "rgba(2,6,23,0.85)";
@@ -81,6 +46,35 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       navbar.style.background = "rgba(2,6,23,0.7)";
     }
+  });
+
+  /* ================= SECTION REVEAL ON SCROLL ================= */
+  const sections = document.querySelectorAll(".section");
+
+  const revealSections = () => {
+    const triggerPoint = window.innerHeight - 120;
+
+    sections.forEach(section => {
+      const top = section.getBoundingClientRect().top;
+
+      if (top < triggerPoint) {
+        section.classList.add("active");
+      }
+    });
+  };
+
+  window.addEventListener("scroll", revealSections);
+  revealSections();
+
+  /* ================= SEARCH INPUT UX ================= */
+  document.querySelectorAll(".search-box input").forEach(input => {
+    input.addEventListener("focus", () => {
+      input.style.boxShadow = "0 0 0 2px rgba(56,189,248,0.6)";
+    });
+
+    input.addEventListener("blur", () => {
+      input.style.boxShadow = "none";
+    });
   });
 
   /* ================= REDUCED MOTION SUPPORT ================= */
