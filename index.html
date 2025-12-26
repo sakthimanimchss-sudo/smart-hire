@@ -24,13 +24,9 @@
 /* =====================================================
    GLOBAL RESET
 ===================================================== */
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:Inter,Segoe UI,Arial,sans-serif;
-}
+*{margin:0;padding:0;box-sizing:border-box}
 body{
+  font-family:Inter,Segoe UI,Arial,sans-serif;
   background:var(--light);
   color:#111;
   overflow-x:hidden;
@@ -39,7 +35,7 @@ img{max-width:100%;display:block}
 a{text-decoration:none;color:inherit}
 
 /* =====================================================
-   HEADER / NAVBAR
+   HEADER
 ===================================================== */
 header{
   position:sticky;
@@ -62,8 +58,7 @@ header{
   gap:12px;
 }
 .logo span{
-  width:42px;
-  height:42px;
+  width:42px;height:42px;
   background:var(--primary);
   color:#fff;
   display:flex;
@@ -86,32 +81,23 @@ header{
   font-size:14px;
   font-weight:600;
 }
-.menu-desktop a:hover{
-  color:var(--accent);
-}
+.menu-desktop a:hover{color:var(--accent)}
 
 /* =====================================================
-   AUTH BUTTONS
+   AUTH + HAMBURGER
 ===================================================== */
 .auth{
   display:flex;
   align-items:center;
   gap:12px;
 }
-.auth .login{
-  color:var(--primary);
-  font-weight:600;
-}
+.auth .login{color:var(--primary);font-weight:600}
 .auth .register{
   background:var(--primary);
   color:#fff;
   padding:10px 20px;
   border-radius:8px;
 }
-
-/* =====================================================
-   HAMBURGER
-===================================================== */
 .hamburger{
   display:none;
   font-size:26px;
@@ -135,9 +121,7 @@ header{
   flex-direction:column;
   gap:18px;
 }
-.menu-mobile.active{
-  right:0;
-}
+.menu-mobile.active{right:0}
 .menu-mobile .close{
   font-size:28px;
   align-self:flex-end;
@@ -167,7 +151,7 @@ header{
 }
 
 /* =====================================================
-   HERO SECTION
+   HERO
 ===================================================== */
 .hero{
   background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
@@ -181,11 +165,9 @@ header{
   font-size:52px;
   margin-bottom:18px;
 }
-.hero h2 span{
-  color:var(--success);
-}
+.hero h2 span{color:var(--success)}
 .hero p{
-  max-width:800px;
+  max-width:850px;
   margin:auto;
   font-size:18px;
   opacity:.9;
@@ -199,25 +181,22 @@ header{
   background:#fff;
   animation:blink 1s infinite;
 }
-@keyframes blink{
-  50%{opacity:0}
-}
+@keyframes blink{50%{opacity:0}}
 
-/* floating shapes */
+/* floating blobs */
 .float{
   position:absolute;
-  width:180px;
-  height:180px;
+  width:200px;height:200px;
   background:rgba(255,255,255,.08);
-  filter:blur(20px);
+  filter:blur(30px);
   border-radius:50%;
-  animation:float 12s infinite alternate;
+  animation:float 14s infinite alternate;
 }
 .float.one{top:10%;left:10%}
 .float.two{bottom:10%;right:10%}
 @keyframes float{
   from{transform:translateY(0)}
-  to{transform:translateY(-60px)}
+  to{transform:translateY(-80px)}
 }
 
 /* =====================================================
@@ -225,7 +204,7 @@ header{
 ===================================================== */
 .search-box{
   max-width:1000px;
-  margin:-70px auto 80px;
+  margin:-70px auto 90px;
   background:#fff;
   padding:30px;
   border-radius:var(--radius);
@@ -251,13 +230,8 @@ header{
 /* =====================================================
    SECTION BASE
 ===================================================== */
-section{
-  padding:80px 20px;
-}
-.container{
-  max-width:1300px;
-  margin:auto;
-}
+section{padding:80px 20px}
+.container{max-width:1300px;margin:auto}
 .title{
   border-left:6px solid var(--accent);
   padding-left:16px;
@@ -287,12 +261,10 @@ section{
   box-shadow:var(--shadow);
   transition:.4s;
 }
-.card:hover{
-  transform:translateY(-8px);
-}
+.card:hover{transform:translateY(-8px)}
 
 /* =====================================================
-   REVEAL ANIMATION
+   REVEAL
 ===================================================== */
 .reveal{
   opacity:0;
@@ -310,9 +282,7 @@ section{
 @media(max-width:900px){
   .menu-desktop{display:none}
   .hamburger{display:block}
-  .search-box{
-    grid-template-columns:1fr;
-  }
+  .search-box{grid-template-columns:1fr}
   .hero h2{font-size:38px}
 }
 </style>
@@ -371,7 +341,8 @@ section{
   <p>
     SmartHire connects professionals with verified recruiters using AI-powered
     job matching, real-time market insights, and advanced career tools designed
-    to accelerate long-term career growth.
+    to accelerate long-term career growth across industries and experience
+    levels worldwide.
   </p>
 </section>
 
@@ -392,62 +363,48 @@ section{
     </div>
 
     <div class="grid">
-      <!-- IT & Technology -->
       <div class="card">
-        <img 
-          src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=900"
-          alt="Technology Jobs"
-          style="border-radius:12px;margin-bottom:18px;height:180px;object-fit:cover;">
+        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=900"
+             style="border-radius:12px;margin-bottom:18px;height:180px;object-fit:cover;">
         <p>
-          Technology hiring continues to surge as organizations rapidly adopt
-          cloud computing, artificial intelligence, cybersecurity frameworks,
-          and scalable digital infrastructure. Skilled software engineers,
-          data scientists, DevOps professionals, and system architects are
-          among the most sought-after roles across global industries.
+          Technology hiring continues to surge as organizations adopt cloud
+          platforms, artificial intelligence, cybersecurity frameworks, and
+          scalable digital systems. Engineers, architects, and data specialists
+          remain among the most valuable professionals globally.
         </p>
       </div>
 
-      <!-- Finance & Banking -->
       <div class="card">
-        <img 
-          src="https://images.unsplash.com/photo-1554224155-1696413565d3?auto=format&fit=crop&w=900"
-          alt="Finance Jobs"
-          style="border-radius:12px;margin-bottom:18px;height:180px;object-fit:cover;">
+        <img src="https://images.unsplash.com/photo-1554224155-1696413565d3?auto=format&fit=crop&w=900"
+             style="border-radius:12px;margin-bottom:18px;height:180px;object-fit:cover;">
         <p>
-          Finance and banking careers are evolving with digital transformation.
-          Companies seek professionals experienced in fintech platforms,
-          compliance automation, risk analytics, digital payments, and
-          blockchain-driven financial systems to manage modern economic
-          operations efficiently.
+          Finance careers are evolving rapidly with fintech, automation,
+          analytics, and compliance-driven roles shaping modern banking and
+          enterprise financial operations worldwide.
         </p>
       </div>
 
-      <!-- Sales & Marketing -->
       <div class="card">
-        <img 
-          src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=900"
-          alt="Sales and Marketing Jobs"
-          style="border-radius:12px;margin-bottom:18px;height:180px;object-fit:cover;">
+        <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=900"
+             style="border-radius:12px;margin-bottom:18px;height:180px;object-fit:cover;">
         <p>
-          Sales and marketing professionals play a critical role in driving
-          revenue growth. Demand is high for experts in digital marketing,
-          performance advertising, brand strategy, customer analytics, and
-          data-driven engagement across competitive online channels.
+          Sales and marketing experts drive growth through digital campaigns,
+          performance analytics, brand strategy, and customer engagement across
+          competitive global markets.
         </p>
       </div>
     </div>
   </div>
 </section>
 
-     
-
-<!-- ================= SECTION 2 ================= -->
+<!-- ================= RECRUITMENT ECOSYSTEM ================= -->
 <section class="reveal">
   <div class="container">
     <div class="title">
       <h3>Recruitment Ecosystem</h3>
       <p>A smarter way to connect talent and opportunity</p>
     </div>
+
     <div class="grid">
       <div class="card">AI Match</div>
       <div class="card">Smart Screening</div>
@@ -456,43 +413,7 @@ section{
   </div>
 </section>
 
-<!-- ===== END OF SECTION 7 ===== -->
-
-<script>
-/* =====================================================
-   JS: MENU
-===================================================== */
-function toggleMenu(){
-  document.getElementById('mobileMenu').classList.toggle('active');
-}
-
-/* =====================================================
-   JS: TYPEWRITER
-===================================================== */
-const text="500,000+";
-let i=0;
-function type(){
-  if(i<text.length){
-    document.getElementById("typeText").innerHTML+=text.charAt(i);
-    i++;
-    setTimeout(type,120);
-  }
-}
-type();
-
-/* =====================================================
-   JS: SCROLL REVEAL
-===================================================== */
-const reveals=document.querySelectorAll('.reveal');
-window.addEventListener('scroll',()=>{
-  reveals.forEach(r=>{
-    if(r.getBoundingClientRect().top<window.innerHeight-80){
-      r.classList.add('show');
-    }
-  });
-});
-</script>
-<!-- ================= SECTION 3 : WHY SMARTHIRE ================= -->
+<!-- ================= WHY SMARTHIRE ================= -->
 <section class="reveal" style="background:#fff;">
   <div class="container">
     <div class="title">
@@ -502,32 +423,23 @@ window.addEventListener('scroll',()=>{
 
     <div class="grid">
       <div class="card">
-        <p>
-          SmartHire connects verified recruiters with qualified professionals
-          using artificial intelligence that understands real hiring trends.
-          Our platform eliminates spam jobs, reduces fake listings, and ensures
-          candidates interact only with genuine employers.
-        </p>
+        SmartHire removes fake jobs and spam recruiters by verifying employers
+        and using intelligent matching to ensure candidates engage only with
+        trusted organizations.
       </div>
       <div class="card">
-        <p>
-          AI-powered matching analyzes skills, experience, location preferences,
-          and hiring patterns to surface opportunities that align with long-term
-          career growth rather than short-term job changes.
-        </p>
+        AI-powered insights analyze skills, experience, and hiring demand to
+        recommend opportunities aligned with long-term career growth.
       </div>
       <div class="card">
-        <p>
-          Built for scalability and performance, SmartHire supports professionals
-          across industries, helping them track opportunities, receive alerts,
-          and gain insights into evolving job market demands.
-        </p>
+        Built for scale and performance, SmartHire supports professionals across
+        industries with alerts, analytics, and career guidance tools.
       </div>
     </div>
   </div>
 </section>
 
-<!-- ================= SECTION 4 : LEARNING & UPSKILLING (NEW) ================= -->
+<!-- ================= LEARNING & UPSKILLING ================= -->
 <section class="reveal">
   <div class="container">
     <div class="title">
@@ -539,38 +451,45 @@ window.addEventListener('scroll',()=>{
       <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200"
            style="border-radius:14px;margin-bottom:20px;">
       <p>
-        Continuous learning is essential in today’s competitive job environment.
-        SmartHire guides professionals toward relevant certifications, technical
-        skills, leadership programs, and soft-skill development based on real
-        hiring data. Our learning hub recommends courses aligned with market
-        demand, ensuring candidates stay employable and future-ready.
+        Continuous learning is essential in today’s competitive job market.
+        SmartHire guides professionals toward certifications, technical skills,
+        leadership programs, and soft skills aligned with real hiring data and
+        market demand.
+      </p>
+    </div>
+  </div>
+</section>
+<!-- ================= CAREER GROWTH SLIDER ================= -->
+<section class="reveal" style="background:#0f1c24;color:#fff;">
+  <div class="container">
+    <div class="title">
+      <h3 style="color:#fff">Career Growth Tools</h3>
+      <p style="color:#cbd5e1">Auto-switching insights that move your career forward</p>
+    </div>
+
+    <div class="card" style="background:rgba(255,255,255,.08)">
+      <img id="careerSlide"
+           src=""
+           style="width:100%;border-radius:16px;margin-bottom:20px;transition:opacity .6s;">
+      <p id="careerText" style="color:#e5e7eb">
+        SmartHire tools adapt to hiring trends and continuously evolve with the
+        job market, ensuring candidates receive relevant opportunities.
       </p>
     </div>
   </div>
 </section>
 
-<!-- ================= SECTION 5 : AUTO IMAGE SLIDER ================= -->
-<section class="reveal" style="background:#0f1c24;color:#fff;">
-  <div class="container">
-    <div class="title">
-      <h3 style="color:#fff">Career Growth Tools</h3>
-      <p style="color:#cbd5e1">Tools that accelerate professional success</p>
-    </div>
-
-    <div class="slider">
-      <img id="slideImg" style="width:100%;border-radius:16px;">
-    </div>
-  </div>
-</section>
-
-<!-- ================= SECTION 6 : TOP COMPANIES ================= -->
+<!-- ================= TOP COMPANIES ================= -->
 <section class="reveal">
-  <div class="container" style="text-align:center;">
+  <div class="container" style="text-align:center">
     <div class="title" style="border:none">
       <h3>Top Companies Hiring Now</h3>
+      <p>Trusted global employers actively recruiting</p>
     </div>
 
-    <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(140px,1fr));align-items:center;">
+    <div class="grid"
+         style="grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+                align-items:center;filter:grayscale(0);opacity:.95">
       <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg">
       <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg">
       <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg">
@@ -580,109 +499,189 @@ window.addEventListener('scroll',()=>{
   </div>
 </section>
 
-<!-- ================= SECTION 7 : CAREER SERVICES ================= -->
-<section class="reveal" style="background:var(--primary);color:#fff;">
+<!-- ================= WHY SMARTHIRE – EXTENDED ================= -->
+<section class="reveal" style="background:#fff;">
   <div class="container">
     <div class="title">
-      <h3 style="color:#fff">Premium Career Services</h3>
-      <p style="color:#cbd5e1">Professional guidance at every stage</p>
+      <h3>Built for Professionals, Powered by AI</h3>
+      <p>Why millions trust SmartHire for career growth</p>
     </div>
 
     <div class="grid">
-      <div class="card" style="background:rgba(255,255,255,.1);">
+      <div class="card">
         <p>
-          Resume optimization services designed to pass ATS systems and highlight
-          achievements that recruiters value most in competitive hiring markets.
+          SmartHire leverages artificial intelligence to analyze millions of job
+          listings, recruiter behavior, and hiring outcomes. This enables the
+          platform to recommend opportunities that align with skill progression,
+          salary expectations, and long-term professional goals rather than
+          random applications.
         </p>
       </div>
-      <div class="card" style="background:rgba(255,255,255,.1);">
+      <div class="card">
         <p>
-          Interview preparation sessions led by industry experts to improve
-          confidence, communication, and technical clarity during hiring rounds.
+          Unlike traditional job portals, SmartHire focuses on quality
+          connections. Every recruiter is verified, reducing spam and ensuring
+          meaningful conversations between employers and candidates.
         </p>
       </div>
-      <div class="card" style="background:rgba(255,255,255,.1);">
+      <div class="card">
         <p>
-          Profile boosting solutions that increase recruiter visibility and
-          improve chances of receiving interview calls faster.
+          Professionals gain access to insights such as emerging skills, in-demand
+          roles, and geographic hiring trends, helping them plan strategic career
+          moves with confidence.
         </p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ================= SECTION 8 : ALERT ================= -->
+<!-- ================= ADS / PROMOTIONS ================= -->
 <section class="reveal">
   <div class="container">
-    <div class="card" style="display:flex;gap:30px;align-items:center;">
+    <div class="card"
+         style="display:flex;flex-wrap:wrap;gap:30px;align-items:center;
+                background:#fff9f0;border:1px dashed var(--accent)">
+      <div style="flex:1">
+        <h3 style="color:var(--primary)">Boost Your Profile Visibility</h3>
+        <p>
+          Featured profiles receive up to 10x more recruiter views. Promote your
+          profile to appear at the top of recruiter searches and accelerate your
+          hiring journey.
+        </p>
+      </div>
+      <button style="background:var(--accent);color:#fff;
+                     padding:14px 28px;border-radius:10px;border:none">
+        Promote Now
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STATS ================= -->
+<section class="reveal">
+  <div class="container">
+    <div class="grid">
+      <div class="card"><h3>1M+</h3><p>Active Job Listings</p></div>
+      <div class="card"><h3>50k+</h3><p>Verified Recruiters</p></div>
+      <div class="card"><h3>150+</h3><p>Cities Covered</p></div>
+      <div class="card"><h3>24/7</h3><p>AI Job Matching</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ALERT ================= -->
+<section class="reveal">
+  <div class="container">
+    <div class="card"
+         style="display:flex;gap:30px;align-items:center;flex-wrap:wrap">
       <div>
         <h3>Never Miss an Opportunity</h3>
         <p>
-          Subscribe to personalized job alerts and receive notifications when
-          roles matching your profile become available.
+          Enable smart alerts to receive personalized job recommendations
+          instantly when new roles matching your profile are posted.
         </p>
       </div>
-      <button class="search-btn">Activate Alerts</button>
-    </div>
-  </div>
-</section>
-
-<!-- ================= SECTION 9 : STATS ================= -->
-<section class="reveal">
-  <div class="container">
-    <div class="grid">
-      <div class="card"><h3>1M+</h3><p>Active Jobs</p></div>
-      <div class="card"><h3>50k+</h3><p>Recruiters</p></div>
-      <div class="card"><h3>150+</h3><p>Cities</p></div>
+      <button style="background:var(--primary);color:#fff;
+                     padding:14px 30px;border-radius:10px;border:none">
+        Activate Alerts
+      </button>
     </div>
   </div>
 </section>
 
 <!-- ================= FOOTER ================= -->
-<footer style="background:#0f1c24;color:#fff;padding:60px 20px;">
+<footer style="background:#0f1c24;color:#fff;padding:70px 20px">
   <div class="container">
     <div class="grid">
       <div>
         <h3>About SmartHire</h3>
         <p style="opacity:.7">
-          SmartHire is an AI-driven recruitment platform designed to connect
-          talent with trusted employers using data-driven insights and intelligent
-          career tools.
+          SmartHire is an AI-powered recruitment platform designed to connect
+          professionals with verified employers through intelligent job matching,
+          career analytics, and growth-focused tools.
         </p>
       </div>
+
       <div>
         <h3>Quick Links</h3>
-        <p style="opacity:.7">Jobs · Recruiters · Courses · Contact</p>
+        <p style="opacity:.7">
+          Jobs · Recruiters · Courses · Companies · Contact
+        </p>
       </div>
+
       <div>
-        <h3>Follow Us</h3>
-        <p style="opacity:.7">LinkedIn · Twitter · Facebook</p>
+        <h3>Support</h3>
+        <p style="opacity:.7">
+          Help Center · Privacy Policy · Terms & Conditions
+        </p>
       </div>
     </div>
 
-    <p style="text-align:center;opacity:.4;margin-top:40px;">
-      © 2026 SmartHire Recruitment Solutions Pvt Ltd
+    <p style="text-align:center;opacity:.4;margin-top:50px">
+      © 2026 SmartHire Recruitment Solutions Pvt Ltd. All rights reserved.
     </p>
   </div>
 </footer>
 
 <script>
-/* =====================================================
-   AUTO IMAGE SLIDER
-===================================================== */
-const slides=[
-  "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200",
-  "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200",
-  "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200"
-];
-let s=0;
-const img=document.getElementById("slideImg");
-function slide(){
-  img.src=slides[s];
-  s=(s+1)%slides.length;
+/* ================= MENU ================= */
+function toggleMenu(){
+  document.getElementById('mobileMenu').classList.toggle('active');
 }
-slide();
-setInterval(slide,3500);
+
+/* ================= TYPEWRITER ================= */
+const txt="500,000+";
+let ti=0;
+function typing(){
+  if(ti<txt.length){
+    document.getElementById("typeText").innerHTML+=txt.charAt(ti);
+    ti++;
+    setTimeout(typing,120);
+  }
+}
+typing();
+
+/* ================= SCROLL REVEAL ================= */
+const reveals=document.querySelectorAll('.reveal');
+window.addEventListener('scroll',()=>{
+  reveals.forEach(el=>{
+    if(el.getBoundingClientRect().top < window.innerHeight-100){
+      el.classList.add('show');
+    }
+  });
+});
+
+/* ================= AUTO SLIDER ================= */
+const slides=[
+  {
+    img:"https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200",
+    text:"AI-powered resume optimization improves visibility and recruiter response rates."
+  },
+  {
+    img:"https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200",
+    text:"Mock interviews and assessments help candidates prepare confidently."
+  },
+  {
+    img:"https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200",
+    text:"Real-time market insights guide professionals toward future-ready skills."
+  }
+];
+
+let si=0;
+const slideImg=document.getElementById("careerSlide");
+const slideTxt=document.getElementById("careerText");
+
+function slideShow(){
+  slideImg.style.opacity=0;
+  setTimeout(()=>{
+    slideImg.src=slides[si].img;
+    slideTxt.innerText=slides[si].text;
+    slideImg.style.opacity=1;
+    si=(si+1)%slides.length;
+  },500);
+}
+slideShow();
+setInterval(slideShow,3500);
 </script>
 
 </body>
