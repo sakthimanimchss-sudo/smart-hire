@@ -2,31 +2,30 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>SmartHire | Job Portal</title>
+<title>SmartHire – Jobs & Hiring</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<!-- BACKGROUND -->
-<div class="bg"></div>
+<div class="bg-3d"></div>
 
 <!-- HEADER -->
 <header class="header">
   <div class="nav">
-    <div class="logo">SmartHire</div>
+    <div class="brand">SmartHire</div>
 
     <nav id="menu" class="menu">
-      <a href="#">Home</a>
-      <a href="#">Jobs</a>
-      <a href="#">Companies</a>
-      <a href="#">Services</a>
-      <a href="#">Career</a>
-      <a href="#">Contact</a>
+      <a href="#home">Home</a>
+      <a href="#jobs">Jobs</a>
+      <a href="#companies">Companies</a>
+      <a href="#services">Services</a>
+      <a href="#career">Career</a>
+      <a href="#contact">Contact</a>
     </nav>
 
-    <div class="nav-actions">
+    <div class="nav-btns">
       <button class="btn ghost">Login</button>
       <button class="btn primary">Register</button>
       <div id="hamburger" class="hamburger">☰</div>
@@ -34,26 +33,37 @@
   </div>
 </header>
 
-<!-- HERO -->
-<section class="hero">
-  <h1>Find Jobs. Hire Talent. Grow Faster.</h1>
+<!-- HERO 1 -->
+<section id="home" class="hero">
+  <h1>
+    Find Jobs. Hire Talent.
+    <span class="typing"></span>
+  </h1>
   <p>
-    SmartHire is a modern job portal built to connect job seekers and employers efficiently.
-    Discover verified jobs, trusted companies, AI-powered interview preparation, and career
-    growth tools designed for today’s competitive job market.
+    SmartHire connects job seekers and employers through verified listings,
+    trusted companies, AI-powered interview preparation, and career growth tools
+    designed for today’s competitive job market.
   </p>
 
-  <div class="search">
+  <div class="search-box">
     <input placeholder="Job title, skills or company">
     <input placeholder="Location">
     <button class="btn primary">Search Jobs</button>
   </div>
 </section>
 
-<!-- FEATURED COMPANIES -->
-<section class="section light">
-  <h2>Featured Companies Actively Hiring</h2>
+<!-- HERO 2 -->
+<section class="hero secondary">
+  <h2>Build Your Career With Confidence</h2>
+  <p>
+    Explore thousands of opportunities across IT, Non-IT, startups,
+    MNCs, and government sectors with smart filters and real-time alerts.
+  </p>
+</section>
 
+<!-- FEATURED LOGOS -->
+<section id="companies" class="section light">
+  <h2>Featured Companies Actively Hiring</h2>
   <div class="logo-grid">
     <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg">
     <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg">
@@ -63,59 +73,67 @@
   </div>
 </section>
 
-<!-- JOB SECTIONS (EXAMPLE – SAME FORMAT FOR ALL 21+) -->
-
+<!-- SCROLLING COMPANIES -->
 <section class="section dark">
-  <div class="job-card">
+  <div class="marquee">
+    <span>Amazon</span><span>Google</span><span>IBM</span>
+    <span>Infosys</span><span>TCS</span><span>Accenture</span>
+    <span>Deloitte</span><span>Capgemini</span>
+  </div>
+</section>
+
+<!-- IMAGE + TEXT -->
+<section id="jobs" class="section dark">
+  <div class="card">
     <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d">
-
-    <img class="company-logo"
-      src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg">
-
     <h3>Jobs for Freshers</h3>
     <p>
-      SmartHire helps fresh graduates start their professional careers with confidence.
-      Explore verified entry-level roles across IT, finance, marketing, operations, and
-      emerging technologies. Each listing is reviewed to ensure quality, transparency,
-      and real hiring intent from employers.
+      Entry-level opportunities for graduates and students across IT,
+      finance, marketing, operations, and emerging technologies.
+      All jobs are verified to ensure genuine hiring.
     </p>
   </div>
 </section>
 
+<!-- TEXT ONLY -->
 <section class="section dark">
-  <div class="job-card">
-    <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786">
-
-    <img class="company-logo"
-      src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg">
-
-    <h3>Jobs for Experienced Professionals</h3>
-    <p>
-      Experienced professionals can find mid-level and senior roles in startups,
-      product companies, and multinational organizations. SmartHire provides
-      salary insights, role matching, and recruiter visibility to help professionals
-      move forward in their careers.
-    </p>
-  </div>
+  <h3>Jobs for Experienced Professionals</h3>
+  <p>
+    Discover mid-level and senior roles with competitive salaries,
+    recruiter visibility, and skill-based matching to accelerate
+    professional growth.
+  </p>
 </section>
 
+<!-- ICON + TEXT -->
+<section class="section light grid-3">
+  <div class="icon-box">💻 IT Jobs</div>
+  <div class="icon-box">🏦 Banking Jobs</div>
+  <div class="icon-box">📈 Marketing Jobs</div>
+</section>
+
+<!-- IMAGE + CTA -->
 <section class="section dark">
-  <div class="job-card">
+  <div class="card">
     <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c">
-
-    <img class="company-logo"
-      src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg">
-
     <h3>AI Interview Preparation</h3>
     <p>
-      Practice interviews using AI-driven mock sessions designed by hiring experts.
-      Improve communication skills, technical knowledge, and confidence through
-      structured feedback and real interview scenarios.
+      Practice mock interviews powered by AI, improve communication,
+      technical skills, and confidence through real-world scenarios.
     </p>
+    <button class="btn primary">Practice Now</button>
   </div>
 </section>
 
-<!-- (You can duplicate this SAME block to reach 21+ sections safely) -->
+<!-- EMPLOYER CTA -->
+<section class="section glow">
+  <h2>Want to Hire Faster?</h2>
+  <p>
+    Post jobs, shortlist candidates, and reduce hiring time with
+    SmartHire’s AI matching tools.
+  </p>
+  <button class="btn primary">Post a Job</button>
+</section>
 
 <!-- FOOTER -->
 <footer class="footer">
