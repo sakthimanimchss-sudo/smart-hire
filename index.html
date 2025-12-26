@@ -1,10 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
   <title>SmartHire | Find Jobs & Hire Talent</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Icons -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
 
@@ -18,7 +24,7 @@
     <a href="#">About</a>
     <a href="#">Contact</a>
     <a href="#">Login</a>
-    <a class="btn-primary" href="#">Register</a>
+    <a class="btn-primary">Register</a>
   </nav>
 </header>
 
@@ -28,8 +34,8 @@
   <p>Search thousands of verified jobs and connect with trusted employers across India.</p>
 
   <div class="search-box">
-    <input type="text" placeholder="Job title, skills or company">
-    <input type="text" placeholder="Location">
+    <input placeholder="Job title or skill">
+    <input placeholder="Location">
     <button>Search Jobs</button>
   </div>
 </section>
@@ -37,32 +43,69 @@
 <!-- WANT TO HIRE -->
 <section class="section dark">
   <h2>Want to Hire?</h2>
-  <p>Find the best candidates from 5 crore+ active job seekers across India.</p>
+  <p>Find the best candidates from 5 crore+ active job seekers.</p>
   <button class="btn-secondary">Post a Job</button>
 </section>
 
-<!-- FEATURED COMPANIES -->
+<!-- FEATURED COMPANIES (10 IMAGES) -->
 <section class="section">
   <h2>Featured Companies Actively Hiring</h2>
   <div class="company-grid">
-    <div class="company-card">Amazon</div>
-    <div class="company-card">Google</div>
-    <div class="company-card">Infosys</div>
-    <div class="company-card">TCS</div>
-    <div class="company-card">Accenture</div>
+
+    <div class="company-card">
+      <img src="https://logo.clearbit.com/amazon.com">
+      <span>Amazon</span>
+    </div>
+    <div class="company-card">
+      <img src="https://logo.clearbit.com/google.com">
+      <span>Google</span>
+    </div>
+    <div class="company-card">
+      <img src="https://logo.clearbit.com/microsoft.com">
+      <span>Microsoft</span>
+    </div>
+    <div class="company-card">
+      <img src="https://logo.clearbit.com/infosys.com">
+      <span>Infosys</span>
+    </div>
+    <div class="company-card">
+      <img src="https://logo.clearbit.com/tcs.com">
+      <span>TCS</span>
+    </div>
+    <div class="company-card">
+      <img src="https://logo.clearbit.com/accenture.com">
+      <span>Accenture</span>
+    </div>
+    <div class="company-card">
+      <img src="https://logo.clearbit.com/ibm.com">
+      <span>IBM</span>
+    </div>
+    <div class="company-card">
+      <img src="https://logo.clearbit.com/capgemini.com">
+      <span>Capgemini</span>
+    </div>
+    <div class="company-card">
+      <img src="https://logo.clearbit.com/deloitte.com">
+      <span>Deloitte</span>
+    </div>
+    <div class="company-card">
+      <img src="https://logo.clearbit.com/flipkart.com">
+      <span>Flipkart</span>
+    </div>
+
   </div>
 </section>
 
-<!-- TRENDING -->
+<!-- TRENDING CATEGORIES (ICONS) -->
 <section class="section dark">
   <h2>Trending Job Categories</h2>
   <div class="category-grid">
-    <div>Internship</div>
-    <div>Fresher</div>
-    <div>Banking</div>
-    <div>Marketing</div>
-    <div>Sales</div>
-    <div>IT Jobs</div>
+    <div><i class="fa-solid fa-graduation-cap"></i> Fresher</div>
+    <div><i class="fa-solid fa-briefcase"></i> Experience</div>
+    <div><i class="fa-solid fa-laptop-code"></i> IT Jobs</div>
+    <div><i class="fa-solid fa-chart-line"></i> Marketing</div>
+    <div><i class="fa-solid fa-building-columns"></i> Banking</div>
+    <div><i class="fa-solid fa-store"></i> Sales</div>
   </div>
 </section>
 
@@ -70,11 +113,10 @@
 <section class="section">
   <h2>Jobs for Freshers</h2>
   <p>
-    SmartHire helps fresh graduates and entry-level professionals start their careers with confidence.
-    Whether you are a final-year student or a recent graduate, our platform provides access to verified
-    fresher jobs across IT, finance, marketing, operations, and emerging technology roles. With skill-based
-    filters, recruiter-verified listings, and guided application tools, freshers can transition smoothly
-    from campus to corporate life.
+    SmartHire helps fresh graduates start their careers with confidence.
+    Verified entry-level jobs, skill-based filtering, recruiter transparency,
+    and guided applications help freshers move smoothly from campus to
+    corporate life.
   </p>
 </section>
 
@@ -82,10 +124,9 @@
 <section class="section dark">
   <h2>Jobs for Experienced Professionals</h2>
   <p>
-    Experienced professionals can explore leadership roles, domain-specific openings, and high-paying
-    opportunities across industries. SmartHire enables senior candidates to connect with verified employers,
-    discover confidential roles, and apply strategically using advanced filters, salary insights, and
-    recruiter-driven recommendations for faster career growth.
+    Explore senior, leadership, and domain-specific roles.
+    SmartHire enables experienced professionals to apply strategically
+    using salary insights, advanced filters, and direct recruiter access.
   </p>
 </section>
 
@@ -93,59 +134,46 @@
 <section class="section">
   <h2>Discover Jobs by Role</h2>
   <div class="role-grid">
-    <div>Full Stack Developer</div>
-    <div>Frontend Developer</div>
-    <div>Backend Developer</div>
-    <div>DevOps Engineer</div>
+    <div>Full Stack</div>
+    <div>Frontend</div>
+    <div>Backend</div>
+    <div>DevOps</div>
     <div>Data Analyst</div>
     <div>Product Manager</div>
   </div>
 </section>
 
-<!-- EVENTS -->
-<section class="section dark">
-  <h2>Upcoming Events & Challenges</h2>
-  <p>
-    Participate in hiring challenges, webinars, workshops, and hackathons hosted by top companies and
-    industry experts. These events help candidates showcase skills, gain certifications, and connect
-    directly with recruiters through structured assessments and live interactions.
-  </p>
-</section>
-
 <!-- INTERVIEW -->
-<section class="section">
+<section class="section dark">
   <h2>Interview Preparation Made Easy</h2>
   <p>
-    Prepare confidently using AI-powered mock interviews, company-specific question sets, and real-time
-    performance feedback. Practice technical, HR, and behavioral rounds while improving confidence and
-    communication skills to perform better in real interviews.
+    Practice mock interviews, HR rounds, and technical assessments
+    using structured preparation tools to improve confidence and success.
   </p>
 </section>
 
 <!-- RESUME -->
-<section class="section dark">
+<section class="section">
   <h2>Resume & Profile Optimization</h2>
   <p>
-    A strong resume is essential for recruiter visibility. SmartHire offers ATS-friendly formatting,
-    keyword optimization, and profile enhancement services that help candidates stand out in competitive
-    job markets and increase interview shortlisting chances.
+    ATS-friendly resumes, profile highlighting, and keyword optimization
+    help candidates stand out and increase interview shortlisting chances.
   </p>
 </section>
 
 <!-- PREMIUM -->
-<section class="section">
+<section class="section dark">
   <h2>Premium Career Services</h2>
   <p>
-    Unlock premium services such as priority applications, profile highlighting, expert resume reviews,
-    and one-on-one career guidance. These services are designed to accelerate job search success and
-    maximize recruiter reach.
+    Priority applications, profile boosts, expert guidance,
+    and faster recruiter responses for serious job seekers.
   </p>
 </section>
 
 <!-- OFFER -->
 <section class="offer">
   <h2>Limited Time Offer</h2>
-  <p>Get 30% OFF on SmartHire Pro — Resume boost & priority applications.</p>
+  <p>Get 30% OFF on SmartHire Pro</p>
   <button>Claim Offer</button>
 </section>
 
@@ -161,11 +189,11 @@
 <section class="section dark">
   <h2>Connect With Us</h2>
   <div class="social">
-    <span>LinkedIn</span>
-    <span>Instagram</span>
-    <span>Facebook</span>
-    <span>X</span>
-    <span>YouTube</span>
+    <a><i class="fab fa-linkedin"></i></a>
+    <a><i class="fab fa-instagram"></i></a>
+    <a><i class="fab fa-facebook"></i></a>
+    <a><i class="fab fa-x-twitter"></i></a>
+    <a><i class="fab fa-youtube"></i></a>
   </div>
 </section>
 
