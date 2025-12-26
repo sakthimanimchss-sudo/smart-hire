@@ -1,0 +1,108 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:system-ui;
+}
+
+body{
+  background:#0b1e46;
+  color:#fff;
+}
+
+a{text-decoration:none;color:inherit}
+
+/* NAVBAR */
+.navbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:16px 24px;
+  background:#000;
+}
+
+.logo{
+  font-size:22px;
+  font-weight:700;
+  color:#1e6fff;
+}
+
+.nav-links{
+  display:flex;
+  gap:16px;
+}
+
+.menu-btn{
+  display:none;
+}
+
+/* HERO */
+.hero{
+  text-align:center;
+  padding:100px 20px;
+}
+
+.hero span{
+  background:#1e6fff;
+  color:#000;
+  padding:4px 12px;
+  border-radius:20px;
+}
+
+/* BUTTONS */
+.btn{
+  padding:10px 20px;
+  border-radius:20px;
+}
+
+.primary{
+  background:#1e6fff;
+  color:#000;
+}
+
+.outline{
+  border:1px solid #fff;
+}
+
+/* SECTIONS */
+section{
+  padding:60px 20px;
+}
+
+.section-title{
+  text-align:center;
+  margin-bottom:30px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:20px;
+}
+
+.card,.job-card{
+  background:rgba(255,255,255,.08);
+  padding:20px;
+  border-radius:16px;
+  text-align:center;
+}
+
+.stats{
+  display:flex;
+  justify-content:center;
+  gap:40px;
+  background:#000;
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:30px;
+  background:#000;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .nav-links{display:none}
+  .menu-btn{display:block}
+}
