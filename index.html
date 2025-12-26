@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SmartHire | Find Jobs & Hire Talent Faster</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SmartHire | Find Jobs & Hire Talent</title>
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css" />
 
-  <!-- Main CSS -->
-  <link rel="stylesheet" href="css/style.css">
+  <!-- Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 </head>
 
-<body class="bg-orbs">
+<body>
 
-<!-- =====================================================
- NAVBAR
-===================================================== -->
+<!-- ================= NAVBAR ================= -->
 <header class="navbar">
-  <div class="logo">Smart<span>Hire</span></div>
+  <div class="nav-left">
+    <span class="logo">SmartHire</span>
+  </div>
 
   <nav class="nav-links">
     <a href="#">Home</a>
@@ -26,297 +26,204 @@
     <a href="employer.html">Employers</a>
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
-    <a href="login.html">Login</a>
-    <a href="register.html" class="btn">Register</a>
+    <a href="login.html" class="btn-outline">Login</a>
+    <a href="register.html" class="btn-primary">Register</a>
   </nav>
 
-  <div class="hamburger" id="hamburger">
-    <span></span><span></span><span></span>
+  <div id="hamburger">
+    <i class="fas fa-bars"></i>
   </div>
 </header>
 
-<!-- =====================================================
- MOBILE MENU
-===================================================== -->
-<div class="mobile-menu" id="mobileMenu">
-  <div style="text-align:right;font-size:26px;cursor:pointer" id="closeMenu">✕</div>
+<!-- ================= MOBILE MENU ================= -->
+<div id="mobileMenu" class="mobile-menu">
+  <div class="menu-header">
+    <span>Menu</span>
+    <i id="closeMenu" class="fas fa-times"></i>
+  </div>
   <a href="#">Home</a>
   <a href="jobs.html">Jobs</a>
   <a href="employer.html">Employers</a>
   <a href="about.html">About</a>
   <a href="contact.html">Contact</a>
   <a href="login.html">Login</a>
-  <a href="register.html" class="btn">Sign Up</a>
+  <a href="register.html" class="btn-primary">Register</a>
 </div>
 
-<!-- =====================================================
- 1. HERO + SEARCH
-===================================================== -->
+<!-- ================= SECTION 1: HERO SEARCH ================= -->
 <section class="section hero">
-  <div>
-    <h1>Find Jobs. Hire Talent. Build Careers.</h1>
-    <p>
-      SmartHire is a next-generation job portal designed to connect job seekers
-      with verified employers across industries. From fresh graduates searching
-      for their first opportunity to experienced professionals seeking career
-      growth, SmartHire offers intelligent job discovery, recruiter visibility,
-      and career tools in one unified platform.
-    </p>
+  <h1>Find Jobs. Hire Talent. Grow Faster.</h1>
+  <p>Search thousands of verified jobs and connect with trusted employers across India.</p>
 
-    <div class="search-box">
-      <input type="text" placeholder="Job title or skill">
-      <input type="text" placeholder="Location">
-      <input type="text" placeholder="Experience">
-      <button>Search Jobs</button>
-    </div>
-  </div>
-
-  <img loading="lazy" referrerpolicy="no-referrer"
-       src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d"
-       alt="Job search">
-</section>
-
-<!-- =====================================================
- 2. TRUST LOGO STRIP
-===================================================== -->
-<section class="section">
-  <div>
-    <h2>Trusted by Hiring Teams Nationwide</h2>
-    <p>
-      Thousands of companies across technology, finance, healthcare, retail,
-      and logistics trust SmartHire to build strong teams. Our platform helps
-      employers discover qualified candidates faster while maintaining trust,
-      transparency, and hiring efficiency.
-    </p>
-  </div>
-
-  <img loading="lazy" referrerpolicy="no-referrer"
-       src="https://images.unsplash.com/photo-1551836022-d5d88e9218df"
-       alt="Trusted companies">
-</section>
-
-<!-- =====================================================
- 3. JOBS FOR FRESHERS
-===================================================== -->
-<section class="section">
-  <img loading="lazy" referrerpolicy="no-referrer"
-       src="https://images.unsplash.com/photo-1552664730-d307ca884978"
-       alt="Freshers jobs">
-
-  <div>
-    <h2>Jobs for Fresh Graduates</h2>
-    <p>
-      SmartHire provides curated entry-level job opportunities for freshers
-      across IT, business, marketing, operations, and support roles. With
-      beginner-friendly listings, skill-based filtering, and employer guidance,
-      graduates can confidently begin their professional journey without
-      confusion or misinformation.
-    </p>
+  <div class="search-box">
+    <input type="text" placeholder="Job title, skills or company">
+    <input type="text" placeholder="Location">
+    <button>Search Jobs</button>
   </div>
 </section>
 
-<!-- =====================================================
- 4. JOBS FOR EXPERIENCED PROFESSIONALS
-===================================================== -->
-<section class="section">
-  <div>
-    <h2>Opportunities for Experienced Professionals</h2>
-    <p>
-      Professionals with industry experience can explore leadership roles,
-      high-paying jobs, and growth-oriented positions. SmartHire allows candidates
-      to showcase expertise, certifications, and achievements while connecting
-      directly with recruiters hiring for mid-level and senior positions.
-    </p>
+<!-- ================= SECTION 2: WANT TO HIRE (REFERENCE DESIGN) ================= -->
+<section class="section hire-banner">
+  <div class="hire-text">
+    <h2>Want to hire?</h2>
+    <p>Find the best candidate from 5 crore+ active job seekers!</p>
+    <a href="employer.html" class="btn-outline">Post Job →</a>
   </div>
-
-  <img loading="lazy" referrerpolicy="no-referrer"
-       src="https://images.unsplash.com/photo-1522071820081-009f0129c71c"
-       alt="Experienced professionals">
-</section>
-
-<!-- =====================================================
- 5. REMOTE & HYBRID JOBS
-===================================================== -->
-<section class="section">
-  <img loading="lazy" referrerpolicy="no-referrer"
-       src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f"
-       alt="Remote work">
-
-  <div>
-    <h2>Remote & Hybrid Work Opportunities</h2>
-    <p>
-      The future of work is flexible. SmartHire lists remote and hybrid job
-      opportunities that allow professionals to work from anywhere while
-      maintaining work-life balance. Candidates can filter roles based on
-      location preference, work mode, and time flexibility.
-    </p>
+  <div class="hire-image">
+    <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf" alt="Hiring">
   </div>
 </section>
 
-<!-- =====================================================
- 6. AI INTERVIEW PREPARATION
-===================================================== -->
-<section class="section">
-  <div>
-    <h2>Practice Interviews with AI Coach</h2>
-    <p>
-      SmartHire’s AI-powered interview preparation tool helps candidates simulate
-      real interview scenarios. Users receive instant feedback on communication,
-      confidence, and technical responses, enabling them to improve performance
-      before attending real interviews.
-    </p>
-    <a href="#" class="btn">Start Practice</a>
+<!-- ================= SECTION 3: AI JOB PREP (REFERENCE DESIGN) ================= -->
+<section class="section ai-prep">
+  <h2>AI Job Prep</h2>
+  <p>Practice interviews with an AI interview coach</p>
+
+  <div class="ai-card">
+    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2" alt="AI Interview">
+    <button>Practice Interview</button>
+    <span>10 min AI Interview</span>
   </div>
 
-  <img loading="lazy" referrerpolicy="no-referrer"
-       src="https://images.unsplash.com/photo-1581091870627-3b4a2b04c0a4"
-       alt="AI interview practice">
+  <a href="#" class="btn-primary">View all Preps →</a>
 </section>
 
-<!-- =====================================================
- 7. RESUME VISIBILITY BOOST
-===================================================== -->
-<section class="section">
-  <div>
-    <h2>Boost Your Resume Visibility</h2>
-    <p>
-      Increase your chances of getting shortlisted by improving resume visibility.
-      SmartHire offers resume enhancement tools that highlight skills, experience,
-      and achievements, ensuring recruiters notice your profile among thousands
-      of applicants.
-    </p>
+<!-- ================= SECTION 4: TRENDING CATEGORIES ================= -->
+<section class="section categories">
+  <h2>Trending on SmartHire</h2>
+  <div class="category-grid">
+    <div>Internship</div>
+    <div>Banking</div>
+    <div>Fresher</div>
+    <div>Marketing</div>
+    <div>Sales</div>
   </div>
 </section>
 
-<!-- =====================================================
- 8. EMPLOYER HIRING CTA
-===================================================== -->
-<section class="section">
-  <img loading="lazy" referrerpolicy="no-referrer"
-       src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf"
-       alt="Hiring team">
-
-  <div>
-    <h2>Want to Hire the Right Talent?</h2>
-    <p>
-      Employers can post jobs, manage applications, and connect directly with
-      verified candidates. SmartHire reduces hiring time by matching job
-      requirements with skilled professionals using intelligent filters.
-    </p>
-    <a href="employer.html" class="btn">Post a Job</a>
+<!-- ================= SECTION 5: FEATURED COMPANIES ================= -->
+<section class="section companies">
+  <h2>Featured Companies Actively Hiring</h2>
+  <div class="company-grid">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Infosys_logo.svg">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Tata_Consultancy_Services_Logo.svg">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg">
   </div>
 </section>
 
-<!-- =====================================================
- 9. CAREER GROWTH TOOLS
-===================================================== -->
-<section class="section">
-  <div>
-    <h2>Career Growth & Skill Development</h2>
-    <p>
-      SmartHire supports long-term career growth through learning resources,
-      interview tips, and career insights. Whether upgrading skills or planning
-      a role transition, candidates can rely on SmartHire for informed decisions.
-    </p>
+<!-- ================= SECTION 6: JOBS FOR FRESHERS ================= -->
+<section class="section text-section">
+  <h2>Jobs for Freshers</h2>
+  <p>
+    SmartHire helps fresh graduates and entry-level professionals start their careers with confidence.
+    Whether you are a final-year student or a recent graduate, our platform offers access to verified
+    fresher jobs across IT, finance, marketing, operations, and emerging technology roles. With smart
+    filters, skill-based matching, and recruiter-verified listings, freshers can apply with clarity,
+    build resumes, prepare interviews, and transition smoothly from campus to corporate life.
+  </p>
+</section>
+
+<!-- ================= SECTION 7: JOBS FOR EXPERIENCED ================= -->
+<section class="section text-section alt">
+  <h2>Jobs for Experienced Professionals</h2>
+  <p>
+    Experienced professionals can explore leadership, senior, and high-paying roles tailored to their
+    expertise. SmartHire enables you to discover opportunities in management, architecture, consulting,
+    and specialized technical domains. With advanced filters for salary, experience, company size, and
+    role type, professionals can make strategic career moves, connect with top employers, and grow
+    faster with confidence and transparency.
+  </p>
+</section>
+
+<!-- ================= SECTION 8: JOBS BY ROLE ================= -->
+<section class="section role-grid">
+  <h2>Discover Jobs by Role</h2>
+  <div class="grid">
+    <div>Full Stack</div>
+    <div>Frontend</div>
+    <div>Backend</div>
+    <div>DevOps</div>
+    <div>Data Engineering</div>
+    <div>AI / ML</div>
   </div>
 </section>
 
-<!-- =====================================================
- 10. INDUSTRY CATEGORIES
-===================================================== -->
-<section class="section">
-  <div>
-    <h2>Explore Jobs by Industry</h2>
-    <p>
-      Browse opportunities across IT services, finance, healthcare, education,
-      logistics, manufacturing, and more. Industry-specific filtering helps
-      candidates find roles aligned with their interests and expertise.
-    </p>
+<!-- ================= SECTION 9: EVENTS ================= -->
+<section class="section events">
+  <h2>Upcoming Events & Challenges</h2>
+  <div class="event-grid">
+    <div>Hackathons</div>
+    <div>Webinars</div>
+    <div>Workshops</div>
   </div>
 </section>
 
-<!-- =====================================================
- 11. TRUST & SECURITY
-===================================================== -->
-<section class="section">
-  <div>
-    <h2>Verified Jobs & Secure Platform</h2>
-    <p>
-      Every job posted on SmartHire undergoes verification to ensure authenticity.
-      We prioritize user safety, data privacy, and transparency, making SmartHire
-      a trusted platform for both candidates and recruiters.
-    </p>
+<!-- ================= SECTION 10: INTERVIEW PREP ================= -->
+<section class="section text-section">
+  <h2>Interview Preparation Made Easy</h2>
+  <p>
+    SmartHire offers structured interview preparation through AI mock interviews, company-specific
+    questions, and real-time feedback. Candidates can practice coding rounds, HR discussions, and
+    technical interviews while improving confidence and communication skills. Our preparation tools
+    help job seekers understand recruiter expectations and perform better in real interviews.
+  </p>
+</section>
+
+<!-- ================= SECTION 11: RESUME SERVICES ================= -->
+<section class="section text-section alt">
+  <h2>Resume & Profile Optimization</h2>
+  <p>
+    A strong resume is the first step to landing interviews. SmartHire provides resume optimization,
+    ATS-friendly formatting, and profile highlighting services to improve recruiter visibility.
+    Candidates can showcase skills effectively, increase profile reach, and stand out in competitive
+    hiring markets with professionally curated profiles.
+  </p>
+</section>
+
+<!-- ================= SECTION 12: DISCOUNT OFFER ================= -->
+<section class="section offer">
+  <h2>Limited Time Offer</h2>
+  <p>Get 30% OFF on SmartHire Pro — Resume boost & priority applications.</p>
+  <a class="btn-primary">Claim Offer</a>
+</section>
+
+<!-- ================= SECTION 13: WHY SMARTHIRE ================= -->
+<section class="section text-section">
+  <h2>Why Choose SmartHire?</h2>
+  <p>
+    SmartHire is built on trust, transparency, and technology. We connect verified recruiters with
+    genuine candidates while ensuring secure applications and reliable job listings. Our platform
+    focuses on career growth, fair hiring practices, and continuous support, helping both job seekers
+    and employers achieve long-term success.
+  </p>
+</section>
+
+<!-- ================= SECTION 14: STATS ================= -->
+<section class="section stats">
+  <div><strong>1M+</strong><span>Job Seekers</span></div>
+  <div><strong>50K+</strong><span>Companies</span></div>
+  <div><strong>2M+</strong><span>Jobs Posted</span></div>
+  <div><strong>95%</strong><span>Success Rate</span></div>
+</section>
+
+<!-- ================= SECTION 15: SOCIAL MEDIA ================= -->
+<section class="section social">
+  <h2>Connect With Us</h2>
+  <div class="social-icons">
+    <i class="fab fa-linkedin"></i>
+    <i class="fab fa-instagram"></i>
+    <i class="fab fa-facebook"></i>
+    <i class="fab fa-x-twitter"></i>
+    <i class="fab fa-youtube"></i>
   </div>
 </section>
 
-<!-- =====================================================
- 12. USER SUCCESS STATS
-===================================================== -->
-<section class="section">
-  <div>
-    <h2>Our Impact in Numbers</h2>
-    <p>
-      Millions of job seekers, thousands of employers, and successful hires
-      demonstrate SmartHire’s impact. Our growing community reflects trust,
-      efficiency, and real career success.
-    </p>
-  </div>
-</section>
-
-<!-- =====================================================
- 13. LIMITED TIME OFFER
-===================================================== -->
-<section class="section">
-  <div>
-    <h2>Limited Time Pro Offer</h2>
-    <p>
-      Upgrade to SmartHire Pro for priority applications, faster recruiter
-      responses, and enhanced resume reach. This limited-time offer helps
-      candidates stand out in a competitive job market.
-    </p>
-    <a href="#" class="btn">Claim Offer</a>
-  </div>
-</section>
-
-<!-- =====================================================
- 14. SOCIAL MEDIA
-===================================================== -->
-<section class="section">
-  <div>
-    <h2>Connect with SmartHire</h2>
-    <p>
-      Follow SmartHire on social media to stay updated on job trends, hiring
-      insights, and career tips. Join our professional community and never miss
-      new opportunities.
-    </p>
-
-    <div class="social-links">
-      <a href="#">LinkedIn</a>
-      <a href="#">Facebook</a>
-      <a href="#">Instagram</a>
-      <a href="#">Twitter</a>
-    </div>
-  </div>
-</section>
-
-<!-- =====================================================
- 15. FOOTER
-===================================================== -->
-<footer class="section">
-  <div>
-    <h2>SmartHire</h2>
-    <p>
-      SmartHire is a modern recruitment platform connecting talent with
-      opportunity. Our mission is to simplify hiring and empower careers through
-      technology, trust, and innovation.
-    </p>
-    <p>© 2025 SmartHire. All rights reserved.</p>
-  </div>
+<!-- ================= SECTION 16: FOOTER ================= -->
+<footer class="footer">
+  <p>© 2026 SmartHire. All rights reserved.</p>
 </footer>
 
-<!-- =====================================================
- JS
-===================================================== -->
+<!-- JS -->
 <script src="js/main.js"></script>
 
 </body>
