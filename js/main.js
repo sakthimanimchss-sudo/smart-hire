@@ -1,96 +1,78 @@
 /* =====================================================
-   SmartHire - Full Animation JavaScript
-   Author: SmartHire UI
-   Purpose: Scroll + Float + Mobile Animation
+   SmartHire - Full Animation JS
 ===================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* ================= REVEAL ON SCROLL ================= */
-  const revealElements = document.querySelectorAll("section, .block, .stat-box");
+  /* ================= SECTION REVEAL ================= */
+  const sections = document.querySelectorAll(".section");
 
-  const revealOnScroll = () => {
-    const windowHeight = window.innerHeight;
-
-    revealElements.forEach(el => {
-      const elementTop = el.getBoundingClientRect().top;
-
-      if (elementTop < windowHeight - 120) {
-        el.classList.add("active");
+  const revealSections = () => {
+    sections.forEach(section => {
+      const top = section.getBoundingClientRect().top;
+      if (top < window.innerHeight - 120) {
+        section.classList.add("active");
       }
     });
   };
 
-  window.addEventListener("scroll", revealOnScroll);
-  revealOnScroll();
+  window.addEventListener("scroll", revealSections);
+  revealSections();
 
-
-  /* ================= FLOAT IMAGE RANDOM OFFSET ================= */
-  const floatingImages = document.querySelectorAll(".block img");
-
-  floatingImages.forEach((img, index) => {
-    const delay = index * 0.6;
-    img.style.animationDelay = `${delay}s`;
+  /* ================= FLOAT IMAGE DELAY ================= */
+  document.querySelectorAll(".section img").forEach((img, index) => {
+    img.style.animationDelay = `${index * 0.6}s`;
   });
 
-
-  /* ================= STAT COUNTER ANIMATION ================= */
+  /* ================= STATS COUNTER ================= */
   const counters = document.querySelectorAll(".stat-box h3");
-  let counterStarted = false;
+  let started = false;
 
-  const animateCounters = () => {
+  const runCounter = () => {
     counters.forEach(counter => {
       const targetText = counter.innerText;
       const target = parseInt(targetText.replace(/\D/g, ""));
       const suffix = targetText.replace(/[0-9]/g, "");
-
       let count = 0;
-      const speed = target / 100;
 
       const update = () => {
         if (count < target) {
-          count += speed;
-          counter.innerText = Math.floor(count) + suffix;
+          count += Math.ceil(target / 80);
+          counter.innerText = count + suffix;
           requestAnimationFrame(update);
         } else {
           counter.innerText = target + suffix;
         }
       };
-
       update();
     });
   };
 
   window.addEventListener("scroll", () => {
-    const statsSection = document.querySelector(".stats");
-    if (!statsSection) return;
+    const stats = document.querySelector(".stats");
+    if (!stats) return;
 
-    const top = statsSection.getBoundingClientRect().top;
-    if (top < window.innerHeight - 150 && !counterStarted) {
-      counterStarted = true;
-      animateCounters();
+    if (stats.getBoundingClientRect().top < window.innerHeight - 150 && !started) {
+      started = true;
+      runCounter();
     }
   });
 
-
-  /* ================= PARALLAX SCROLL EFFECT ================= */
+  /* ================= PARALLAX EFFECT ================= */
   window.addEventListener("scroll", () => {
-    document.querySelectorAll(".block img").forEach(img => {
-      const speed = 0.05;
-      const offset = window.scrollY * speed;
-      img.style.transform = `translateY(${offset}px)`;
+    document.querySelectorAll(".section img").forEach(img => {
+      const speed = 0.08;
+      img.style.transform = `translateY(${window.scrollY * speed}px)`;
     });
   });
 
-
-  /* ================= MOBILE TOUCH ANIMATION ================= */
-  document.querySelectorAll(".block").forEach(block => {
-    block.addEventListener("touchstart", () => {
-      block.style.transform = "scale(0.97)";
+  /* ================= MOBILE TOUCH FEEDBACK ================= */
+  document.querySelectorAll(".btn").forEach(btn => {
+    btn.addEventListener("touchstart", () => {
+      btn.style.transform = "scale(0.95)";
     });
-
-    block.addEventListener("touchend", () => {
-      block.style.transform = "scale(1)";
+    btn.addEventListener("touchend", () => {
+      btn.style.transform = "scale(1)";
     });
   });
 
