@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>SmartHire | Jobs & Hiring Platform</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SmartHire | Jobs & Hiring Platform</title>
 
-<link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
@@ -14,128 +17,112 @@
 <header class="navbar">
   <div class="logo">SmartHire</div>
 
-  <nav id="navMenu">
+  <nav class="nav-links">
     <a href="#">Home</a>
     <a href="#">Jobs</a>
     <a href="#">Companies</a>
     <a href="#">Services</a>
     <a href="#">Career</a>
     <a href="#">Contact</a>
-    <button class="btn login">Login</button>
-    <button class="btn register">Register</button>
   </nav>
 
-  <div class="hamburger" id="hamburger">
-    <span></span><span></span><span></span>
+  <div class="auth">
+    <button class="btn ghost">Login</button>
+    <button class="btn primary">Register</button>
   </div>
+
+  <div class="hamburger"><i class="fa fa-bars"></i></div>
 </header>
 
 <!-- ================= HERO ================= -->
 <section class="hero">
   <h1 class="float-text">Find Jobs. Hire Talent. Grow Faster.</h1>
-  <p>Search thousands of verified jobs, explore trusted companies, prepare for interviews, and build your career confidently with SmartHire.</p>
+  <p>
+    Search thousands of verified jobs, explore trusted companies, prepare for
+    interviews, and build your career confidently with SmartHire.
+  </p>
 
   <div class="search-box">
-    <input type="text" placeholder="Job title, skills or company">
-    <input type="text" placeholder="Location">
-    <button>Search Jobs</button>
+    <input type="text" placeholder="Job title, skills or company" />
+    <input type="text" placeholder="Location" />
+    <button class="btn primary">Search Jobs</button>
   </div>
 </section>
 
 <!-- ================= FEATURED COMPANIES ================= -->
 <section class="section">
-<h2>Featured Companies Actively Hiring</h2>
-<div class="logo-grid">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Infosys_logo.svg">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Tata_Consultancy_Services_Logo.svg">
-</div>
+  <h2>Featured Companies Actively Hiring</h2>
+
+  <div class="company-grid">
+    <img src="https://logo.clearbit.com/amazon.com" alt="Amazon">
+    <img src="https://logo.clearbit.com/google.com" alt="Google">
+    <img src="https://logo.clearbit.com/microsoft.com" alt="Microsoft">
+    <img src="https://logo.clearbit.com/infosys.com" alt="Infosys">
+    <img src="https://logo.clearbit.com/tcs.com" alt="TCS">
+    <img src="https://logo.clearbit.com/accenture.com" alt="Accenture">
+    <img src="https://logo.clearbit.com/ibm.com" alt="IBM">
+    <img src="https://logo.clearbit.com/capgemini.com" alt="Capgemini">
+    <img src="https://logo.clearbit.com/deloitte.com" alt="Deloitte">
+    <img src="https://logo.clearbit.com/flipkart.com" alt="Flipkart">
+  </div>
 </section>
 
-<!-- ================= JOB CATEGORIES ================= -->
-<section class="section dark">
-<h2>Trending Job Categories</h2>
-<div class="card-grid">
-  <div class="card"><i class="fa-solid fa-code"></i><h3>IT & Software</h3></div>
-  <div class="card"><i class="fa-solid fa-chart-line"></i><h3>Finance</h3></div>
-  <div class="card"><i class="fa-solid fa-bullhorn"></i><h3>Marketing</h3></div>
-  <div class="card"><i class="fa-solid fa-briefcase"></i><h3>Management</h3></div>
-</div>
+<!-- ================= TRENDING CATEGORIES ================= -->
+<section class="section alt">
+  <h2>Trending Job Categories</h2>
+
+  <div class="category-grid">
+    <div><i class="fa fa-user-graduate"></i> Fresher Jobs</div>
+    <div><i class="fa fa-briefcase"></i> Experienced</div>
+    <div><i class="fa fa-laptop-code"></i> IT & Software</div>
+    <div><i class="fa fa-chart-line"></i> Marketing</div>
+    <div><i class="fa fa-building-columns"></i> Banking</div>
+    <div><i class="fa fa-store"></i> Sales</div>
+  </div>
 </section>
 
-<!-- ================= JOBS FOR FRESHERS ================= -->
+<!-- ================= JOB SECTIONS (EXAMPLE) ================= -->
 <section class="section">
-<h2>Jobs for Freshers</h2>
-<p>SmartHire helps fresh graduates start their careers with verified entry-level jobs, interview preparation, resume building, and recruiter-verified listings.</p>
+  <h2>Jobs for Freshers</h2>
+  <p>
+    SmartHire helps fresh graduates and entry-level professionals start their
+    careers with confidence. Explore verified fresher jobs across IT, finance,
+    marketing, operations, and emerging technologies.
+  </p>
 </section>
 
-<!-- ================= EXPERIENCED PROFESSIONALS ================= -->
-<section class="section dark">
-<h2>Jobs for Experienced Professionals</h2>
-<p>Explore leadership roles, high-paying opportunities, and career advancement positions across industries with trusted employers.</p>
+<section class="section alt">
+  <h2>Interview Preparation Made Easy</h2>
+  <p>
+    Practice mock interviews, role-based questions, and company-specific
+    interview patterns using SmartHire’s guided preparation tools.
+  </p>
 </section>
 
-<!-- ================= INTERVIEW PREP ================= -->
-<section class="section">
-<h2>AI Interview Preparation</h2>
-<img class="section-img" src="https://images.unsplash.com/photo-1552664730-d307ca884978">
-<p>Practice mock interviews, coding challenges, HR rounds, and receive AI-powered feedback to improve confidence and performance.</p>
-</section>
-
-<!-- ================= RESUME SERVICES ================= -->
-<section class="section dark">
-<h2>Resume & Profile Optimization</h2>
-<p>Build ATS-friendly resumes, enhance recruiter visibility, and highlight your skills professionally.</p>
-</section>
-
-<!-- ================= CAREER GUIDANCE ================= -->
-<section class="section">
-<h2>Career Guidance & Mentorship</h2>
-<img class="section-img" src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d">
-<p>Get expert career advice, role-based guidance, and long-term career planning support.</p>
-</section>
-
-<!-- ================= EVENTS ================= -->
-<section class="section dark">
-<h2>Upcoming Events & Challenges</h2>
-<p>Participate in hackathons, webinars, and skill challenges hosted by top companies.</p>
-</section>
-
-<!-- ================= DISCOUNT ================= -->
+<!-- ================= OFFER ================= -->
 <section class="offer">
-<h2>Limited Time Offer</h2>
-<p>Get <strong>30% OFF</strong> on SmartHire Pro – Resume boost & priority applications.</p>
-<button>Claim Offer</button>
-</section>
-
-<!-- ================= MOBILE APP ================= -->
-<section class="section">
-<h2>Apply on the Go</h2>
-<p>Download the SmartHire app and get instant job alerts anytime, anywhere.</p>
-<div class="app-buttons">
-  <i class="fa-brands fa-google-play"></i>
-  <i class="fa-brands fa-apple"></i>
-</div>
+  <h2>Limited Time Offer</h2>
+  <p>Get <strong>30% OFF</strong> on SmartHire Pro – Resume boost & priority applications.</p>
+  <button class="btn dark">Claim Offer</button>
 </section>
 
 <!-- ================= SOCIAL ================= -->
-<section class="section dark">
-<h2>Connect With Us</h2>
-<div class="social">
-  <i class="fab fa-facebook"></i>
-  <i class="fab fa-linkedin"></i>
-  <i class="fab fa-instagram"></i>
-  <i class="fab fa-x-twitter"></i>
-</div>
+<section class="section">
+  <h2>Connect With Us</h2>
+  <div class="social">
+    <i class="fab fa-linkedin"></i>
+    <i class="fab fa-instagram"></i>
+    <i class="fab fa-facebook"></i>
+    <i class="fab fa-x-twitter"></i>
+    <i class="fab fa-youtube"></i>
+  </div>
 </section>
 
 <!-- ================= FOOTER ================= -->
 <footer>
-<p>© 2026 SmartHire. All Rights Reserved.</p>
+  <p>© 2026 SmartHire. All rights reserved.</p>
 </footer>
 
-<script src="script.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>
