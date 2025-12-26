@@ -1,348 +1,142 @@
-/* =====================================================
-   GLOBAL RESET & BASE
-===================================================== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  font-family: Arial, sans-serif;
 }
 
 body {
-  background: #020617;
-  color: #e5e7eb;
-  overflow-x: hidden;
+  background: linear-gradient(120deg,#050b1f,#020617);
+  color: #fff;
 }
 
-/* =====================================================
-   BACKGROUND ANIMATION (SAFE & PROFESSIONAL)
-===================================================== */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background:
-    radial-gradient(circle at 20% 20%, rgba(56,189,248,0.08), transparent 40%),
-    radial-gradient(circle at 80% 70%, rgba(34,197,94,0.06), transparent 45%);
-  animation: bgFloat 18s ease-in-out infinite alternate;
-  z-index: -1;
-}
-
-@keyframes bgFloat {
-  0% { transform: translateY(0) }
-  100% { transform: translateY(-30px) }
-}
-
-/* =====================================================
-   NAVBAR
-===================================================== */
+/* NAVBAR */
 .navbar {
   position: fixed;
   top: 0;
   width: 100%;
-  height: 64px;
-  padding: 0 20px;
-  background: rgba(2,6,23,0.75);
-  backdrop-filter: blur(14px);
+  padding: 16px 6%;
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(10px);
   z-index: 1000;
 }
 
-.logo {
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: #38bdf8;
-}
-
-.nav-links {
-  display: flex;
-  gap: 18px;
-}
-
-.nav-links a {
-  color: #cbd5f5;
-  text-decoration: none;
-  font-size: 0.95rem;
-}
-
-#hamburger {
-  display: none;
-  font-size: 1.3rem;
-  cursor: pointer;
-}
-
-/* =====================================================
-   MOBILE MENU
-===================================================== */
-.mobile-menu {
-  position: fixed;
-  inset: 0;
-  background: #020617;
-  transform: translateX(100%);
-  transition: 0.4s ease;
-  padding: 20px;
-  z-index: 2000;
-}
-
-.mobile-menu.active {
-  transform: translateX(0);
-}
-
-.mobile-menu a {
-  display: block;
-  padding: 14px 0;
-  font-size: 1.1rem;
-  color: #e5e7eb;
+.navbar a {
+  color: #cfd8ff;
+  margin-left: 18px;
   text-decoration: none;
 }
 
-/* =====================================================
-   COMMON SECTION STYLE
-===================================================== */
+.btn-primary {
+  background: #22c55e;
+  padding: 8px 16px;
+  border-radius: 20px;
+  color: #000;
+}
+
+/* SECTIONS */
 .section {
-  padding: 90px 6% 70px;
+  padding: 120px 6% 90px;
+}
+
+.section.dark {
+  background: rgba(255,255,255,0.04);
 }
 
 .section h2 {
-  font-size: 2rem;
   margin-bottom: 18px;
 }
 
 .section p {
-  font-size: 1rem;
-  line-height: 1.7;
   max-width: 900px;
+  line-height: 1.7;
+  color: #cfd8ff;
 }
 
-/* =====================================================
-   HERO SEARCH
-===================================================== */
+/* HERO */
 .hero {
-  padding-top: 120px;
+  padding-top: 160px;
   text-align: center;
 }
 
 .search-box {
   margin-top: 30px;
-  display: flex;
-  gap: 12px;
-  justify-content: center;
-  flex-wrap: wrap;
 }
 
 .search-box input {
-  padding: 14px;
-  width: 240px;
-  border-radius: 10px;
+  padding: 12px;
+  width: 220px;
+  margin: 5px;
+  border-radius: 6px;
   border: none;
-  outline: none;
 }
 
 .search-box button {
-  padding: 14px 26px;
-  border-radius: 10px;
-  background: #22c55e;
+  padding: 12px 22px;
+  border-radius: 6px;
   border: none;
-  color: #020617;
-  font-weight: 600;
+  background: #22c55e;
 }
 
-/* =====================================================
-   REFERENCE DESIGN BLOCK (USED 10 TIMES)
-===================================================== */
-.reference-card {
-  background: linear-gradient(160deg, #0f172a, #020617);
-  border-radius: 22px;
-  padding: 28px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-  align-items: center;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.6);
-}
-
-.reference-card img {
-  width: 100%;
-  border-radius: 18px;
-  object-fit: cover;
-}
-
-.reference-card h3 {
-  font-size: 1.8rem;
-  margin-bottom: 12px;
-}
-
-.reference-card button {
-  margin-top: 18px;
-  padding: 14px 26px;
-  border-radius: 14px;
-  border: 1px solid #22c55e;
-  background: transparent;
-  color: #22c55e;
-}
-
-/* =====================================================
-   AI PREP CARD STACK
-===================================================== */
-.ai-prep {
-  text-align: center;
-  background: linear-gradient(180deg,#0f172a,#020617);
-}
-
-.ai-card {
-  margin: 40px auto;
-  max-width: 360px;
-  background: linear-gradient(135deg,#22c55e,#3b82f6);
-  border-radius: 26px;
-  padding: 20px;
-  color: #020617;
-  animation: floatCard 6s ease-in-out infinite;
-}
-
-@keyframes floatCard {
-  0%,100% { transform: translateY(0) }
-  50% { transform: translateY(-12px) }
-}
-
-.ai-card img {
-  width: 100%;
-  border-radius: 20px;
-}
-
-/* =====================================================
-   CATEGORY / ROLE GRID
-===================================================== */
+/* GRIDS */
+.company-grid,
 .category-grid,
-.grid,
-.event-grid {
+.role-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(140px,1fr));
-  gap: 18px;
+  grid-template-columns: repeat(auto-fit,minmax(160px,1fr));
+  gap: 20px;
 }
 
+.company-card,
 .category-grid div,
-.grid div,
-.event-grid div {
-  background: #0f172a;
-  padding: 18px;
+.role-grid div {
+  background: rgba(255,255,255,0.07);
+  padding: 25px;
   text-align: center;
-  border-radius: 14px;
-  transition: 0.3s;
+  border-radius: 12px;
 }
 
-.category-grid div:hover {
-  transform: translateY(-6px);
-}
-
-/* =====================================================
-   COMPANY LOGOS
-===================================================== */
-.company-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(140px,1fr));
-  gap: 24px;
-  align-items: center;
-}
-
-.company-grid img {
-  width: 100%;
-  filter: grayscale(100%);
-  opacity: 0.8;
-  transition: 0.3s;
-}
-
-.company-grid img:hover {
-  filter: grayscale(0);
-  opacity: 1;
-}
-
-/* =====================================================
-   TEXT SECTIONS
-===================================================== */
-.text-section {
-  background: #020617;
-}
-
-.text-section.alt {
-  background: #0f172a;
-}
-
-/* =====================================================
-   OFFER SECTION
-===================================================== */
+/* OFFER */
 .offer {
-  background: linear-gradient(90deg,#2563eb,#22c55e);
+  padding: 80px 6%;
   text-align: center;
-  border-radius: 24px;
-  margin: 0 6%;
-  color: #020617;
+  background: linear-gradient(90deg,#2563eb,#22c55e);
 }
 
-.offer a {
-  display: inline-block;
-  margin-top: 18px;
-  background: #020617;
-  color: #fff;
-  padding: 14px 26px;
-  border-radius: 14px;
+.offer button {
+  margin-top: 20px;
+  padding: 12px 28px;
+  border-radius: 25px;
+  border: none;
 }
 
-/* =====================================================
-   STATS
-===================================================== */
+/* STATS */
 .stats {
   display: grid;
   grid-template-columns: repeat(auto-fit,minmax(160px,1fr));
-  gap: 22px;
   text-align: center;
 }
 
 .stats strong {
-  font-size: 2rem;
-  color: #38bdf8;
+  font-size: 32px;
+  display: block;
 }
 
-/* =====================================================
-   SOCIAL
-===================================================== */
-.social-icons {
-  display: flex;
-  justify-content: center;
-  gap: 22px;
+/* SOCIAL */
+.social span {
+  display: inline-block;
+  margin: 10px;
+  padding: 10px 18px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 20px;
 }
 
-.social-icons i {
-  font-size: 1.8rem;
-  transition: 0.3s;
-}
-
-.social-icons i:hover {
-  transform: translateY(-6px);
-  color: #38bdf8;
-}
-
-/* =====================================================
-   FOOTER
-===================================================== */
+/* FOOTER */
 .footer {
   padding: 30px;
   text-align: center;
-  color: #94a3b8;
-}
-
-/* =====================================================
-   RESPONSIVE
-===================================================== */
-@media(max-width:900px){
-  .reference-card {
-    grid-template-columns: 1fr;
-  }
-  .nav-links {
-    display: none;
-  }
-  #hamburger {
-    display: block;
-  }
+  background: #020617;
 }
