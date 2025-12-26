@@ -1,341 +1,191 @@
-/* =====================================================
-   SMART HIRE – GLOBAL STYLES
-===================================================== */
+/* ================= GLOBAL RESET ================= */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    scroll-behavior: smooth;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 body {
-    background: #0b0f1a;
-    color: #ffffff;
-    line-height: 1.6;
+  font-family: 'Poppins', sans-serif;
+  background: radial-gradient(circle at top, #0d1b2a, #020617);
+  color: #ffffff;
+  overflow-x: hidden;
 }
 
-a {
-    text-decoration: none;
-    color: inherit;
+/* ================= TYPOGRAPHY ================= */
+h2 {
+  font-size: 34px;
+  font-weight: 600;
+  color: #ffffff;
 }
 
-img {
-    max-width: 100%;
+p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #d1d5db;
 }
 
-/* =====================================================
-   NAVBAR
-===================================================== */
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 18px 8%;
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(10px);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+/* ================= SECTION ================= */
+section {
+  padding: 80px 8%;
+  position: relative;
+  animation: fadeUp 1s ease both;
 }
 
-.logo {
-    font-size: 26px;
-    font-weight: bold;
-    color: #00b7ff;
+/* ================= GRID BLOCK ================= */
+.block {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: center;
 }
 
-.logo span {
-    color: #ffffff;
+/* ================= IMAGES ================= */
+.block img {
+  border-radius: 18px;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.45);
+  animation: floatImage 6s ease-in-out infinite;
 }
 
-.navbar nav a {
-    margin: 0 12px;
-    font-size: 15px;
-    color: #ccc;
-    transition: 0.3s;
-}
-
-.navbar nav a:hover,
-.navbar nav a.active {
-    color: #00b7ff;
-}
-
-.btn-login,
-.btn-register {
-    padding: 8px 16px;
-    border-radius: 20px;
-    margin-left: 10px;
-}
-
-.btn-login {
-    border: 1px solid #00b7ff;
-}
-
-.btn-register {
-    background: linear-gradient(45deg, #00b7ff, #0077ff);
-}
-
-/* =====================================================
-   HERO SECTION
-===================================================== */
+/* ================= HERO ================= */
 .hero {
-    display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 40px;
-    padding: 80px 8%;
-    align-items: center;
+  min-height: 90vh;
 }
 
-.hero-content h1 {
-    font-size: 42px;
-    margin-bottom: 15px;
+.hero h2 {
+  font-size: 42px;
+  background: linear-gradient(90deg, #38bdf8, #818cf8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.hero-content h1 span {
-    color: #00b7ff;
+/* ================= FLOATING TEXT ================= */
+.block div {
+  animation: textFloat 4s ease-in-out infinite alternate;
 }
 
-.hero-content p {
-    color: #cfcfcf;
-    margin-bottom: 30px;
-}
-
-.search-box {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-}
-
-.search-box input {
-    padding: 14px;
-    border-radius: 8px;
-    border: none;
-    width: 220px;
-    outline: none;
-}
-
-.btn-search {
-    padding: 14px 22px;
-    background: linear-gradient(45deg, #00b7ff, #0077ff);
-    border-radius: 8px;
-    font-weight: bold;
-}
-
-/* =====================================================
-   CATEGORIES
-===================================================== */
-.categories {
-    padding: 60px 8%;
-    text-align: center;
-}
-
-.categories h2 {
-    font-size: 32px;
-    margin-bottom: 10px;
-}
-
-.categories p {
-    color: #aaa;
-    margin-bottom: 40px;
-}
-
-.category-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 25px;
-}
-
-.category-card {
-    background: #12182b;
-    padding: 30px;
-    border-radius: 14px;
-    transition: 0.4s;
-}
-
-.category-card i {
-    font-size: 30px;
-    color: #00b7ff;
-    margin-bottom: 10px;
-    animation: jump 2s infinite;
-}
-
-.category-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 0 25px rgba(0, 183, 255, 0.4);
-}
-
-/* =====================================================
-   FEATURED JOBS
-===================================================== */
-.featured-jobs {
-    padding: 60px 8%;
-    text-align: center;
-}
-
-.jobs-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 25px;
-    margin-top: 40px;
-}
-
-.job-card {
-    background: #12182b;
-    padding: 25px;
-    border-radius: 14px;
-    transition: 0.4s;
-}
-
-.job-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 0 25px rgba(0, 183, 255, 0.4);
-}
-
-.job-card span {
-    display: block;
-    color: #00b7ff;
-    margin: 10px 0;
-}
-
-.job-card a {
-    color: #00b7ff;
-    font-weight: bold;
-}
-
-/* =====================================================
-   WHY US
-===================================================== */
-.why-us {
-    padding: 60px 8%;
-    background: #0e1426;
-    text-align: center;
-}
-
-.why-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 25px;
-    margin-top: 40px;
-}
-
-.why-card {
-    background: #12182b;
-    padding: 30px;
-    border-radius: 14px;
-}
-
-.why-card i {
-    font-size: 34px;
-    color: #00b7ff;
-    margin-bottom: 10px;
-}
-
-/* =====================================================
-   STATS
-===================================================== */
-.stats {
-    padding: 60px 8%;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 25px;
-    text-align: center;
-}
-
+/* ================= COMPANY / CONTENT CARDS ================= */
+.company-card,
 .stat-box {
-    background: #12182b;
-    padding: 30px;
-    border-radius: 14px;
+  background: linear-gradient(145deg, #020617, #0f172a);
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: inset 0 0 0 rgba(255,255,255,0.05),
+              0 20px 40px rgba(0,0,0,0.5);
+  transition: all 0.4s ease;
 }
 
-/* =====================================================
-   FAQ
-===================================================== */
-.faq {
-    padding: 60px 8%;
+.company-card:hover,
+.stat-box:hover {
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 0 30px 60px rgba(56,189,248,0.35);
 }
 
-.faq-item {
-    background: #12182b;
-    padding: 20px;
-    border-radius: 10px;
-    margin-bottom: 15px;
+/* ================= STATS ================= */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 25px;
+  text-align: center;
 }
 
-/* =====================================================
-   FOOTER
-===================================================== */
-.footer {
-    background: #050816;
-    padding: 50px 8%;
+.stat-box h3 {
+  font-size: 32px;
+  color: #38bdf8;
 }
 
-.footer-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 30px;
+/* ================= BUTTONS ================= */
+.btn-search {
+  display: inline-block;
+  padding: 14px 28px;
+  margin-top: 20px;
+  border-radius: 40px;
+  background: linear-gradient(90deg, #38bdf8, #6366f1);
+  color: #020617;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 15px 35px rgba(56,189,248,0.45);
+  transition: all 0.4s ease;
 }
 
-.footer a {
-    display: block;
-    color: #aaa;
-    margin: 6px 0;
+.btn-search:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 25px 55px rgba(99,102,241,0.6);
 }
 
-.social-icons i {
-    font-size: 18px;
-    margin-right: 12px;
-    color: #00b7ff;
+/* ================= IMAGE JUMP ================= */
+@keyframes floatImage {
+  0%   { transform: translateY(0px); }
+  50%  { transform: translateY(-18px); }
+  100% { transform: translateY(0px); }
 }
 
-.footer p {
-    text-align: center;
-    margin-top: 30px;
-    color: #777;
+/* ================= TEXT FLOAT ================= */
+@keyframes textFloat {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-10px); }
 }
 
-/* =====================================================
-   ANIMATIONS
-===================================================== */
-@keyframes jump {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
-}
-
-/* =====================================================
-   RESPONSIVE
-===================================================== */
-@media (max-width: 900px) {
-    .hero {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-    .search-box {
-        justify-content: center;
-    }
-}
-/* Reveal Animation */
-.reveal {
-    animation: fadeUp 0.6s ease forwards;
-}
-
+/* ================= FADE UP ================= */
 @keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* FAQ Toggle */
-.faq-item p {
-    display: none;
+/* ================= MOBILE RESPONSIVE ================= */
+@media (max-width: 900px) {
+
+  section {
+    padding: 60px 6%;
+  }
+
+  .block {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .block img {
+    max-width: 90%;
+    margin: auto;
+    animation: floatImage 5s ease-in-out infinite;
+  }
+
+  h2 {
+    font-size: 28px;
+  }
+
+  p {
+    font-size: 15px;
+  }
+
+  .stats {
+    grid-template-columns: repeat(2,1fr);
+  }
 }
 
-.faq-item.open p {
-    display: block;
-}
+/* ================= EXTRA SMALL MOBILE ================= */
+@media (max-width: 480px) {
 
+  h2 {
+    font-size: 24px;
+  }
+
+  p {
+    font-size: 14px;
+  }
+
+  .btn-search {
+    width: 100%;
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+  }
+}
