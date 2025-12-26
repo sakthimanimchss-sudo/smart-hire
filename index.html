@@ -2,144 +2,375 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>SmartHire – Jobs & Hiring</title>
+<title>SmartHire | Jobs, Recruitment & Career Experts</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" href="css/style.css">
+<style>
+:root{
+--primary:#2b3990;
+--accent:#ff9900;
+--success:#36e0a1;
+--bg-light:#f4f7fa;
+--white:#ffffff;
+--text-dark:#1a1e26;
+--text-muted:#5f6c7a;
+--border-light:#e1e8f0;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,Segoe UI,sans-serif}
+body{background:var(--bg-light);color:var(--text-dark);overflow-x:hidden;line-height:1.6}
+
+/* ================= HERO BG ================= */
+.hero-bg{
+position:absolute;top:0;left:0;width:100%;height:85vh;
+background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+clip-path:ellipse(150% 100% at 50% 0%);
+z-index:-1
+}
+.mesh-blob{
+position:absolute;width:420px;height:420px;
+background:radial-gradient(circle,var(--success),transparent 70%);
+filter:blur(80px);opacity:.2;border-radius:50%;
+animation:move 20s infinite alternate
+}
+@keyframes move{
+from{transform:translate(-10%,-10%)}
+to{transform:translate(30%,20%)}
+}
+
+/* ================= NAV ================= */
+header{
+position:sticky;top:0;z-index:1000;
+background:var(--white);
+box-shadow:0 2px 15px rgba(0,0,0,.05)
+}
+.nav{
+max-width:1400px;margin:auto;padding:12px 25px;
+display:flex;align-items:center;justify-content:space-between
+}
+.logo-group{display:flex;align-items:center;gap:12px}
+.logo-icon{
+width:42px;height:42px;background:var(--primary);
+border-radius:10px;display:flex;align-items:center;
+justify-content:center;color:white;font-weight:800;font-size:22px
+}
+.logo-text{font-size:24px;font-weight:800;color:var(--primary)}
+
+.menu{display:flex;gap:20px}
+.menu a{text-decoration:none;font-weight:600;font-size:14px;color:var(--text-dark)}
+.menu a:hover{color:var(--accent)}
+
+.auth-btns button{
+padding:10px 20px;border-radius:6px;
+border:none;font-weight:700;cursor:pointer
+}
+.hamburger{display:none;font-size:26px;cursor:pointer}
+
+/* ================= HERO ================= */
+.hero{color:white;text-align:center;padding:110px 20px}
+.hero h1{font-size:48px;margin-bottom:15px}
+.hero p{font-size:18px;opacity:.9}
+
+/* ================= SEARCH ================= */
+.search-container{
+background:var(--white);padding:30px;border-radius:15px;
+box-shadow:0 10px 40px rgba(0,0,0,.1);
+display:flex;gap:15px;flex-wrap:wrap;
+max-width:1000px;margin:-50px auto 0
+}
+.search-group{flex:1;min-width:200px}
+.search-group label{font-size:12px;font-weight:700;color:var(--text-muted)}
+.search-group input{
+width:100%;padding:12px;
+border:1px solid var(--border-light);border-radius:8px
+}
+
+/* ================= COMMON ================= */
+section{padding:60px 20px}
+.container{max-width:1300px;margin:auto}
+.section-title{
+margin-bottom:40px;border-left:5px solid var(--accent);
+padding-left:20px
+}
+.section-title h2{font-size:32px;color:var(--primary)}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:25px
+}
+
+.card{
+background:var(--white);
+border:1px solid var(--border-light);
+padding:30px;border-radius:12px;
+transition:.3s ease
+}
+.card:hover{
+transform:translateY(-5px);
+box-shadow:0 10px 25px rgba(0,0,0,.08)
+}
+
+.card-img{
+width:100%;height:180px;
+object-fit:cover;border-radius:8px;
+margin-bottom:20px
+}
+
+.detail-list{
+list-style:none;border-top:1px solid #eee;
+padding-top:15px
+}
+.detail-list li{font-size:13px;margin-bottom:8px}
+.detail-list li::before{content:"✓ ";color:var(--success);font-weight:800}
+
+/* ================= BUTTON ================= */
+.btn{
+padding:12px 28px;border-radius:6px;
+font-weight:700;border:none;cursor:pointer
+}
+.btn-accent{background:var(--accent);color:white}
+
+/* ================= COMPANY LOGOS ================= */
+.company-logos img{
+filter:none;opacity:1;transition:.3s
+}
+.company-logos img:hover{transform:scale(1.08)}
+
+/* ================= REVEAL ================= */
+.reveal{opacity:0;transform:translateY(30px);transition:.8s ease-out}
+.reveal.active{opacity:1;transform:translateY(0)}
+
+/* ================= MOBILE ================= */
+@media(max-width:900px){
+.menu{
+display:none;flex-direction:column;
+position:absolute;top:65px;right:20px;
+background:white;padding:20px;border-radius:14px
+}
+.menu.show{display:flex}
+.hamburger{display:block}
+.hero h1{font-size:36px}
+}
+</style>
 </head>
+
 <body>
 
-<div class="bg-3d"></div>
+<div class="hero-bg"><div class="mesh-blob"></div></div>
 
-<!-- HEADER -->
-<header class="header">
-  <div class="nav">
-    <div class="brand">SmartHire</div>
+<header>
+<nav class="nav">
+<div class="logo-group">
+<div class="logo-icon">S</div>
+<div class="logo-text">SmartHire</div>
+</div>
 
-    <nav id="menu" class="menu">
-      <a href="#home">Home</a>
-      <a href="#jobs">Jobs</a>
-      <a href="#companies">Companies</a>
-      <a href="#services">Services</a>
-      <a href="#career">Career</a>
-      <a href="#contact">Contact</a>
-    </nav>
+<div class="menu">
+<a href="jobs.html">Jobs</a>
+<a href="recruiters.html">Recruiters</a>
+<a href="career.html">Career Services</a>
+<a href="courses.html">Courses</a>
+<a href="blog.html">Blog</a>
+<a href="companies.html">Companies</a>
+<a href="services.html">Services</a>
+<a href="contact.html">Contact</a>
+<a href="dashboard/user.html">Dashboard</a>
+<a href="dashboard/admin.html">Admin</a>
+</div>
 
-    <div class="nav-btns">
-      <button class="btn ghost">Login</button>
-      <button class="btn primary">Register</button>
-      <div id="hamburger" class="hamburger">☰</div>
-    </div>
-  </div>
+<div class="auth-btns">
+<button style="background:none;color:var(--primary)">Login</button>
+<button style="background:var(--primary);color:white">Register</button>
+</div>
+
+<div class="hamburger" onclick="toggleMenu()">☰</div>
+</nav>
 </header>
 
-<!-- HERO 1 -->
-<section id="home" class="hero">
-  <h1>
-    Find Jobs. Hire Talent.
-    <span class="typing"></span>
-  </h1>
-  <p>
-    SmartHire connects job seekers and employers through verified listings,
-    trusted companies, AI-powered interview preparation, and career growth tools
-    designed for today’s competitive job market.
-  </p>
-
-  <div class="search-box">
-    <input placeholder="Job title, skills or company">
-    <input placeholder="Location">
-    <button class="btn primary">Search Jobs</button>
-  </div>
+<section class="hero">
+<div class="container">
+<h1>Over <span id="jobCount">0</span>+ <span style="color:var(--success)">Jobs</span> For You</h1>
+<p>Find your next career move with AI-powered job matching and verified recruiters.</p>
+</div>
 </section>
 
-<!-- HERO 2 -->
-<section class="hero secondary">
-  <h2>Build Your Career With Confidence</h2>
-  <p>
-    Explore thousands of opportunities across IT, Non-IT, startups,
-    MNCs, and government sectors with smart filters and real-time alerts.
-  </p>
+<div class="container">
+<div class="search-container">
+<div class="search-group"><label>Skills / Designation</label><input placeholder="Java Developer, UX Designer"></div>
+<div class="search-group"><label>Location</label><input placeholder="Bangalore, Remote"></div>
+<div class="search-group"><label>Experience</label><input placeholder="2 Years"></div>
+<button class="btn btn-accent">Search Jobs</button>
+</div>
+</div>
+
+<!-- ================= TRENDING CATEGORIES ================= -->
+<section class="reveal">
+<div class="container">
+<div class="section-title">
+<h2>Trending Categories</h2>
+<p>Explore the most in-demand roles in 2025.</p>
+</div>
+
+<div class="grid">
+<div class="card">
+<img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=400" class="card-img">
+<h3>Information Technology</h3>
+<p>Building the digital future with code and architecture.</p>
+<ul class="detail-list">
+<li>Full Stack Developers</li>
+<li>Cloud Architects (AWS/Azure)</li>
+<li>Cybersecurity Specialists</li>
+</ul>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1554224155-1696413565d3?auto=format&fit=crop&w=400" class="card-img">
+<h3>Banking & Finance</h3>
+<p>Strategic wealth management and financial innovation.</p>
+<ul class="detail-list">
+<li>Investment Bankers</li>
+<li>Fintech Analysts</li>
+<li>Chartered Accountants</li>
+</ul>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=400" class="card-img">
+<h3>Sales & Marketing</h3>
+<p>Driving revenue through growth hacking and branding.</p>
+<ul class="detail-list">
+<li>Digital Marketing Leads</li>
+<li>Enterprise Sales Manager</li>
+<li>Brand Strategists</li>
+</ul>
+</div>
+</div>
+</div>
 </section>
 
-<!-- FEATURED LOGOS -->
-<section id="companies" class="section light">
-  <h2>Featured Companies Actively Hiring</h2>
-  <div class="logo-grid">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Infosys_logo.svg">
-  </div>
+<!-- ================= WHY SMARTHIRE ================= -->
+<section class="reveal" style="background:#f9fbff;">
+<div class="container">
+<div class="section-title">
+<h2>Why Choose SmartHire?</h2>
+<p>Inspired by Shine.com, built smarter.</p>
+</div>
+
+<div class="grid">
+<div class="card"><h3>Verified Recruiters</h3><p>Safe and trusted hiring experience.</p></div>
+<div class="card"><h3>AI Job Matching</h3><p>Better matches, faster calls.</p></div>
+<div class="card"><h3>Career Growth Tools</h3><p>Resume, interview and profile boost.</p></div>
+</div>
+</div>
 </section>
 
-<!-- SCROLLING COMPANIES -->
-<section class="section dark">
-  <div class="marquee">
-    <span>Amazon</span><span>Google</span><span>IBM</span>
-    <span>Infosys</span><span>TCS</span><span>Accenture</span>
-    <span>Deloitte</span><span>Capgemini</span>
-  </div>
+<!-- ================= TOP COMPANIES ================= -->
+<section class="reveal">
+<div class="container" style="text-align:center;">
+<div class="section-title" style="border:none;">
+<h2>Top Companies Hiring Now</h2>
+</div>
+
+<div class="grid company-logos" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr));align-items:center;">
+<img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" width="100">
+<img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" width="100">
+<img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" width="100">
+<img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Infosys_logo.svg" width="100">
+<img src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Accenture.svg" width="100">
+</div>
+</div>
 </section>
 
-<!-- IMAGE + TEXT -->
-<section id="jobs" class="section dark">
-  <div class="card">
-    <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d">
-    <h3>Jobs for Freshers</h3>
-    <p>
-      Entry-level opportunities for graduates and students across IT,
-      finance, marketing, operations, and emerging technologies.
-      All jobs are verified to ensure genuine hiring.
-    </p>
-  </div>
+<!-- ================= ALERT ================= -->
+<section class="reveal">
+<div class="container">
+<div class="card" style="display:flex;flex-wrap:wrap;gap:30px;align-items:center;background:#fff9f0;border:1px dashed var(--accent);">
+<div style="flex:1;">
+<h2 style="color:var(--primary);">Never Miss an Opportunity!</h2>
+<p>Subscribe to our Smart Alerts and get the latest jobs matching your profile directly in your inbox.</p>
+</div>
+<div style="display:flex;gap:10px;">
+<input type="email" placeholder="Enter your email" style="padding:12px;border-radius:6px;border:1px solid #ddd;">
+<button class="btn btn-accent">Activate Alerts</button>
+</div>
+</div>
+</div>
 </section>
 
-<!-- TEXT ONLY -->
-<section class="section dark">
-  <h3>Jobs for Experienced Professionals</h3>
-  <p>
-    Discover mid-level and senior roles with competitive salaries,
-    recruiter visibility, and skill-based matching to accelerate
-    professional growth.
-  </p>
+<!-- ================= STATS ================= -->
+<section class="reveal">
+<div class="container">
+<div class="grid">
+<div class="card"><h3>1M+ Active Jobs</h3><p>Updated every 15 minutes.</p></div>
+<div class="card"><h3>50k+ Recruiters</h3><p>Verified and active on platform.</p></div>
+<div class="card"><h3>150+ Cities</h3><p>Global and local opportunities.</p></div>
+</div>
+</div>
 </section>
 
-<!-- ICON + TEXT -->
-<section class="section light grid-3">
-  <div class="icon-box">💻 IT Jobs</div>
-  <div class="icon-box">🏦 Banking Jobs</div>
-  <div class="icon-box">📈 Marketing Jobs</div>
-</section>
-
-<!-- IMAGE + CTA -->
-<section class="section dark">
-  <div class="card">
-    <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c">
-    <h3>AI Interview Preparation</h3>
-    <p>
-      Practice mock interviews powered by AI, improve communication,
-      technical skills, and confidence through real-world scenarios.
-    </p>
-    <button class="btn primary">Practice Now</button>
-  </div>
-</section>
-
-<!-- EMPLOYER CTA -->
-<section class="section glow">
-  <h2>Want to Hire Faster?</h2>
-  <p>
-    Post jobs, shortlist candidates, and reduce hiring time with
-    SmartHire’s AI matching tools.
-  </p>
-  <button class="btn primary">Post a Job</button>
-</section>
-
-<!-- FOOTER -->
-<footer class="footer">
-  <p>© 2026 SmartHire. All rights reserved.</p>
+<!-- ================= FOOTER ================= -->
+<footer style="background:#1a1e26;color:white;padding:60px 20px;">
+<div class="container">
+<div class="grid">
+<div>
+<h3>About SmartHire</h3>
+<p style="font-size:14px;opacity:0.6;">
+SmartHire is the world's most advanced job portal utilizing neural matching to connect global talent with high-growth opportunities.
+</p>
+</div>
+<div>
+<h3>Quick Links</h3>
+<ul style="list-style:none;font-size:14px;opacity:0.8;line-height:2;">
+<li>Browse Jobs</li>
+<li>Success Stories</li>
+<li>Employer Solutions</li>
+<li>Privacy Policy</li>
+</ul>
+</div>
+<div>
+<h3>Follow Us</h3>
+<div style="display:flex;gap:15px;">
+<span>FB</span><span>LN</span><span>TW</span><span>IG</span>
+</div>
+</div>
+</div>
+<div style="text-align:center;margin-top:50px;font-size:12px;opacity:0.4;">
+© 2026 SmartHire Recruitment Solutions Pvt Ltd. All rights reserved.
+</div>
+</div>
 </footer>
 
-<script src="js/main.js"></script>
+<script>
+/* Reveal animation */
+const reveals=document.querySelectorAll('.reveal');
+window.addEventListener('scroll',()=>{
+reveals.forEach(r=>{
+if(r.getBoundingClientRect().top<window.innerHeight-50){
+r.classList.add('active');
+}
+});
+});
+window.dispatchEvent(new Event('scroll'));
+
+/* Hamburger */
+function toggleMenu(){
+document.querySelector('.menu').classList.toggle('show');
+}
+
+/* Auto counter */
+let count=0;
+const target=500000;
+const el=document.getElementById("jobCount");
+const counter=setInterval(()=>{
+count+=5000;
+el.textContent=count.toLocaleString();
+if(count>=target){
+el.textContent="500,000";
+clearInterval(counter);
+}
+},20);
+</script>
+
 </body>
 </html>
