@@ -1,28 +1,19 @@
-document.addEventListener("DOMContentLoaded",()=>{
-  const stats=document.querySelectorAll(".stats strong");
-  let started=false;
+const hamburger = document.getElementById("hamburger");
+const navMenu = document.getElementById("navMenu");
 
-  window.addEventListener("scroll",()=>{
-    if(started) return;
-    const sec=document.querySelector(".stats");
-    if(!sec) return;
+hamburger.addEventListener("click", () => {
+  navMenu.classList.toggle("active");
+});
 
-    if(sec.getBoundingClientRect().top<window.innerHeight){
-      started=true;
-      stats.forEach(s=>{
-        let target=parseInt(s.innerText);
-        let c=0,step=target/80;
-        const run=()=>{
-          c+=step;
-          if(c<target){
-            s.innerText=Math.floor(c)+"+";
-            requestAnimationFrame(run);
-          }else{
-            s.innerText=target+"+";
-          }
-        };
-        run();
-      });
+/* Scroll reveal */
+const sections = document.querySelectorAll(".section");
+
+window.addEventListener("scroll", () => {
+  sections.forEach(sec => {
+    const top = sec.getBoundingClientRect().top;
+    if(top < window.innerHeight - 100){
+      sec.style.opacity = 1;
+      sec.style.transform = "translateY(0)";
     }
   });
 });
