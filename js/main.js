@@ -1,19 +1,11 @@
-const hamburger = document.getElementById("hamburger");
-const navMenu = document.getElementById("navMenu");
-
-hamburger.addEventListener("click", () => {
-  navMenu.classList.toggle("active");
+// Hamburger menu toggle (future ready)
+document.querySelector(".hamburger").addEventListener("click", () => {
+  alert("Mobile menu toggle ready");
 });
 
-/* Scroll reveal */
-const sections = document.querySelectorAll(".section");
-
-window.addEventListener("scroll", () => {
-  sections.forEach(sec => {
-    const top = sec.getBoundingClientRect().top;
-    if(top < window.innerHeight - 100){
-      sec.style.opacity = 1;
-      sec.style.transform = "translateY(0)";
-    }
+// Smooth scroll effect
+document.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", e => {
+    e.preventDefault();
   });
 });
