@@ -1,20 +1,13 @@
 /* =====================================================
-   SmartHire – Final JavaScript
-   Purpose:
-   - Hamburger & mobile menu
-   - Section reveal on scroll
-   - Navbar blur on scroll
-   - Search input UX
-   - Safe text animation control
+   SmartHire – Rebuilt Final JavaScript
 ===================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* ================= NAVBAR & HAMBURGER ================= */
+  /* ================= HAMBURGER & MOBILE MENU ================= */
   const hamburger = document.getElementById("hamburger");
   const mobileMenu = document.getElementById("mobileMenu");
   const closeMenu = document.getElementById("closeMenu");
-  const navbar = document.querySelector(".navbar");
 
   if (hamburger && mobileMenu) {
     hamburger.addEventListener("click", () => {
@@ -30,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* Close menu when clicking any mobile link */
+  // Close mobile menu when clicking any link
   document.querySelectorAll(".mobile-menu a").forEach(link => {
     link.addEventListener("click", () => {
       mobileMenu.classList.remove("active");
@@ -39,12 +32,14 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* ================= NAVBAR SCROLL EFFECT ================= */
+  const navbar = document.querySelector(".navbar");
+
   window.addEventListener("scroll", () => {
     if (window.scrollY > 10) {
-      navbar.style.background = "rgba(2,6,23,0.85)";
+      navbar.style.background = "rgba(2,6,23,0.9)";
       navbar.style.backdropFilter = "blur(16px)";
     } else {
-      navbar.style.background = "rgba(2,6,23,0.7)";
+      navbar.style.background = "rgba(2,6,23,0.75)";
     }
   });
 
@@ -55,9 +50,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const triggerPoint = window.innerHeight - 120;
 
     sections.forEach(section => {
-      const top = section.getBoundingClientRect().top;
+      const sectionTop = section.getBoundingClientRect().top;
 
-      if (top < triggerPoint) {
+      if (sectionTop < triggerPoint) {
         section.classList.add("active");
       }
     });
