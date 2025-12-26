@@ -7,115 +7,82 @@
 
 <style>
 :root{
---primary:#2b3990;
---accent:#ff9900;
---success:#36e0a1;
---bg-light:#f4f7fa;
---white:#ffffff;
---text-dark:#1a1e26;
---text-muted:#5f6c7a;
---border-light:#e1e8f0;
+  --primary:#2b3990;
+  --accent:#ff9900;
+  --bg:#f4f7fa;
+  --text:#1a1e26;
+  --border:#e1e8f0;
 }
 
-*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,Segoe UI,sans-serif}
-html{scroll-behavior:smooth}
-body{background:var(--bg-light);color:var(--text-dark);overflow-x:hidden;line-height:1.6}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI,Arial}
+body{background:var(--bg);color:var(--text);line-height:1.6}
 
-/* ================= HEADER ================= */
-header{
-position:sticky;top:0;z-index:1000;
-background:var(--white);
-box-shadow:0 2px 15px rgba(0,0,0,.05)
-}
-.nav{
-max-width:1400px;margin:auto;padding:12px 25px;
-display:flex;align-items:center;justify-content:space-between
-}
-.logo-group{display:flex;align-items:center;gap:12px}
-.logo-icon{
-width:42px;height:42px;background:var(--primary);
-border-radius:10px;color:white;
-display:flex;align-items:center;justify-content:center;font-weight:800
-}
-.logo-text{font-size:24px;font-weight:800;color:var(--primary)}
+/* NAVBAR */
+header{position:sticky;top:0;background:#fff;z-index:1000;border-bottom:1px solid var(--border)}
+.nav{max-width:1400px;margin:auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between}
+.logo-group{display:flex;align-items:center;gap:10px}
+.logo-icon{width:40px;height:40px;background:var(--primary);color:#fff;
+display:flex;align-items:center;justify-content:center;font-weight:800;border-radius:8px}
+.logo-text{font-size:22px;font-weight:800;color:var(--primary)}
 
-.menu{display:flex;gap:20px}
-.menu a{text-decoration:none;font-weight:600;font-size:14px;color:var(--text-dark)}
+.menu{display:flex;gap:18px}
+.menu a{text-decoration:none;color:#333;font-weight:600;font-size:14px}
 
+/* AUTH + HAMBURGER */
 .auth-btns{display:flex;align-items:center;gap:10px}
-.auth-btns button{
-padding:8px 16px;border-radius:6px;border:none;font-weight:700;cursor:pointer
-}
+.auth-btns button{padding:8px 16px;border-radius:6px;border:none;font-weight:700;cursor:pointer}
+.hamburger{display:none;font-size:24px;cursor:pointer}
 
-.hamburger{display:none;font-size:26px;cursor:pointer}
-
-/* ================= HERO ================= */
-.hero{
-background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
-color:white;
-text-align:center;
-padding:120px 20px
-}
-.hero h1{font-size:48px;margin-bottom:15px}
-.hero p{font-size:18px;opacity:.9}
-
-/* ================= SEARCH ================= */
-.search-container{
-background:var(--white);padding:30px;border-radius:15px;
-box-shadow:0 10px 40px rgba(0,0,0,.1);
-display:flex;gap:15px;flex-wrap:wrap;
-max-width:1000px;margin:-50px auto 0
-}
-.search-group{flex:1;min-width:200px}
-.search-group label{font-size:12px;font-weight:700;color:var(--text-muted)}
-.search-group input{
-width:100%;padding:12px;border:1px solid var(--border-light);border-radius:8px
-}
-.btn-accent{
-background:var(--accent);color:white;
-padding:12px 28px;border-radius:6px;font-weight:700;border:none
-}
-
-/* ================= MOBILE MENU ================= */
-@media(max-width:900px){
-.menu{
-position:fixed;top:0;left:-100%;
-width:100%;height:100%;
-background:#0f0f12;
-padding:90px 30px;
-flex-direction:column;
-gap:22px;
-transition:left .4s ease;
-z-index:999
-}
-.menu.show{left:0}
-.menu a{color:#fff;font-size:18px}
-
-.close-menu{
-position:absolute;top:20px;right:20px;
-font-size:28px;color:white;cursor:pointer
-}
-
-.hamburger{display:block}
-.auth-btns button{display:none}
-
-.mobile-auth{
-display:flex;flex-direction:column;gap:15px;margin-top:30px
-}
-.mobile-auth a{
-text-align:center;padding:14px;border-radius:8px;
-font-weight:700;text-decoration:none;color:white;
-background:#1a1a1f
-}
+/* MOBILE MENU */
+.close-menu{display:none;font-size:22px;font-weight:800;margin-bottom:15px;cursor:pointer}
+.mobile-auth{display:none;flex-direction:column;gap:10px;margin-top:20px}
+.mobile-auth a{padding:12px;border-radius:8px;text-align:center;font-weight:700;
+background:#111;color:#fff;text-decoration:none}
 .mobile-auth a.primary{background:var(--accent)}
 
-.hero h1{font-size:36px}
+@media(max-width:900px){
+  .menu{
+    position:fixed;top:0;right:-100%;width:260px;height:100%;
+    background:#fff;flex-direction:column;padding:25px;
+    transition:0.4s;box-shadow:-10px 0 30px rgba(0,0,0,.1)
+  }
+  .menu.active{right:0}
+  .close-menu{display:block}
+  .hamburger{display:block}
+  .auth-btns button{display:none}
+  .mobile-auth{display:flex}
+}
+
+/* SECTIONS */
+section{padding:70px 20px}
+.container{max-width:1300px;margin:auto}
+.section-title{border-left:5px solid var(--accent);padding-left:15px;margin-bottom:30px}
+.section-title h2{color:var(--primary);font-size:32px}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px}
+.card{background:#fff;padding:25px;border-radius:12px;border:1px solid var(--border)}
+.card img{width:100%;border-radius:10px;margin-bottom:15px}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+color:#fff;text-align:center;padding:120px 20px}
+.hero h1{font-size:50px;margin-bottom:15px}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(30px);transition:.8s}
+.reveal.active{opacity:1;transform:none}
+
+/* FLOAT */
+@keyframes float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-10px)}
 }
 </style>
 </head>
 
 <body>
 
+<!-- HEADER -->
 <header>
 <nav class="nav">
   <div class="logo-group">
@@ -123,7 +90,7 @@ background:#1a1a1f
     <div class="logo-text">SmartHire</div>
   </div>
 
-  <div class="menu">
+  <div class="menu" id="menu">
     <div class="close-menu" onclick="toggleMenu()">✕</div>
     <a href="index.html">Home 1</a>
     <a href="home2.html">Home 2</a>
@@ -152,100 +119,67 @@ background:#1a1a1f
 </nav>
 </header>
 
+<!-- HERO -->
 <section class="hero">
-  <h1>Over <span id="jobCount">0</span>+ Jobs For You</h1>
+  <h1>Over <span style="color:#36e0a1">500,000+</span> Jobs For You</h1>
   <p>Find your next career move with AI-powered job matching and verified recruiters.</p>
 </section>
 
-<div class="search-container">
-  <div class="search-group"><label>Skills</label><input></div>
-  <div class="search-group"><label>Location</label><input></div>
-  <div class="search-group"><label>Experience</label><input></div>
-  <button class="btn-accent">Search Jobs</button>
+<!-- ECOSYSTEM -->
+<section class="reveal" style="background:#fff">
+<div class="container">
+<div class="section-title"><h2>SmartHire Recruitment Ecosystem</h2></div>
+<div class="grid">
+  <div class="card"><h3>AI Match</h3><p>Smart profile matching.</p></div>
+  <div class="card"><h3>Smart Screening</h3><p>Automated assessments.</p></div>
+  <div class="card"><h3>Direct Connect</h3><p>Chat with recruiters.</p></div>
 </div>
-<style>
-section{padding:60px 20px}
-.container{max-width:1300px;margin:auto}
-.section-title{
-margin-bottom:40px;border-left:5px solid var(--accent);
-padding-left:20px
-}
-.section-title h2{font-size:32px;color:var(--primary)}
+</div>
+</section>
 
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-gap:25px
-}
+<!-- NEW SECTION 1 -->
+<section class="reveal" style="background:#f9fbff">
+<div class="container">
+<div class="section-title"><h2>Why SmartHire?</h2></div>
+<div class="grid">
+<div class="card"><h3>Verified Recruiters</h3><p>Only trusted employers, no fake jobs.</p></div>
+<div class="card"><h3>AI Job Matching</h3><p>Personalized job discovery.</p></div>
+<div class="card"><h3>Career Growth</h3><p>Resume, interview & profile tools.</p></div>
+</div>
+</div>
+</section>
 
-.card{
-background:white;border:1px solid var(--border-light);
-padding:30px;border-radius:12px;
-animation:float 6s ease-in-out infinite
-}
-
-@keyframes float{
-0%{transform:translateY(0)}
-50%{transform:translateY(-10px)}
-100%{transform:translateY(0)}
-}
-
-.card-img{
-width:100%;height:180px;
-object-fit:cover;border-radius:8px;margin-bottom:20px
-}
-
-.company-logos{justify-items:center;align-items:center}
-
-.reveal{opacity:0;transform:translateY(30px);transition:.8s}
-.reveal.active{opacity:1;transform:none}
-</style>
-
+<!-- NEW SECTION 2 -->
 <section class="reveal">
 <div class="container">
-<div class="section-title">
-<h2>Trending Categories</h2>
-<p>Explore the most in-demand roles in 2025.</p>
-</div>
-
+<div class="section-title"><h2>Smart Learning & Upskilling</h2></div>
 <div class="grid">
 <div class="card">
-<img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800" class="card-img">
-<p>Technology roles dominate hiring as organizations adopt cloud computing, artificial intelligence, cybersecurity, and scalable digital platforms. Skilled developers, engineers, and architects are in high demand globally.</p>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1554224155-1696413565d3?auto=format&fit=crop&w=800" class="card-img">
-<p>Finance professionals are required to manage digital transactions, compliance, analytics, and modern fintech platforms that power today’s global economy.</p>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=800" class="card-img">
-<p>Sales and marketing experts help brands grow by leveraging digital channels, performance analytics, and customer engagement strategies.</p>
+<img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f">
+<p>Learn skills aligned with real hiring demand and industry trends.</p>
 </div>
 </div>
 </div>
 </section>
 
-<section class="reveal" style="background:#fff;">
+<!-- NEW SECTION 3 -->
+<section class="reveal" style="background:#fff">
 <div class="container">
-<div class="section-title">
-<h2>SmartHire Recruitment Ecosystem</h2>
-</div>
+<div class="section-title"><h2>Employer Trust & Transparency</h2></div>
 <div class="grid">
-<div class="card"><h3>AI Match</h3><p>Smart profile matching.</p></div>
-<div class="card"><h3>Smart Screening</h3><p>Automated assessments.</p></div>
-<div class="card"><h3>Direct Connect</h3><p>Chat with recruiters.</p></div>
+<div class="card" style="animation:float 6s infinite">
+<img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d">
+<p>Verified companies, transparent hiring, secure communication.</p>
+</div>
 </div>
 </div>
 </section>
 
+<!-- TOP COMPANIES -->
 <section class="reveal">
-<div class="container" style="text-align:center;">
-<div class="section-title" style="border:none;">
-<h2>Top Companies Hiring Now</h2>
-</div>
-<div class="grid company-logos">
+<div class="container" style="text-align:center">
+<h2>Top Companies Hiring Now</h2><br>
+<div class="grid">
 <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" width="100">
 <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" width="100">
 <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" width="100">
@@ -255,18 +189,20 @@ object-fit:cover;border-radius:8px;margin-bottom:20px
 </div>
 </section>
 
+<!-- ALERT -->
 <section class="reveal">
 <div class="container">
-<div class="card" style="display:flex;gap:30px;align-items:center;background:#fff9f0;border:1px dashed var(--accent);">
+<div class="card" style="display:flex;justify-content:space-between;align-items:center;background:#fff9f0">
 <div>
-<h2 style="color:var(--primary)">Never Miss an Opportunity!</h2>
+<h2>Never Miss an Opportunity!</h2>
 <p>Subscribe to job alerts matching your profile.</p>
 </div>
-<button class="btn-accent">Activate Alerts</button>
+<button class="auth-btns button" style="background:var(--accent);color:#fff">Activate Alerts</button>
 </div>
 </div>
 </section>
 
+<!-- STATS -->
 <section class="reveal">
 <div class="container">
 <div class="grid">
@@ -276,35 +212,88 @@ object-fit:cover;border-radius:8px;margin-bottom:20px
 </div>
 </div>
 </section>
+<!-- ================= TRENDING CATEGORIES ================= -->
+<section class="reveal">
+  <div class="container">
+    <div class="section-title">
+      <h2>Trending Categories</h2>
+      <p>Explore the most in-demand roles in 2025.</p>
+    </div>
 
-<footer style="background:#1a1e26;color:white;padding:60px 20px">
+    <div class="grid">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800" class="card-img">
+        <p>
+          Technology roles dominate hiring as organizations adopt cloud computing,
+          artificial intelligence, cybersecurity, and scalable digital platforms.
+          Skilled developers, engineers, and architects are in high demand globally.
+        </p>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1554224155-1696413565d3?auto=format&fit=crop&w=800" class="card-img">
+        <p>
+          Finance professionals are required to manage digital transactions,
+          regulatory compliance, financial analytics, and modern fintech platforms
+          that power today’s global economy.
+        </p>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=800" class="card-img">
+        <p>
+          Sales and marketing experts help brands grow by leveraging digital
+          channels, performance analytics, customer engagement strategies,
+          and data-driven campaign execution.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= RECRUITMENT ECOSYSTEM ================= -->
+<section class="reveal" style="background:#fff;">
+  <div class="container">
+    <div class="section-title">
+      <h2>SmartHire Recruitment Ecosystem</h2>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h3>AI Match</h3>
+        <p>Smart profile matching.</p>
+      </div>
+
+      <div class="card">
+        <h3>Smart Screening</h3>
+        <p>Automated assessments.</p>
+      </div>
+
+      <div class="card">
+        <h3>Direct Connect</h3>
+        <p>Chat with recruiters.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:#1a1e26;color:#fff;padding:60px 20px">
 <div class="container">
-<p style="text-align:center;opacity:.6">
-© 2026 SmartHire Recruitment Solutions Pvt Ltd. All rights reserved.
-</p>
+<p style="opacity:.5;text-align:center">© 2026 SmartHire Recruitment Solutions Pvt Ltd.</p>
 </div>
 </footer>
 
 <script>
 function toggleMenu(){
-document.querySelector('.menu').classList.toggle('show');
+  document.getElementById("menu").classList.toggle("active");
 }
 
-const observer=new IntersectionObserver(entries=>{
-entries.forEach(e=>{
-if(e.isIntersecting){e.target.classList.add("active")}
-});
-},{threshold:0.15});
-document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
-
-let c=0;
-const t=500000;
-const el=document.getElementById("jobCount");
-const i=setInterval(()=>{
-c+=5000;
-el.textContent=c.toLocaleString();
-if(c>=t){el.textContent="500,000";clearInterval(i)}
-},20);
+const reveals=document.querySelectorAll(".reveal");
+const obs=new IntersectionObserver(e=>{
+e.forEach(x=>x.isIntersecting&&x.target.classList.add("active"))
+},{threshold:.15});
+reveals.forEach(r=>obs.observe(r));
 </script>
 
 </body>
