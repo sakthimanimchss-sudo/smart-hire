@@ -1,5 +1,5 @@
 /* =====================================================
-   GLOBAL RESET & BASE
+   RESET & BASE
 ===================================================== */
 * {
   margin: 0;
@@ -19,7 +19,7 @@ body {
   /* Animated background */
   background: linear-gradient(120deg, #020617, #071a2f, #020617);
   background-size: 300% 300%;
-  animation: bgMove 16s ease infinite;
+  animation: bgMove 18s ease infinite;
 }
 
 @keyframes bgMove {
@@ -33,50 +33,51 @@ body {
 .bg-orbs::after {
   content: "";
   position: fixed;
-  width: 280px;
-  height: 280px;
+  width: 260px;
+  height: 260px;
   border-radius: 50%;
   filter: blur(100px);
   z-index: -1;
-  animation: orbFloat 20s ease-in-out infinite alternate;
+  animation: orbFloat 22s ease-in-out infinite alternate;
 }
 
 .bg-orbs::before {
   background: rgba(56,189,248,0.18);
-  top: 10%;
-  left: 5%;
+  top: 12%;
+  left: 6%;
 }
 
 .bg-orbs::after {
   background: rgba(34,197,94,0.18);
-  bottom: 10%;
-  right: 5%;
-  animation-delay: 6s;
+  bottom: 12%;
+  right: 6%;
+  animation-delay: 7s;
 }
 
 @keyframes orbFloat {
   from { transform: translate(0, 0); }
-  to { transform: translate(80px, 60px); }
+  to { transform: translate(90px, 60px); }
 }
 
 /* =====================================================
-   BASE ELEMENTS
+   COMMON ELEMENTS
 ===================================================== */
 img {
-  max-width: 100%;
-  display: block;
-  border-radius: 18px;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  object-fit: cover;
 }
 
 p {
   color: #cbd5e1;
   line-height: 1.8;
   font-size: 16px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
 /* =====================================================
@@ -86,11 +87,11 @@ p {
   position: sticky;
   top: 0;
   z-index: 1000;
-  padding: 18px 6%;
+  padding: 16px 6%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(2, 6, 23, 0.7);
+  background: rgba(2, 6, 23, 0.75);
   backdrop-filter: blur(14px);
 }
 
@@ -105,8 +106,8 @@ p {
 
 .nav-links {
   display: flex;
-  align-items: center;
   gap: 18px;
+  align-items: center;
 }
 
 .nav-links a {
@@ -136,19 +137,19 @@ p {
 .btn {
   background: linear-gradient(90deg, #22c55e, #16a34a);
   padding: 10px 22px;
-  border-radius: 24px;
-  color: #020617;
+  border-radius: 26px;
   font-weight: 600;
+  color: #020617;
   transition: 0.3s ease;
 }
 
 .btn:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(34,197,94,0.4);
+  box-shadow: 0 10px 28px rgba(34,197,94,0.45);
 }
 
 /* =====================================================
-   HAMBURGER
+   HAMBURGER & MOBILE MENU
 ===================================================== */
 .hamburger {
   display: none;
@@ -163,9 +164,6 @@ p {
   background: #ffffff;
 }
 
-/* =====================================================
-   MOBILE MENU
-===================================================== */
 .mobile-menu {
   position: fixed;
   inset: 0;
@@ -188,7 +186,7 @@ p {
 }
 
 /* =====================================================
-   SECTIONS
+   SECTIONS (BASE)
 ===================================================== */
 .section {
   padding: 90px 8%;
@@ -207,29 +205,41 @@ p {
   transform: translateY(0);
 }
 
-/* Hero title floating */
+/* Slight visual variation every section */
+.section:nth-child(even) {
+  background: linear-gradient(
+    120deg,
+    rgba(255,255,255,0.02),
+    rgba(255,255,255,0)
+  );
+}
+
+/* =====================================================
+   HERO
+===================================================== */
 .hero h1 {
   font-size: 42px;
   background: linear-gradient(90deg, #38bdf8, #818cf8);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: titleFloat 5s ease-in-out infinite;
+  animation: heroFloat 5s ease-in-out infinite;
 }
 
-@keyframes titleFloat {
+@keyframes heroFloat {
   0%,100% { transform: translateY(0); }
   50% { transform: translateY(-6px); }
 }
 
-/* Section headings */
+/* =====================================================
+   HEADINGS & TEXT
+===================================================== */
 .section h2 {
   font-size: 32px;
   margin-bottom: 14px;
 }
 
-/* Paragraph micro-float */
 .section p {
-  animation: textFloat 6s ease-in-out infinite alternate;
+  animation: textFloat 7s ease-in-out infinite alternate;
 }
 
 @keyframes textFloat {
@@ -238,25 +248,25 @@ p {
 }
 
 /* =====================================================
-   SEARCH BOX
+   SEARCH
 ===================================================== */
 .search-box {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
-  margin-top: 20px;
+  margin-top: 22px;
 }
 
 .search-box input {
   padding: 14px;
-  border-radius: 10px;
+  border-radius: 12px;
   border: none;
   min-width: 180px;
   outline: none;
 }
 
 .search-box button {
-  padding: 14px 28px;
+  padding: 14px 30px;
   border-radius: 30px;
   border: none;
   background: #22c55e;
@@ -276,8 +286,8 @@ p {
 .social-links a {
   display: inline-block;
   margin-right: 14px;
-  padding: 8px 16px;
-  border-radius: 20px;
+  padding: 10px 18px;
+  border-radius: 22px;
   background: rgba(56,189,248,0.12);
   color: #38bdf8;
   transition: 0.3s;
@@ -285,7 +295,7 @@ p {
 
 .social-links a:hover {
   transform: translateY(-4px);
-  box-shadow: 0 10px 25px rgba(56,189,248,0.35);
+  box-shadow: 0 12px 28px rgba(56,189,248,0.4);
 }
 
 /* =====================================================
@@ -310,14 +320,8 @@ footer.section {
    MOBILE
 ===================================================== */
 @media (max-width: 900px) {
-
-  .nav-links {
-    display: none;
-  }
-
-  .hamburger {
-    display: flex;
-  }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
 
   .section {
     grid-template-columns: 1fr;
