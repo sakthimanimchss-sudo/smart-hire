@@ -1,29 +1,27 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const stats = document.querySelectorAll(".stats strong");
-  let started = false;
+document.addEventListener("DOMContentLoaded",()=>{
+  const stats=document.querySelectorAll(".stats strong");
+  let started=false;
 
-  window.addEventListener("scroll", () => {
-    if (started) return;
-    const section = document.querySelector(".stats");
-    if (!section) return;
+  window.addEventListener("scroll",()=>{
+    if(started) return;
+    const sec=document.querySelector(".stats");
+    if(!sec) return;
 
-    if (section.getBoundingClientRect().top < window.innerHeight) {
-      started = true;
-      stats.forEach(stat => {
-        let target = parseInt(stat.innerText.replace(/\D/g,""));
-        let count = 0;
-        const step = target / 80;
-
-        const animate = () => {
-          count += step;
-          if (count < target) {
-            stat.innerText = Math.floor(count) + "+";
-            requestAnimationFrame(animate);
-          } else {
-            stat.innerText = target + "+";
+    if(sec.getBoundingClientRect().top<window.innerHeight){
+      started=true;
+      stats.forEach(s=>{
+        let target=parseInt(s.innerText);
+        let c=0,step=target/80;
+        const run=()=>{
+          c+=step;
+          if(c<target){
+            s.innerText=Math.floor(c)+"+";
+            requestAnimationFrame(run);
+          }else{
+            s.innerText=target+"+";
           }
         };
-        animate();
+        run();
       });
     }
   });
