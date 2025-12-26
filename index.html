@@ -1,126 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SmartHire | Jobs & Hiring Platform</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SmartHire – Jobs & Hiring</title>
 
-  <!-- Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet"
+ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 </head>
 <body>
 
-<!-- ================= NAVBAR ================= -->
+<!-- ========== NAVBAR ========== -->
 <header class="navbar">
-  <div class="logo">SmartHire</div>
+  <div class="nav-wrap">
+    <div class="logo">SmartHire</div>
 
-  <nav class="nav-links">
-    <a href="#">Home</a>
-    <a href="#">Jobs</a>
-    <a href="#">Companies</a>
-    <a href="#">Services</a>
-    <a href="#">Career</a>
-    <a href="#">Contact</a>
-  </nav>
+    <nav class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">Jobs</a>
+      <a href="#">Companies</a>
+      <a href="#">Services</a>
+      <a href="#">Career</a>
+      <a href="#">Contact</a>
+    </nav>
 
-  <div class="auth">
-    <button class="btn ghost">Login</button>
-    <button class="btn primary">Register</button>
+    <div class="nav-actions">
+      <button class="btn outline">Login</button>
+      <button class="btn primary">Register</button>
+    </div>
+
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
   </div>
-
-  <div class="hamburger"><i class="fa fa-bars"></i></div>
 </header>
 
-<!-- ================= HERO ================= -->
-<section class="hero">
-  <h1 class="float-text">Find Jobs. Hire Talent. Grow Faster.</h1>
-  <p>
-    Search thousands of verified jobs, explore trusted companies, prepare for
-    interviews, and build your career confidently with SmartHire.
-  </p>
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#">Home</a>
+  <a href="#">Jobs</a>
+  <a href="#">Companies</a>
+  <a href="#">Services</a>
+  <a href="#">Career</a>
+  <a href="#">Contact</a>
+  <button class="btn outline full">Login</button>
+  <button class="btn primary full">Register</button>
+</div>
+
+<!-- ========== DESIGN 1 : HERO SEARCH ========== -->
+<section class="section section-dark hero">
+  <h1 class="float">Find Jobs. Hire Talent. Grow Faster.</h1>
+  <p>Search verified jobs, connect with trusted employers, and grow your career with confidence.</p>
 
   <div class="search-box">
-    <input type="text" placeholder="Job title, skills or company" />
-    <input type="text" placeholder="Location" />
+    <input placeholder="Job title, skills or company">
+    <input placeholder="Location">
     <button class="btn primary">Search Jobs</button>
   </div>
 </section>
 
-<!-- ================= FEATURED COMPANIES ================= -->
-<section class="section">
+<!-- ========== DESIGN 2 : LOGO STRIP ========== -->
+<section class="section section-light">
   <h2>Featured Companies Actively Hiring</h2>
-
-  <div class="company-grid">
-    <img src="https://logo.clearbit.com/amazon.com" alt="Amazon">
-    <img src="https://logo.clearbit.com/google.com" alt="Google">
-    <img src="https://logo.clearbit.com/microsoft.com" alt="Microsoft">
-    <img src="https://logo.clearbit.com/infosys.com" alt="Infosys">
-    <img src="https://logo.clearbit.com/tcs.com" alt="TCS">
-    <img src="https://logo.clearbit.com/accenture.com" alt="Accenture">
-    <img src="https://logo.clearbit.com/ibm.com" alt="IBM">
-    <img src="https://logo.clearbit.com/capgemini.com" alt="Capgemini">
-    <img src="https://logo.clearbit.com/deloitte.com" alt="Deloitte">
-    <img src="https://logo.clearbit.com/flipkart.com" alt="Flipkart">
+  <div class="logo-strip">
+    <img src="https://logo.clearbit.com/amazon.com">
+    <img src="https://logo.clearbit.com/google.com">
+    <img src="https://logo.clearbit.com/microsoft.com">
+    <img src="https://logo.clearbit.com/infosys.com">
+    <img src="https://logo.clearbit.com/tcs.com">
   </div>
 </section>
 
-<!-- ================= TRENDING CATEGORIES ================= -->
-<section class="section alt">
-  <h2>Trending Job Categories</h2>
+<section class="section section-light">
+  <h2>Top Service Companies</h2>
+  <div class="logo-strip">
+    <img src="https://logo.clearbit.com/accenture.com">
+    <img src="https://logo.clearbit.com/ibm.com">
+    <img src="https://logo.clearbit.com/capgemini.com">
+    <img src="https://logo.clearbit.com/deloitte.com">
+    <img src="https://logo.clearbit.com/flipkart.com">
+  </div>
+</section>
 
-  <div class="category-grid">
-    <div><i class="fa fa-user-graduate"></i> Fresher Jobs</div>
+<!-- ========== DESIGN 3 : COMPANY CARDS ========== -->
+<section class="section section-dark">
+  <h2>Hiring Now</h2>
+  <div class="card-grid">
+    <div class="card">Amazon Hiring</div>
+    <div class="card">Google Careers</div>
+    <div class="card">Infosys Openings</div>
+  </div>
+</section>
+
+<!-- ========== DESIGN 4 : WANT TO HIRE ========== -->
+<section class="section section-light">
+  <h2>Want to Hire?</h2>
+  <p>Post jobs, shortlist candidates, and hire faster with SmartHire’s employer tools.</p>
+  <button class="btn primary">Post a Job</button>
+</section>
+
+<!-- ========== DESIGN 5 : AI INTERVIEW CARDS ========== -->
+<section class="section section-dark">
+  <h2>AI Interview Preparation</h2>
+  <div class="card-grid">
+    <div class="card">Mock Interviews</div>
+    <div class="card">Practice Interviews</div>
+    <div class="card">HR + Technical</div>
+  </div>
+</section>
+
+<!-- ========== DESIGN 6 : CATEGORY PILLS ========== -->
+<section class="section section-light">
+  <h2>Trending Job Categories</h2>
+  <div class="pill-grid">
+    <div><i class="fa fa-code"></i> IT Jobs</div>
     <div><i class="fa fa-briefcase"></i> Experienced</div>
-    <div><i class="fa fa-laptop-code"></i> IT & Software</div>
+    <div><i class="fa fa-user-graduate"></i> Fresher</div>
     <div><i class="fa fa-chart-line"></i> Marketing</div>
     <div><i class="fa fa-building-columns"></i> Banking</div>
-    <div><i class="fa fa-store"></i> Sales</div>
   </div>
 </section>
 
-<!-- ================= JOB SECTIONS (EXAMPLE) ================= -->
-<section class="section">
-  <h2>Jobs for Freshers</h2>
-  <p>
-    SmartHire helps fresh graduates and entry-level professionals start their
-    careers with confidence. Explore verified fresher jobs across IT, finance,
-    marketing, operations, and emerging technologies.
-  </p>
+<!-- ========== DESIGN 7 : EVENTS ========== -->
+<section class="section section-dark">
+  <h2>Events & Challenges</h2>
+  <div class="card-grid">
+    <div class="card">Hackathons</div>
+    <div class="card">Workshops</div>
+    <div class="card">Webinars</div>
+  </div>
 </section>
 
-<section class="section alt">
-  <h2>Interview Preparation Made Easy</h2>
-  <p>
-    Practice mock interviews, role-based questions, and company-specific
-    interview patterns using SmartHire’s guided preparation tools.
-  </p>
+<!-- ========== DESIGN 8 : DISCOVER JOBS ========== -->
+<section class="section section-light">
+  <h2>Discover Jobs Across Roles</h2>
+  <p>Explore roles across software, analytics, management, and emerging technologies.</p>
 </section>
 
-<!-- ================= OFFER ================= -->
-<section class="offer">
-  <h2>Limited Time Offer</h2>
-  <p>Get <strong>30% OFF</strong> on SmartHire Pro – Resume boost & priority applications.</p>
-  <button class="btn dark">Claim Offer</button>
+<!-- ========== DESIGN 9 : PREMIUM SERVICES ========== -->
+<section class="section section-dark">
+  <h2>Premium Career Services</h2>
+  <div class="card-grid">
+    <div class="card">Resume Boost</div>
+    <div class="card">Profile Highlight</div>
+    <div class="card">Application Booster</div>
+  </div>
 </section>
 
-<!-- ================= SOCIAL ================= -->
-<section class="section">
+<!-- ========== DESIGN 10 : APP + FOOTER ========== -->
+<section class="section section-light">
+  <h2>Download SmartHire App</h2>
+  <p>Apply jobs anytime, anywhere.</p>
+  <div class="app-icons">
+    <i class="fa-brands fa-google-play"></i>
+    <i class="fa-brands fa-apple"></i>
+  </div>
+</section>
+
+<section class="section section-dark">
   <h2>Connect With Us</h2>
   <div class="social">
     <i class="fab fa-linkedin"></i>
     <i class="fab fa-instagram"></i>
     <i class="fab fa-facebook"></i>
     <i class="fab fa-x-twitter"></i>
-    <i class="fab fa-youtube"></i>
   </div>
 </section>
 
-<!-- ================= FOOTER ================= -->
-<footer>
-  <p>© 2026 SmartHire. All rights reserved.</p>
+<footer class="footer">
+  © 2026 SmartHire. All rights reserved.
 </footer>
 
 <script src="js/main.js"></script>
