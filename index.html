@@ -1,141 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SmartHire – Jobs & Hiring Platform</title>
-
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <meta charset="UTF-8" />
+  <title>SmartHire | Jobs & Hiring Platform</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
+
 <body>
 
-<header class="navbar">
-  <div class="nav-wrap">
+<!-- BACKGROUND -->
+<div class="bg-animated"></div>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="nav-container">
     <div class="logo">SmartHire</div>
 
-    <nav class="nav-links">
-      <a>Home</a><a>Jobs</a><a>Companies</a><a>Services</a><a>Career</a><a>Contact</a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#">Home</a>
+      <a href="#">Jobs</a>
+      <a href="#">Companies</a>
+      <a href="#">Services</a>
+      <a href="#">Career</a>
+      <a href="#">Contact</a>
     </nav>
 
     <div class="nav-actions">
-      <button class="btn outline">Login</button>
-      <button class="btn primary">Register</button>
-    </div>
-
-    <div class="hamburger" id="hamburger">
-      <span></span><span></span><span></span>
+      <button class="btn-outline">Login</button>
+      <button class="btn-primary">Register</button>
+      <div class="hamburger" id="hamburger">☰</div>
     </div>
   </div>
 </header>
-
-<div class="mobile-menu" id="mobileMenu">
-  <a>Home</a><a>Jobs</a><a>Companies</a><a>Services</a><a>Career</a><a>Contact</a>
-</div>
 
 <!-- HERO -->
 <section class="hero">
   <h1>Find Jobs. Hire Talent. Grow Faster.</h1>
   <p>
-    SmartHire helps job seekers and employers connect efficiently. 
-    Explore thousands of verified job listings, discover trusted companies, 
-    prepare for interviews, and grow your professional career with confidence 
-    using modern AI-powered hiring tools.
+    SmartHire is a modern job portal connecting millions of job seekers with verified employers.
+    Discover jobs, prepare for interviews, optimize resumes, and grow your career confidently
+    using AI-powered tools designed for the modern workforce.
   </p>
 
   <div class="search-box">
-    <input placeholder="Job title, skills or company">
-    <input placeholder="Location">
-    <button class="btn primary">Search Jobs</button>
+    <input type="text" placeholder="Job title, skills or company" />
+    <input type="text" placeholder="Location" />
+    <button class="btn-primary">Search Jobs</button>
   </div>
 </section>
 
 <!-- FEATURED COMPANIES -->
-<section class="light">
-<h2>Featured Companies Actively Hiring</h2>
-<div class="logos">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Infosys_logo.svg">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Tata_Consultancy_Services_Logo.svg">
-</div>
+<section class="section light">
+  <h2>Featured Companies Actively Hiring</h2>
+  <div class="logo-grid">
+    <div class="logo-card">Amazon</div>
+    <div class="logo-card">Google</div>
+    <div class="logo-card">Microsoft</div>
+    <div class="logo-card">IBM</div>
+    <div class="logo-card">Infosys</div>
+    <div class="logo-card">TCS</div>
+    <div class="logo-card">Accenture</div>
+    <div class="logo-card">Capgemini</div>
+    <div class="logo-card">Deloitte</div>
+    <div class="logo-card">Flipkart</div>
+  </div>
 </section>
 
-<!-- SERVICE COMPANIES -->
-<section class="dark">
-<h2>Top Service Companies</h2>
-<div class="logos">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Accenture.svg">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/9/9d/Capgemini_2017_logo.svg">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/2/2b/Deloitte.svg">
-</div>
+<!-- CONTENT SECTIONS (20+) -->
+<section class="section dark">
+  <div class="info-block">
+    <h3>Jobs for Freshers</h3>
+    <p>
+      SmartHire helps fresh graduates launch their careers with verified entry-level opportunities
+      across IT, finance, marketing, operations, and emerging technologies. Our platform ensures
+      transparency, recruiter validation, and smooth campus-to-corporate transitions.
+    </p>
+  </div>
+
+  <div class="info-block">
+    <h3>Jobs for Experienced Professionals</h3>
+    <p>
+      Experienced professionals can explore mid-level and senior roles across startups, product
+      companies, and MNCs. Smart filters, salary insights, and AI recommendations help professionals
+      find roles aligned with their expertise and growth goals.
+    </p>
+  </div>
+
+  <div class="info-block">
+    <h3>AI Interview Preparation</h3>
+    <p>
+      Practice mock interviews powered by AI with real-world questions, role-based simulations,
+      and instant feedback. Improve communication skills, technical confidence, and interview
+      performance before facing real recruiters.
+    </p>
+  </div>
+
+  <div class="info-block">
+    <h3>Resume & Profile Optimization</h3>
+    <p>
+      Create ATS-friendly resumes and optimized profiles that increase recruiter visibility.
+      SmartHire helps candidates showcase skills effectively, stand out in competitive hiring
+      markets, and receive more interview calls.
+    </p>
+  </div>
+
+  <div class="info-block">
+    <h3>Remote & Hybrid Jobs</h3>
+    <p>
+      Explore remote, hybrid, and flexible job opportunities across industries. SmartHire supports
+      modern work models, enabling professionals to balance productivity, flexibility, and career
+      growth.
+    </p>
+  </div>
+
+  <div class="info-block">
+    <h3>Employer Hiring Tools</h3>
+    <p>
+      Employers can post jobs, shortlist candidates faster, and reduce hiring time using SmartHire’s
+      AI matching tools. Access verified profiles, analytics, and smart recommendations for better
+      hiring decisions.
+    </p>
+  </div>
 </section>
 
-<!-- JOB SECTIONS -->
-<section class="light">
-<h2>Jobs for Freshers</h2>
-<p>
-SmartHire supports fresh graduates by providing entry-level job opportunities
-across IT, finance, marketing, operations, and emerging technologies.
-Freshers can explore verified roles, apply confidently, and transition smoothly
-from campus to corporate life.
-</p>
-</section>
-
-<section class="dark">
-<h2>Jobs for Experienced Professionals</h2>
-<p>
-Experienced professionals can discover mid-level and senior roles across
-product companies, startups, and MNCs. Smart filters, salary insights,
-and recruiter visibility help professionals grow faster in competitive markets.
-</p>
-</section>
-
-<!-- AI INTERVIEW -->
-<section class="gradient">
-<h2>AI Interview Preparation</h2>
-<p>
-Practice real interview questions using AI-powered mock interviews.
-Improve communication skills, technical knowledge, and confidence through
-simulated interview experiences designed by hiring experts.
-</p>
-<button class="btn primary">Practice Now</button>
-</section>
-
-<!-- EMPLOYER CTA -->
-<section class="dark">
-<h2>Want to Hire?</h2>
-<p>
-Employers can post jobs, access verified candidate profiles, 
-shortlist faster, and reduce hiring time using SmartHire’s AI matching tools.
-</p>
-<button class="btn outline">Post a Job</button>
-</section>
-
-<!-- APP -->
-<section class="light">
-<h2>Apply Jobs on the Go</h2>
-<p>
-Download the SmartHire mobile app to receive real-time job alerts,
-apply instantly, and track applications anytime, anywhere.
-</p>
-<div class="app-icons">
-<i class="fa-brands fa-google-play"></i>
-<i class="fa-brands fa-apple"></i>
-</div>
+<!-- OFFER -->
+<section class="section gradient">
+  <h2>Limited Time Offer</h2>
+  <p>
+    Get 30% OFF on SmartHire Pro – Resume boost, priority applications,
+    AI interview preparation, and recruiter insights to accelerate your career.
+  </p>
+  <button class="btn-dark">Claim Offer</button>
 </section>
 
 <!-- FOOTER -->
-<footer>
-<p>© 2026 SmartHire. All rights reserved.</p>
-<div class="social">
-<i class="fab fa-linkedin"></i>
-<i class="fab fa-instagram"></i>
-<i class="fab fa-facebook"></i>
-<i class="fab fa-x-twitter"></i>
-</div>
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <h4>SmartHire</h4>
+      <p>AI-powered hiring platform for job seekers and employers.</p>
+    </div>
+
+    <div>
+      <h4>Explore</h4>
+      <p>Jobs · Companies · Services · Career</p>
+    </div>
+
+    <div>
+      <h4>Support</h4>
+      <p>Help Center · Privacy · Terms</p>
+    </div>
+
+    <div>
+      <h4>Social</h4>
+      <div class="social-icons">
+        <span>in</span>
+        <span>f</span>
+        <span>X</span>
+      </div>
+    </div>
+  </div>
+  <p class="copyright">© 2026 SmartHire. All rights reserved.</p>
 </footer>
 
 <script src="js/main.js"></script>
