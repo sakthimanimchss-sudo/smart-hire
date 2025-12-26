@@ -1,102 +1,264 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>SmartHire | Find Jobs</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>SmartHire | Find Your Dream Job</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- GLOBAL CSS -->
-  <link rel="stylesheet" href="css/style.css">
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- ICONS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
 
 <!-- ================= NAVBAR ================= -->
 <header class="navbar">
-  <div class="logo">SmartHire</div>
+    <div class="logo">Smart<span>Hire</span></div>
 
-  <nav class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="jobs.html">Jobs</a>
-    <a href="search.html">Search</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-    <a href="login.html" class="btn">Login</a>
-    <a href="admin.html" class="btn outline">Admin</a>
-  </nav>
+    <nav>
+        <a href="index.html" class="active">Home</a>
+        <a href="jobs.html">Jobs</a>
+        <a href="employer.html">Employers</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="login.html" class="btn-login">Login</a>
+        <a href="register.html" class="btn-register">Register</a>
+    </nav>
 
-  <button class="menu-btn" onclick="toggleMenu()">☰</button>
+    <div class="menu-toggle">
+        <i class="fas fa-bars"></i>
+    </div>
 </header>
 
-<!-- ================= HERO ================= -->
+<!-- ================= HERO SECTION ================= -->
 <section class="hero">
-  <h1>Find Your <span>Dream Job</span></h1>
-  <p>AI-powered job portal connecting talent with opportunity</p>
+    <div class="hero-content">
+        <h1>Find Your <span>Dream Job</span> With SmartHire</h1>
+        <p>
+            SmartHire connects talented job seekers with top companies.
+            Explore thousands of jobs, apply instantly, and get hired faster
+            using smart AI-powered hiring solutions.
+        </p>
 
-  <div class="hero-actions">
-    <a href="search.html" class="btn primary">Search Jobs</a>
-    <a href="register.html" class="btn outline">Create Profile</a>
-  </div>
-</section>
+        <div class="search-box">
+            <input type="text" placeholder="Job title, skills or company">
+            <input type="text" placeholder="Location">
+            <a href="search.html" class="btn-search">Search Jobs</a>
+        </div>
+    </div>
 
-<!-- ================= JOB SEARCH ================= -->
-<section class="search-box">
-  <input type="text" placeholder="Job title / Skills">
-  <input type="text" placeholder="Location">
-  <select>
-    <option>Experience</option>
-    <option>Fresher</option>
-    <option>1-3 Years</option>
-    <option>3-5 Years</option>
-  </select>
-  <button class="btn primary">Search</button>
+    <div class="hero-image">
+        <img src="assets/images/hero-jobs.png" alt="Job Search Illustration">
+    </div>
 </section>
 
 <!-- ================= JOB CATEGORIES ================= -->
-<section>
-  <h2 class="section-title">Popular Categories</h2>
-  <div class="grid">
-    <div class="card">IT Jobs</div>
-    <div class="card">AI & ML</div>
-    <div class="card">Robotics</div>
-    <div class="card">Data Science</div>
-    <div class="card">Freshers</div>
-    <div class="card">Internships</div>
-  </div>
+<section class="categories">
+    <h2>Popular Job Categories</h2>
+    <p>Explore jobs by your preferred category</p>
+
+    <div class="category-grid">
+        <div class="category-card">
+            <i class="fas fa-code"></i>
+            <h3>IT & Software</h3>
+            <span>12,450 Jobs</span>
+        </div>
+
+        <div class="category-card">
+            <i class="fas fa-briefcase"></i>
+            <h3>Business</h3>
+            <span>8,320 Jobs</span>
+        </div>
+
+        <div class="category-card">
+            <i class="fas fa-chart-line"></i>
+            <h3>Marketing</h3>
+            <span>5,410 Jobs</span>
+        </div>
+
+        <div class="category-card">
+            <i class="fas fa-user-nurse"></i>
+            <h3>Healthcare</h3>
+            <span>6,270 Jobs</span>
+        </div>
+
+        <div class="category-card">
+            <i class="fas fa-tools"></i>
+            <h3>Engineering</h3>
+            <span>7,890 Jobs</span>
+        </div>
+
+        <div class="category-card">
+            <i class="fas fa-graduation-cap"></i>
+            <h3>Education</h3>
+            <span>3,140 Jobs</span>
+        </div>
+    </div>
 </section>
 
-<!-- ================= TRENDING JOBS ================= -->
-<section>
-  <h2 class="section-title">Trending Jobs</h2>
-  <div class="grid">
-    <div class="job-card">Frontend Developer – ₹8 LPA</div>
-    <div class="job-card">AI Engineer – ₹15 LPA</div>
-    <div class="job-card">Robotics Engineer – ₹12 LPA</div>
-  </div>
+<!-- ================= FEATURED JOBS ================= -->
+<section class="featured-jobs">
+    <h2>Featured Jobs</h2>
+    <p>Hand-picked opportunities from top companies</p>
+
+    <div class="jobs-grid">
+
+        <div class="job-card">
+            <h3>Frontend Developer</h3>
+            <p>Google • Bangalore</p>
+            <span>₹8–12 LPA</span>
+            <a href="job-details.html">View Details</a>
+        </div>
+
+        <div class="job-card">
+            <h3>Data Analyst</h3>
+            <p>Amazon • Hyderabad</p>
+            <span>₹10–15 LPA</span>
+            <a href="job-details.html">View Details</a>
+        </div>
+
+        <div class="job-card">
+            <h3>UI/UX Designer</h3>
+            <p>Flipkart • Remote</p>
+            <span>₹6–10 LPA</span>
+            <a href="job-details.html">View Details</a>
+        </div>
+
+        <div class="job-card">
+            <h3>Mechanical Engineer</h3>
+            <p>Tata Motors • Chennai</p>
+            <span>₹5–8 LPA</span>
+            <a href="job-details.html">View Details</a>
+        </div>
+
+    </div>
+
+    <a href="jobs.html" class="btn-view-all">View All Jobs</a>
 </section>
 
-<!-- ================= WHY US ================= -->
-<section>
-  <h2 class="section-title">Why Choose SmartHire</h2>
-  <div class="grid">
-    <div class="card">AI Job Matching</div>
-    <div class="card">Verified Companies</div>
-    <div class="card">Fast Hiring</div>
-  </div>
+<!-- ================= WHY CHOOSE US ================= -->
+<section class="why-us">
+    <h2>Why Choose SmartHire?</h2>
+
+    <div class="why-grid">
+        <div class="why-card">
+            <i class="fas fa-robot"></i>
+            <h3>AI Powered Matching</h3>
+            <p>Smart algorithms connect you with the most relevant jobs.</p>
+        </div>
+
+        <div class="why-card">
+            <i class="fas fa-clock"></i>
+            <h3>Fast Hiring</h3>
+            <p>Apply quickly and get responses faster than traditional portals.</p>
+        </div>
+
+        <div class="why-card">
+            <i class="fas fa-shield-alt"></i>
+            <h3>Trusted Companies</h3>
+            <p>Verified recruiters and secure application process.</p>
+        </div>
+    </div>
 </section>
 
 <!-- ================= STATS ================= -->
 <section class="stats">
-  <div>10,000+ Jobs</div>
-  <div>5,000+ Companies</div>
-  <div>1M+ Candidates</div>
+    <div class="stat-box">
+        <h3>1M+</h3>
+        <p>Active Job Seekers</p>
+    </div>
+
+    <div class="stat-box">
+        <h3>50K+</h3>
+        <p>Companies</p>
+    </div>
+
+    <div class="stat-box">
+        <h3>2M+</h3>
+        <p>Jobs Posted</p>
+    </div>
+
+    <div class="stat-box">
+        <h3>95%</h3>
+        <p>Success Rate</p>
+    </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-item">
+        <h4>How do I apply for jobs?</h4>
+        <p>Create an account, search for jobs, and apply instantly.</p>
+    </div>
+
+    <div class="faq-item">
+        <h4>Is SmartHire free for job seekers?</h4>
+        <p>Yes, job seekers can apply for jobs completely free.</p>
+    </div>
+
+    <div class="faq-item">
+        <h4>How can employers contact me?</h4>
+        <p>Recruiters can reach you through your profile details.</p>
+    </div>
+
+    <div class="faq-item">
+        <h4>Can I apply for remote jobs?</h4>
+        <p>Yes, SmartHire offers many remote opportunities.</p>
+    </div>
+
+    <div class="faq-item">
+        <h4>Is my data secure?</h4>
+        <p>We follow strict security measures to protect your data.</p>
+    </div>
 </section>
 
 <!-- ================= FOOTER ================= -->
-<footer>
-  <p>© 2025 SmartHire. All rights reserved.</p>
+<footer class="footer">
+    <div class="footer-grid">
+
+        <div>
+            <h3>SmartHire</h3>
+            <p>Your trusted job portal for faster hiring and better careers.</p>
+        </div>
+
+        <div>
+            <h4>Quick Links</h4>
+            <a href="jobs.html">Jobs</a>
+            <a href="employer.html">Employers</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
+
+        <div>
+            <h4>Support</h4>
+            <a href="#">Help Center</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms & Conditions</a>
+        </div>
+
+        <div>
+            <h4>Follow Us</h4>
+            <div class="social-icons">
+                <i class="fab fa-facebook"></i>
+                <i class="fab fa-linkedin"></i>
+                <i class="fab fa-twitter"></i>
+                <i class="fab fa-instagram"></i>
+            </div>
+        </div>
+
+    </div>
+
+    <p class="copyright">
+        © 2025 SmartHire. All Rights Reserved.
+    </p>
 </footer>
 
-<!-- GLOBAL JS -->
+<!-- MAIN JS -->
 <script src="js/main.js"></script>
+
 </body>
 </html>
