@@ -534,6 +534,17 @@ section{padding:80px 20px}
     justify-content:center;
   }
 }
+/* ================= CLICK FIX (LOGIN / REGISTER) ================= */
+
+header{
+  position: sticky;
+  top: 0;
+  z-index: 5000; /* keeps header above hero, search, glass effects */
+}
+
+.auth a{
+  pointer-events: auto; /* ensures links are clickable */
+}
 
 </style>
 
@@ -550,37 +561,46 @@ section{padding:80px 20px}
     </div>
 
     <div class="menu-desktop">
-      <a href="#">Home</a>
-      <a href="#">Jobs</a>
-      <a href="#">Recruiters</a>
-      <a href="#">Career Services</a>
-      <a href="#">Courses</a>
-      <a href="#">Companies</a>
-      <a href="#">Contact</a>
-    </div>
+  <a href="index.html">Home</a>
+  <a href="home2.html">Home 2</a>
+  <a href="jobs.html">Jobs</a>
+  <a href="recruiters.html">Recruiters</a>
+  <a href="career.html">Career Services</a>
+  <a href="courses.html">Courses</a>
+  <a href="companies.html">Companies</a>
+  <a href="contact.html">Contact</a>
+  <a href="dashboard/user.html">Dashboard</a>
+  <a href="dashboard/admin.html">Admin</a>
+</div>
 
-    <div class="auth">
-      <a class="login">Login</a>
-      <a class="register">Register</a>
-      <div class="hamburger" onclick="toggleMenu()">☰</div>
-    </div>
-  </div>
+<div class="auth">
+  <a href="login.html" class="login">Login</a>
+  <a href="register.html" class="register">Register</a>
+  <div class="hamburger" onclick="toggleMenu()">☰</div>
+</div>
+
 </header>
 
 <div class="menu-mobile" id="mobileMenu">
   <div class="close" onclick="toggleMenu()">✕</div>
-  <a>Home</a>
-  <a>Jobs</a>
-  <a>Recruiters</a>
-  <a>Career Services</a>
-  <a>Courses</a>
-  <a>Companies</a>
-  <a>Contact</a>
+
+  <a href="index.html">Home</a>
+  <a href="home2.html">Home 2</a>
+  <a href="jobs.html">Jobs</a>
+  <a href="recruiters.html">Recruiters</a>
+  <a href="career.html">Career Services</a>
+  <a href="courses.html">Courses</a>
+  <a href="companies.html">Companies</a>
+  <a href="contact.html">Contact</a>
+  <a href="dashboard/user.html">Dashboard</a>
+  <a href="dashboard/admin.html">Admin</a>
+
   <div class="mobile-auth">
-    <a class="login">Login</a>
-    <a class="register">Register</a>
+    <a href="login.html" class="login">Login</a>
+    <a href="register.html" class="register">Register</a>
   </div>
 </div>
+
 
 <!-- ================= HERO ================= -->
 <section class="hero">
