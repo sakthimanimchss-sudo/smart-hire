@@ -1,23 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>SmartHire | Jobs & Hiring Platform</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="css/style.css" />
+<meta charset="UTF-8">
+<title>SmartHire | Jobs & Hiring Platform</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-<!-- BACKGROUND -->
-<div class="bg-animated"></div>
+<!-- 3D BACKGROUND -->
+<div class="bg-3d"></div>
 
 <!-- HEADER -->
 <header class="header">
-  <div class="nav-container">
+  <div class="nav">
     <div class="logo">SmartHire</div>
 
-    <nav class="nav-links" id="navLinks">
+    <nav class="menu" id="menu">
       <a href="#">Home</a>
       <a href="#">Jobs</a>
       <a href="#">Companies</a>
@@ -26,7 +27,7 @@
       <a href="#">Contact</a>
     </nav>
 
-    <div class="nav-actions">
+    <div class="actions">
       <button class="btn-outline">Login</button>
       <button class="btn-primary">Register</button>
       <div class="hamburger" id="hamburger">☰</div>
@@ -36,16 +37,16 @@
 
 <!-- HERO -->
 <section class="hero">
-  <h1>Find Jobs. Hire Talent. Grow Faster.</h1>
+  <h1 class="float">Find Jobs. Hire Talent. Grow Faster.</h1>
   <p>
-    SmartHire is a modern job portal connecting millions of job seekers with verified employers.
-    Discover jobs, prepare for interviews, optimize resumes, and grow your career confidently
-    using AI-powered tools designed for the modern workforce.
+    SmartHire is a next-generation job portal designed for modern job seekers and employers.
+    Explore verified opportunities, connect with trusted companies, prepare for interviews
+    using AI-powered tools, and grow your career confidently in a competitive global market.
   </p>
 
-  <div class="search-box">
-    <input type="text" placeholder="Job title, skills or company" />
-    <input type="text" placeholder="Location" />
+  <div class="search">
+    <input type="text" placeholder="Job title, skills or company">
+    <input type="text" placeholder="Location">
     <button class="btn-primary">Search Jobs</button>
   </div>
 </section>
@@ -53,115 +54,196 @@
 <!-- FEATURED COMPANIES -->
 <section class="section light">
   <h2>Featured Companies Actively Hiring</h2>
+
   <div class="logo-grid">
-    <div class="logo-card">Amazon</div>
-    <div class="logo-card">Google</div>
-    <div class="logo-card">Microsoft</div>
-    <div class="logo-card">IBM</div>
-    <div class="logo-card">Infosys</div>
-    <div class="logo-card">TCS</div>
-    <div class="logo-card">Accenture</div>
-    <div class="logo-card">Capgemini</div>
-    <div class="logo-card">Deloitte</div>
-    <div class="logo-card">Flipkart</div>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Infosys_logo.svg">
   </div>
 </section>
 
-<!-- CONTENT SECTIONS (20+) -->
-<section class="section dark">
-  <div class="info-block">
-    <h3>Jobs for Freshers</h3>
-    <p>
-      SmartHire helps fresh graduates launch their careers with verified entry-level opportunities
-      across IT, finance, marketing, operations, and emerging technologies. Our platform ensures
-      transparency, recruiter validation, and smooth campus-to-corporate transitions.
-    </p>
-  </div>
+<!-- ================= 21+ SECTIONS ================= -->
 
-  <div class="info-block">
-    <h3>Jobs for Experienced Professionals</h3>
-    <p>
-      Experienced professionals can explore mid-level and senior roles across startups, product
-      companies, and MNCs. Smart filters, salary insights, and AI recommendations help professionals
-      find roles aligned with their expertise and growth goals.
-    </p>
-  </div>
-
-  <div class="info-block">
-    <h3>AI Interview Preparation</h3>
-    <p>
-      Practice mock interviews powered by AI with real-world questions, role-based simulations,
-      and instant feedback. Improve communication skills, technical confidence, and interview
-      performance before facing real recruiters.
-    </p>
-  </div>
-
-  <div class="info-block">
-    <h3>Resume & Profile Optimization</h3>
-    <p>
-      Create ATS-friendly resumes and optimized profiles that increase recruiter visibility.
-      SmartHire helps candidates showcase skills effectively, stand out in competitive hiring
-      markets, and receive more interview calls.
-    </p>
-  </div>
-
-  <div class="info-block">
-    <h3>Remote & Hybrid Jobs</h3>
-    <p>
-      Explore remote, hybrid, and flexible job opportunities across industries. SmartHire supports
-      modern work models, enabling professionals to balance productivity, flexibility, and career
-      growth.
-    </p>
-  </div>
-
-  <div class="info-block">
-    <h3>Employer Hiring Tools</h3>
-    <p>
-      Employers can post jobs, shortlist candidates faster, and reduce hiring time using SmartHire’s
-      AI matching tools. Access verified profiles, analytics, and smart recommendations for better
-      hiring decisions.
-    </p>
-  </div>
-</section>
-
-<!-- OFFER -->
-<section class="section gradient">
-  <h2>Limited Time Offer</h2>
+<section class="section dark card">
+  <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d">
+  <h3>Jobs for Freshers</h3>
   <p>
-    Get 30% OFF on SmartHire Pro – Resume boost, priority applications,
-    AI interview preparation, and recruiter insights to accelerate your career.
+    SmartHire empowers fresh graduates with entry-level job opportunities across IT, banking,
+    marketing, HR, and emerging technologies. Every listing is verified to ensure transparency,
+    safety, and quality, helping students confidently begin their professional journey.
   </p>
-  <button class="btn-dark">Claim Offer</button>
+</section>
+
+<section class="section dark card">
+  <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786">
+  <h3>Jobs for Experienced Professionals</h3>
+  <p>
+    Professionals with industry experience can discover mid-level and senior positions in
+    product companies, startups, and multinational corporations. SmartHire provides salary
+    insights, recruiter visibility, and AI-based job matching.
+  </p>
+</section>
+
+<section class="section dark card">
+  <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984">
+  <h3>Remote & Hybrid Jobs</h3>
+  <p>
+    Explore flexible remote and hybrid roles that support work-life balance. SmartHire connects
+    global employers with skilled professionals, enabling location-independent careers.
+  </p>
+</section>
+
+<section class="section dark card">
+  <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c">
+  <h3>AI Interview Preparation</h3>
+  <p>
+    Prepare for interviews using AI-powered mock sessions, real-time feedback, and role-specific
+    questions. Improve confidence, communication, and technical accuracy before meeting recruiters.
+  </p>
+</section>
+
+<section class="section dark card">
+  <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c">
+  <h3>Resume Optimization</h3>
+  <p>
+    Build ATS-friendly resumes that highlight your skills effectively. SmartHire helps candidates
+    improve visibility and increase interview shortlisting rates.
+  </p>
+</section>
+
+<section class="section dark card">
+  <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f">
+  <h3>Employer Hiring Tools</h3>
+  <p>
+    Employers can post jobs, access verified candidate profiles, shortlist faster, and reduce
+    hiring costs using SmartHire’s intelligent recruitment tools.
+  </p>
+</section>
+
+<section class="section dark card">
+  <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d">
+  <h3>Internship Opportunities</h3>
+  <p>
+    Students and freshers can explore internships that provide real-world experience, mentorship,
+    and potential full-time employment opportunities.
+  </p>
+</section>
+
+<section class="section dark card">
+  <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216">
+  <h3>Career Guidance</h3>
+  <p>
+    Get expert guidance on career planning, skill development, and job transitions through
+    structured learning resources and professional insights.
+  </p>
+</section>
+
+<section class="section dark card">
+  <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085">
+  <h3>Tech & Software Jobs</h3>
+  <p>
+    Discover opportunities in software development, data science, AI, cloud computing, and
+    cybersecurity from top global tech employers.
+  </p>
+</section>
+
+<section class="section dark card">
+  <img src="https://images.unsplash.com/photo-1454165205744-3b78555e5572">
+  <h3>Banking & Finance Roles</h3>
+  <p>
+    Explore roles in banking, accounting, investment, fintech, and insurance with trusted
+    organizations offering career stability and growth.
+  </p>
+</section>
+
+<section class="section dark card">
+  <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0">
+  <h3>Sales & Marketing Careers</h3>
+  <p>
+    Join dynamic sales and marketing teams driving brand growth, customer engagement, and revenue
+    generation across industries.
+  </p>
+</section>
+
+<section class="section dark card">
+  <img src="https://images.unsplash.com/photo-1523958203904-cdcb402031fd">
+  <h3>Operations & Management</h3>
+  <p>
+    Leadership and operational roles designed for professionals skilled in process optimization,
+    team management, and strategic execution.
+  </p>
+</section>
+
+<section class="section dark card">
+  <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf">
+  <h3>Startups & Innovation</h3>
+  <p>
+    Work with fast-growing startups focused on innovation, creativity, and disruption across
+    industries.
+  </p>
+</section>
+
+<section class="section dark card">
+  <img src="https://images.unsplash.com/photo-1532619675605-1ede6c2ed2b0">
+  <h3>Government & PSU Jobs</h3>
+  <p>
+    Explore stable government and public sector roles with long-term career security and benefits.
+  </p>
+</section>
+
+<section class="section dark card">
+  <img src="https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa">
+  <h3>International Jobs</h3>
+  <p>
+    Access global job opportunities across multiple countries with relocation and remote options.
+  </p>
+</section>
+
+<section class="section dark card">
+  <img src="https://images.unsplash.com/photo-1531498860502-7c67cf02f657">
+  <h3>Women Return-to-Work Programs</h3>
+  <p>
+    SmartHire supports women professionals restarting careers with flexible roles and mentorship.
+  </p>
+</section>
+
+<section class="section dark card">
+  <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad">
+  <h3>Skill-Based Hiring</h3>
+  <p>
+    Employers focus on skills rather than degrees, enabling fair and inclusive hiring practices.
+  </p>
+</section>
+
+<section class="section dark card">
+  <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998">
+  <h3>AI Job Recommendations</h3>
+  <p>
+    Personalized job recommendations powered by AI based on your profile, skills, and interests.
+  </p>
+</section>
+
+<section class="section dark card">
+  <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df">
+  <h3>Job Alerts & Notifications</h3>
+  <p>
+    Receive instant alerts for relevant job openings so you never miss an opportunity.
+  </p>
+</section>
+
+<section class="section dark card">
+  <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2">
+  <h3>Apply on the Go</h3>
+  <p>
+    Apply to jobs instantly using SmartHire’s mobile-friendly design from anywhere, anytime.
+  </p>
 </section>
 
 <!-- FOOTER -->
 <footer class="footer">
-  <div class="footer-grid">
-    <div>
-      <h4>SmartHire</h4>
-      <p>AI-powered hiring platform for job seekers and employers.</p>
-    </div>
-
-    <div>
-      <h4>Explore</h4>
-      <p>Jobs · Companies · Services · Career</p>
-    </div>
-
-    <div>
-      <h4>Support</h4>
-      <p>Help Center · Privacy · Terms</p>
-    </div>
-
-    <div>
-      <h4>Social</h4>
-      <div class="social-icons">
-        <span>in</span>
-        <span>f</span>
-        <span>X</span>
-      </div>
-    </div>
-  </div>
-  <p class="copyright">© 2026 SmartHire. All rights reserved.</p>
+  <p>© 2026 SmartHire. All rights reserved.</p>
 </footer>
 
 <script src="js/main.js"></script>
