@@ -1,108 +1,316 @@
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:system-ui;
+/* =====================================================
+   SMART HIRE – GLOBAL STYLES
+===================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-body{
-  background:#0b1e46;
-  color:#fff;
+body {
+    background: #0b0f1a;
+    color: #ffffff;
+    line-height: 1.6;
 }
 
-a{text-decoration:none;color:inherit}
-
-/* NAVBAR */
-.navbar{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:16px 24px;
-  background:#000;
+a {
+    text-decoration: none;
+    color: inherit;
 }
 
-.logo{
-  font-size:22px;
-  font-weight:700;
-  color:#1e6fff;
+img {
+    max-width: 100%;
 }
 
-.nav-links{
-  display:flex;
-  gap:16px;
+/* =====================================================
+   NAVBAR
+===================================================== */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 8%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
-.menu-btn{
-  display:none;
+.logo {
+    font-size: 26px;
+    font-weight: bold;
+    color: #00b7ff;
 }
 
-/* HERO */
-.hero{
-  text-align:center;
-  padding:100px 20px;
+.logo span {
+    color: #ffffff;
 }
 
-.hero span{
-  background:#1e6fff;
-  color:#000;
-  padding:4px 12px;
-  border-radius:20px;
+.navbar nav a {
+    margin: 0 12px;
+    font-size: 15px;
+    color: #ccc;
+    transition: 0.3s;
 }
 
-/* BUTTONS */
-.btn{
-  padding:10px 20px;
-  border-radius:20px;
+.navbar nav a:hover,
+.navbar nav a.active {
+    color: #00b7ff;
 }
 
-.primary{
-  background:#1e6fff;
-  color:#000;
+.btn-login,
+.btn-register {
+    padding: 8px 16px;
+    border-radius: 20px;
+    margin-left: 10px;
 }
 
-.outline{
-  border:1px solid #fff;
+.btn-login {
+    border: 1px solid #00b7ff;
 }
 
-/* SECTIONS */
-section{
-  padding:60px 20px;
+.btn-register {
+    background: linear-gradient(45deg, #00b7ff, #0077ff);
 }
 
-.section-title{
-  text-align:center;
-  margin-bottom:30px;
+/* =====================================================
+   HERO SECTION
+===================================================== */
+.hero {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 40px;
+    padding: 80px 8%;
+    align-items: center;
 }
 
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:20px;
+.hero-content h1 {
+    font-size: 42px;
+    margin-bottom: 15px;
 }
 
-.card,.job-card{
-  background:rgba(255,255,255,.08);
-  padding:20px;
-  border-radius:16px;
-  text-align:center;
+.hero-content h1 span {
+    color: #00b7ff;
 }
 
-.stats{
-  display:flex;
-  justify-content:center;
-  gap:40px;
-  background:#000;
+.hero-content p {
+    color: #cfcfcf;
+    margin-bottom: 30px;
 }
 
-/* FOOTER */
-footer{
-  text-align:center;
-  padding:30px;
-  background:#000;
+.search-box {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
 }
 
-/* MOBILE */
-@media(max-width:768px){
-  .nav-links{display:none}
-  .menu-btn{display:block}
+.search-box input {
+    padding: 14px;
+    border-radius: 8px;
+    border: none;
+    width: 220px;
+    outline: none;
+}
+
+.btn-search {
+    padding: 14px 22px;
+    background: linear-gradient(45deg, #00b7ff, #0077ff);
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+/* =====================================================
+   CATEGORIES
+===================================================== */
+.categories {
+    padding: 60px 8%;
+    text-align: center;
+}
+
+.categories h2 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.categories p {
+    color: #aaa;
+    margin-bottom: 40px;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 25px;
+}
+
+.category-card {
+    background: #12182b;
+    padding: 30px;
+    border-radius: 14px;
+    transition: 0.4s;
+}
+
+.category-card i {
+    font-size: 30px;
+    color: #00b7ff;
+    margin-bottom: 10px;
+    animation: jump 2s infinite;
+}
+
+.category-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 25px rgba(0, 183, 255, 0.4);
+}
+
+/* =====================================================
+   FEATURED JOBS
+===================================================== */
+.featured-jobs {
+    padding: 60px 8%;
+    text-align: center;
+}
+
+.jobs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin-top: 40px;
+}
+
+.job-card {
+    background: #12182b;
+    padding: 25px;
+    border-radius: 14px;
+    transition: 0.4s;
+}
+
+.job-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 0 25px rgba(0, 183, 255, 0.4);
+}
+
+.job-card span {
+    display: block;
+    color: #00b7ff;
+    margin: 10px 0;
+}
+
+.job-card a {
+    color: #00b7ff;
+    font-weight: bold;
+}
+
+/* =====================================================
+   WHY US
+===================================================== */
+.why-us {
+    padding: 60px 8%;
+    background: #0e1426;
+    text-align: center;
+}
+
+.why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+    margin-top: 40px;
+}
+
+.why-card {
+    background: #12182b;
+    padding: 30px;
+    border-radius: 14px;
+}
+
+.why-card i {
+    font-size: 34px;
+    color: #00b7ff;
+    margin-bottom: 10px;
+}
+
+/* =====================================================
+   STATS
+===================================================== */
+.stats {
+    padding: 60px 8%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 25px;
+    text-align: center;
+}
+
+.stat-box {
+    background: #12182b;
+    padding: 30px;
+    border-radius: 14px;
+}
+
+/* =====================================================
+   FAQ
+===================================================== */
+.faq {
+    padding: 60px 8%;
+}
+
+.faq-item {
+    background: #12182b;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+/* =====================================================
+   FOOTER
+===================================================== */
+.footer {
+    background: #050816;
+    padding: 50px 8%;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+}
+
+.footer a {
+    display: block;
+    color: #aaa;
+    margin: 6px 0;
+}
+
+.social-icons i {
+    font-size: 18px;
+    margin-right: 12px;
+    color: #00b7ff;
+}
+
+.footer p {
+    text-align: center;
+    margin-top: 30px;
+    color: #777;
+}
+
+/* =====================================================
+   ANIMATIONS
+===================================================== */
+@keyframes jump {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+@media (max-width: 900px) {
+    .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .search-box {
+        justify-content: center;
+    }
 }
