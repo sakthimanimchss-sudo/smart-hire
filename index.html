@@ -21,14 +21,6 @@
 html{scroll-behavior:smooth}
 body{background:var(--bg-light);color:var(--text-dark);overflow-x:hidden;line-height:1.6}
 
-/* ================= HERO BACKGROUND ================= */
-.hero-bg{
-position:absolute;top:0;left:0;width:100%;height:85vh;
-background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
-clip-path:ellipse(150% 100% at 50% 0%);
-z-index:-1
-}
-
 /* ================= HEADER ================= */
 header{
 position:sticky;top:0;z-index:1000;
@@ -42,7 +34,7 @@ display:flex;align-items:center;justify-content:space-between
 .logo-group{display:flex;align-items:center;gap:12px}
 .logo-icon{
 width:42px;height:42px;background:var(--primary);
-border-radius:10px;color:#fff;
+border-radius:10px;color:white;
 display:flex;align-items:center;justify-content:center;font-weight:800
 }
 .logo-text{font-size:24px;font-weight:800;color:var(--primary)}
@@ -58,7 +50,12 @@ padding:8px 16px;border-radius:6px;border:none;font-weight:700;cursor:pointer
 .hamburger{display:none;font-size:26px;cursor:pointer}
 
 /* ================= HERO ================= */
-.hero{color:white;text-align:center;padding:110px 20px}
+.hero{
+background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+color:white;
+text-align:center;
+padding:120px 20px
+}
 .hero h1{font-size:48px;margin-bottom:15px}
 .hero p{font-size:18px;opacity:.9}
 
@@ -74,45 +71,10 @@ max-width:1000px;margin:-50px auto 0
 .search-group input{
 width:100%;padding:12px;border:1px solid var(--border-light);border-radius:8px
 }
-
-/* ================= COMMON ================= */
-section{padding:60px 20px}
-.container{max-width:1300px;margin:auto}
-.section-title{
-margin-bottom:40px;border-left:5px solid var(--accent);
-padding-left:20px
+.btn-accent{
+background:var(--accent);color:white;
+padding:12px 28px;border-radius:6px;font-weight:700;border:none
 }
-.section-title h2{font-size:32px;color:var(--primary)}
-
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-gap:25px
-}
-
-.card{
-background:var(--white);
-border:1px solid var(--border-light);
-padding:30px;border-radius:12px
-}
-.card-img{
-width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:20px
-}
-
-.detail-list{list-style:none;border-top:1px solid #eee;padding-top:15px}
-.detail-list li::before{content:"✓ ";color:var(--success)}
-
-.btn{padding:12px 28px;border-radius:6px;font-weight:700;border:none}
-.btn-accent{background:var(--accent);color:white}
-
-/* ================= COMPANY LOGOS ================= */
-.company-logos{justify-items:center;align-items:center}
-.company-logos img{transition:.3s}
-.company-logos img:hover{transform:scale(1.08)}
-
-/* ================= REVEAL ================= */
-.reveal{opacity:0;transform:translateY(30px);transition:.8s}
-.reveal.active{opacity:1;transform:none}
 
 /* ================= MOBILE MENU ================= */
 @media(max-width:900px){
@@ -135,9 +97,6 @@ font-size:28px;color:white;cursor:pointer
 }
 
 .hamburger{display:block}
-
-.hero h1{font-size:36px}
-
 .auth-btns button{display:none}
 
 .mobile-auth{
@@ -149,66 +108,98 @@ font-weight:700;text-decoration:none;color:white;
 background:#1a1a1f
 }
 .mobile-auth a.primary{background:var(--accent)}
+
+.hero h1{font-size:36px}
 }
 </style>
 </head>
 
 <body>
 
-<div class="hero-bg"></div>
-
 <header>
 <nav class="nav">
-<div class="logo-group">
-<div class="logo-icon">S</div>
-<div class="logo-text">SmartHire</div>
-</div>
+  <div class="logo-group">
+    <div class="logo-icon">S</div>
+    <div class="logo-text">SmartHire</div>
+  </div>
 
-<div class="menu">
-<div class="close-menu" onclick="toggleMenu()">✕</div>
+  <div class="menu">
+    <div class="close-menu" onclick="toggleMenu()">✕</div>
+    <a href="index.html">Home 1</a>
+    <a href="home2.html">Home 2</a>
+    <a href="jobs.html">Jobs</a>
+    <a href="recruiters.html">Recruiters</a>
+    <a href="career.html">Career Services</a>
+    <a href="courses.html">Courses</a>
+    <a href="blog.html">Blog</a>
+    <a href="companies.html">Companies</a>
+    <a href="services.html">Services</a>
+    <a href="contact.html">Contact</a>
+    <a href="dashboard/user.html">Dashboard</a>
+    <a href="dashboard/admin.html">Admin</a>
 
-<a href="index.html">Home 1</a>
-<a href="home2.html">Home 2</a>
-<a href="jobs.html">Jobs</a>
-<a href="recruiters.html">Recruiters</a>
-<a href="career.html">Career Services</a>
-<a href="courses.html">Courses</a>
-<a href="blog.html">Blog</a>
-<a href="companies.html">Companies</a>
-<a href="services.html">Services</a>
-<a href="contact.html">Contact</a>
-<a href="dashboard/user.html">Dashboard</a>
-<a href="dashboard/admin.html">Admin</a>
+    <div class="mobile-auth">
+      <a href="login.html">Login</a>
+      <a href="register.html" class="primary">Register</a>
+    </div>
+  </div>
 
-<div class="mobile-auth">
-<a href="login.html">Login</a>
-<a href="register.html" class="primary">Register</a>
-</div>
-</div>
-
-<div class="auth-btns">
-<button style="background:none;color:var(--primary)">Login</button>
-<button style="background:var(--primary);color:white">Register</button>
-<div class="hamburger" onclick="toggleMenu()">☰</div>
-</div>
+  <div class="auth-btns">
+    <button style="background:none;color:var(--primary)">Login</button>
+    <button style="background:var(--primary);color:white">Register</button>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+  </div>
 </nav>
 </header>
 
 <section class="hero">
-<div class="container">
-<h1>Over <span id="jobCount">0</span>+ <span style="color:var(--success)">Jobs</span> For You</h1>
-<p>Find your next career move with AI-powered job matching and verified recruiters.</p>
-</div>
+  <h1>Over <span id="jobCount">0</span>+ Jobs For You</h1>
+  <p>Find your next career move with AI-powered job matching and verified recruiters.</p>
 </section>
 
-<div class="container">
 <div class="search-container">
-<div class="search-group"><label>Skills</label><input></div>
-<div class="search-group"><label>Location</label><input></div>
-<div class="search-group"><label>Experience</label><input></div>
-<button class="btn btn-accent">Search Jobs</button>
+  <div class="search-group"><label>Skills</label><input></div>
+  <div class="search-group"><label>Location</label><input></div>
+  <div class="search-group"><label>Experience</label><input></div>
+  <button class="btn-accent">Search Jobs</button>
 </div>
-</div>
+<style>
+section{padding:60px 20px}
+.container{max-width:1300px;margin:auto}
+.section-title{
+margin-bottom:40px;border-left:5px solid var(--accent);
+padding-left:20px
+}
+.section-title h2{font-size:32px;color:var(--primary)}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:25px
+}
+
+.card{
+background:white;border:1px solid var(--border-light);
+padding:30px;border-radius:12px;
+animation:float 6s ease-in-out infinite
+}
+
+@keyframes float{
+0%{transform:translateY(0)}
+50%{transform:translateY(-10px)}
+100%{transform:translateY(0)}
+}
+
+.card-img{
+width:100%;height:180px;
+object-fit:cover;border-radius:8px;margin-bottom:20px
+}
+
+.company-logos{justify-items:center;align-items:center}
+
+.reveal{opacity:0;transform:translateY(30px);transition:.8s}
+.reveal.active{opacity:1;transform:none}
+</style>
 
 <section class="reveal">
 <div class="container">
@@ -219,19 +210,18 @@ background:#1a1a1f
 
 <div class="grid">
 <div class="card">
-<img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=400" class="card-img">
-<h3>Information Technology</h3>
-<p>Building the digital future.</p>
+<img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800" class="card-img">
+<p>Technology roles dominate hiring as organizations adopt cloud computing, artificial intelligence, cybersecurity, and scalable digital platforms. Skilled developers, engineers, and architects are in high demand globally.</p>
 </div>
+
 <div class="card">
-<img src="https://images.unsplash.com/photo-1554224155-1696413565d3?auto=format&fit=crop&w=400" class="card-img">
-<h3>Banking & Finance</h3>
-<p>Wealth and innovation.</p>
+<img src="https://images.unsplash.com/photo-1554224155-1696413565d3?auto=format&fit=crop&w=800" class="card-img">
+<p>Finance professionals are required to manage digital transactions, compliance, analytics, and modern fintech platforms that power today’s global economy.</p>
 </div>
+
 <div class="card">
-<img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=400" class="card-img">
-<h3>Sales & Marketing</h3>
-<p>Growth and branding.</p>
+<img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=800" class="card-img">
+<p>Sales and marketing experts help brands grow by leveraging digital channels, performance analytics, and customer engagement strategies.</p>
 </div>
 </div>
 </div>
@@ -255,7 +245,6 @@ background:#1a1a1f
 <div class="section-title" style="border:none;">
 <h2>Top Companies Hiring Now</h2>
 </div>
-
 <div class="grid company-logos">
 <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" width="100">
 <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" width="100">
@@ -273,7 +262,7 @@ background:#1a1a1f
 <h2 style="color:var(--primary)">Never Miss an Opportunity!</h2>
 <p>Subscribe to job alerts matching your profile.</p>
 </div>
-<button class="btn btn-accent">Activate Alerts</button>
+<button class="btn-accent">Activate Alerts</button>
 </div>
 </div>
 </section>
@@ -288,7 +277,7 @@ background:#1a1a1f
 </div>
 </section>
 
-<footer style="background:#1a1e26;color:white;padding:60px 20px;">
+<footer style="background:#1a1e26;color:white;padding:60px 20px">
 <div class="container">
 <p style="text-align:center;opacity:.6">
 © 2026 SmartHire Recruitment Solutions Pvt Ltd. All rights reserved.
@@ -298,15 +287,15 @@ background:#1a1a1f
 
 <script>
 function toggleMenu(){
-document.querySelector('.menu').classList.toggle('show')
+document.querySelector('.menu').classList.toggle('show');
 }
 
 const observer=new IntersectionObserver(entries=>{
 entries.forEach(e=>{
-if(e.isIntersecting){e.target.classList.add('active')}
-})
+if(e.isIntersecting){e.target.classList.add("active")}
+});
 },{threshold:0.15});
-document.querySelectorAll('.reveal').forEach(r=>observer.observe(r));
+document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
 
 let c=0;
 const t=500000;
