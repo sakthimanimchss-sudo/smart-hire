@@ -1,7 +1,4 @@
-const hamburger = document.getElementById("hamburger");
-const mobileMenu = document.getElementById("mobileMenu");
-
-hamburger.addEventListener("click",()=>{
-  mobileMenu.style.display =
-    mobileMenu.style.display === "flex" ? "none" : "flex";
-});
+const ham=document.getElementById("hamburger");
+const menu=document.getElementById("mobileMenu");
+ham.onclick=()=>menu.style.display=
+menu.style.display==="flex"?"none":"flex";
