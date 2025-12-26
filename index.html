@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <title>SmartHire | Jobs, Careers & Hiring Platform</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <style>
 /* =====================================================
    ROOT VARIABLES
@@ -91,7 +90,10 @@ header{
   align-items:center;
   gap:12px;
 }
-.auth .login{color:var(--primary);font-weight:600}
+.auth .login{
+  color:var(--primary);
+  font-weight:600;
+}
 .auth .register{
   background:var(--primary);
   color:#fff;
@@ -200,7 +202,7 @@ header{
 }
 
 /* =====================================================
-   SEARCH BOX
+   SEARCH BOX (FIXED)
 ===================================================== */
 .search-box{
   max-width:1000px;
@@ -212,6 +214,8 @@ header{
   display:grid;
   grid-template-columns:1fr 1fr 1fr auto;
   gap:14px;
+  position:relative;
+  z-index:20;
 }
 .search-box input{
   padding:14px;
@@ -277,15 +281,29 @@ section{padding:80px 20px}
 }
 
 /* =====================================================
-   RESPONSIVE
+   RESPONSIVE (CRITICAL FIXES)
 ===================================================== */
 @media(max-width:900px){
   .menu-desktop{display:none}
   .hamburger{display:block}
-  .search-box{grid-template-columns:1fr}
+
+  /* hide header auth on mobile */
+  .auth .login,
+  .auth .register{
+    display:none;
+  }
+
+  /* search box below hero */
+  .search-box{
+    margin:30px 16px 80px;
+    grid-template-columns:1fr;
+  }
+
   .hero h2{font-size:38px}
 }
 </style>
+
+ 
 </head>
 
 <body>
