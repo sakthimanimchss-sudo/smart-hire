@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <title>SmartHire | Jobs, Careers & Hiring Platform</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
 /* =====================================================
    ROOT VARIABLES
@@ -368,6 +369,171 @@ section{padding:80px 20px}
   }
   .hero h2{font-size:38px}
 }
+/* =====================================================
+   ADVANCED FOOTER
+===================================================== */
+.footer{
+  position:relative;
+  background:linear-gradient(135deg,#0f1c24,#1b2a3a);
+  color:#fff;
+  padding:90px 20px 40px;
+  overflow:hidden;
+}
+
+/* glass overlay */
+.footer-glass{
+  position:absolute;
+  inset:0;
+  background:rgba(255,255,255,.04);
+  backdrop-filter:blur(14px);
+  pointer-events:none;
+}
+
+/* grid */
+.footer-grid{
+  position:relative;
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr 1.4fr;
+  gap:50px;
+  z-index:2;
+}
+
+/* brand */
+.footer-logo{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:18px;
+}
+.footer-logo span{
+  width:46px;
+  height:46px;
+  background:var(--primary);
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:800;
+  font-size:22px;
+}
+.footer-logo h2{
+  font-size:24px;
+}
+.footer-brand p{
+  font-size:14px;
+  line-height:1.7;
+  opacity:.75;
+}
+
+/* columns */
+.footer-col h4{
+  font-size:16px;
+  margin-bottom:18px;
+  position:relative;
+}
+.footer-col h4::after{
+  content:"";
+  width:32px;
+  height:3px;
+  background:var(--accent);
+  position:absolute;
+  bottom:-8px;
+  left:0;
+  border-radius:2px;
+}
+.footer-col a{
+  display:block;
+  font-size:14px;
+  margin-bottom:12px;
+  opacity:.7;
+  transition:.3s;
+}
+.footer-col a:hover{
+  opacity:1;
+  color:var(--accent);
+  transform:translateX(4px);
+}
+
+/* newsletter */
+.footer-note{
+  font-size:14px;
+  opacity:.7;
+  margin-bottom:14px;
+}
+.footer-newsletter{
+  display:flex;
+  gap:10px;
+}
+.footer-newsletter input{
+  flex:1;
+  padding:12px;
+  border-radius:8px;
+  border:none;
+  outline:none;
+}
+.footer-newsletter button{
+  background:var(--accent);
+  color:#fff;
+  border:none;
+  border-radius:8px;
+  padding:12px 18px;
+  font-weight:700;
+  cursor:pointer;
+  transition:.3s;
+}
+.footer-newsletter button:hover{
+  background:#e68a00;
+}
+
+/* bottom */
+.footer-bottom{
+  position:relative;
+  z-index:2;
+  border-top:1px solid rgba(255,255,255,.1);
+  margin-top:60px;
+  padding-top:25px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:20px;
+  align-items:center;
+  justify-content:space-between;
+  font-size:13px;
+  opacity:.7;
+}
+
+/* socials */
+.socials{
+  display:flex;
+  gap:14px;
+}
+.socials a{
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  background:rgba(255,255,255,.1);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  font-size:16px;
+  transition:.3s;
+}
+.socials a:hover{
+  background:var(--accent);
+  transform:translateY(-4px);
+}
+
+/* responsive */
+@media(max-width:900px){
+  .footer-grid{
+    grid-template-columns:1fr;
+    gap:40px;
+  }
+  .footer-bottom{
+    text-align:center;
+    justify-content:center;
+  }
+}
 
 </style>
 
@@ -676,36 +842,70 @@ section{padding:80px 20px}
 </section>
 
 <!-- ================= FOOTER ================= -->
-<footer style="background:#0f1c24;color:#fff;padding:70px 20px">
-  <div class="container">
-    <div class="grid">
-      <div>
-        <h3>About SmartHire</h3>
-        <p style="opacity:.7">
-          SmartHire is an AI-powered recruitment platform designed to connect
-          professionals with verified employers through intelligent job matching,
-          career analytics, and growth-focused tools.
-        </p>
-      </div>
+<footer class="footer">
+  <div class="footer-glass"></div>
 
-      <div>
-        <h3>Quick Links</h3>
-        <p style="opacity:.7">
-          Jobs · Recruiters · Courses · Companies · Contact
-        </p>
-      </div>
+  <div class="container footer-grid">
 
-      <div>
-        <h3>Support</h3>
-        <p style="opacity:.7">
-          Help Center · Privacy Policy · Terms & Conditions
-        </p>
+    <!-- BRAND -->
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <span>S</span>
+        <h2>SmartHire</h2>
+      </div>
+      <p>
+        SmartHire is an AI-powered recruitment and career platform connecting
+        verified recruiters with skilled professionals. Using intelligent
+        job matching, real-time hiring insights, and career tools, we help
+        candidates discover meaningful opportunities faster and smarter.
+      </p>
+    </div>
+
+    <!-- QUICK LINKS -->
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <a href="jobs.html">Find Jobs</a>
+      <a href="companies.html">Companies</a>
+      <a href="recruiters.html">Recruiters</a>
+      <a href="career.html">Career Services</a>
+      <a href="courses.html">Courses</a>
+    </div>
+
+    <!-- RESOURCES -->
+    <div class="footer-col">
+      <h4>Resources</h4>
+      <a href="#">Blog</a>
+      <a href="#">Resume Tips</a>
+      <a href="#">Interview Prep</a>
+      <a href="#">Skill Trends</a>
+      <a href="#">Success Stories</a>
+    </div>
+
+    <!-- NEWSLETTER -->
+    <div class="footer-col">
+      <h4>Stay Updated</h4>
+      <p class="footer-note">
+        Subscribe to receive the latest job alerts, hiring trends,
+        and career insights directly in your inbox.
+      </p>
+      <div class="footer-newsletter">
+        <input type="email" placeholder="Enter your email">
+        <button>Subscribe</button>
       </div>
     </div>
 
-    <p style="text-align:center;opacity:.4;margin-top:50px">
-      © 2026 SmartHire Recruitment Solutions Pvt Ltd. All rights reserved.
-    </p>
+  </div>
+
+  <!-- SOCIAL + COPYRIGHT -->
+  <div class="footer-bottom">
+    <div class="socials">
+      <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+      <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    </div>
+
+    <p>© 2026 SmartHire Recruitment Solutions Pvt Ltd. All rights reserved.</p>
   </div>
 </footer>
 
