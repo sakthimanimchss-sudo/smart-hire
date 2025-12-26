@@ -1,60 +1,97 @@
 /* =====================================================
-   SMART HIRE – MAIN JAVASCRIPT
+   SmartHire - Full Animation JavaScript
+   Author: SmartHire UI
+   Purpose: Scroll + Float + Mobile Animation
 ===================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    /* ================= NAVBAR TOGGLE ================= */
-    const menuToggle = document.querySelector(".menu-toggle");
-    const navMenu = document.querySelector(".navbar nav");
+  /* ================= REVEAL ON SCROLL ================= */
+  const revealElements = document.querySelectorAll("section, .block, .stat-box");
 
-    if (menuToggle) {
-        menuToggle.addEventListener("click", () => {
-            navMenu.classList.toggle("show");
-        });
+  const revealOnScroll = () => {
+    const windowHeight = window.innerHeight;
+
+    revealElements.forEach(el => {
+      const elementTop = el.getBoundingClientRect().top;
+
+      if (elementTop < windowHeight - 120) {
+        el.classList.add("active");
+      }
+    });
+  };
+
+  window.addEventListener("scroll", revealOnScroll);
+  revealOnScroll();
+
+
+  /* ================= FLOAT IMAGE RANDOM OFFSET ================= */
+  const floatingImages = document.querySelectorAll(".block img");
+
+  floatingImages.forEach((img, index) => {
+    const delay = index * 0.6;
+    img.style.animationDelay = `${delay}s`;
+  });
+
+
+  /* ================= STAT COUNTER ANIMATION ================= */
+  const counters = document.querySelectorAll(".stat-box h3");
+  let counterStarted = false;
+
+  const animateCounters = () => {
+    counters.forEach(counter => {
+      const targetText = counter.innerText;
+      const target = parseInt(targetText.replace(/\D/g, ""));
+      const suffix = targetText.replace(/[0-9]/g, "");
+
+      let count = 0;
+      const speed = target / 100;
+
+      const update = () => {
+        if (count < target) {
+          count += speed;
+          counter.innerText = Math.floor(count) + suffix;
+          requestAnimationFrame(update);
+        } else {
+          counter.innerText = target + suffix;
+        }
+      };
+
+      update();
+    });
+  };
+
+  window.addEventListener("scroll", () => {
+    const statsSection = document.querySelector(".stats");
+    if (!statsSection) return;
+
+    const top = statsSection.getBoundingClientRect().top;
+    if (top < window.innerHeight - 150 && !counterStarted) {
+      counterStarted = true;
+      animateCounters();
     }
+  });
 
-    /* ================= SMOOTH SCROLL ================= */
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-            document.querySelector(this.getAttribute("href"))
-                .scrollIntoView({ behavior: "smooth" });
-        });
+
+  /* ================= PARALLAX SCROLL EFFECT ================= */
+  window.addEventListener("scroll", () => {
+    document.querySelectorAll(".block img").forEach(img => {
+      const speed = 0.05;
+      const offset = window.scrollY * speed;
+      img.style.transform = `translateY(${offset}px)`;
+    });
+  });
+
+
+  /* ================= MOBILE TOUCH ANIMATION ================= */
+  document.querySelectorAll(".block").forEach(block => {
+    block.addEventListener("touchstart", () => {
+      block.style.transform = "scale(0.97)";
     });
 
-    /* ================= SCROLL ANIMATION ================= */
-    const revealElements = document.querySelectorAll(
-        ".category-card, .job-card, .why-card, .stat-box, .faq-item"
-    );
-
-    const revealOnScroll = () => {
-        revealElements.forEach(el => {
-            const rect = el.getBoundingClientRect();
-            if (rect.top < window.innerHeight - 100) {
-                el.classList.add("reveal");
-            }
-        });
-    };
-
-    window.addEventListener("scroll", revealOnScroll);
-    revealOnScroll();
-
-    /* ================= FAQ TOGGLE ================= */
-    document.querySelectorAll(".faq-item").forEach(item => {
-        item.addEventListener("click", () => {
-            item.classList.toggle("open");
-        });
+    block.addEventListener("touchend", () => {
+      block.style.transform = "scale(1)";
     });
-
-    /* ================= JOB CARD HOVER EFFECT ================= */
-    document.querySelectorAll(".job-card").forEach(card => {
-        card.addEventListener("mouseenter", () => {
-            card.style.transform = "translateY(-10px)";
-        });
-        card.addEventListener("mouseleave", () => {
-            card.style.transform = "translateY(0)";
-        });
-    });
+  });
 
 });
