@@ -13,9 +13,50 @@ html {
 
 body {
   font-family: 'Poppins', sans-serif;
-  background: radial-gradient(circle at top, #0b1220, #020617);
   color: #ffffff;
   overflow-x: hidden;
+
+  /* Animated background */
+  background: linear-gradient(120deg, #020617, #071a2f, #020617);
+  background-size: 300% 300%;
+  animation: bgMove 16s ease infinite;
+}
+
+@keyframes bgMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Floating glow orbs */
+.bg-orbs::before,
+.bg-orbs::after {
+  content: "";
+  position: fixed;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  filter: blur(100px);
+  z-index: -1;
+  animation: orbFloat 20s ease-in-out infinite alternate;
+}
+
+.bg-orbs::before {
+  background: rgba(56,189,248,0.18);
+  top: 10%;
+  left: 5%;
+}
+
+.bg-orbs::after {
+  background: rgba(34,197,94,0.18);
+  bottom: 10%;
+  right: 5%;
+  animation-delay: 6s;
+}
+
+@keyframes orbFloat {
+  from { transform: translate(0, 0); }
+  to { transform: translate(80px, 60px); }
 }
 
 /* =====================================================
@@ -24,6 +65,7 @@ body {
 img {
   max-width: 100%;
   display: block;
+  border-radius: 18px;
 }
 
 a {
@@ -44,10 +86,10 @@ p {
   position: sticky;
   top: 0;
   z-index: 1000;
+  padding: 18px 6%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 18px 6%;
   background: rgba(2, 6, 23, 0.7);
   backdrop-filter: blur(14px);
 }
@@ -146,7 +188,7 @@ p {
 }
 
 /* =====================================================
-   SECTION BASE
+   SECTIONS
 ===================================================== */
 .section {
   padding: 90px 8%;
@@ -165,9 +207,7 @@ p {
   transform: translateY(0);
 }
 
-/* =====================================================
-   HERO TEXT FLOATING
-===================================================== */
+/* Hero title floating */
 .hero h1 {
   font-size: 42px;
   background: linear-gradient(90deg, #38bdf8, #818cf8);
@@ -181,24 +221,13 @@ p {
   50% { transform: translateY(-6px); }
 }
 
-/* =====================================================
-   SECTION TITLE JUMP (ON REVEAL)
-===================================================== */
+/* Section headings */
 .section h2 {
   font-size: 32px;
   margin-bottom: 14px;
-  animation: titleJump 0.6s ease forwards;
 }
 
-@keyframes titleJump {
-  0% { transform: translateY(8px); }
-  60% { transform: translateY(-6px); }
-  100% { transform: translateY(0); }
-}
-
-/* =====================================================
-   PARAGRAPH MICRO FLOAT (READ COMFORT)
-===================================================== */
+/* Paragraph micro-float */
 .section p {
   animation: textFloat 6s ease-in-out infinite alternate;
 }
@@ -222,7 +251,7 @@ p {
   padding: 14px;
   border-radius: 10px;
   border: none;
-  min-width: 200px;
+  min-width: 180px;
   outline: none;
 }
 
@@ -233,10 +262,10 @@ p {
   background: #22c55e;
   font-weight: 600;
   cursor: pointer;
-  animation: pulseText 3s infinite;
+  animation: pulseBtn 3s infinite;
 }
 
-@keyframes pulseText {
+@keyframes pulseBtn {
   0%,100% { transform: scale(1); }
   50% { transform: scale(1.05); }
 }
@@ -247,9 +276,9 @@ p {
 .social-links a {
   display: inline-block;
   margin-right: 14px;
-  padding: 8px 14px;
+  padding: 8px 16px;
   border-radius: 20px;
-  background: rgba(56,189,248,0.1);
+  background: rgba(56,189,248,0.12);
   color: #38bdf8;
   transition: 0.3s;
 }
@@ -260,7 +289,15 @@ p {
 }
 
 /* =====================================================
-   REDUCED MOTION SUPPORT
+   FOOTER
+===================================================== */
+footer.section {
+  grid-template-columns: 1fr;
+  text-align: center;
+}
+
+/* =====================================================
+   REDUCED MOTION
 ===================================================== */
 @media (prefers-reduced-motion: reduce) {
   * {
@@ -270,7 +307,7 @@ p {
 }
 
 /* =====================================================
-   MOBILE RESPONSIVE
+   MOBILE
 ===================================================== */
 @media (max-width: 900px) {
 
