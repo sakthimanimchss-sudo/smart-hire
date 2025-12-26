@@ -18,9 +18,10 @@
 }
 
 *{margin:0;padding:0;box-sizing:border-box;font-family:Inter,Segoe UI,sans-serif}
+html{scroll-behavior:smooth}
 body{background:var(--bg-light);color:var(--text-dark);overflow-x:hidden;line-height:1.6}
 
-/* HERO BG */
+/* ================= HERO BACKGROUND ================= */
 .hero-bg{
 position:absolute;top:0;left:0;width:100%;height:85vh;
 background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
@@ -28,7 +29,7 @@ clip-path:ellipse(150% 100% at 50% 0%);
 z-index:-1
 }
 
-/* HEADER */
+/* ================= HEADER ================= */
 header{
 position:sticky;top:0;z-index:1000;
 background:var(--white);
@@ -41,7 +42,7 @@ display:flex;align-items:center;justify-content:space-between
 .logo-group{display:flex;align-items:center;gap:12px}
 .logo-icon{
 width:42px;height:42px;background:var(--primary);
-border-radius:10px;color:white;
+border-radius:10px;color:#fff;
 display:flex;align-items:center;justify-content:center;font-weight:800
 }
 .logo-text{font-size:24px;font-weight:800;color:var(--primary)}
@@ -56,12 +57,12 @@ padding:8px 16px;border-radius:6px;border:none;font-weight:700;cursor:pointer
 
 .hamburger{display:none;font-size:26px;cursor:pointer}
 
-/* HERO */
+/* ================= HERO ================= */
 .hero{color:white;text-align:center;padding:110px 20px}
 .hero h1{font-size:48px;margin-bottom:15px}
 .hero p{font-size:18px;opacity:.9}
 
-/* SEARCH */
+/* ================= SEARCH ================= */
 .search-container{
 background:var(--white);padding:30px;border-radius:15px;
 box-shadow:0 10px 40px rgba(0,0,0,.1);
@@ -74,7 +75,7 @@ max-width:1000px;margin:-50px auto 0
 width:100%;padding:12px;border:1px solid var(--border-light);border-radius:8px
 }
 
-/* COMMON */
+/* ================= COMMON ================= */
 section{padding:60px 20px}
 .container{max-width:1300px;margin:auto}
 .section-title{
@@ -101,22 +102,19 @@ width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:20px
 .detail-list{list-style:none;border-top:1px solid #eee;padding-top:15px}
 .detail-list li::before{content:"✓ ";color:var(--success)}
 
-.btn{
-padding:12px 28px;border-radius:6px;
-font-weight:700;border:none;cursor:pointer
-}
+.btn{padding:12px 28px;border-radius:6px;font-weight:700;border:none}
 .btn-accent{background:var(--accent);color:white}
 
-/* COMPANY LOGOS */
-.company-logos{justify-items:center}
+/* ================= COMPANY LOGOS ================= */
+.company-logos{justify-items:center;align-items:center}
 .company-logos img{transition:.3s}
 .company-logos img:hover{transform:scale(1.08)}
 
-/* REVEAL */
+/* ================= REVEAL ================= */
 .reveal{opacity:0;transform:translateY(30px);transition:.8s}
 .reveal.active{opacity:1;transform:none}
 
-/* MOBILE SLIDE MENU */
+/* ================= MOBILE MENU ================= */
 @media(max-width:900px){
 .menu{
 position:fixed;top:0;left:-100%;
@@ -131,14 +129,26 @@ z-index:999
 .menu.show{left:0}
 .menu a{color:#fff;font-size:18px}
 
-.hamburger{display:block}
-
 .close-menu{
 position:absolute;top:20px;right:20px;
 font-size:28px;color:white;cursor:pointer
 }
 
+.hamburger{display:block}
+
 .hero h1{font-size:36px}
+
+.auth-btns button{display:none}
+
+.mobile-auth{
+display:flex;flex-direction:column;gap:15px;margin-top:30px
+}
+.mobile-auth a{
+text-align:center;padding:14px;border-radius:8px;
+font-weight:700;text-decoration:none;color:white;
+background:#1a1a1f
+}
+.mobile-auth a.primary{background:var(--accent)}
 }
 </style>
 </head>
@@ -156,6 +166,7 @@ font-size:28px;color:white;cursor:pointer
 
 <div class="menu">
 <div class="close-menu" onclick="toggleMenu()">✕</div>
+
 <a href="index.html">Home 1</a>
 <a href="home2.html">Home 2</a>
 <a href="jobs.html">Jobs</a>
@@ -168,6 +179,11 @@ font-size:28px;color:white;cursor:pointer
 <a href="contact.html">Contact</a>
 <a href="dashboard/user.html">Dashboard</a>
 <a href="dashboard/admin.html">Admin</a>
+
+<div class="mobile-auth">
+<a href="login.html">Login</a>
+<a href="register.html" class="primary">Register</a>
+</div>
 </div>
 
 <div class="auth-btns">
@@ -205,34 +221,17 @@ font-size:28px;color:white;cursor:pointer
 <div class="card">
 <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=400" class="card-img">
 <h3>Information Technology</h3>
-<p>Building the digital future with code and architecture.</p>
-<ul class="detail-list">
-<li>Full Stack Developers</li>
-<li>Cloud Architects</li>
-<li>Cybersecurity Specialists</li>
-</ul>
+<p>Building the digital future.</p>
 </div>
-
 <div class="card">
 <img src="https://images.unsplash.com/photo-1554224155-1696413565d3?auto=format&fit=crop&w=400" class="card-img">
 <h3>Banking & Finance</h3>
-<p>Strategic wealth management and financial innovation.</p>
-<ul class="detail-list">
-<li>Investment Bankers</li>
-<li>Fintech Analysts</li>
-<li>Chartered Accountants</li>
-</ul>
+<p>Wealth and innovation.</p>
 </div>
-
 <div class="card">
 <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=400" class="card-img">
 <h3>Sales & Marketing</h3>
-<p>Driving revenue through growth hacking and branding.</p>
-<ul class="detail-list">
-<li>Digital Marketing Leads</li>
-<li>Enterprise Sales Manager</li>
-<li>Brand Strategists</li>
-</ul>
+<p>Growth and branding.</p>
 </div>
 </div>
 </div>
@@ -242,13 +241,11 @@ font-size:28px;color:white;cursor:pointer
 <div class="container">
 <div class="section-title">
 <h2>SmartHire Recruitment Ecosystem</h2>
-<p>Our systematic approach to finding you the perfect job.</p>
 </div>
-
 <div class="grid">
 <div class="card"><h3>AI Match</h3><p>Smart profile matching.</p></div>
-<div class="card"><h3>Smart Screening</h3><p>Automated video assessments.</p></div>
-<div class="card"><h3>Direct Connect</h3><p>Chat with hiring managers.</p></div>
+<div class="card"><h3>Smart Screening</h3><p>Automated assessments.</p></div>
+<div class="card"><h3>Direct Connect</h3><p>Chat with recruiters.</p></div>
 </div>
 </div>
 </section>
@@ -304,13 +301,12 @@ function toggleMenu(){
 document.querySelector('.menu').classList.toggle('show')
 }
 
-document.querySelectorAll('.reveal').forEach(el=>{
-window.addEventListener('scroll',()=>{
-if(el.getBoundingClientRect().top<window.innerHeight-50){
-el.classList.add('active')
-}
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(e=>{
+if(e.isIntersecting){e.target.classList.add('active')}
 })
-})
+},{threshold:0.15});
+document.querySelectorAll('.reveal').forEach(r=>observer.observe(r));
 
 let c=0;
 const t=500000;
