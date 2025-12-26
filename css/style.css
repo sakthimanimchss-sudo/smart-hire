@@ -189,3 +189,18 @@ section {
     grid-template-columns: 1fr;
   }
 }
+/* JS Reveal Animation */
+section,
+.block,
+.stat-box {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.9s ease;
+}
+
+section.active,
+.block.active,
+.stat-box.active {
+  opacity: 1;
+  transform: translateY(0);
+}
