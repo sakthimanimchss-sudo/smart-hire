@@ -1,11 +1,7 @@
-// Hamburger menu toggle (future ready)
-document.querySelector(".hamburger").addEventListener("click", () => {
-  alert("Mobile menu toggle ready");
-});
+const hamburger = document.getElementById("hamburger");
+const mobileMenu = document.getElementById("mobileMenu");
 
-// Smooth scroll effect
-document.querySelectorAll("a").forEach(link => {
-  link.addEventListener("click", e => {
-    e.preventDefault();
-  });
+hamburger.addEventListener("click",()=>{
+  mobileMenu.style.display =
+    mobileMenu.style.display === "flex" ? "none" : "flex";
 });
