@@ -1,79 +1,94 @@
 /* =====================================================
-   SmartHire - Full Animation JS
+   SmartHire - Final JavaScript
+   Purpose: Navbar, Hamburger, Text Animation Control
 ===================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
 
+  /* ================= HAMBURGER MENU ================= */
+  const hamburger = document.getElementById("hamburger");
+  const mobileMenu = document.getElementById("mobileMenu");
+  const closeMenu = document.getElementById("closeMenu");
+
+  if (hamburger && mobileMenu) {
+    hamburger.addEventListener("click", () => {
+      mobileMenu.classList.add("active");
+      document.body.style.overflow = "hidden";
+    });
+  }
+
+  if (closeMenu) {
+    closeMenu.addEventListener("click", () => {
+      mobileMenu.classList.remove("active");
+      document.body.style.overflow = "";
+    });
+  }
+
+  /* Close menu when clicking a link */
+  document.querySelectorAll(".mobile-menu a").forEach(link => {
+    link.addEventListener("click", () => {
+      mobileMenu.classList.remove("active");
+      document.body.style.overflow = "";
+    });
+  });
+
   /* ================= SECTION REVEAL ================= */
   const sections = document.querySelectorAll(".section");
 
-  const revealSections = () => {
+  const revealOnScroll = () => {
     sections.forEach(section => {
       const top = section.getBoundingClientRect().top;
-      if (top < window.innerHeight - 120) {
+      const triggerPoint = window.innerHeight - 120;
+
+      if (top < triggerPoint) {
         section.classList.add("active");
+
+        /* Title jump ONLY ONCE */
+        const title = section.querySelector("h2");
+        if (title && !title.classList.contains("jumped")) {
+          title.classList.add("jumped");
+          setTimeout(() => title.classList.remove("jumped"), 700);
+        }
       }
     });
   };
 
-  window.addEventListener("scroll", revealSections);
-  revealSections();
+  window.addEventListener("scroll", revealOnScroll);
+  revealOnScroll();
 
-  /* ================= FLOAT IMAGE DELAY ================= */
-  document.querySelectorAll(".section img").forEach((img, index) => {
-    img.style.animationDelay = `${index * 0.6}s`;
+  /* ================= STAGGER TEXT (OPTIONAL SAFE) ================= */
+  document.querySelectorAll(".section p").forEach((para, index) => {
+    para.style.animationDelay = `${index * 0.08}s`;
   });
 
-  /* ================= STATS COUNTER ================= */
-  const counters = document.querySelectorAll(".stat-box h3");
-  let started = false;
-
-  const runCounter = () => {
-    counters.forEach(counter => {
-      const targetText = counter.innerText;
-      const target = parseInt(targetText.replace(/\D/g, ""));
-      const suffix = targetText.replace(/[0-9]/g, "");
-      let count = 0;
-
-      const update = () => {
-        if (count < target) {
-          count += Math.ceil(target / 80);
-          counter.innerText = count + suffix;
-          requestAnimationFrame(update);
-        } else {
-          counter.innerText = target + suffix;
-        }
-      };
-      update();
+  /* ================= SEARCH BOX FOCUS UX ================= */
+  document.querySelectorAll(".search-box input").forEach(input => {
+    input.addEventListener("focus", () => {
+      input.style.boxShadow = "0 0 0 2px rgba(56,189,248,0.6)";
     });
-  };
+    input.addEventListener("blur", () => {
+      input.style.boxShadow = "none";
+    });
+  });
+
+  /* ================= NAVBAR SCROLL EFFECT ================= */
+  const navbar = document.querySelector(".navbar");
 
   window.addEventListener("scroll", () => {
-    const stats = document.querySelector(".stats");
-    if (!stats) return;
-
-    if (stats.getBoundingClientRect().top < window.innerHeight - 150 && !started) {
-      started = true;
-      runCounter();
+    if (window.scrollY > 10) {
+      navbar.style.background = "rgba(2,6,23,0.85)";
+      navbar.style.backdropFilter = "blur(16px)";
+    } else {
+      navbar.style.background = "rgba(2,6,23,0.7)";
     }
   });
 
-  /* ================= PARALLAX EFFECT ================= */
-  window.addEventListener("scroll", () => {
-    document.querySelectorAll(".section img").forEach(img => {
-      const speed = 0.08;
-      img.style.transform = `translateY(${window.scrollY * speed}px)`;
+  /* ================= REDUCED MOTION SUPPORT ================= */
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document.querySelectorAll("*").forEach(el => {
+      el.style.animation = "none";
+      el.style.transition = "none";
     });
-  });
-
-  /* ================= MOBILE TOUCH FEEDBACK ================= */
-  document.querySelectorAll(".btn").forEach(btn => {
-    btn.addEventListener("touchstart", () => {
-      btn.style.transform = "scale(0.95)";
-    });
-    btn.addEventListener("touchend", () => {
-      btn.style.transform = "scale(1)";
-    });
-  });
+  }
 
 });
