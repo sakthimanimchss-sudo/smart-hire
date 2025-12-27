@@ -10,15 +10,15 @@
 
 <style>
 /* =====================================================
-   SMART HIRE — FINAL CSS (CLEAN & STABLE)
+   SMART HIRE — FINAL CSS (PART 1)
+   CORE + LAYOUT
 ===================================================== */
 
-/* ================= ROOT ================= */
+/* ROOT */
 :root{
   --primary:#2b3990;
   --accent:#ff9900;
-  --success:#3
-     6e0a1;
+  --success:#36e0a1;
   --dark:#0f1c24;
   --dark2:#1b2a3a;
   --light:#f5f7fb;
@@ -30,473 +30,19 @@
   --shadow-lg:0 40px 80px rgba(0,0,0,.2);
 }
 
-/* ================= RESET ================= */
-*,
-*::before,
-*::after{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-
+/* RESET */
+*{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-
 body{
   font-family:Inter,Segoe UI,Arial,sans-serif;
   background:var(--light);
   color:#111;
-  line-height:1.6;
   overflow-x:hidden;
 }
-
-img,video{max-width:100%;display:block}
+img{max-width:100%;display:block}
 a{text-decoration:none;color:inherit}
 
-/* ================= HEADER ================= */
-header{
-  position:sticky;
-  top:0;
-  z-index:999;
-  background:#fff;
-  box-shadow:0 2px 15px rgba(0,0,0,.05);
-}
-
-.nav{
-  max-width:1400px;
-  margin:auto;
-  padding:14px 22px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-}
-
-.logo{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  font-weight:800;
-}
-
-.logo span{
-  width:42px;
-  height:42px;
-  background:var(--primary);
-  color:#fff;
-  border-radius:10px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-.menu{
-  display:flex;
-  gap:22px;
-  font-weight:600;
-}
-
-.menu a:hover{color:var(--accent)}
-
-.register{
-  background:var(--primary);
-  color:#fff;
-  padding:10px 22px;
-  border-radius:12px;
-  font-weight:700;
-}
-
-/* ================= HERO ================= */
-.hero{
-  position:relative;
-  min-height:90vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  color:#fff;
-  overflow:hidden;
-}
-
-.hero video{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  filter:brightness(.55);
-}
-
-.hero::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(
-    135deg,
-    rgba(15,28,36,.85),
-    rgba(32,58,67,.85)
-  );
-}
-
-.hero-content{
-  position:relative;
-  max-width:900px;
-  padding:0 20px;
-  z-index:2;
-  animation:fadeUp 1.2s ease both;
-}
-
-.hero h1{
-  font-size:56px;
-  line-height:1.15;
-}
-
-.hero h1 span{color:var(--success)}
-
-.hero p{
-  margin:20px auto 0;
-  font-size:18px;
-  opacity:.9;
-  max-width:760px;
-}
-
-.hero-actions{
-  margin-top:34px;
-  display:flex;
-  gap:18px;
-  justify-content:center;
-  flex-wrap:wrap;
-}
-
-.btn-primary{
-  background:var(--accent);
-  color:#fff;
-  padding:15px 36px;
-  border-radius:14px;
-  font-weight:800;
-  box-shadow:0 12px 30px rgba(255,153,0,.45);
-}
-
-.btn-secondary{
-  border:1px solid rgba(255,255,255,.45);
-  padding:15px 36px;
-  border-radius:14px;
-}
-
-/* ================= AI VOICE BAR ================= */
-.ai-voice-bar{
-  background:#fff;
-  padding:50px 20px;
-  border-top:1px solid #eee;
-  border-bottom:1px solid #eee;
-}
-
-.voice-wrap{
-  max-width:900px;
-  margin:auto;
-  text-align:center;
-}
-
-.voice-btn{
-  background:var(--primary);
-  color:#fff;
-  padding:14px 30px;
-  border-radius:40px;
-  border:none;
-  font-weight:700;
-  cursor:pointer;
-  display:inline-flex;
-  align-items:center;
-  gap:12px;
-  box-shadow:0 12px 30px rgba(43,57,144,.4);
-}
-
-.voice-text{
-  margin-top:18px;
-  min-height:32px;
-  font-size:16px;
-  color:#333;
-}
-
-/* ================= SECTION BASE ================= */
-section{padding:90px 20px}
-.container{max-width:1300px;margin:auto}
-
-.title{
-  border-left:6px solid var(--accent);
-  padding-left:16px;
-  margin-bottom:50px;
-}
-
-.title h2{
-  font-size:36px;
-  color:var(--primary);
-}
-
-.title p{color:var(--muted)}
-
-/* ================= WORKFLOW ================= */
-.workflow{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:28px;
-}
-
-.step{
-  background:#fff;
-  padding:30px;
-  border-radius:18px;
-  box-shadow:var(--shadow);
-  transition:.45s;
-}
-
-.step:hover{
-  transform:translateY(-10px);
-  box-shadow:var(--shadow-lg);
-}
-
-.step span{
-  font-size:56px;
-  font-weight:900;
-  color:rgba(43,57,144,.15);
-}
-
-/* ================= CAREER ================= */
-.career-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:26px;
-}
-
-.career-block{
-  background:#fff;
-  border-radius:18px;
-  overflow:hidden;
-  box-shadow:var(--shadow);
-  transition:opacity .6s ease, transform .6s ease;
-}
-
-.career-block img{
-  width:100%;
-  height:180px;
-  object-fit:cover;
-}
-
-.career-desc{
-  padding:18px;
-  font-size:14px;
-  color:#444;
-}
-
-.fade-out{
-  opacity:0;
-  transform:translateY(12px);
-}
-
-.fade-in{
-  opacity:1;
-  transform:none;
-}
-
-/* ================= STATS ================= */
-.stats{
-  background:linear-gradient(135deg,var(--dark),var(--dark2));
-  color:#fff;
-}
-
-.stats-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:30px;
-  text-align:center;
-}
-
-.stat h3{
-  font-size:46px;
-  color:var(--accent);
-}
-
-/* ================= CHAT ================= */
-.chat-btn{
-  position:fixed;
-  bottom:24px;
-  right:24px;
-  width:60px;
-  height:60px;
-  border-radius:50%;
-  background:var(--primary);
-  color:#fff;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:24px;
-  cursor:pointer;
-  box-shadow:0 15px 40px rgba(0,0,0,.35);
-  z-index:999;
-}
-
-.chat-panel{
-  position:fixed;
-  bottom:100px;
-  right:24px;
-  width:320px;
-  background:#fff;
-  border-radius:18px;
-  box-shadow:var(--shadow);
-  display:none;
-  flex-direction:column;
-}
-
-/* ================= ANIMATION ================= */
-@keyframes fadeUp{
-  from{opacity:0;transform:translateY(40px)}
-  to{opacity:1;transform:none}
-}
-
-/* ================= MOBILE ================= */
-@media(max-width:900px){
-  .menu{display:none}
-  .hero h1{font-size:38px}
-  section{padding:70px 20px}
-}
-
-@media(max-width:480px){
-  .hero h1{font-size:30px}
-  .btn-primary,.btn-secondary{
-    width:100%;
-    text-align:center;
-  }
-}
-.cursor{
-  display:inline-block;
-  margin-left:2px;
-  animation:blink 1s infinite;
-  font-weight:700;
-}
-
-@keyframes blink{
-  0%,50%{opacity:1}
-  51%,100%{opacity:0}
-}
-/* ================= WAVEFORM (NO SHAKE FIX) ================= */
-
-.waveform{
-  margin-top:14px;
-  display:flex;
-  justify-content:center;
-  gap:6px;
-  opacity:0;
-  transition:opacity .3s ease;
-  height:28px;              /* FIXED HEIGHT */
-  align-items:flex-end;     /* LOCK LAYOUT */
-}
-
-.waveform span{
-  width:4px;
-  height:18px;              /* FIXED HEIGHT */
-  background:var(--primary);
-  border-radius:4px;
-  transform-origin:bottom;
-  animation:wave 1s infinite ease-in-out;
-}
-
-.waveform span:nth-child(2){animation-delay:.1s}
-.waveform span:nth-child(3){animation-delay:.2s}
-.waveform span:nth-child(4){animation-delay:.3s}
-.waveform span:nth-child(5){animation-delay:.4s}
-
-/* GPU SAFE ANIMATION */
-@keyframes wave{
-  0%,100%{
-    transform:scaleY(.4);
-    opacity:.5;
-  }
-  50%{
-    transform:scaleY(1.2);
-    opacity:1;
-  }
-}
-
-.waveform.active{
-  opacity:1;
-}
-   
-.waveform.active span {
-  animation-duration: 0.6s;
-}
-
-
-.bubble{
-  max-width:75%;
-  padding:10px 14px;
-  border-radius:16px;
-  font-size:14px;
-}
-
-.bubble.ai{
-  background:#f1f3ff;
-  align-self:flex-start;
-}
-
-.bubble.user{
-  background:var(--primary);
-  color:#fff;
-  align-self:flex-end;
-}
-
-.chat-panel input{
-  border:none;
-  border-top:1px solid #eee;
-  padding:14px;
-  outline:none;
-}
-/* ================= AI INTERVIEW ================= */
-.ai-interview{
-  background:#fff;
-  padding:90px 20px;
-}
-
-.ai-interview h2{
-  color:var(--primary);
-  margin-bottom:10px;
-}
-
-.interview-note{
-  color:#666;
-  margin-bottom:30px;
-}
-
-.question-box{
-  background:#f5f7fb;
-  border-left:6px solid var(--accent);
-  padding:18px;
-  border-radius:12px;
-  margin-bottom:20px;
-  font-size:18px;
-}
-
-#userAnswer{
-  width:100%;
-  padding:14px;
-  border-radius:12px;
-  border:1px solid #ddd;
-  font-size:15px;
-  resize:none;
-}
-
-.interview-actions{
-  margin-top:20px;
-  display:flex;
-  gap:14px;
-}
-
-.score-box{
-  margin-top:30px;
-  padding:20px;
-  border-radius:14px;
-  background:#f0fdf4;
-  display:none;
-}
-/* ================= HEADER FIX ================= */
-
+/* HEADER */
 header{
   position:sticky;
   top:0;
@@ -504,12 +50,10 @@ header{
   background:#fff;
   box-shadow:0 2px 15px rgba(0,0,0,.05);
 }
-
-/* NAV */
 .nav{
   max-width:1400px;
   margin:auto;
-  padding:14px 24px;
+  padding:14px 22px;
   display:flex;
   align-items:center;
   justify-content:space-between;
@@ -520,43 +64,81 @@ header{
   display:flex;
   align-items:center;
   gap:12px;
+  font-weight:800;
 }
 .logo span{
   width:42px;
   height:42px;
-  background:#2b3990;
+  background:var(--primary);
   color:#fff;
   border-radius:10px;
   display:flex;
   align-items:center;
   justify-content:center;
+}
+
+/* HERO */
+.hero{
+  position:relative;
+  min-height:90vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:#fff;
+}
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(135deg,rgba(15,28,36,.85),rgba(32,58,67,.85));
+}
+.hero-content{
+  position:relative;
+  max-width:900px;
+  padding:0 20px;
+  z-index:2;
+}
+.hero h1{font-size:56px;line-height:1.15}
+.hero h1 span{color:var(--success)}
+.hero p{margin-top:20px;font-size:18px;opacity:.9}
+
+.hero-actions{
+  margin-top:34px;
+  display:flex;
+  gap:18px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+.btn-primary{
+  background:var(--accent);
+  color:#fff;
+  padding:15px 36px;
+  border-radius:14px;
   font-weight:800;
 }
-.logo h1{
-  font-size:20px;
-  font-weight:800;
+.btn-secondary{
+  border:1px solid rgba(255,255,255,.45);
+  padding:15px 36px;
+  border-radius:14px;
 }
+/* =====================================================
+   PART 2 — NAVIGATION + MOBILE MENU
+===================================================== */
 
 /* DESKTOP MENU */
 .menu-desktop{
   display:flex;
-  align-items:center;
   gap:22px;
-  white-space:nowrap;
-}
-
-.menu-desktop > a,
-.menu-desktop .nav-item > a{
-  font-size:14px;
   font-weight:600;
-  position:relative;
+}
+.menu-desktop a:hover,
+.menu-desktop a.active{
+  color:var(--accent);
 }
 
 /* DROPDOWN */
-.nav-item{
-  position:relative;
-}
-
+.nav-item{position:relative}
 .dropdown-menu{
   position:absolute;
   top:120%;
@@ -568,45 +150,22 @@ header{
   opacity:0;
   visibility:hidden;
   transform:translateY(10px);
-  transition:.3s ease;
-  display:flex;
-  flex-direction:column;
+  transition:.3s;
 }
-
-.dropdown-menu a{
-  padding:10px 16px;
-  font-size:14px;
-  color:#111;
-}
-
-.dropdown-menu a:hover{
-  background:#f5f7fb;
-}
-
-/* SHOW DROPDOWN */
+.dropdown-menu a{padding:10px 16px;display:block}
 .nav-item:hover .dropdown-menu{
   opacity:1;
   visibility:visible;
-  transform:translateY(0);
+  transform:none;
 }
 
 /* AUTH */
-.auth{
-  display:flex;
-  align-items:center;
-  gap:14px;
-}
-
-.login{
-  font-size:14px;
-}
-
+.auth{display:flex;gap:14px;align-items:center}
 .register{
-  background:#2b3990;
+  background:var(--primary);
   color:#fff;
-  padding:8px 18px;
+  padding:10px 20px;
   border-radius:10px;
-  font-weight:700;
 }
 
 /* HAMBURGER */
@@ -615,70 +174,132 @@ header{
   font-size:26px;
   cursor:pointer;
 }
-@media(max-width:992px){
-  .menu-desktop{
-    position:fixed;
-    top:70px;
-    left:0;
-    width:100%;
-    background:#fff;
-    flex-direction:column;
-    padding:20px;
-    display:none;
-    gap:16px;
-    box-shadow:0 20px 50px rgba(0,0,0,.2);
-  }
 
-  .menu-desktop.show{
-    display:flex;
-  }
-
-  .nav-item:hover .dropdown-menu{
-    position:static;
-    opacity:1;
-    visibility:visible;
-    transform:none;
-    box-shadow:none;
-  }
-
-  .hamburger{
-    display:block;
-  }
+/* MOBILE MENU (FULL SCREEN) */
+.menu-mobile{
+  position:fixed;
+  inset:0;
+  background:#fff;
+  z-index:99999;
+  padding:20px;
+  display:none;
+  overflow-y:auto;
+}
+.menu-mobile.active{display:block}
+.menu-mobile .close{
+  font-size:26px;
+  text-align:right;
+  cursor:pointer;
+}
+.menu-mobile a,
+.mobile-parent{
+  display:block;
+  padding:14px 0;
+  font-size:16px;
+  font-weight:600;
+  border-bottom:1px solid #eee;
 }
 
+/* SUB MENU */
+.mobile-sub{
+  display:none;
+  padding-left:16px;
+  border-left:2px solid #e5e7eb;
+}
+.mobile-sub a{font-size:15px;padding:10px 0}
+
+/* MOBILE AUTH */
+.mobile-auth{
+  margin-top:24px;
+  display:flex;
+  gap:14px;
+}
+.mobile-auth a{
+  flex:1;
+  text-align:center;
+  padding:12px;
+  border-radius:12px;
+  font-weight:700;
+}
+.mobile-auth .login{
+  border:2px solid var(--primary);
+  color:var(--primary);
+}
+.mobile-auth .register{
+  background:var(--primary);
+  color:#fff;
+}
+/* RESPONSIVE */
+@media(max-width:992px){
+  .menu-desktop,.auth{display:none}
+  .hamburger{display:block}
+}
 /* =====================================================
-   AI INTERVIEW – MIC LISTENING ANIMATION
+   PART 3 — AI INTERVIEW + WAVE
 ===================================================== */
 
-.speak-listening {
-  background: #ff9900 !important;
-  color: #fff !important;
-  box-shadow: 0 0 0 rgba(255,153,0,0.6);
-  animation: micPulse 1.6s infinite;
+/* AI INTERVIEW */
+.ai-interview{
+  background:#fff;
+  padding:90px 20px;
+}
+.question-box{
+  background:#f5f7fb;
+  border-left:6px solid var(--accent);
+  padding:18px;
+  border-radius:12px;
+  font-size:18px;
 }
 
-@keyframes micPulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(255,153,0,0.7);
-  }
-  70% {
-    box-shadow: 0 0 0 16px rgba(255,153,0,0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(255,153,0,0);
-  }
+/* MIC BUTTON */
+.voice-btn{
+  background:var(--primary);
+  color:#fff;
+  padding:14px 30px;
+  border-radius:40px;
+  border:none;
+  font-weight:700;
+  cursor:pointer;
 }
 
-/* Listening text */
-.ai-listening {
-  color: #ff9900;
-  font-weight: 700;
-  animation: blinkText 1.2s infinite;
+/* MIC LISTENING */
+.speak-listening{
+  background:var(--accent)!important;
+  animation:micPulse 1.5s infinite;
+}
+@keyframes micPulse{
+  0%{box-shadow:0 0 0 0 rgba(255,153,0,.6)}
+  70%{box-shadow:0 0 0 16px rgba(255,153,0,0)}
+  100%{box-shadow:0 0 0 0 rgba(255,153,0,0)}
 }
 
-@keyframes blinkText {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
+/* WAVEFORM */
+.waveform{
+  margin-top:16px;
+  display:flex;
+  justify-content:center;
+  gap:6px;
+  height:28px;
+  align-items:flex-end;
+  opacity:0;
+  transition:.3s;
+}
+.waveform.active{opacity:1}
+.waveform span{
+  width:4px;
+  height:8px;
+  background:var(--primary);
+  border-radius:4px;
+  animation:wave 1s infinite ease-in-out;
+}
+.waveform span:nth-child(2){animation-delay:.1s}
+.waveform span:nth-child(3){animation-delay:.2s}
+.waveform span:nth-child(4){animation-delay:.3s}
+.waveform span:nth-child(5){animation-delay:.4s}
+
+@keyframes wave{
+  0%,100%{height:8px;opacity:.4}
+  50%{height:28px;opacity:1}
 }
 
 /* =====================================================
@@ -846,295 +467,6 @@ header{
     justify-content:center;
   }
 }
-/* =====================================================
-   AUTH + HAMBURGER (FROM index.html)
-===================================================== */
-.auth{
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-.auth .login{
-  color:var(--primary);
-  font-weight:600;
-}
-.auth .register{
-  background:var(--primary);
-  color:#fff;
-  padding:10px 20px;
-  border-radius:8px;
-}
-.hamburger{
-  display:none;
-  font-size:26px;
-  cursor:pointer;
-}
-
-/* =====================================================
-   MOBILE MENU – LEFT SLIDE (FROM index.html)
-===================================================== */
-.menu-mobile{
-  position:fixed;
-  top:0;
-  left:-100%;
-  width:85%;
-  height:100%;
-  background:#fff;
-  z-index:2000;
-  padding:25px;
-  transition:.45s ease;
-  display:flex;
-  flex-direction:column;
-  gap:18px;
-}
-
-.menu-mobile.active{
-  left:0;
-}
-
-.menu-mobile .close{
-  font-size:28px;
-  align-self:flex-end;
-  cursor:pointer;
-}
-
-.menu-mobile a{
-  font-size:16px;
-  font-weight:600;
-}
-
-.menu-mobile .mobile-auth{
-  margin-top:auto;
-  display:flex;
-  gap:12px;
-}
-
-.menu-mobile .mobile-auth a{
-  flex:1;
-  text-align:center;
-  padding:12px;
-  border-radius:8px;
-}
-
-.menu-mobile .mobile-auth .login{
-  border:2px solid var(--primary);
-}
-
-.menu-mobile .mobile-auth .register{
-  background:var(--primary);
-  color:#fff;
-}
-/* ================= MOBILE SUB MENU FIX ================= */
-
-.mobile-parent {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-/* sub menu container */
-.mobile-sub {
-  display: none;
-  margin-left: 18px;          /*  pushes inside */
-  padding-left: 12px;
-  border-left: 2px solid #e5e7eb;
-}
-
-/* sub menu links */
-.mobile-sub a {
-  display: block;
-  padding: 10px 0;
-  font-size: 14px;
-  color: #555;
-}
-/* =====================================================
-   RESPONSIVE (FROM index.html)
-===================================================== */
-@media(max-width:900px){
-  .menu-desktop{display:none}
-  .hamburger{display:block}
-  .auth .login,
-  .auth .register{display:none}
-}
-/* =====================================================
-   NAV ACTIVE / HOVER COLOR — ORANGE (MATCH JOBS)
-===================================================== */
-
-/* Desktop menu */
-.menu-desktop a {
-  transition: color 0.2s ease;
-}
-
-.menu-desktop a:hover,
-.menu-desktop a.active {
-  color: #ff9900; /* ORANGE */
-}
-
-/* Dropdown links */
-.dropdown-menu a:hover,
-.dropdown-menu a.active {
-  color: #ff9900;
-}
-
-/* Mobile menu */
-.menu-mobile a:hover,
-.menu-mobile a:active,
-.menu-mobile a.active,
-.mobile-parent:active {
-  background: rgba(255, 153, 0, 0.12);
-  color: #ff9900;
-}
-/* =====================================================
-   MOBILE MENU FIT FIX
-===================================================== */
-
-@media (max-width: 992px) {
-
-  .menu-mobile {
-    padding: 20px 18px;
-  }
-
-  .menu-mobile a,
-  .mobile-parent {
-    text-align: left;
-    padding: 14px 10px;
-    font-size: 16px;
-    border-radius: 8px;
-  }
-
-  .mobile-sub a {
-    padding-left: 22px;
-    font-size: 15px;
-  }
-}
-/* AI Question animation */
-.question-box {
-  animation: questionPop 0.6s ease;
-}
-
-@keyframes questionPop {
-  from {
-    opacity: 0;
-    transform: translateY(14px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-/* Mobile touch feedback */
-button:active {
-  transform: scale(0.96);
-}
-/* =====================================================
-   FINAL MOBILE MENU — MATCH index.html EXACTLY
-===================================================== */
-
-/* hamburger */
-.hamburger{
-  display:none;
-  font-size:26px;
-  cursor:pointer;
-  padding:6px;
-  color:#111;
-}
-
-/* mobile breakpoint */
-@media (max-width: 992px){
-
-  /* show hamburger */
-  .hamburger{
-    display:block;
-  }
-
-  /* hide desktop menu + auth */
-  .menu-desktop,
-  .auth .login,
-  .auth .register{
-    display:none !important;
-  }
-}
-
-/* =====================================================
-   MOBILE MENU OVERLAY (FULL SCREEN, NO GAP)
-===================================================== */
-
-.menu-mobile{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100vh;
-  background:#fff;
-  z-index:99999;
-  padding:20px;
-  display:none;
-  overflow-y:auto;
-}
-
-/* open state */
-.menu-mobile.active{
-  display:block;
-}
-
-/* close icon (TOP RIGHT ONLY ☰ → ✕ swap handled by JS) */
-.menu-mobile .close{
-  font-size:26px;
-  text-align:right;
-  cursor:pointer;
-  margin-bottom:10px;
-}
-
-/* menu items */
-.menu-mobile a,
-.mobile-parent{
-  display:block;
-  padding:14px 0;
-  font-size:16px;
-  font-weight:600;
-  border-bottom:1px solid #eee;
-}
-
-/* sub menu */
-.mobile-sub{
-  display:none;
-  padding-left:14px;
-}
-
-.mobile-sub a{
-  font-size:15px;
-  font-weight:500;
-  opacity:.85;
-}
-
-/* auth buttons */
-.mobile-auth{
-  margin-top:24px;
-  display:flex;
-  gap:14px;
-}
-
-.mobile-auth a{
-  flex:1;
-  text-align:center;
-  padding:12px 0;
-  border-radius:12px;
-  font-weight:700;
-}
-
-.mobile-auth .login{
-  border:2px solid var(--primary);
-  color:var(--primary);
-}
-
-.mobile-auth .register{
-  background:var(--primary);
-  color:#fff;
-}
-
-
 
 </style>
 </head>
