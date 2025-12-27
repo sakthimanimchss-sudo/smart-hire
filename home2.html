@@ -467,6 +467,90 @@ header{
     justify-content:center;
   }
 }
+/* =====================================================
+   🔧 MOBILE EMERGENCY FIX (SAFE PATCH)
+===================================================== */
+
+* {
+  max-width: 100%;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* FIX HERO OVERFLOW */
+.hero,
+.hero-content,
+.hero-actions {
+  width: 100%;
+  max-width: 100%;
+}
+
+.hero-actions {
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-actions a,
+.hero-actions button {
+  width: 90%;
+  max-width: 360px;
+}
+
+/* FIX START AI BUTTON */
+.voice-wrap,
+.ai-voice-bar {
+  width: 100%;
+  text-align: center;
+}
+
+.voice-btn {
+  width: 90%;
+  max-width: 360px;
+}
+
+/* FIX AI INTERVIEW CARD */
+.ai-interview {
+  padding: 60px 14px;
+}
+
+.ai-interview > * {
+  max-width: 100%;
+}
+
+.question-box,
+#userAnswer,
+.interview-actions button {
+  width: 100%;
+}
+
+.interview-actions {
+  flex-direction: column;
+}
+
+.interview-actions button {
+  width: 100%;
+}
+
+/* FIX TEXTAREA */
+#userAnswer {
+  min-height: 120px;
+  box-sizing: border-box;
+}
+
+/* FIX FLOATING CHAT ICON */
+.chat-btn {
+  right: 16px;
+  bottom: 16px;
+}
+
+/* FIX MOBILE ONLY */
+@media (max-width: 600px) {
+  h1 { font-size: 28px; }
+  h2 { font-size: 22px; }
+  p  { font-size: 14px; }
+}
 
 </style>
 </head>
