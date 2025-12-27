@@ -2,52 +2,64 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>SmartHire | AI Hiring Platform for Companies</title>
+<title>SmartHire | AI Hiring Platform</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- ICONS -->
-<link rel="stylesheet"
- href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
 /* =====================================================
-   ROOT VARIABLES (SAME BRAND)
+   SMART HIRE — FINAL CSS (CLEAN & STABLE)
 ===================================================== */
+
+/* ================= ROOT ================= */
 :root{
   --primary:#2b3990;
   --accent:#ff9900;
   --success:#36e0a1;
   --dark:#0f1c24;
+  --dark2:#1b2a3a;
   --light:#f5f7fb;
-  --white:#ffffff;
+  --white:#fff;
   --muted:#6b7280;
+
   --radius:16px;
   --shadow:0 25px 50px rgba(0,0,0,.12);
+  --shadow-lg:0 40px 80px rgba(0,0,0,.2);
 }
 
-/* =====================================================
-   GLOBAL
-===================================================== */
-*{margin:0;padding:0;box-sizing:border-box}
+/* ================= RESET ================= */
+*,
+*::before,
+*::after{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{scroll-behavior:smooth}
+
 body{
   font-family:Inter,Segoe UI,Arial,sans-serif;
   background:var(--light);
   color:#111;
+  line-height:1.6;
   overflow-x:hidden;
 }
-a{text-decoration:none;color:inherit}
-img,video{max-width:100%;display:block}
 
-/* =====================================================
-   HEADER (UNCHANGED STYLE)
-===================================================== */
+img,video{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+
+/* ================= HEADER ================= */
 header{
   position:sticky;
   top:0;
-  z-index:5000;
+  z-index:999;
   background:#fff;
   box-shadow:0 2px 15px rgba(0,0,0,.05);
 }
+
 .nav{
   max-width:1400px;
   margin:auto;
@@ -56,109 +68,70 @@ header{
   align-items:center;
   justify-content:space-between;
 }
+
 .logo{
   display:flex;
   align-items:center;
   gap:12px;
+  font-weight:800;
 }
+
 .logo span{
-  width:42px;height:42px;
+  width:42px;
+  height:42px;
   background:var(--primary);
   color:#fff;
+  border-radius:10px;
   display:flex;
   align-items:center;
   justify-content:center;
-  border-radius:10px;
-  font-weight:800;
 }
-.logo h1{
-  font-size:22px;
-  color:var(--primary);
-}
-.menu-desktop{
+
+.menu{
   display:flex;
-  gap:20px;
-  font-size:14px;
+  gap:22px;
   font-weight:600;
 }
-.menu-desktop a:hover{color:var(--accent)}
-.auth{
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-.auth .login{color:var(--primary);font-weight:600}
-.auth .register{
+
+.menu a:hover{color:var(--accent)}
+
+.register{
   background:var(--primary);
   color:#fff;
-  padding:10px 20px;
-  border-radius:8px;
-}
-.hamburger{display:none;font-size:26px}
-
-/* =====================================================
-   DROPDOWN
-===================================================== */
-.nav-item{position:relative}
-.dropdown-menu{
-  position:absolute;
-  top:120%;
-  left:0;
-  background:#fff;
-  min-width:190px;
+  padding:10px 22px;
   border-radius:12px;
-  box-shadow:0 20px 40px rgba(0,0,0,.12);
-  opacity:0;
-  visibility:hidden;
-  transform:translateY(10px);
-  transition:.35s ease;
-  z-index:3000;
-}
-.dropdown-menu a{
-  display:block;
-  padding:12px 16px;
-}
-.dropdown-menu a:hover{
-  background:#f5f7fb;
-  color:var(--primary);
-}
-.nav-item:hover .dropdown-menu{
-  opacity:1;
-  visibility:visible;
-  transform:none;
+  font-weight:700;
 }
 
-/* =====================================================
-   HERO AI VIDEO
-===================================================== */
-.hero-ai{
+/* ================= HERO ================= */
+.hero{
   position:relative;
-  height:90vh;
-  overflow:hidden;
+  min-height:90vh;
   display:flex;
   align-items:center;
   justify-content:center;
   text-align:center;
   color:#fff;
+  overflow:hidden;
 }
 
-.ai-video{
+.hero video{
   position:absolute;
   inset:0;
   width:100%;
   height:100%;
   object-fit:cover;
-  filter:brightness(.6);
+  filter:brightness(.55);
 }
 
-.hero-overlay{
+.hero::after{
+  content:"";
   position:absolute;
   inset:0;
   background:linear-gradient(
     135deg,
-    rgba(15,32,39,.85),
-    rgba(32,58,67,.85),
-    rgba(44,83,100,.85)
+    rgba(15,28,36,.85),
+    rgba(32,58,67,.85)
   );
 }
 
@@ -167,23 +140,25 @@ header{
   max-width:900px;
   padding:0 20px;
   z-index:2;
-  animation:fadeUp 1.2s ease;
+  animation:fadeUp 1.2s ease both;
 }
 
-.hero-content h2{
+.hero h1{
   font-size:56px;
-  margin-bottom:20px;
+  line-height:1.15;
 }
-.hero-content h2 span{
-  color:var(--success);
-}
-.hero-content p{
+
+.hero h1 span{color:var(--success)}
+
+.hero p{
+  margin:20px auto 0;
   font-size:18px;
   opacity:.9;
-  margin-bottom:32px;
+  max-width:760px;
 }
 
 .hero-actions{
+  margin-top:34px;
   display:flex;
   gap:18px;
   justify-content:center;
@@ -193,204 +168,479 @@ header{
 .btn-primary{
   background:var(--accent);
   color:#fff;
-  padding:14px 34px;
-  border-radius:12px;
-  font-weight:700;
-  box-shadow:0 10px 30px rgba(255,153,0,.35);
-}
-.btn-secondary{
-  background:rgba(255,255,255,.15);
-  color:#fff;
-  padding:14px 34px;
-  border-radius:12px;
-  border:1px solid rgba(255,255,255,.4);
+  padding:15px 36px;
+  border-radius:14px;
+  font-weight:800;
+  box-shadow:0 12px 30px rgba(255,153,0,.45);
 }
 
-/* =====================================================
-   AI SPEECH STRIP
-===================================================== */
-.ai-speech{
+.btn-secondary{
+  border:1px solid rgba(255,255,255,.45);
+  padding:15px 36px;
+  border-radius:14px;
+}
+
+/* ================= AI VOICE BAR ================= */
+.ai-voice-bar{
   background:#fff;
   padding:50px 20px;
-}
-.speech-card{
-  max-width:900px;
-  margin:auto;
-  background:#fff;
-  border-radius:18px;
-  box-shadow:var(--shadow);
-  padding:30px;
-  display:flex;
-  gap:20px;
-  align-items:center;
-}
-.speech-card i{
-  font-size:34px;
-  color:var(--primary);
-}
-.speech-card p{
-  font-size:16px;
-  color:#333;
-  line-height:1.7;
+  border-top:1px solid #eee;
+  border-bottom:1px solid #eee;
 }
 
-/* =====================================================
-   SECTION BASE
-===================================================== */
+.voice-wrap{
+  max-width:900px;
+  margin:auto;
+  text-align:center;
+}
+
+.voice-btn{
+  background:var(--primary);
+  color:#fff;
+  padding:14px 30px;
+  border-radius:40px;
+  border:none;
+  font-weight:700;
+  cursor:pointer;
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  box-shadow:0 12px 30px rgba(43,57,144,.4);
+}
+
+.voice-text{
+  margin-top:18px;
+  min-height:32px;
+  font-size:16px;
+  color:#333;
+}
+
+/* ================= SECTION BASE ================= */
 section{padding:90px 20px}
 .container{max-width:1300px;margin:auto}
+
 .title{
   border-left:6px solid var(--accent);
   padding-left:16px;
   margin-bottom:50px;
 }
-.title h3{
-  font-size:34px;
+
+.title h2{
+  font-size:36px;
   color:var(--primary);
 }
-.title p{
-  color:var(--muted);
-  margin-top:6px;
-}
 
-/* =====================================================
-   AI WORKFLOW
-===================================================== */
-.ai-workflow{
+.title p{color:var(--muted)}
+
+/* ================= WORKFLOW ================= */
+.workflow{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
   gap:28px;
 }
-.ai-step{
-  background:#fff;
-  border-radius:18px;
-  padding:28px;
-  box-shadow:var(--shadow);
-  position:relative;
-  overflow:hidden;
-  transition:.4s;
-}
-.ai-step:hover{transform:translateY(-10px)}
-.ai-step span{
-  position:absolute;
-  top:-20px;
-  right:-20px;
-  font-size:80px;
-  color:rgba(43,57,144,.08);
-  font-weight:800;
-}
-.ai-step h4{
-  font-size:20px;
-  margin-bottom:12px;
-}
-.ai-step p{
-  font-size:15px;
-  color:#555;
-  line-height:1.7;
-}
 
-/* =====================================================
-   DASHBOARD PREVIEW
-===================================================== */
-.dashboard-preview{
-  background:#f9fbff;
-}
-.dashboard-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:28px;
-}
-.dashboard-card{
+.step{
   background:#fff;
-  border-radius:18px;
   padding:30px;
+  border-radius:18px;
   box-shadow:var(--shadow);
-  transition:.4s;
-}
-.dashboard-card:hover{
-  transform:translateY(-8px);
-}
-.dashboard-card h4{
-  margin-bottom:12px;
-  color:var(--primary);
-}
-.dashboard-card p{
-  font-size:15px;
-  color:#555;
-  line-height:1.7;
+  transition:.45s;
 }
 
-/* =====================================================
-   AI STATS
-===================================================== */
-.ai-stats{
-  background:linear-gradient(135deg,#0f1c24,#1b2a3a);
+.step:hover{
+  transform:translateY(-10px);
+  box-shadow:var(--shadow-lg);
+}
+
+.step span{
+  font-size:56px;
+  font-weight:900;
+  color:rgba(43,57,144,.15);
+}
+
+/* ================= CAREER ================= */
+.career-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:26px;
+}
+
+.career-block{
+  background:#fff;
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+  transition:opacity .6s ease, transform .6s ease;
+}
+
+.career-block img{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+}
+
+.career-desc{
+  padding:18px;
+  font-size:14px;
+  color:#444;
+}
+
+.fade-out{
+  opacity:0;
+  transform:translateY(12px);
+}
+
+.fade-in{
+  opacity:1;
+  transform:none;
+}
+
+/* ================= STATS ================= */
+.stats{
+  background:linear-gradient(135deg,var(--dark),var(--dark2));
   color:#fff;
 }
+
 .stats-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
   gap:30px;
   text-align:center;
 }
-.stat-box h3{
-  font-size:44px;
+
+.stat h3{
+  font-size:46px;
   color:var(--accent);
 }
-.stat-box p{
-  opacity:.85;
-  margin-top:6px;
-}
 
-/* =====================================================
-   CTA
-===================================================== */
-.ai-cta{
-  background:linear-gradient(135deg,var(--primary),#1e2b70);
+/* ================= CHAT ================= */
+.chat-btn{
+  position:fixed;
+  bottom:24px;
+  right:24px;
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  background:var(--primary);
   color:#fff;
-  text-align:center;
-}
-.ai-cta h2{
-  font-size:38px;
-  margin-bottom:16px;
-}
-.ai-cta p{
-  max-width:800px;
-  margin:0 auto 30px;
-  opacity:.9;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:24px;
+  cursor:pointer;
+  box-shadow:0 15px 40px rgba(0,0,0,.35);
+  z-index:999;
 }
 
-/* =====================================================
-   REVEAL
-===================================================== */
-.reveal{
-  opacity:0;
-  transform:translateY(40px);
-  transition:1s ease;
-}
-.reveal.show{
-  opacity:1;
-  transform:none;
+.chat-panel{
+  position:fixed;
+  bottom:100px;
+  right:24px;
+  width:320px;
+  background:#fff;
+  border-radius:18px;
+  box-shadow:var(--shadow);
+  display:none;
+  flex-direction:column;
 }
 
-/* =====================================================
-   ANIMATIONS
-===================================================== */
+/* ================= ANIMATION ================= */
 @keyframes fadeUp{
   from{opacity:0;transform:translateY(40px)}
   to{opacity:1;transform:none}
 }
 
-/* =====================================================
-   MOBILE
-===================================================== */
+/* ================= MOBILE ================= */
 @media(max-width:900px){
-  .menu-desktop{display:none}
-  .hamburger{display:block}
-  .auth .login,.auth .register{display:none}
-  .hero-content h2{font-size:40px}
-  section{padding:70px 16px}
+  .menu{display:none}
+  .hero h1{font-size:38px}
+  section{padding:70px 20px}
 }
+
+@media(max-width:480px){
+  .hero h1{font-size:30px}
+  .btn-primary,.btn-secondary{
+    width:100%;
+    text-align:center;
+  }
+}
+.cursor{
+  display:inline-block;
+  margin-left:2px;
+  animation:blink 1s infinite;
+  font-weight:700;
+}
+
+@keyframes blink{
+  0%,50%{opacity:1}
+  51%,100%{opacity:0}
+}
+/* ================= WAVEFORM (NO SHAKE FIX) ================= */
+
+.waveform{
+  margin-top:14px;
+  display:flex;
+  justify-content:center;
+  gap:6px;
+  opacity:0;
+  transition:opacity .3s ease;
+  height:28px;              /* FIXED HEIGHT */
+  align-items:flex-end;     /* LOCK LAYOUT */
+}
+
+.waveform span{
+  width:4px;
+  height:18px;              /* FIXED HEIGHT */
+  background:var(--primary);
+  border-radius:4px;
+  transform-origin:bottom;
+  animation:wave 1s infinite ease-in-out;
+}
+
+.waveform span:nth-child(2){animation-delay:.1s}
+.waveform span:nth-child(3){animation-delay:.2s}
+.waveform span:nth-child(4){animation-delay:.3s}
+.waveform span:nth-child(5){animation-delay:.4s}
+
+/* GPU SAFE ANIMATION */
+@keyframes wave{
+  0%,100%{
+    transform:scaleY(.4);
+    opacity:.5;
+  }
+  50%{
+    transform:scaleY(1.2);
+    opacity:1;
+  }
+}
+
+.waveform.active{
+  opacity:1;
+}
+
+
+.bubble{
+  max-width:75%;
+  padding:10px 14px;
+  border-radius:16px;
+  font-size:14px;
+}
+
+.bubble.ai{
+  background:#f1f3ff;
+  align-self:flex-start;
+}
+
+.bubble.user{
+  background:var(--primary);
+  color:#fff;
+  align-self:flex-end;
+}
+
+.chat-panel input{
+  border:none;
+  border-top:1px solid #eee;
+  padding:14px;
+  outline:none;
+}
+/* ================= AI INTERVIEW ================= */
+.ai-interview{
+  background:#fff;
+  padding:90px 20px;
+}
+
+.ai-interview h2{
+  color:var(--primary);
+  margin-bottom:10px;
+}
+
+.interview-note{
+  color:#666;
+  margin-bottom:30px;
+}
+
+.question-box{
+  background:#f5f7fb;
+  border-left:6px solid var(--accent);
+  padding:18px;
+  border-radius:12px;
+  margin-bottom:20px;
+  font-size:18px;
+}
+
+#userAnswer{
+  width:100%;
+  padding:14px;
+  border-radius:12px;
+  border:1px solid #ddd;
+  font-size:15px;
+  resize:none;
+}
+
+.interview-actions{
+  margin-top:20px;
+  display:flex;
+  gap:14px;
+}
+
+.score-box{
+  margin-top:30px;
+  padding:20px;
+  border-radius:14px;
+  background:#f0fdf4;
+  display:none;
+}
+/* ================= HEADER FIX ================= */
+
+header{
+  position:sticky;
+  top:0;
+  z-index:9999;
+  background:#fff;
+  box-shadow:0 2px 15px rgba(0,0,0,.05);
+}
+
+/* NAV */
+.nav{
+  max-width:1400px;
+  margin:auto;
+  padding:14px 24px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+/* LOGO */
+.logo{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.logo span{
+  width:42px;
+  height:42px;
+  background:#2b3990;
+  color:#fff;
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:800;
+}
+.logo h1{
+  font-size:20px;
+  font-weight:800;
+}
+
+/* DESKTOP MENU */
+.menu-desktop{
+  display:flex;
+  align-items:center;
+  gap:22px;
+  white-space:nowrap;
+}
+
+.menu-desktop > a,
+.menu-desktop .nav-item > a{
+  font-size:14px;
+  font-weight:600;
+  position:relative;
+}
+
+/* DROPDOWN */
+.nav-item{
+  position:relative;
+}
+
+.dropdown-menu{
+  position:absolute;
+  top:120%;
+  left:0;
+  background:#fff;
+  border-radius:10px;
+  min-width:180px;
+  box-shadow:0 15px 40px rgba(0,0,0,.15);
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(10px);
+  transition:.3s ease;
+  display:flex;
+  flex-direction:column;
+}
+
+.dropdown-menu a{
+  padding:10px 16px;
+  font-size:14px;
+  color:#111;
+}
+
+.dropdown-menu a:hover{
+  background:#f5f7fb;
+}
+
+/* SHOW DROPDOWN */
+.nav-item:hover .dropdown-menu{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0);
+}
+
+/* AUTH */
+.auth{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+
+.login{
+  font-size:14px;
+}
+
+.register{
+  background:#2b3990;
+  color:#fff;
+  padding:8px 18px;
+  border-radius:10px;
+  font-weight:700;
+}
+
+/* HAMBURGER */
+.hamburger{
+  display:none;
+  font-size:26px;
+  cursor:pointer;
+}
+@media(max-width:992px){
+  .menu-desktop{
+    position:fixed;
+    top:70px;
+    left:0;
+    width:100%;
+    background:#fff;
+    flex-direction:column;
+    padding:20px;
+    display:none;
+    gap:16px;
+    box-shadow:0 20px 50px rgba(0,0,0,.2);
+  }
+
+  .menu-desktop.show{
+    display:flex;
+  }
+
+  .nav-item:hover .dropdown-menu{
+    position:static;
+    opacity:1;
+    visibility:visible;
+    transform:none;
+    box-shadow:none;
+  }
+
+  .hamburger{
+    display:block;
+  }
+}
+
 /* =====================================================
    ADVANCED FOOTER
 ===================================================== */
@@ -562,7 +812,6 @@ section{padding:90px 20px}
 
 <body>
 
-<!-- ================= HEADER (SAME AS HOME 1) ================= -->
 <header>
   <div class="nav">
     <div class="logo">
@@ -605,180 +854,152 @@ section{padding:90px 20px}
   </div>
 </header>
 
-<!-- ================= HERO WITH AI VIDEO ================= -->
-<section class="hero-ai">
-
-  <div class="hero-overlay"></div>
-
-  <!-- AI TALKING VIDEO -->
-  <video class="ai-video"
-         autoplay
-         muted
-         loop
-         playsinline>
-    <source src="https://cdn.coverr.co/videos/coverr-ai-robot-thinking-8298/1080p.mp4"
-            type="video/mp4">
+<!-- HERO -->
+<section class="hero">
+  <video autoplay muted loop playsinline>
+    <source src="https://cdn.coverr.co/videos/coverr-ai-robot-thinking-8298/1080p.mp4">
   </video>
-
   <div class="hero-content">
-    <h2>
-      AI That <span>Talks, Thinks</span><br>
-      & Hires for You
-    </h2>
-    <p>
-      SmartHire uses conversational AI, predictive analytics, and real-time
-      hiring intelligence to help companies discover, screen, and hire the
-      right talent faster than ever before.
-    </p>
-
+    <h1>AI That <span>Talks, Thinks</span><br>& Hires for You</h1>
+    <p>SmartHire uses conversational AI and predictive analytics to transform hiring.</p>
     <div class="hero-actions">
-      <a href="recruiters.html" class="btn-primary">Post a Job</a>
-      <a href="companies.html" class="btn-secondary">Explore Platform</a>
-    </div>
-  </div>
-
-</section>
-
-<!-- ================= AI SPEAKING STRIP ================= -->
-<section class="ai-speech">
-  <div class="container">
-    <div class="speech-card">
-      <i class="fa-solid fa-microphone-lines"></i>
-      <p id="aiSpeechText">
-        Hello, I am SmartHire AI. I analyze millions of hiring patterns to
-        connect companies with the most relevant candidates.
-      </p>
+      <a class="btn-primary">Post a Job</a>
+      <a class="btn-secondary">Explore Platform</a>
     </div>
   </div>
 </section>
 
-<!-- ================= AI WORKFLOW ================= -->
-<section class="reveal">
-  <div class="container">
 
-    <div class="title">
-      <h3>How Our AI Hiring Engine Works</h3>
-      <p>End-to-end automated recruitment intelligence</p>
-    </div>
 
-    <div class="ai-workflow">
-
-      <div class="ai-step">
-        <span>01</span>
-        <h4>Requirement Understanding</h4>
-        <p>
-          Our AI interprets job descriptions, required skills, seniority
-          level, and hiring urgency using natural language processing.
-        </p>
-      </div>
-
-      <div class="ai-step">
-        <span>02</span>
-        <h4>Talent Intelligence Scan</h4>
-        <p>
-          SmartHire scans millions of verified profiles, learning from past
-          successful hires and recruiter behavior.
-        </p>
-      </div>
-
-      <div class="ai-step">
-        <span>03</span>
-        <h4>Predictive Match Ranking</h4>
-        <p>
-          Candidates are ranked using AI-driven success probability scores
-          instead of keyword matching.
-        </p>
-      </div>
-
-      <div class="ai-step">
-        <span>04</span>
-        <h4>AI-Assisted Interviews</h4>
-        <p>
-          AI conducts pre-screening questions, sentiment analysis, and
-          interview readiness evaluation.
-        </p>
-      </div>
-
-    </div>
+<!-- AI VOICE -->
+<section class="ai-voice-bar">
+  <div class="voice-wrap">
+    <button id="voiceBtn" class="voice-btn">
+      <i class="fa-solid fa-microphone-lines"></i> Start SmartHire AI
+    </button>
+<p id="voiceText" class="voice-text">
+  <span id="typedText"></span><span class="cursor">|</span>
+</p>
+<div class="waveform" id="waveform">
+  <span></span><span></span><span></span><span></span><span></span>
+</div>
   </div>
+  <div class="chat-btn"><i class="fa-solid fa-comments"></i></div>
+
+<div class="chat-panel">
+  <div class="chat-header">SmartHire AI</div>
+  <div class="chat-body" id="chatBody"></div>
+  <input id="chatInput" placeholder="Ask SmartHire AI..." />
+</div>
 </section>
 
-<!-- ================= AI DASHBOARD PREVIEW ================= -->
-<section class="dashboard-preview reveal">
+<!-- ================= AI INTERVIEW PANEL ================= -->
+<section class="ai-interview">
   <div class="container">
 
-    <div class="title">
-      <h3>Recruiter Control Dashboard</h3>
-      <p>Complete visibility and decision control</p>
-    </div>
-
-    <div class="dashboard-grid">
-
-      <div class="dashboard-card">
-        <h4>Live Hiring Funnel</h4>
-        <p>
-          Monitor candidate movement from application to offer acceptance
-          with real-time AI insights.
-        </p>
-      </div>
-
-      <div class="dashboard-card">
-        <h4>AI Skill Heatmap</h4>
-        <p>
-          Visualize in-demand skills, salary benchmarks, and talent
-          availability across regions.
-        </p>
-      </div>
-
-      <div class="dashboard-card">
-        <h4>Fraud & Spam Shield</h4>
-        <p>
-          SmartHire AI blocks fake profiles, duplicate applications, and
-          suspicious recruiter activity automatically.
-        </p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ================= AI STATS ================= -->
-<section class="ai-stats reveal">
-  <div class="container">
-
-    <div class="stats-grid">
-      <div class="stat-box">
-        <h3 data-count="72">0</h3>
-        <p>% Faster Hiring</p>
-      </div>
-      <div class="stat-box">
-        <h3 data-count="98">0</h3>
-        <p>% Recruiter Satisfaction</p>
-      </div>
-      <div class="stat-box">
-        <h3 data-count="1.2">0</h3>
-        <p>M+ AI Decisions / Day</p>
-      </div>
-      <div class="stat-box">
-        <h3 data-count="150">0</h3>
-        <p>Countries Covered</p>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ================= CTA ================= -->
-<section class="reveal ai-cta">
-  <div class="container">
-    <h2>Let AI Handle Hiring While You Scale</h2>
-    <p>
-      Join thousands of companies using SmartHire AI to reduce hiring costs,
-      time-to-hire, and bad recruitment decisions.
+    <h2>🤖 SmartHire AI Interview</h2>
+    <p class="interview-note">
+      Answer honestly. Our AI evaluates communication, clarity, and confidence.
     </p>
-    <a href="register.html" class="btn-primary">Start with SmartHire AI</a>
+
+    <!-- Progress -->
+    <div class="interview-progress">
+      <span id="questionCount">Question 0 / 5</span>
+      <span id="aiStatus" class="ai-status">AI Ready</span>
+    </div>
+
+    <!-- Question -->
+    <div class="question-box" aria-live="polite">
+      <strong id="aiQuestion">Click Start Interview</strong>
+    </div>
+
+    <!-- Answer -->
+    <textarea
+      id="userAnswer"
+      placeholder="Type your answer here..."
+      rows="5"
+      disabled
+      aria-label="Interview answer input">
+    </textarea>
+
+    <div class="answer-meta">
+      <span id="charCount">0 characters</span>
+    </div>
+
+    <!-- Actions -->
+    <div class="interview-actions">
+      <button
+        id="startInterview"
+        class="btn-primary"
+        aria-label="Start AI Interview">
+        ▶ Start Interview
+      </button>
+
+      <button
+        id="submitAnswer"
+        class="btn-secondary"
+        disabled
+        aria-label="Submit Interview Answer">
+        ➤ Submit Answer
+      </button>
+      <button id="speakAnswer" class="btn-secondary">
+  🎤 Speak Answer
+</button>
+
+    </div>
+
+    <!-- Score -->
+    <div id="scoreBox" class="score-box" aria-live="polite"></div>
+
   </div>
 </section>
+
+
+<!-- WORKFLOW -->
+<section>
+  <div class="container">
+    <div class="title">
+      <h2>How SmartHire Works</h2>
+      <p>End-to-end AI hiring flow</p>
+    </div>
+    <div class="workflow">
+      <div class="step"><span>01</span><h4>Job Understanding</h4></div>
+      <div class="step"><span>02</span><h4>Talent Scan</h4></div>
+      <div class="step"><span>03</span><h4>Predict Match</h4></div>
+      <div class="step"><span>04</span><h4>Interview Assist</h4></div>
+    </div>
+  </div>
+</section>
+
+<!-- CAREER -->
+<section>
+  <div class="container">
+    <div class="title"><h2>Career Growth with AI</h2></div>
+    <div class="career-grid">
+      <div class="career-block"><img><div class="career-desc"></div></div>
+      <div class="career-block"><img><div class="career-desc"></div></div>
+      <div class="career-block"><img><div class="career-desc"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat"><h3 data-target="72">0</h3><p>% Faster Hiring</p></div>
+      <div class="stat"><h3 data-target="98">0</h3><p>% Satisfaction</p></div>
+      <div class="stat"><h3 data-target="150">0</h3><p>Countries</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CHAT -->
+<div class="chat-btn" id="chatToggle"><i class="fa-solid fa-comments"></i></div>
+<div class="chat-panel" id="chatPanel">
+  <div class="chat-header">SmartHire AI</div>
+  <div class="chat-body">Hello! Ask me about jobs or hiring.</div>
+</div>
 
 <!-- ================= FOOTER ================= -->
 <footer class="footer">
@@ -850,264 +1071,246 @@ section{padding:90px 20px}
 
 <script>
 /* =====================================================
-   MOBILE MENU
+   SMART HIRE — FINAL JS (FIXED & STABLE)
 ===================================================== */
-function toggleMenu(){
-  const menu = document.getElementById("mobileMenu");
-  if(menu) menu.classList.toggle("active");
-}
 
-/* =====================================================
-   MOBILE SUB MENU (HOME / DASHBOARD)
-===================================================== */
-function toggleSub(el){
-  const sub = el.nextElementSibling;
-  if(!sub) return;
-  sub.style.display = sub.style.display === "block" ? "none" : "block";
-}
+document.addEventListener("DOMContentLoaded", () => {
 
-/* =====================================================
-   HERO TYPEWRITER (AI COUNT)
-===================================================== */
-const typeTarget = document.getElementById("typeText");
-const typeValue = "500,000+";
-let typeIndex = 0;
+  /* ================= HELPERS ================= */
+  const qs  = s => document.querySelector(s);
+  const qsa = s => document.querySelectorAll(s);
 
-function startTyping(){
-  if(!typeTarget) return;
-  if(typeIndex < typeValue.length){
-    typeTarget.textContent += typeValue.charAt(typeIndex);
-    typeIndex++;
-    setTimeout(startTyping, 120);
+  /* ================= ELEMENTS ================= */
+  const voiceBtn   = qs("#voiceBtn");
+  const voiceText  = qs("#voiceText");
+  const waveform   = qs(".waveform");
+
+  const chatBtn    = qs(".chat-btn");
+  const chatPanel  = qs(".chat-panel");
+  const chatBody   = qs("#chatBody");
+  const chatInput  = qs("#chatInput");
+
+  const careerBlocks = qsa(".career-block");
+  const statsEls = qsa(".stat h3");
+
+  const startBtn   = qs("#startInterview");
+  const submitBtn  = qs("#submitAnswer");
+  const userAnswer = qs("#userAnswer");
+  const aiQuestion = qs("#aiQuestion");
+  const scoreBox   = qs("#scoreBox");
+
+  /* ================= SPEAK ================= */
+  function speak(text){
+    if(!("speechSynthesis" in window)) return;
+
+    speechSynthesis.cancel();
+    waveform?.classList.add("active");
+
+    const msg = new SpeechSynthesisUtterance(text);
+    msg.lang = "en-US";
+
+    msg.onend = ()=> waveform?.classList.remove("active");
+    speechSynthesis.speak(msg);
   }
-}
-startTyping();
 
-/* =====================================================
-   SCROLL REVEAL
-===================================================== */
-const revealEls = document.querySelectorAll(".reveal");
+  /* ================= TYPE EFFECT ================= */
+  function typeText(el, text, cb){
+    if(!el) return;
+    el.textContent = "";
+    let i = 0;
 
-function handleReveal(){
-  revealEls.forEach(el => {
-    if(el.getBoundingClientRect().top < window.innerHeight - 120){
-      el.classList.add("show");
-    }
-  });
-}
-window.addEventListener("scroll", handleReveal);
-window.addEventListener("load", handleReveal);
-
-/* =====================================================
-   STICKY SEARCH (DESKTOP ONLY)
-===================================================== */
-const searchBox = document.querySelector(".search-box");
-let stickyPoint = searchBox ? searchBox.offsetTop + 120 : 0;
-
-function handleStickySearch(){
-  if(!searchBox) return;
-  if(window.innerWidth < 768) return; // disable on mobile
-
-  if(window.scrollY > stickyPoint){
-    searchBox.classList.add("sticky");
-  }else{
-    searchBox.classList.remove("sticky");
+    (function t(){
+      if(i < text.length){
+        el.textContent += text.charAt(i++);
+        setTimeout(t, 30);
+      } else cb && cb();
+    })();
   }
-}
-window.addEventListener("scroll", handleStickySearch);
 
-/* =====================================================
-   SEARCH AUTOSUGGEST (AI STYLE)
-===================================================== */
-const skills = [
-  "Java Developer","Python Developer","React Developer","UI UX Designer",
-  "Data Scientist","DevOps Engineer","Cloud Architect","Cyber Security",
-  "Machine Learning","Digital Marketing","Android Developer","Finance Analyst"
-];
-
-const skillInput = document.querySelector(".search-box input");
-let suggestBox;
-
-if(skillInput){
-  suggestBox = document.createElement("div");
-  suggestBox.className = "autosuggest";
-  skillInput.parentElement.appendChild(suggestBox);
-
-  skillInput.addEventListener("input", () => {
-    const value = skillInput.value.toLowerCase();
-    suggestBox.innerHTML = "";
-    if(!value){
-      suggestBox.style.display = "none";
-      return;
-    }
-
-    skills
-      .filter(s => s.toLowerCase().includes(value))
-      .slice(0,6)
-      .forEach(s => {
-        const div = document.createElement("div");
-        div.innerHTML = s.replace(
-          new RegExp(value,"gi"),
-          match => `<strong>${match}</strong>`
-        );
-        div.onclick = () => {
-          skillInput.value = s;
-          suggestBox.style.display = "none";
-        };
-        suggestBox.appendChild(div);
-      });
-
-    suggestBox.style.display = "block";
-  });
-
-  document.addEventListener("click", e => {
-    if(!skillInput.contains(e.target)){
-      suggestBox.style.display = "none";
-    }
-  });
-}
-
-/* =====================================================
-   AI SPEECH (AUTO TYPING SENTENCE)
-===================================================== */
-const speechEl = document.querySelector(".speech-card p");
-const speechText = "Hello! I’m SmartHire AI. I analyze your skills, experience, and hiring trends to guide you toward the best career opportunities.";
-let speechIndex = 0;
-
-function typeSpeech(){
-  if(!speechEl) return;
-  if(speechIndex < speechText.length){
-    speechEl.textContent += speechText.charAt(speechIndex);
-    speechIndex++;
-    setTimeout(typeSpeech, 35);
+  /* ================= GREETING ================= */
+  if(voiceBtn){
+    voiceBtn.onclick = ()=>{
+      const greet =
+        "Welcome to SmartHire. I am your AI hiring assistant.";
+      typeText(voiceText, greet, ()=> speak(greet));
+    };
   }
-}
 
-if(speechEl){
-  speechEl.textContent = "";
-  setTimeout(typeSpeech, 800);
-}
+  /* ================= CAREER AUTO ================= */
+  const careerData = [
+    {img:"https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900",text:"AI resume optimization boosts interviews."},
+    {img:"https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=900",text:"Mock interviews improve confidence."},
+    {img:"https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=900",text:"Career analytics guide growth."}
+  ];
 
-/* =====================================================
-   CAREER GROWTH – 3 BLOCK AUTO SWITCH
-===================================================== */
-const careerSlides = [
-  [
-    {
-      img:"https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900",
-      text:"AI-powered resume optimization boosts recruiter visibility and interview calls."
-    },
-    {
-      img:"https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=900",
-      text:"Mock interviews improve confidence, clarity, and communication skills."
-    },
-    {
-      img:"https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=900",
-      text:"Market analytics help professionals plan smarter career moves."
-    }
-  ],
-  [
-    {
-      img:"https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=900",
-      text:"Personalized career mentoring aligned with industry demand."
-    },
-    {
-      img:"https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=900",
-      text:"Skill gap analysis highlights growth opportunities."
-    },
-    {
-      img:"https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=900",
-      text:"Custom learning paths accelerate promotions and salary growth."
-    }
-  ],
-  [
-    {
-      img:"https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=900",
-      text:"Leadership development ensures long-term career success."
-    },
-    {
-      img:"https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900",
-      text:"Continuous upskilling keeps professionals future-ready."
-    },
-    {
-      img:"https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=900",
-      text:"Data-driven insights guide high-impact job transitions."
-    }
-  ]
-];
+  let cIndex = 0;
 
-let careerIndex = 0;
-const careerBlocks = document.querySelectorAll(".career-block");
+  function updateCareer(){
+    careerBlocks.forEach((block,i)=>{
+      let img  = block.querySelector("img");
+      let desc = block.querySelector(".career-desc");
 
-function updateCareerBlocks(){
-  if(!careerBlocks.length) return;
-
-  careerBlocks.forEach((block, i) => {
-    const img = block.querySelector("img");
-    const desc = block.querySelector(".career-desc");
-
-    img.style.opacity = 0;
-    desc.style.opacity = 0;
-
-    setTimeout(() => {
-      img.src = careerSlides[careerIndex][i].img;
-      desc.textContent = careerSlides[careerIndex][i].text;
-      img.style.opacity = 1;
-      desc.style.opacity = 1;
-    }, 300);
-  });
-
-  careerIndex = (careerIndex + 1) % careerSlides.length;
-}
-
-updateCareerBlocks();
-setInterval(updateCareerBlocks, 4800);
-
-/* =====================================================
-   AI STATS COUNT-UP
-===================================================== */
-const counters = document.querySelectorAll(".stat-box h3");
-
-function animateCounters(){
-  counters.forEach(counter => {
-    const target = +counter.textContent.replace(/\D/g,"");
-    let count = 0;
-    const step = Math.max(1, target / 80);
-
-    function update(){
-      count += step;
-      if(count < target){
-        counter.textContent = Math.floor(count) + "+";
-        requestAnimationFrame(update);
-      }else{
-        counter.textContent = target + "+";
+      if(!img){
+        img = document.createElement("img");
+        block.appendChild(img);
       }
-    }
-    update();
-  });
-}
+      if(!desc){
+        desc = document.createElement("div");
+        desc.className = "career-desc";
+        block.appendChild(desc);
+      }
 
-let statsTriggered = false;
-window.addEventListener("scroll", () => {
-  const statsSection = document.querySelector(".ai-stats");
-  if(!statsSection || statsTriggered) return;
-
-  if(statsSection.getBoundingClientRect().top < window.innerHeight - 120){
-    animateCounters();
-    statsTriggered = true;
+      const d = careerData[(cIndex+i)%careerData.length];
+      img.src = d.img;
+      desc.textContent = d.text;
+    });
+    cIndex++;
   }
+
+  if(careerBlocks.length){
+    updateCareer();
+    setInterval(updateCareer, 5000);
+  }
+
+  /* ================= STATS ================= */
+  function animateStats(){
+    statsEls.forEach(el=>{
+      const target = +el.dataset.target;
+      let val = 0;
+      const step = target / 60;
+
+      (function run(){
+        val += step;
+        if(val < target){
+          el.textContent = Math.floor(val);
+          requestAnimationFrame(run);
+        } else {
+          el.textContent = target;
+        }
+      })();
+    });
+  }
+
+  let statsDone = false;
+  window.addEventListener("scroll", ()=>{
+    if(statsDone) return;
+    const statsSection = qs(".stats");
+    if(!statsSection) return;
+
+    if(statsSection.getBoundingClientRect().top < window.innerHeight - 120){
+      statsDone = true;
+      animateStats();
+    }
+  });
+
+  /* ================= INTERVIEW ================= */
+  const questions = [
+    "Tell me about yourself.",
+    "What technical skills do you have?",
+    "Describe a project you worked on.",
+    "How do you solve problems?",
+    "Why should we hire you?"
+  ];
+
+  let qIndex = 0;
+  let answers = [];
+
+  if(startBtn){
+    startBtn.onclick = ()=>{
+      qIndex = 0;
+      answers = [];
+      scoreBox.style.display = "none";
+      submitBtn.disabled = false;
+      userAnswer.value = "";
+
+      typeText(aiQuestion, questions[0], ()=> speak(questions[0]));
+    };
+  }
+
+  if(submitBtn){
+    submitBtn.onclick = ()=>{
+      const ans = userAnswer.value.trim();
+      if(!ans) return;
+
+      answers.push(ans);
+      userAnswer.value = "";
+      qIndex++;
+
+      if(qIndex < questions.length){
+        typeText(aiQuestion, questions[qIndex], ()=> speak(questions[qIndex]));
+      } else {
+        submitBtn.disabled = true;
+        const score = answers.length * 20;
+        scoreBox.style.display = "block";
+        scoreBox.innerHTML = `<strong>Score:</strong> ${score}/100`;
+        speak("Interview completed. Your score is " + score);
+      }
+    };
+  }
+
 });
 
-/* =====================================================
-   SAFE VIDEO AUTOPLAY (MOBILE FIX)
-===================================================== */
-const aiVideo = document.querySelector(".ai-video");
-if(aiVideo){
-  aiVideo.muted = true;
-  aiVideo.play().catch(()=>{});
-}
-</script>
+window.addEventListener("load", ()=>{
+  const ta = document.getElementById("userAnswer");
+  if(ta){
+    ta.disabled = false;
+    ta.readOnly = false;
+    ta.style.pointerEvents = "auto";
+  }
+});
+/* ================= INTERVIEW VOICE INPUT ================= */
+const speakBtn   = document.getElementById("speakAnswer");
+const answerBox  = document.getElementById("userAnswer");
 
+const SpeechRecognition =
+  window.SpeechRecognition || window.webkitSpeechRecognition;
+
+let interviewRecognizer = null;
+
+if(SpeechRecognition){
+  interviewRecognizer = new SpeechRecognition();
+  interviewRecognizer.lang = "en-US";
+  interviewRecognizer.interimResults = false;
+  interviewRecognizer.maxAlternatives = 1;
+
+  interviewRecognizer.onstart = () => {
+    console.log("🎤 Interview mic started");
+  };
+
+  interviewRecognizer.onresult = (event) => {
+    const transcript = event.results[0][0].transcript;
+    answerBox.value = transcript;        // ✅ TEXT APPEARS
+    answerBox.focus();
+
+    speak(
+      "Answer recorded. You can edit it or submit."
+    );
+  };
+
+  interviewRecognizer.onerror = (event) => {
+    console.error("Mic error:", event.error);
+    speak("Microphone error. Please allow mic access.");
+  };
+
+  interviewRecognizer.onend = () => {
+    console.log("🎤 Mic stopped");
+  };
+}
+
+/* BUTTON CLICK — REQUIRED USER ACTION */
+if(speakBtn && interviewRecognizer){
+  speakBtn.addEventListener("click", () => {
+    interviewRecognizer.start();
+    speak("Please speak your answer now.");
+  });
+}
+
+function toggleMenu(){
+  document.querySelector(".menu-desktop")
+    .classList.toggle("show");
+}
+
+</script>
 
 </body>
 </html>
