@@ -1031,79 +1031,90 @@ button:active{
     justify-content:center;
   }
 }
-/* MOBILE MENU FULL PAGE */
+/* ================= MOBILE MENU — SAME AS INDEX ================= */
 .menu-mobile{
   position: fixed;
-  top: 70px;            /* below header */
-  left: 0;
-  width: 100%;
-  height: calc(100vh - 70px);
+  top: 0;
+  left: -100%;
+  width: 85%;
+  height: 100vh;
   background: #fff;
   z-index: 9999;
-  display: none;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-/* SHOW MENU */
-.menu-mobile.active{
+  padding: 24px;
+  transition: .4s ease;
   display: flex;
+  flex-direction: column;
+  gap: 18px;
 }
 
-/* MENU LIST */
-.menu-content{
-  padding: 30px 24px;
+/* OPEN STATE */
+.menu-mobile.active{
+  left: 0;
 }
 
-.menu-content a,
-.menu-content .mobile-parent{
-  display: block;
-  font-size: 18px;
+/* MENU ITEMS */
+.menu-mobile a,
+.mobile-parent{
+  font-size: 16px;
   font-weight: 500;
-  padding: 14px 0;
-  color: #111;
+  padding: 6px 0;
+}
+
+/* REMOVE BORDERS */
+.menu-mobile a,
+.mobile-parent{
+  border: none;
+}
+
+/* SUB MENU */
+.mobile-sub{
+  display: none;
+  padding-left: 14px;
+}
+
+.mobile-sub a{
+  font-size: 15px;
+  opacity: .85;
 }
 
 /* AUTH BUTTONS */
 .mobile-auth{
-  padding: 20px;
+  margin-top: auto;
   display: flex;
   gap: 14px;
 }
 
-.mobile-auth .login{
-  flex:1;
-  border: 2px solid #2b3990;
-  color: #2b3990;
+.mobile-auth a{
+  flex: 1;
   text-align: center;
-  padding: 14px 0;
-  border-radius: 12px;
-  font-weight: 700;
+  padding: 12px 0;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.mobile-auth .login{
+  border: 2px solid var(--primary);
+  color: var(--primary);
 }
 
 .mobile-auth .register{
-  flex:1;
-  background: #2b3990;
+  background: var(--primary);
   color: #fff;
-  text-align: center;
-  padding: 14px 0;
-  border-radius: 12px;
-  font-weight: 700;
 }
 
 /* HAMBURGER */
 .hamburger{
   display: none;
-  font-size: 28px;
+  font-size: 26px;
   cursor: pointer;
 }
 
-/* MOBILE ONLY */
-@media(max-width:900px){
-  .menu-desktop{display:none}
-  .hamburger{display:block}
+/* MOBILE VISIBILITY */
+@media (max-width: 900px){
+  .menu-desktop{ display: none; }
   .auth .login,
-  .auth .register{display:none}
+  .auth .register{ display: none; }
+  .hamburger{ display: block; }
 }
 
 </style>
@@ -1674,30 +1685,19 @@ interviewRecognizer.onstart = () => {
 interviewRecognizer.onend = () => {
   waveform.classList.remove("active");
 };
-/* ===== MOBILE MENU ===== */
-function toggleMenu() {
-  const menu = document.getElementById("mobileMenu");
-  if (!menu) return;
-
-  menu.classList.toggle("active");
-
-  document.body.style.overflow =
-    menu.classList.contains("active") ? "hidden" : "";
+   
+function toggleMenu(){
+  document.getElementById("mobileMenu")
+    .classList.toggle("active");
 }
 
-/* ===== MOBILE SUB MENU ===== */
-function toggleSub(el) {
+function toggleSub(el){
   const sub = el.nextElementSibling;
-  if (!sub) return;
-
-  document.querySelectorAll(".mobile-sub").forEach(s => {
-    if (s !== sub) s.style.display = "none";
-  });
-
-  sub.style.display = sub.style.display === "block" ? "none" : "block";
+  if(sub){
+    sub.style.display =
+      sub.style.display === "block" ? "none" : "block";
+  }
 }
-
-
 
 </script>
 
