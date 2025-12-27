@@ -767,6 +767,36 @@ header{
     display: none;
   }
 }
+/* =====================================================
+   FORCE SAME HAMBURGER DESIGN AS index.html
+===================================================== */
+
+/* RESET any previous hamburger styles */
+.hamburger {
+  all: unset;
+}
+
+/* EXACT hamburger look from index.html */
+.hamburger {
+  display: block;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 6px;
+  color: #111;
+}
+
+/* Hide hamburger on desktop */
+@media (min-width: 993px) {
+  .hamburger {
+    display: none;
+  }
+}
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
 /* =====================================================
    ADVANCED FOOTER
