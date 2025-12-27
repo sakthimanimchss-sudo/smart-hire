@@ -1032,85 +1032,77 @@ button:active{
   }
 }
 /* ===== MOBILE MENU – SAME AS index.html ===== */
-
 .menu-mobile{
-  position: fixed;
-  top: 0;
-  left: -100%;
-  width: 85%;
-  height: 100vh;
-  background: #fff;
-  z-index: 9999;
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 22px;
-  transition: .4s ease;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100vh;
+  background:#fff;
+  z-index:9999;
+  padding:24px 20px;
+  display:none;
+  overflow-y:auto;
 }
 
-/* SHOW MENU */
 .menu-mobile.active{
-  left: 0;
+  display:block;
 }
 
-/* MENU LINKS */
-.menu-mobile a{
-  font-size: 16px;
-  font-weight: 500;
-  color: #111;
+/* menu items */
+.menu-mobile a,
+.mobile-parent{
+  display:block;
+  padding:14px 0;
+  font-size:16px;
+  font-weight:600;
+  border-bottom:1px solid #eee;
 }
 
-/* REMOVE ALL BORDERS */
-.menu-mobile a{
-  border: none !important;
+/* submenu */
+.mobile-sub{
+  display:none;
+  padding-left:16px;
+  border-left:2px solid #e5e7eb;
 }
 
-/* AUTH BUTTONS */
+/* auth buttons */
 .mobile-auth{
-  margin-top: auto;
-  display: flex;
-  gap: 14px;
+  margin-top:24px;
+  display:flex;
+  gap:14px;
 }
 
 .mobile-auth a{
-  flex: 1;
-  text-align: center;
-  padding: 14px 0;
-  border-radius: 12px;
-  font-weight: 700;
+  flex:1;
+  text-align:center;
+  padding:14px 0;
+  border-radius:12px;
+  font-weight:700;
 }
 
-/* LOGIN */
 .mobile-auth .login{
-  border: 2px solid #2b3990;
-  color: #2b3990;
-  background: #fff;
+  border:2px solid var(--primary);
+  color:var(--primary);
 }
 
-/* REGISTER */
 .mobile-auth .register{
-  background: #2b3990;
-  color: #fff;
+  background:var(--primary);
+  color:#fff;
 }
 
-/* HAMBURGER */
-.hamburger{
-  display: none;
-  font-size: 26px;
-  cursor: pointer;
-}
-
-@media(max-width: 992px){
-  .hamburger{
-    display: block;
-  }
-
+/* mobile visibility */
+@media(max-width:992px){
   .menu-desktop,
   .auth .login,
   .auth .register{
-    display: none;
+    display:none !important;
+  }
+  .hamburger{
+    display:block;
   }
 }
+
 
 </style>
 </head>
