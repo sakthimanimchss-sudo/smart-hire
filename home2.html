@@ -857,51 +857,76 @@ header{
 <body>
 
 <header>
-  <div class="nav">
-    <div class="logo">
-      <span>S</span>
-      <h1>SmartHire</h1>
-    </div>
+<div class="menu-desktop">
 
-    <div class="menu-desktop">
-
-      <div class="nav-item">
-        <a href="#">Home ▾</a>
-        <div class="dropdown-menu">
-          <a href="index.html">Home 1</a>
-          <a href="home2.html">Home 2</a>
-        </div>
-      </div>
-
-      <a href="jobs.html">Jobs</a>
-      <a href="recruiters.html">Recruiters</a>
-      <a href="career.html">Career Services</a>
-      <a href="courses.html">Courses</a>
-      <a href="companies.html">Companies</a>
-      <a href="contact.html">Contact</a>
-
-      <div class="nav-item">
-        <a href="#">Dashboard ▾</a>
-        <div class="dropdown-menu">
-          <a href="dashboard/user.html">User Dashboard</a>
-          <a href="dashboard/admin.html">Admin Dashboard</a>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="auth">
-      <a href="login.html" class="login">Login</a>
-      <a href="register.html" class="register">Register</a>
-      <div class="hamburger" onclick="toggleMenu()">☰</div>
+  <!-- HOME -->
+  <div class="nav-item dropdown">
+    <a href="#">Home ▾</a>
+    <div class="dropdown-menu">
+      <a href="index.html">Home 1</a>
+      <a href="home2.html">Home 2</a>
     </div>
   </div>
-   
-   <!-- MOBILE AUTH BUTTONS -->
-<div class="mobile-auth">
-  <a href="login.html" class="mobile-login">Login</a>
-  <a href="register.html" class="mobile-register">Register</a>
+
+  <a href="jobs.html">Jobs</a>
+  <a href="recruiters.html">Recruiters</a>
+  <a href="career.html">Career Services</a>
+  <a href="courses.html">Courses</a>
+  <a href="companies.html">Companies</a>
+  <a href="contact.html">Contact</a>
+
+  <!-- DASHBOARD -->
+  <div class="nav-item dropdown">
+    <a href="#">Dashboard ▾</a>
+    <div class="dropdown-menu">
+      <a href="dashboard/user.html">User Dashboard</a>
+      <a href="dashboard/admin.html">Admin Dashboard</a>
+    </div>
+  </div>
+
 </div>
+<div class="auth">
+  <a href="login.html" class="login">Login</a>
+  <a href="register.html" class="register">Register</a>
+  <div class="hamburger" onclick="toggleMenu()">☰</div>
+</div>
+
+</header>
+
+<div class="menu-mobile" id="mobileMenu">
+  <div class="close" onclick="toggleMenu()">✕</div>
+
+  <!-- HOME -->
+  <div class="mobile-parent" onclick="toggleSub(this)">
+    Home ▾
+  </div>
+  <div class="mobile-sub">
+    <a href="index.html">Home 1</a>
+    <a href="home2.html">Home 2</a>
+  </div>
+
+  <a href="jobs.html">Jobs</a>
+  <a href="recruiters.html">Recruiters</a>
+  <a href="career.html">Career Services</a>
+  <a href="courses.html">Courses</a>
+  <a href="companies.html">Companies</a>
+  <a href="contact.html">Contact</a>
+
+  <!-- DASHBOARD -->
+  <div class="mobile-parent" onclick="toggleSub(this)">
+    Dashboard ▾
+  </div>
+  <div class="mobile-sub">
+    <a href="dashboard/user.html">User Dashboard</a>
+    <a href="dashboard/admin.html">Admin Dashboard</a>
+  </div>
+
+  <div class="mobile-auth">
+    <a href="login.html" class="login">Login</a>
+    <a href="register.html" class="register">Register</a>
+  </div>
+</div>
+
 
 </header>
 
