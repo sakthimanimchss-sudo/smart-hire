@@ -1132,25 +1132,34 @@ header{
 
 <script>
 /* =====================================================
-   SMART HIRE — FINAL CLEAN JS (MOBILE + DESKTOP SAFE)
+   SMART HIRE — ALL IN ONE FINAL JS
+   Mobile + Desktop SAFE | NO CONFLICTS
 ===================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* ========= HELPERS ========= */
-  const $ = s => document.querySelector(s);
+  /* ========== HELPERS ========== */
+  const $  = s => document.querySelector(s);
+  const $$ = s => document.querySelectorAll(s);
 
-  /* ========= ELEMENTS ========= */
+  /* ========== ELEMENTS ========== */
   const voiceBtn   = $("#voiceBtn");
-  const speakBtn   = $("#speakAnswer");
   const voiceText  = $("#voiceText");
-  const answerBox  = $("#userAnswer");
-  const aiQuestion = $("#aiQuestion");
+
   const startBtn   = $("#startInterview");
   const submitBtn  = $("#submitAnswer");
+  const speakBtn   = $("#speakAnswer");
+
+  const aiQuestion = $("#aiQuestion");
+  const answerBox  = $("#userAnswer");
   const scoreBox   = $("#scoreBox");
 
-  /* ========= AUDIO UNLOCK (CRITICAL FOR MOBILE) ========= */
+  const careerBlocks = $$(".career-block");
+  const statsEls     = $$(".stat h3");
+
+  /* =====================================================
+     AUDIO UNLOCK (CRITICAL FOR MOBILE)
+  ===================================================== */
   let audioUnlocked = false;
 
   function unlockAudio(){
@@ -1160,7 +1169,9 @@ document.addEventListener("DOMContentLoaded", () => {
     audioUnlocked = true;
   }
 
-  /* ========= SPEAK (DO NOT CANCEL) ========= */
+  /* =====================================================
+     AI SPEAK (NO CANCEL – MOBILE SAFE)
+  ===================================================== */
   function speak(text){
     if(!("speechSynthesis" in window)) return;
     unlockAudio();
@@ -1173,7 +1184,9 @@ document.addEventListener("DOMContentLoaded", () => {
     speechSynthesis.speak(u);
   }
 
-  /* ========= TYPE EFFECT ========= */
+  /* =====================================================
+     TYPE EFFECT
+  ===================================================== */
   function typeText(el, text){
     if(!el) return;
     el.textContent = "";
@@ -1181,21 +1194,103 @@ document.addEventListener("DOMContentLoaded", () => {
     (function t(){
       if(i < text.length){
         el.textContent += text.charAt(i++);
-        setTimeout(t, 30);
+        setTimeout(t, 28);
       }
     })();
   }
 
-  /* ========= GREETING ========= */
+  /* =====================================================
+     AI GREETING
+  ===================================================== */
   if(voiceBtn){
-    voiceBtn.onclick = ()=>{
-      const greet = "Welcome to SmartHire. I am your AI hiring assistant.";
+    voiceBtn.addEventListener("click", ()=>{
+      const greet =
+        "Welcome to SmartHire. I am your AI hiring assistant.";
       typeText(voiceText, greet);
       speak(greet);
-    };
+    });
   }
 
-  /* ========= INTERVIEW QUESTIONS ========= */
+  /* =====================================================
+     CAREER IMAGE SECTION (FIXED)
+  ===================================================== */
+  const careerData = [
+    {
+      img:"https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900",
+      text:"AI resume optimization boosts interview success."
+    },
+    {
+      img:"https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=900",
+      text:"Mock interviews improve confidence and clarity."
+    },
+    {
+      img:"https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=900",
+      text:"Career analytics guide smarter job decisions."
+    }
+  ];
+
+  let careerIndex = 0;
+
+  function updateCareer(){
+    careerBlocks.forEach((block,i)=>{
+      const img  = block.querySelector("img");
+      const desc = block.querySelector(".career-desc");
+      const item = careerData[(careerIndex+i)%careerData.length];
+
+      block.classList.add("fade-out");
+
+      setTimeout(()=>{
+        img.src = item.img;
+        desc.textContent = item.text;
+        block.classList.remove("fade-out");
+        block.classList.add("fade-in");
+      },300);
+    });
+    careerIndex++;
+  }
+
+  if(careerBlocks.length){
+    updateCareer();
+    setInterval(updateCareer, 4500);
+  }
+
+  /* =====================================================
+     STATS COUNT (NO SHAKE)
+  ===================================================== */
+  let statsDone = false;
+
+  function animateStats(){
+    statsEls.forEach(el=>{
+      const target = +el.dataset.target;
+      let val = 0;
+      const step = target / 60;
+
+      (function run(){
+        val += step;
+        if(val < target){
+          el.textContent = Math.floor(val);
+          requestAnimationFrame(run);
+        }else{
+          el.textContent = target;
+        }
+      })();
+    });
+  }
+
+  window.addEventListener("scroll", ()=>{
+    if(statsDone) return;
+    const statsSection = $(".stats");
+    if(!statsSection) return;
+
+    if(statsSection.getBoundingClientRect().top < window.innerHeight - 120){
+      statsDone = true;
+      animateStats();
+    }
+  });
+
+  /* =====================================================
+     AI INTERVIEW SYSTEM
+  ===================================================== */
   const questions = [
     "Tell me about yourself.",
     "What technical skills do you have?",
@@ -1242,7 +1337,9 @@ document.addEventListener("DOMContentLoaded", () => {
     };
   }
 
-  /* ========= VOICE INPUT (MIC → TEXTAREA) ========= */
+  /* =====================================================
+     VOICE INPUT → TEXTAREA (INTERVIEW)
+  ===================================================== */
   const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
   let recognizer;
 
@@ -1258,33 +1355,33 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     recognizer.onerror = ()=>{
-      speak("Microphone error. Please allow access.");
+      speak("Microphone error. Please allow permission.");
     };
   }
 
   if(speakBtn && recognizer){
     speakBtn.onclick = async ()=>{
       unlockAudio();
-
       try{
         await navigator.mediaDevices.getUserMedia({audio:true});
         recognizer.start();
         speak("Please speak your answer now.");
       }catch{
-        alert("Please allow microphone permission");
+        alert("Please allow microphone access");
       }
     };
   }
 
 });
 
-/* ========= MOBILE MENU ========= */
+/* =====================================================
+   MOBILE MENU
+===================================================== */
 function toggleMenu(){
   document.querySelector(".menu-desktop")
     .classList.toggle("show");
 }
 </script>
-
 
 </body>
 </html>
