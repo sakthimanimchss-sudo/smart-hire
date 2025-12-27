@@ -640,6 +640,67 @@ header{
     display:block;
   }
 }
+.hamburger{
+  display:none;
+  font-size:26px;
+  cursor:pointer;
+}
+
+.mobile-menu{
+  display:none;
+  position:absolute;
+  top:70px;
+  right:0;
+  width:100%;
+  background:#fff;
+  box-shadow:0 10px 30px rgba(0,0,0,.15);
+  flex-direction:column;
+  z-index:1000;
+}
+
+.mobile-menu a{
+  padding:14px 20px;
+  border-bottom:1px solid #eee;
+  font-weight:600;
+}
+
+@media(max-width:900px){
+  .menu-desktop{ display:none; }
+  .hamburger{ display:block; }
+}
+@media(max-width:480px){
+
+  header{
+    padding:10px 14px;
+  }
+
+  .hero h1{
+    font-size:28px;
+    line-height:1.3;
+  }
+
+  .hero p{
+    font-size:14px;
+  }
+
+  .hero-actions{
+    flex-direction:column;
+    gap:12px;
+  }
+
+  .btn-primary,
+  .btn-secondary{
+    width:100%;
+  }
+
+  .interview-actions{
+    flex-direction:column;
+  }
+
+  textarea{
+    font-size:15px;
+  }
+}
 
 /* =====================================================
    ADVANCED FOOTER
@@ -945,7 +1006,7 @@ header{
       <button id="speakAnswer" class="btn-secondary">
   🎤 Speak Answer
 </button>
-
+<textarea id="userAnswer"></textarea>
     </div>
 
     <!-- Score -->
@@ -1279,7 +1340,7 @@ if(SpeechRecognition){
 
   interviewRecognizer.onresult = (event) => {
     const transcript = event.results[0][0].transcript;
-    answerBox.value = transcript;        // ✅ TEXT APPEARS
+    answerBox.value = transcript;        //  TEXT APPEARS
     answerBox.focus();
 
     speak(
@@ -1308,6 +1369,89 @@ if(speakBtn && interviewRecognizer){
 function toggleMenu(){
   document.querySelector(".menu-desktop")
     .classList.toggle("show");
+}
+/* ================= MOBILE SAFE VOICE SYSTEM ================= */
+
+const voiceBtn = document.getElementById("voiceBtn");
+const answerBox = document.getElementById("userAnswer");
+
+const SpeechRecognition =
+  window.SpeechRecognition || window.webkitSpeechRecognition;
+
+let recognizer;
+let listening = false;
+
+/*  SAFE SPEAK FUNCTION */
+function speak(text){
+  if(!("speechSynthesis" in window)) return;
+
+  const msg = new SpeechSynthesisUtterance(text);
+  msg.lang = "en-US";
+  msg.rate = 1;
+  msg.pitch = 1;
+
+  // REQUIRED FOR MOBILE
+  window.speechSynthesis.cancel();
+  window.speechSynthesis.speak(msg);
+}
+
+/*  MIC SETUP */
+if(SpeechRecognition){
+  recognizer = new SpeechRecognition();
+  recognizer.lang = "en-US";
+  recognizer.continuous = false;
+  recognizer.interimResults = false;
+
+  recognizer.onresult = e => {
+    const text = e.results[0][0].transcript;
+    answerBox.value = text;
+
+    recognizer.stop();   // STOP MIC FIRST
+
+    //  DELAY THEN SPEAK (CRITICAL)
+    setTimeout(() => {
+      speak("Answer recorded. You can submit now.");
+    }, 300);
+
+    listening = false;
+  };
+
+  recognizer.onerror = () => {
+    listening = false;
+    speak("I could not hear you clearly.");
+  };
+}
+
+/*  USER CLICK (MANDATORY) */
+voiceBtn.addEventListener("click", async () => {
+
+  //  Mic permission
+  try{
+    await navigator.mediaDevices.getUserMedia({ audio:true });
+  }catch{
+    alert("Please allow microphone access");
+    return;
+  }
+
+  if(!recognizer){
+    alert("Voice not supported on this browser");
+    return;
+  }
+
+  if(!listening){
+    listening = true;
+
+    //  UNLOCK AUDIO (MOBILE FIX)
+    speak("Listening now");
+
+    setTimeout(() => {
+      recognizer.start();
+    }, 400);
+  }
+});
+function toggleMenu(){
+  const menu = document.getElementById("mobileMenu");
+  menu.style.display = menu.style.display === "flex" ? "none" : "flex";
 }
 
 </script>
