@@ -1028,6 +1028,81 @@ header{
 button:active {
   transform: scale(0.96);
 }
+/* ================= MOBILE MENU CLEAN FIX ================= */
+
+.menu-mobile {
+  position: fixed;
+  inset: 0;
+  background: #fff;
+  z-index: 10000;
+  padding: 20px;
+  display: none;
+  overflow-y: auto;
+}
+
+.menu-mobile.show {
+  display: block;
+}
+
+/* main items */
+.menu-mobile a,
+.mobile-parent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 10px;
+  font-size: 16px;
+  font-weight: 600;
+  border-bottom: 1px solid #eee;
+}
+
+/* sub menu */
+.mobile-sub {
+  display: none;
+  background: #f7f8ff;
+  border-radius: 8px;
+  margin: 6px 0 12px;
+}
+
+.mobile-sub a {
+  padding: 12px 18px;
+  font-size: 15px;
+  border-bottom: none;
+}
+
+/* arrow rotate */
+.mobile-parent span {
+  transition: transform 0.3s ease;
+}
+
+.mobile-parent.active span {
+  transform: rotate(180deg);
+}
+
+/* auth buttons */
+.mobile-auth {
+  margin-top: 24px;
+  display: flex;
+  gap: 14px;
+}
+
+.mobile-auth a {
+  flex: 1;
+  text-align: center;
+  padding: 14px 0;
+  border-radius: 12px;
+  font-weight: 700;
+}
+
+.mobile-auth .login {
+  border: 2px solid var(--primary);
+  color: var(--primary);
+}
+
+.mobile-auth .register {
+  background: var(--primary);
+  color: #fff;
+}
 
 </style>
 </head>
