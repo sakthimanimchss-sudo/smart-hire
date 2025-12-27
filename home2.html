@@ -418,6 +418,10 @@ section{padding:90px 20px}
 .waveform.active{
   opacity:1;
 }
+   
+.waveform.active span {
+  animation-duration: 0.6s;
+}
 
 
 .bubble{
@@ -642,6 +646,40 @@ header{
   }
 }
 
+/* =====================================================
+   AI INTERVIEW – MIC LISTENING ANIMATION
+===================================================== */
+
+.speak-listening {
+  background: #ff9900 !important;
+  color: #fff !important;
+  box-shadow: 0 0 0 rgba(255,153,0,0.6);
+  animation: micPulse 1.6s infinite;
+}
+
+@keyframes micPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255,153,0,0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 16px rgba(255,153,0,0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255,153,0,0);
+  }
+}
+
+/* Listening text */
+.ai-listening {
+  color: #ff9900;
+  font-weight: 700;
+  animation: blinkText 1.2s infinite;
+}
+
+@keyframes blinkText {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
 
 /* =====================================================
    ADVANCED FOOTER
@@ -971,6 +1009,26 @@ header{
     font-size: 15px;
   }
 }
+/* AI Question animation */
+.question-box {
+  animation: questionPop 0.6s ease;
+}
+
+@keyframes questionPop {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* Mobile touch feedback */
+button:active {
+  transform: scale(0.96);
+}
+
 </style>
 </head>
 
@@ -1523,6 +1581,32 @@ function toggleMenu() {
     menu.classList.toggle("active");
   }
 }
+const speakBtn = document.getElementById("speakAnswer");
+const aiStatus = document.getElementById("aiStatus");
+
+if (interviewRecognizer && speakBtn) {
+
+  interviewRecognizer.onstart = () => {
+    speakBtn.classList.add("speak-listening");
+    aiStatus.textContent = "Listening...";
+    aiStatus.classList.add("ai-listening");
+  };
+
+  interviewRecognizer.onend = () => {
+    speakBtn.classList.remove("speak-listening");
+    aiStatus.textContent = "AI Ready";
+    aiStatus.classList.remove("ai-listening");
+  };
+}
+interviewRecognizer.onstart = () => {
+  waveform.classList.add("active");
+};
+
+interviewRecognizer.onend = () => {
+  waveform.classList.remove("active");
+};
+
+
 
 </script>
 
