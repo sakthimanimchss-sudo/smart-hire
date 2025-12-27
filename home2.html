@@ -1438,26 +1438,14 @@ if(speakBtn && interviewRecognizer){
   interviewRecognizer.start();
   speak("Please speak your answer now.");
 });
-
-}
-
-function toggleMenu(){
-  document.querySelector(".menu-desktop")
-    .classList.toggle("show");
-}
-
 function toggleMenu() {
-  document.getElementById("mobileMenu")
-    .classList.toggle("show");
-}
-
-function toggleSub(el) {
-  const sub = el.nextElementSibling;
-  if (sub && sub.classList.contains("mobile-sub")) {
-    sub.style.display =
-      sub.style.display === "block" ? "none" : "block";
+  const menu = document.getElementById("mobileMenu");
+  if (menu) {
+    menu.classList.toggle("active");
   }
 }
+
+
 
 </script>
 
