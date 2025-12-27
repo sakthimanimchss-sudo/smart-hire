@@ -1031,13 +1031,116 @@ button:active{
     justify-content:center;
   }
 }
-/* ===== MOBILE MENU ===== */
+/* HEADER */
+header{
+  position: sticky;
+  top: 0;
+  background: #fff;
+  z-index: 1000;
+  box-shadow: 0 2px 12px rgba(0,0,0,.05);
+}
+
+.nav{
+  max-width: 1400px;
+  margin: auto;
+  padding: 14px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo span{
+  width: 40px;
+  height: 40px;
+  background: #2b3990;
+  color: #fff;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+}
+
+.logo h1{
+  font-size: 20px;
+  font-weight: 800;
+}
+
+/* DESKTOP MENU */
+.menu-desktop{
+  display: flex;
+  gap: 22px;
+}
+
+.menu-desktop a{
+  font-weight: 600;
+}
+
+/* DROPDOWN */
+.nav-item{
+  position: relative;
+}
+
+.dropdown-menu{
+  position: absolute;
+  top: 120%;
+  left: 0;
+  background: #fff;
+  min-width: 180px;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.15);
+  display: none;
+}
+
+.nav-item:hover .dropdown-menu{
+  display: block;
+}
+
+.dropdown-menu a{
+  display: block;
+  padding: 10px 16px;
+}
+
+/* AUTH */
+.auth{
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.login{
+  font-weight: 600;
+  color: #2b3990;
+}
+
+.register{
+  background: #2b3990;
+  color: #fff;
+  padding: 8px 18px;
+  border-radius: 10px;
+  font-weight: 700;
+}
+
+/* HAMBURGER */
+.hamburger{
+  display: none;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+/* MOBILE MENU */
 .menu-mobile{
   position: fixed;
-  top: 64px; /* below header */
+  top: 0;
   left: -100%;
   width: 100%;
-  height: calc(100vh - 64px);
+  height: 100vh;
   background: #fff;
   z-index: 9999;
   display: flex;
@@ -1045,49 +1148,57 @@ button:active{
   transition: transform .35s ease;
 }
 
-/* open */
 .menu-mobile.active{
   transform: translateX(100%);
 }
 
-/* content scroll */
-.mobile-content{
-  flex: 1;
-  overflow-y: auto;
-  padding: 16px 20px 120px;
-}
-
-/* links */
-.menu-mobile a,
-.mobile-parent{
-  display: block;
-  font-size: 17px;
-  font-weight: 500;
-  padding: 16px 0;
+/* MOBILE TOP */
+.mobile-top{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 20px;
   border-bottom: 1px solid #eee;
 }
 
-/* submenu */
+.close{
+  font-size: 26px;
+  cursor: pointer;
+}
+
+/* MOBILE CONTENT */
+.mobile-content{
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+.mobile-content a,
+.mobile-parent{
+  display: block;
+  padding: 14px 0;
+  font-size: 16px;
+  font-weight: 600;
+  border-bottom: 1px solid #eee;
+}
+
+/* SUB MENU */
 .mobile-sub{
   display: none;
   padding-left: 14px;
 }
+
 .mobile-sub a{
   font-size: 15px;
-  padding: 12px 0;
+  padding: 10px 0;
   opacity: .85;
 }
 
-/* bottom auth */
+/* LOGIN REGISTER BOTTOM */
 .mobile-auth{
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background: #fff;
-  padding: 16px;
   display: flex;
   gap: 14px;
+  padding: 16px 20px;
   border-top: 1px solid #eee;
 }
 
@@ -1097,12 +1208,10 @@ button:active{
   padding: 14px 0;
   border-radius: 14px;
   font-weight: 700;
-  font-size: 16px;
 }
 
 .mobile-auth .login{
   border: 2px solid #2b3990;
-  color: #2b3990;
 }
 
 .mobile-auth .register{
@@ -1110,10 +1219,16 @@ button:active{
   color: #fff;
 }
 
-/* hamburger visible only mobile */
-@media(max-width:992px){
-  .hamburger{display:block}
-  .menu-desktop,.auth{display:none}
+/* RESPONSIVE */
+@media(max-width: 992px){
+  .menu-desktop,
+  .auth .login,
+  .auth .register{
+    display: none;
+  }
+  .hamburger{
+    display: block;
+  }
 }
 
 </style>
