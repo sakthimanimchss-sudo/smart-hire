@@ -886,7 +886,31 @@ header{
   background:var(--primary);
   color:#fff;
 }
+/* ================= MOBILE SUB MENU FIX ================= */
 
+.mobile-parent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* sub menu container */
+.mobile-sub {
+  display: none;
+  margin-left: 18px;          /*  pushes inside */
+  padding-left: 12px;
+  border-left: 2px solid #e5e7eb;
+}
+
+/* sub menu links */
+.mobile-sub a {
+  display: block;
+  padding: 10px 0;
+  font-size: 14px;
+  color: #555;
+}
 /* =====================================================
    RESPONSIVE (FROM index.html)
 ===================================================== */
@@ -896,8 +920,57 @@ header{
   .auth .login,
   .auth .register{display:none}
 }
+/* =====================================================
+   NAV ACTIVE / HOVER COLOR — ORANGE (MATCH JOBS)
+===================================================== */
 
+/* Desktop menu */
+.menu-desktop a {
+  transition: color 0.2s ease;
+}
 
+.menu-desktop a:hover,
+.menu-desktop a.active {
+  color: #ff9900; /* ORANGE */
+}
+
+/* Dropdown links */
+.dropdown-menu a:hover,
+.dropdown-menu a.active {
+  color: #ff9900;
+}
+
+/* Mobile menu */
+.menu-mobile a:hover,
+.menu-mobile a:active,
+.menu-mobile a.active,
+.mobile-parent:active {
+  background: rgba(255, 153, 0, 0.12);
+  color: #ff9900;
+}
+/* =====================================================
+   MOBILE MENU FIT FIX
+===================================================== */
+
+@media (max-width: 992px) {
+
+  .menu-mobile {
+    padding: 20px 18px;
+  }
+
+  .menu-mobile a,
+  .mobile-parent {
+    text-align: left;
+    padding: 14px 10px;
+    font-size: 16px;
+    border-radius: 8px;
+  }
+
+  .mobile-sub a {
+    padding-left: 22px;
+    font-size: 15px;
+  }
+}
 </style>
 </head>
 
