@@ -1031,78 +1031,86 @@ button:active{
     justify-content:center;
   }
 }
-/* ================= MOBILE MENU — FINAL MATCH ================= */
-@media (max-width: 900px){
+/* ===== MOBILE MENU – SAME AS index.html ===== */
 
-  /* FULL SCREEN CLEAN PANEL */
-  .menu-mobile{
-    left:0;
-    width:100%;
-    height:100vh;
-    padding:22px 22px 90px;
-    background:#fff;
-    gap:0;
-  }
-
-  /* REMOVE ALL BORDERS / LINES */
-  .menu-mobile a,
-  .mobile-parent{
-    border:none !important;
-  }
-
-  /* MENU ITEM STYLE */
-  .menu-mobile a,
-  .mobile-parent{
-    padding:14px 0;
-    font-size:18px;
-    font-weight:500;
-    text-align:left;
-  }
-
-  /* SUB MENU (Home 1 / Home 2) */
-  .mobile-sub{
-    padding-left:16px;
-    margin:6px 0 10px;
-  }
-
-  .mobile-sub a{
-    font-size:16px;
-    opacity:.85;
-  }
-
-  /* REMOVE X ICON COMPLETELY */
-  .menu-mobile .close{
-    display:none !important;
-  }
-
-  /* LOGIN / REGISTER FIXED AT BOTTOM */
-  .mobile-auth{
-    position:fixed;
-    bottom:18px;
-    left:18px;
-    right:18px;
-    gap:14px;
-    background:#fff;
-  }
-
-  .mobile-auth a{
-    padding:14px 0;
-    font-size:16px;
-    border-radius:12px;
-  }
-
-  .mobile-auth .login{
-    border:2px solid var(--primary);
-    background:#fff;
-    color:var(--primary);
-  }
-
-  .mobile-auth .register{
-    background:var(--primary);
-    color:#fff;
-  }
+.menu-mobile{
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 85%;
+  height: 100vh;
+  background: #fff;
+  z-index: 9999;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  transition: .4s ease;
 }
 
+/* SHOW MENU */
+.menu-mobile.active{
+  left: 0;
+}
+
+/* MENU LINKS */
+.menu-mobile a{
+  font-size: 16px;
+  font-weight: 500;
+  color: #111;
+}
+
+/* REMOVE ALL BORDERS */
+.menu-mobile a{
+  border: none !important;
+}
+
+/* AUTH BUTTONS */
+.mobile-auth{
+  margin-top: auto;
+  display: flex;
+  gap: 14px;
+}
+
+.mobile-auth a{
+  flex: 1;
+  text-align: center;
+  padding: 14px 0;
+  border-radius: 12px;
+  font-weight: 700;
+}
+
+/* LOGIN */
+.mobile-auth .login{
+  border: 2px solid #2b3990;
+  color: #2b3990;
+  background: #fff;
+}
+
+/* REGISTER */
+.mobile-auth .register{
+  background: #2b3990;
+  color: #fff;
+}
+
+/* HAMBURGER */
+.hamburger{
+  display: none;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+@media(max-width: 992px){
+  .hamburger{
+    display: block;
+  }
+
+  .menu-desktop,
+  .auth .login,
+  .auth .register{
+    display: none;
+  }
+}
 
 </style>
 </head>
