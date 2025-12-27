@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SmartHire | AI Hiring Platform for Companies</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ICONS -->
+<link rel="stylesheet"
+ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+/* =====================================================
+   ROOT VARIABLES (SAME BRAND)
+===================================================== */
+:root{
+  --primary:#2b3990;
+  --accent:#ff9900;
+  --success:#36e0a1;
+  --dark:#0f1c24;
+  --light:#f5f7fb;
+  --white:#ffffff;
+  --muted:#6b7280;
+  --radius:16px;
+  --shadow:0 25px 50px rgba(0,0,0,.12);
+}
+
+/* =====================================================
+   GLOBAL
+===================================================== */
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:Inter,Segoe UI,Arial,sans-serif;
+  background:var(--light);
+  color:#111;
+  overflow-x:hidden;
+}
+a{text-decoration:none;color:inherit}
+img,video{max-width:100%;display:block}
+
+/* =====================================================
+   HEADER (UNCHANGED STYLE)
+===================================================== */
+header{
+  position:sticky;
+  top:0;
+  z-index:5000;
+  background:#fff;
+  box-shadow:0 2px 15px rgba(0,0,0,.05);
+}
+.nav{
+  max-width:1400px;
+  margin:auto;
+  padding:14px 22px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.logo{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.logo span{
+  width:42px;height:42px;
+  background:var(--primary);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:10px;
+  font-weight:800;
+}
+.logo h1{
+  font-size:22px;
+  color:var(--primary);
+}
+.menu-desktop{
+  display:flex;
+  gap:20px;
+  font-size:14px;
+  font-weight:600;
+}
+.menu-desktop a:hover{color:var(--accent)}
+.auth{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.auth .login{color:var(--primary);font-weight:600}
+.auth .register{
+  background:var(--primary);
+  color:#fff;
+  padding:10px 20px;
+  border-radius:8px;
+}
+.hamburger{display:none;font-size:26px}
+
+/* =====================================================
+   DROPDOWN
+===================================================== */
+.nav-item{position:relative}
+.dropdown-menu{
+  position:absolute;
+  top:120%;
+  left:0;
+  background:#fff;
+  min-width:190px;
+  border-radius:12px;
+  box-shadow:0 20px 40px rgba(0,0,0,.12);
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(10px);
+  transition:.35s ease;
+  z-index:3000;
+}
+.dropdown-menu a{
+  display:block;
+  padding:12px 16px;
+}
+.dropdown-menu a:hover{
+  background:#f5f7fb;
+  color:var(--primary);
+}
+.nav-item:hover .dropdown-menu{
+  opacity:1;
+  visibility:visible;
+  transform:none;
+}
+
+/* =====================================================
+   HERO AI VIDEO
+===================================================== */
+.hero-ai{
+  position:relative;
+  height:90vh;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:#fff;
+}
+
+.ai-video{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:brightness(.6);
+}
+
+.hero-overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    135deg,
+    rgba(15,32,39,.85),
+    rgba(32,58,67,.85),
+    rgba(44,83,100,.85)
+  );
+}
+
+.hero-content{
+  position:relative;
+  max-width:900px;
+  padding:0 20px;
+  z-index:2;
+  animation:fadeUp 1.2s ease;
+}
+
+.hero-content h2{
+  font-size:56px;
+  margin-bottom:20px;
+}
+.hero-content h2 span{
+  color:var(--success);
+}
+.hero-content p{
+  font-size:18px;
+  opacity:.9;
+  margin-bottom:32px;
+}
+
+.hero-actions{
+  display:flex;
+  gap:18px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+.btn-primary{
+  background:var(--accent);
+  color:#fff;
+  padding:14px 34px;
+  border-radius:12px;
+  font-weight:700;
+  box-shadow:0 10px 30px rgba(255,153,0,.35);
+}
+.btn-secondary{
+  background:rgba(255,255,255,.15);
+  color:#fff;
+  padding:14px 34px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,.4);
+}
+
+/* =====================================================
+   AI SPEECH STRIP
+===================================================== */
+.ai-speech{
+  background:#fff;
+  padding:50px 20px;
+}
+.speech-card{
+  max-width:900px;
+  margin:auto;
+  background:#fff;
+  border-radius:18px;
+  box-shadow:var(--shadow);
+  padding:30px;
+  display:flex;
+  gap:20px;
+  align-items:center;
+}
+.speech-card i{
+  font-size:34px;
+  color:var(--primary);
+}
+.speech-card p{
+  font-size:16px;
+  color:#333;
+  line-height:1.7;
+}
+
+/* =====================================================
+   SECTION BASE
+===================================================== */
+section{padding:90px 20px}
+.container{max-width:1300px;margin:auto}
+.title{
+  border-left:6px solid var(--accent);
+  padding-left:16px;
+  margin-bottom:50px;
+}
+.title h3{
+  font-size:34px;
+  color:var(--primary);
+}
+.title p{
+  color:var(--muted);
+  margin-top:6px;
+}
+
+/* =====================================================
+   AI WORKFLOW
+===================================================== */
+.ai-workflow{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:28px;
+}
+.ai-step{
+  background:#fff;
+  border-radius:18px;
+  padding:28px;
+  box-shadow:var(--shadow);
+  position:relative;
+  overflow:hidden;
+  transition:.4s;
+}
+.ai-step:hover{transform:translateY(-10px)}
+.ai-step span{
+  position:absolute;
+  top:-20px;
+  right:-20px;
+  font-size:80px;
+  color:rgba(43,57,144,.08);
+  font-weight:800;
+}
+.ai-step h4{
+  font-size:20px;
+  margin-bottom:12px;
+}
+.ai-step p{
+  font-size:15px;
+  color:#555;
+  line-height:1.7;
+}
+
+/* =====================================================
+   DASHBOARD PREVIEW
+===================================================== */
+.dashboard-preview{
+  background:#f9fbff;
+}
+.dashboard-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:28px;
+}
+.dashboard-card{
+  background:#fff;
+  border-radius:18px;
+  padding:30px;
+  box-shadow:var(--shadow);
+  transition:.4s;
+}
+.dashboard-card:hover{
+  transform:translateY(-8px);
+}
+.dashboard-card h4{
+  margin-bottom:12px;
+  color:var(--primary);
+}
+.dashboard-card p{
+  font-size:15px;
+  color:#555;
+  line-height:1.7;
+}
+
+/* =====================================================
+   AI STATS
+===================================================== */
+.ai-stats{
+  background:linear-gradient(135deg,#0f1c24,#1b2a3a);
+  color:#fff;
+}
+.stats-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:30px;
+  text-align:center;
+}
+.stat-box h3{
+  font-size:44px;
+  color:var(--accent);
+}
+.stat-box p{
+  opacity:.85;
+  margin-top:6px;
+}
+
+/* =====================================================
+   CTA
+===================================================== */
+.ai-cta{
+  background:linear-gradient(135deg,var(--primary),#1e2b70);
+  color:#fff;
+  text-align:center;
+}
+.ai-cta h2{
+  font-size:38px;
+  margin-bottom:16px;
+}
+.ai-cta p{
+  max-width:800px;
+  margin:0 auto 30px;
+  opacity:.9;
+}
+
+/* =====================================================
+   REVEAL
+===================================================== */
+.reveal{
+  opacity:0;
+  transform:translateY(40px);
+  transition:1s ease;
+}
+.reveal.show{
+  opacity:1;
+  transform:none;
+}
+
+/* =====================================================
+   ANIMATIONS
+===================================================== */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(40px)}
+  to{opacity:1;transform:none}
+}
+
+/* =====================================================
+   MOBILE
+===================================================== */
+@media(max-width:900px){
+  .menu-desktop{display:none}
+  .hamburger{display:block}
+  .auth .login,.auth .register{display:none}
+  .hero-content h2{font-size:40px}
+  section{padding:70px 16px}
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ================= HEADER (SAME AS HOME 1) ================= -->
+<header>
+  <div class="nav">
+    <div class="logo">
+      <span>S</span>
+      <h1>SmartHire</h1>
+    </div>
+
+    <div class="menu-desktop">
+
+      <div class="nav-item">
+        <a href="#">Home ▾</a>
+        <div class="dropdown-menu">
+          <a href="index.html">Home 1</a>
+          <a href="home2.html">Home 2</a>
+        </div>
+      </div>
+
+      <a href="jobs.html">Jobs</a>
+      <a href="recruiters.html">Recruiters</a>
+      <a href="career.html">Career Services</a>
+      <a href="courses.html">Courses</a>
+      <a href="companies.html">Companies</a>
+      <a href="contact.html">Contact</a>
+
+      <div class="nav-item">
+        <a href="#">Dashboard ▾</a>
+        <div class="dropdown-menu">
+          <a href="dashboard/user.html">User Dashboard</a>
+          <a href="dashboard/admin.html">Admin Dashboard</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="auth">
+      <a href="login.html" class="login">Login</a>
+      <a href="register.html" class="register">Register</a>
+      <div class="hamburger" onclick="toggleMenu()">☰</div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= HERO WITH AI VIDEO ================= -->
+<section class="hero-ai">
+
+  <div class="hero-overlay"></div>
+
+  <!-- AI TALKING VIDEO -->
+  <video class="ai-video"
+         autoplay
+         muted
+         loop
+         playsinline>
+    <source src="https://cdn.coverr.co/videos/coverr-ai-robot-thinking-8298/1080p.mp4"
+            type="video/mp4">
+  </video>
+
+  <div class="hero-content">
+    <h2>
+      AI That <span>Talks, Thinks</span><br>
+      & Hires for You
+    </h2>
+    <p>
+      SmartHire uses conversational AI, predictive analytics, and real-time
+      hiring intelligence to help companies discover, screen, and hire the
+      right talent faster than ever before.
+    </p>
+
+    <div class="hero-actions">
+      <a href="recruiters.html" class="btn-primary">Post a Job</a>
+      <a href="companies.html" class="btn-secondary">Explore Platform</a>
+    </div>
+  </div>
+
+</section>
+
+<!-- ================= AI SPEAKING STRIP ================= -->
+<section class="ai-speech">
+  <div class="container">
+    <div class="speech-card">
+      <i class="fa-solid fa-microphone-lines"></i>
+      <p id="aiSpeechText">
+        Hello, I am SmartHire AI. I analyze millions of hiring patterns to
+        connect companies with the most relevant candidates.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= AI WORKFLOW ================= -->
+<section class="reveal">
+  <div class="container">
+
+    <div class="title">
+      <h3>How Our AI Hiring Engine Works</h3>
+      <p>End-to-end automated recruitment intelligence</p>
+    </div>
+
+    <div class="ai-workflow">
+
+      <div class="ai-step">
+        <span>01</span>
+        <h4>Requirement Understanding</h4>
+        <p>
+          Our AI interprets job descriptions, required skills, seniority
+          level, and hiring urgency using natural language processing.
+        </p>
+      </div>
+
+      <div class="ai-step">
+        <span>02</span>
+        <h4>Talent Intelligence Scan</h4>
+        <p>
+          SmartHire scans millions of verified profiles, learning from past
+          successful hires and recruiter behavior.
+        </p>
+      </div>
+
+      <div class="ai-step">
+        <span>03</span>
+        <h4>Predictive Match Ranking</h4>
+        <p>
+          Candidates are ranked using AI-driven success probability scores
+          instead of keyword matching.
+        </p>
+      </div>
+
+      <div class="ai-step">
+        <span>04</span>
+        <h4>AI-Assisted Interviews</h4>
+        <p>
+          AI conducts pre-screening questions, sentiment analysis, and
+          interview readiness evaluation.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= AI DASHBOARD PREVIEW ================= -->
+<section class="dashboard-preview reveal">
+  <div class="container">
+
+    <div class="title">
+      <h3>Recruiter Control Dashboard</h3>
+      <p>Complete visibility and decision control</p>
+    </div>
+
+    <div class="dashboard-grid">
+
+      <div class="dashboard-card">
+        <h4>Live Hiring Funnel</h4>
+        <p>
+          Monitor candidate movement from application to offer acceptance
+          with real-time AI insights.
+        </p>
+      </div>
+
+      <div class="dashboard-card">
+        <h4>AI Skill Heatmap</h4>
+        <p>
+          Visualize in-demand skills, salary benchmarks, and talent
+          availability across regions.
+        </p>
+      </div>
+
+      <div class="dashboard-card">
+        <h4>Fraud & Spam Shield</h4>
+        <p>
+          SmartHire AI blocks fake profiles, duplicate applications, and
+          suspicious recruiter activity automatically.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= AI STATS ================= -->
+<section class="ai-stats reveal">
+  <div class="container">
+
+    <div class="stats-grid">
+      <div class="stat-box">
+        <h3 data-count="72">0</h3>
+        <p>% Faster Hiring</p>
+      </div>
+      <div class="stat-box">
+        <h3 data-count="98">0</h3>
+        <p>% Recruiter Satisfaction</p>
+      </div>
+      <div class="stat-box">
+        <h3 data-count="1.2">0</h3>
+        <p>M+ AI Decisions / Day</p>
+      </div>
+      <div class="stat-box">
+        <h3 data-count="150">0</h3>
+        <p>Countries Covered</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= CTA ================= -->
+<section class="reveal ai-cta">
+  <div class="container">
+    <h2>Let AI Handle Hiring While You Scale</h2>
+    <p>
+      Join thousands of companies using SmartHire AI to reduce hiring costs,
+      time-to-hire, and bad recruitment decisions.
+    </p>
+    <a href="register.html" class="btn-primary">Start with SmartHire AI</a>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div class="footer-glass"></div>
+
+  <div class="container footer-grid">
+
+    <!-- BRAND -->
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <span>S</span>
+        <h2>SmartHire</h2>
+      </div>
+      <p>
+        SmartHire is an AI-powered recruitment and career platform connecting
+        verified recruiters with skilled professionals. Using intelligent
+        job matching, real-time hiring insights, and career tools, we help
+        candidates discover meaningful opportunities faster and smarter.
+      </p>
+    </div>
+
+    <!-- QUICK LINKS -->
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <a href="jobs.html">Find Jobs</a>
+      <a href="companies.html">Companies</a>
+      <a href="recruiters.html">Recruiters</a>
+      <a href="career.html">Career Services</a>
+      <a href="courses.html">Courses</a>
+    </div>
+
+    <!-- RESOURCES -->
+    <div class="footer-col">
+      <h4>Resources</h4>
+      <a href="#">Blog</a>
+      <a href="#">Resume Tips</a>
+      <a href="#">Interview Prep</a>
+      <a href="#">Skill Trends</a>
+      <a href="#">Success Stories</a>
+    </div>
+
+    <!-- NEWSLETTER -->
+    <div class="footer-col">
+      <h4>Stay Updated</h4>
+      <p class="footer-note">
+        Subscribe to receive the latest job alerts, hiring trends,
+        and career insights directly in your inbox.
+      </p>
+      <div class="footer-newsletter">
+        <input type="email" placeholder="Enter your email">
+        <button>Subscribe</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SOCIAL + COPYRIGHT -->
+  <div class="footer-bottom">
+    <div class="socials">
+      <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+      <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    </div>
+
+    <p>© 2026 SmartHire Recruitment Solutions Pvt Ltd. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+/* =====================================================
+   MOBILE MENU
+===================================================== */
+function toggleMenu(){
+  const menu = document.getElementById("mobileMenu");
+  if(menu) menu.classList.toggle("active");
+}
+
+/* =====================================================
+   MOBILE SUB MENU (HOME / DASHBOARD)
+===================================================== */
+function toggleSub(el){
+  const sub = el.nextElementSibling;
+  if(!sub) return;
+  sub.style.display = sub.style.display === "block" ? "none" : "block";
+}
+
+/* =====================================================
+   HERO TYPEWRITER (AI COUNT)
+===================================================== */
+const typeTarget = document.getElementById("typeText");
+const typeValue = "500,000+";
+let typeIndex = 0;
+
+function startTyping(){
+  if(!typeTarget) return;
+  if(typeIndex < typeValue.length){
+    typeTarget.textContent += typeValue.charAt(typeIndex);
+    typeIndex++;
+    setTimeout(startTyping, 120);
+  }
+}
+startTyping();
+
+/* =====================================================
+   SCROLL REVEAL
+===================================================== */
+const revealEls = document.querySelectorAll(".reveal");
+
+function handleReveal(){
+  revealEls.forEach(el => {
+    if(el.getBoundingClientRect().top < window.innerHeight - 120){
+      el.classList.add("show");
+    }
+  });
+}
+window.addEventListener("scroll", handleReveal);
+window.addEventListener("load", handleReveal);
+
+/* =====================================================
+   STICKY SEARCH (DESKTOP ONLY)
+===================================================== */
+const searchBox = document.querySelector(".search-box");
+let stickyPoint = searchBox ? searchBox.offsetTop + 120 : 0;
+
+function handleStickySearch(){
+  if(!searchBox) return;
+  if(window.innerWidth < 768) return; // disable on mobile
+
+  if(window.scrollY > stickyPoint){
+    searchBox.classList.add("sticky");
+  }else{
+    searchBox.classList.remove("sticky");
+  }
+}
+window.addEventListener("scroll", handleStickySearch);
+
+/* =====================================================
+   SEARCH AUTOSUGGEST (AI STYLE)
+===================================================== */
+const skills = [
+  "Java Developer","Python Developer","React Developer","UI UX Designer",
+  "Data Scientist","DevOps Engineer","Cloud Architect","Cyber Security",
+  "Machine Learning","Digital Marketing","Android Developer","Finance Analyst"
+];
+
+const skillInput = document.querySelector(".search-box input");
+let suggestBox;
+
+if(skillInput){
+  suggestBox = document.createElement("div");
+  suggestBox.className = "autosuggest";
+  skillInput.parentElement.appendChild(suggestBox);
+
+  skillInput.addEventListener("input", () => {
+    const value = skillInput.value.toLowerCase();
+    suggestBox.innerHTML = "";
+    if(!value){
+      suggestBox.style.display = "none";
+      return;
+    }
+
+    skills
+      .filter(s => s.toLowerCase().includes(value))
+      .slice(0,6)
+      .forEach(s => {
+        const div = document.createElement("div");
+        div.innerHTML = s.replace(
+          new RegExp(value,"gi"),
+          match => `<strong>${match}</strong>`
+        );
+        div.onclick = () => {
+          skillInput.value = s;
+          suggestBox.style.display = "none";
+        };
+        suggestBox.appendChild(div);
+      });
+
+    suggestBox.style.display = "block";
+  });
+
+  document.addEventListener("click", e => {
+    if(!skillInput.contains(e.target)){
+      suggestBox.style.display = "none";
+    }
+  });
+}
+
+/* =====================================================
+   AI SPEECH (AUTO TYPING SENTENCE)
+===================================================== */
+const speechEl = document.querySelector(".speech-card p");
+const speechText = "Hello! I’m SmartHire AI. I analyze your skills, experience, and hiring trends to guide you toward the best career opportunities.";
+let speechIndex = 0;
+
+function typeSpeech(){
+  if(!speechEl) return;
+  if(speechIndex < speechText.length){
+    speechEl.textContent += speechText.charAt(speechIndex);
+    speechIndex++;
+    setTimeout(typeSpeech, 35);
+  }
+}
+
+if(speechEl){
+  speechEl.textContent = "";
+  setTimeout(typeSpeech, 800);
+}
+
+/* =====================================================
+   CAREER GROWTH – 3 BLOCK AUTO SWITCH
+===================================================== */
+const careerSlides = [
+  [
+    {
+      img:"https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900",
+      text:"AI-powered resume optimization boosts recruiter visibility and interview calls."
+    },
+    {
+      img:"https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=900",
+      text:"Mock interviews improve confidence, clarity, and communication skills."
+    },
+    {
+      img:"https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=900",
+      text:"Market analytics help professionals plan smarter career moves."
+    }
+  ],
+  [
+    {
+      img:"https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=900",
+      text:"Personalized career mentoring aligned with industry demand."
+    },
+    {
+      img:"https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=900",
+      text:"Skill gap analysis highlights growth opportunities."
+    },
+    {
+      img:"https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=900",
+      text:"Custom learning paths accelerate promotions and salary growth."
+    }
+  ],
+  [
+    {
+      img:"https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=900",
+      text:"Leadership development ensures long-term career success."
+    },
+    {
+      img:"https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900",
+      text:"Continuous upskilling keeps professionals future-ready."
+    },
+    {
+      img:"https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=900",
+      text:"Data-driven insights guide high-impact job transitions."
+    }
+  ]
+];
+
+let careerIndex = 0;
+const careerBlocks = document.querySelectorAll(".career-block");
+
+function updateCareerBlocks(){
+  if(!careerBlocks.length) return;
+
+  careerBlocks.forEach((block, i) => {
+    const img = block.querySelector("img");
+    const desc = block.querySelector(".career-desc");
+
+    img.style.opacity = 0;
+    desc.style.opacity = 0;
+
+    setTimeout(() => {
+      img.src = careerSlides[careerIndex][i].img;
+      desc.textContent = careerSlides[careerIndex][i].text;
+      img.style.opacity = 1;
+      desc.style.opacity = 1;
+    }, 300);
+  });
+
+  careerIndex = (careerIndex + 1) % careerSlides.length;
+}
+
+updateCareerBlocks();
+setInterval(updateCareerBlocks, 4800);
+
+/* =====================================================
+   AI STATS COUNT-UP
+===================================================== */
+const counters = document.querySelectorAll(".stat-box h3");
+
+function animateCounters(){
+  counters.forEach(counter => {
+    const target = +counter.textContent.replace(/\D/g,"");
+    let count = 0;
+    const step = Math.max(1, target / 80);
+
+    function update(){
+      count += step;
+      if(count < target){
+        counter.textContent = Math.floor(count) + "+";
+        requestAnimationFrame(update);
+      }else{
+        counter.textContent = target + "+";
+      }
+    }
+    update();
+  });
+}
+
+let statsTriggered = false;
+window.addEventListener("scroll", () => {
+  const statsSection = document.querySelector(".ai-stats");
+  if(!statsSection || statsTriggered) return;
+
+  if(statsSection.getBoundingClientRect().top < window.innerHeight - 120){
+    animateCounters();
+    statsTriggered = true;
+  }
+});
+
+/* =====================================================
+   SAFE VIDEO AUTOPLAY (MOBILE FIX)
+===================================================== */
+const aiVideo = document.querySelector(".ai-video");
+if(aiVideo){
+  aiVideo.muted = true;
+  aiVideo.play().catch(()=>{});
+}
+</script>
+
+
+</body>
+</html>
