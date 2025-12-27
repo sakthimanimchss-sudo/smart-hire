@@ -1106,6 +1106,71 @@ button:active {
   background: var(--primary);
   color: #fff;
 }
+/* =====================================================
+   MOBILE HERO & BUTTON FIT FIX
+===================================================== */
+
+@media (max-width: 768px) {
+
+  /* HERO SECTION HEIGHT FIX */
+  .hero {
+    min-height: auto;
+    padding: 80px 16px 60px;
+  }
+
+  /* HERO BUTTON WRAPPER */
+  .hero-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+    margin-top: 28px;
+  }
+
+  /* HERO BUTTONS FULL WIDTH */
+  .hero-actions a,
+  .hero-actions button {
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+    padding: 14px 0;
+    border-radius: 14px;
+  }
+
+  /* POST A JOB */
+  .btn-primary {
+    font-size: 16px;
+  }
+
+  /* EXPLORE PLATFORM */
+  .btn-secondary {
+    font-size: 15px;
+  }
+
+  /* START SMART HIRE AI BUTTON */
+  .start-ai-btn,
+  .ai-start-btn {
+    width: 100%;
+    max-width: 100%;
+    margin: 30px auto 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  .start-ai-btn button,
+  .ai-start-btn button {
+    width: 100%;
+    padding: 14px 0;
+    font-size: 16px;
+    border-radius: 30px;
+  }
+
+  /* REMOVE EXTRA WHITE GAP */
+  section {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+}
 
 
 </style>
