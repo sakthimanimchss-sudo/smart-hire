@@ -545,6 +545,389 @@ header{
 .auth a{
   pointer-events: auto; /* ensures links are clickable */
 }
+/* =====================================================
+   LEARNING & UPSKILLING HUB (FINAL – STABLE)
+===================================================== */
+
+.learning-upskilling{
+  background:#f5f7fb;
+}
+
+/* grid */
+.learning-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:26px;
+}
+
+/* item */
+.learning-item{
+  background:#ffffff;
+  padding:22px;
+  border-radius:16px;
+  box-shadow:var(--shadow);
+  transition:.4s ease;
+}
+
+.learning-item:hover{
+  transform:translateY(-6px);
+}
+
+/* image */
+.learning-item img{
+  width:100%;
+  height:220px;              
+  object-fit:cover;
+  border-radius:14px;
+  margin-bottom:14px;
+}
+
+/* paragraph */
+.learning-item p{
+  font-size:15px;
+  line-height:1.7;
+  color:#444;
+}
+
+/* mobile */
+@media(max-width:900px){
+  .learning-grid{
+    grid-template-columns:1fr;
+  }
+}
+/* =====================================================
+   CAREER GROWTH SECTION (STATIC LAYOUT SAFE)
+===================================================== */
+
+.career-growth{
+  background:#0f1c24;
+  color:#ffffff;
+}
+
+/* container card */
+.career-card{
+  background:rgba(255,255,255,.08);
+  padding:26px;
+  border-radius:18px;
+  box-shadow:var(--shadow-lg);
+}
+
+/* image grid */
+.career-images{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+  margin-bottom:18px;
+}
+
+/* images */
+.career-images img{
+  width:100%;
+  height:200px;              
+  object-fit:cover;
+  border-radius:14px;
+  transition:opacity .6s ease;
+}
+
+/* text */
+.career-text{
+  font-size:15px;
+  line-height:1.7;
+  color:#e5e7eb;
+}
+
+/* mobile */
+@media(max-width:900px){
+  .career-images{
+    grid-template-columns:1fr;
+  }
+} 
+
+/* =====================================================
+   IMAGE FLASH / SHINE EFFECT (LEARNING + CAREER)
+===================================================== */
+
+/* shared image wrapper safety */
+.learning-item,
+.career-card{
+  position:relative;
+  overflow:hidden;
+}
+
+/* shine overlay */
+.learning-item::before,
+.career-card::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-120%;
+  width:140%;
+  height:100%;
+  background:linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,.45),
+    transparent
+  );
+  transform:skewX(-20deg);
+  pointer-events:none;
+}
+
+/* hover trigger */
+.learning-item:hover::before,
+.career-card:hover::before{
+  animation:shineFlash 1.2s ease;
+}
+
+/* animation */
+@keyframes shineFlash{
+  from{ left:-120%; }
+  to{ left:120%; }
+}
+/* =====================================================
+   CIRCLE SECTIONS (TEAM + WHY CHOOSE) – ENHANCED
+===================================================== */
+
+.circle-section{
+  padding:80px 20px;
+  background:#f6f7ff;
+  overflow:hidden;
+}
+
+.circle-section.light{
+  background:#ffffff;
+}
+
+/* list */
+.circle-list{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:60px;
+}
+
+/* card */
+.circle-card{
+  text-align:center;
+  max-width:320px;
+  transition:transform .45s ease, box-shadow .45s ease;
+  position:relative;
+}
+
+/* hover lift */
+.circle-card:hover{
+  transform:translateY(-14px);
+}
+/* ================= CAREER GROWTH – 3 BLOCK SLIDER ================= */
+
+.career-slider{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:26px;
+}
+
+.career-block{
+  background:rgba(255,255,255,.08);
+  padding:22px;
+  border-radius:18px;
+  box-shadow:var(--shadow);
+  transition:.4s ease;
+}
+
+.career-block:hover{
+  transform:translateY(-8px);
+}
+
+.career-block img{
+  width:100%;
+  height:200px;
+  object-fit:cover;
+  border-radius:14px;
+  margin-bottom:14px;
+  transition:opacity .6s ease;
+}
+
+.career-desc{
+  font-size:15px;
+  line-height:1.7;
+  color:#e5e7eb;
+  transition:opacity .6s ease;
+}
+
+/* mobile */
+@media(max-width:900px){
+  .career-slider{
+    grid-template-columns:1fr;
+  }
+}
+
+/* ===== PERFECT CIRCLE IMAGE ===== */
+.circle-avatar{
+  width:130px;
+  height:130px;
+  margin:0 auto 18px;
+  border-radius:50%;
+  overflow:hidden;
+  border:4px solid #6c63ff;
+  position:relative;
+  animation:floatAvatar 5.5s ease-in-out infinite;
+}
+
+/* floating animation */
+@keyframes floatAvatar{
+  0%{transform:translateY(0)}
+  50%{transform:translateY(-8px)}
+  100%{transform:translateY(0)}
+}
+
+/* glowing ring */
+.circle-avatar::after{
+  content:"";
+  position:absolute;
+  inset:-6px;
+  border-radius:50%;
+  border:2px solid rgba(108,99,255,.4);
+  opacity:0;
+  animation:pulseRing 3s infinite;
+}
+
+@keyframes pulseRing{
+  0%{opacity:.4;transform:scale(1)}
+  70%{opacity:0;transform:scale(1.25)}
+  100%{opacity:0}
+}
+
+.circle-avatar img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* ===== ICON CIRCLE ===== */
+.circle-icon{
+  width:130px;
+  height:130px;
+  margin:0 auto 18px;
+  border-radius:50%;
+  background:#6c63ff;
+  color:#fff;
+  font-size:42px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  animation:floatIcon 6s ease-in-out infinite;
+  transition:transform .4s ease, box-shadow .4s ease;
+}
+
+/* bounce on hover */
+.circle-card:hover .circle-icon{
+  transform:scale(1.08) rotate(4deg);
+  box-shadow:0 20px 40px rgba(108,99,255,.35);
+}
+
+/* icon floating */
+@keyframes floatIcon{
+  0%{transform:translateY(0)}
+  50%{transform:translateY(-10px)}
+  100%{transform:translateY(0)}
+}
+
+/* text */
+.circle-card h4{
+  font-size:20px;
+  margin-bottom:6px;
+}
+
+.circle-card span{
+  display:block;
+  color:#6c63ff;
+  font-weight:600;
+  margin-bottom:10px;
+}
+
+.circle-card p{
+  font-size:15px;
+  color:#555;
+  line-height:1.7;
+  transition:color .3s ease;
+}
+
+.circle-card:hover p{
+  color:#333;
+}
+
+/* =====================================================
+   DESKTOP HORIZONTAL
+===================================================== */
+@media (min-width:1024px){
+  .circle-list{
+    flex-direction:row;
+    justify-content:center;
+    gap:80px;
+  }
+
+  /* staggered animation feel */
+  .circle-card:nth-child(1){transition-delay:.05s}
+  .circle-card:nth-child(2){transition-delay:.15s}
+  .circle-card:nth-child(3){transition-delay:.25s}
+}
+/* ===== DESKTOP DROPDOWN ===== */
+.nav-item{
+  position:relative;
+}
+
+.dropdown-menu{
+  position:absolute;
+  top:120%;
+  left:0;
+  background:#fff;
+  min-width:180px;
+  border-radius:10px;
+  box-shadow:0 15px 35px rgba(0,0,0,.12);
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(10px);
+  transition:.3s ease;
+  z-index:4000;
+}
+
+.dropdown-menu a{
+  display:block;
+  padding:12px 16px;
+  font-size:14px;
+  font-weight:600;
+}
+
+.dropdown-menu a:hover{
+  background:#f5f7fb;
+  color:var(--primary);
+}
+
+.nav-item:hover .dropdown-menu{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0);
+}
+/* ===== MOBILE DROPDOWN ===== */
+.mobile-parent{
+  font-size:16px;
+  font-weight:600;
+  cursor:pointer;
+  display:flex;
+  justify-content:space-between;
+}
+
+.mobile-sub{
+  display:none;
+  padding-left:12px;
+}
+
+.mobile-sub a{
+  display:block;
+  padding:10px 0;
+  font-size:14px;
+  opacity:.85;
+}
 
 </style>
 
@@ -554,25 +937,40 @@ header{
 <body>
 
 <header>
-  <div class="nav">
+     <div class="nav">
     <div class="logo">
       <span>S</span>
       <h1>SmartHire</h1>
     </div>
 
-    <div class="menu-desktop">
-  <a href="index.html">Home</a>
-  <a href="home2.html">Home 2</a>
+ <div class="menu-desktop">
+
+  <!-- HOME -->
+  <div class="nav-item dropdown">
+    <a href="#">Home ▾</a>
+    <div class="dropdown-menu">
+      <a href="index.html">Home 1</a>
+      <a href="home2.html">Home 2</a>
+    </div>
+  </div>
+
   <a href="jobs.html">Jobs</a>
   <a href="recruiters.html">Recruiters</a>
   <a href="career.html">Career Services</a>
   <a href="courses.html">Courses</a>
   <a href="companies.html">Companies</a>
   <a href="contact.html">Contact</a>
-  <a href="dashboard/user.html">Dashboard</a>
-  <a href="dashboard/admin.html">Admin</a>
-</div>
 
+  <!-- DASHBOARD -->
+  <div class="nav-item dropdown">
+    <a href="#">Dashboard ▾</a>
+    <div class="dropdown-menu">
+      <a href="dashboard/user.html">User Dashboard</a>
+      <a href="dashboard/admin.html">Admin Dashboard</a>
+    </div>
+  </div>
+
+</div>
 <div class="auth">
   <a href="login.html" class="login">Login</a>
   <a href="register.html" class="register">Register</a>
@@ -584,16 +982,30 @@ header{
 <div class="menu-mobile" id="mobileMenu">
   <div class="close" onclick="toggleMenu()">✕</div>
 
-  <a href="index.html">Home</a>
-  <a href="home2.html">Home 2</a>
+  <!-- HOME -->
+  <div class="mobile-parent" onclick="toggleSub(this)">
+    Home ▾
+  </div>
+  <div class="mobile-sub">
+    <a href="index.html">Home 1</a>
+    <a href="home2.html">Home 2</a>
+  </div>
+
   <a href="jobs.html">Jobs</a>
   <a href="recruiters.html">Recruiters</a>
   <a href="career.html">Career Services</a>
   <a href="courses.html">Courses</a>
   <a href="companies.html">Companies</a>
   <a href="contact.html">Contact</a>
-  <a href="dashboard/user.html">Dashboard</a>
-  <a href="dashboard/admin.html">Admin</a>
+
+  <!-- DASHBOARD -->
+  <div class="mobile-parent" onclick="toggleSub(this)">
+    Dashboard ▾
+  </div>
+  <div class="mobile-sub">
+    <a href="dashboard/user.html">User Dashboard</a>
+    <a href="dashboard/admin.html">Admin Dashboard</a>
+  </div>
 
   <div class="mobile-auth">
     <a href="login.html" class="login">Login</a>
@@ -711,45 +1123,81 @@ header{
   </div>
 </section>
 
-<!-- ================= LEARNING & UPSKILLING ================= -->
-<section class="reveal">
+<!-- ================= LEARNING & UPSKILLING HUB ================= -->
+<section class="learning-upskilling reveal">
   <div class="container">
+
     <div class="title">
       <h3>Learning & Upskilling Hub</h3>
       <p>Stay relevant in a fast-changing job market</p>
     </div>
 
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200"
-           style="border-radius:14px;margin-bottom:20px;">
-      <p>
-        Continuous learning is essential in today’s competitive job market.
-        SmartHire guides professionals toward certifications, technical skills,
-        leadership programs, and soft skills aligned with real hiring data and
-        market demand.
-      </p>
+    <div class="learning-grid">
+
+      <div class="learning-item">
+        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200" alt="Learning">
+        <p>
+          Continuous learning empowers professionals to adapt to emerging
+          technologies, improve problem-solving abilities, and remain competitive
+          in evolving global job markets.
+        </p>
+      </div>
+
+      <div class="learning-item">
+        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200" alt="Upskilling">
+        <p>
+          SmartHire recommends role-based certifications and practical skill
+          development paths aligned with real hiring trends and employer demand.
+        </p>
+      </div>
+
+      <div class="learning-item">
+        <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200" alt="Career Growth">
+        <p>
+          Leadership, communication, and analytical skills play a crucial role in
+          long-term career growth and professional confidence.
+        </p>
+      </div>
+
     </div>
+
   </div>
 </section>
+
+
 <!-- ================= CAREER GROWTH SLIDER ================= -->
 <section class="reveal" style="background:#0f1c24;color:#fff;">
   <div class="container">
+
     <div class="title">
       <h3 style="color:#fff">Career Growth Tools</h3>
-      <p style="color:#cbd5e1">Auto-switching insights that move your career forward</p>
-    </div>
-
-    <div class="card" style="background:rgba(255,255,255,.08)">
-      <img id="careerSlide"
-           src=""
-           style="width:100%;border-radius:16px;margin-bottom:20px;transition:opacity .6s;">
-      <p id="careerText" style="color:#e5e7eb">
-        SmartHire tools adapt to hiring trends and continuously evolve with the
-        job market, ensuring candidates receive relevant opportunities.
+      <p style="color:#cbd5e1">
+        Auto-switching insights that move your career forward
       </p>
     </div>
+
+    <div class="career-slider">
+
+      <div class="career-block">
+        <img src="" alt="Tool 1">
+        <p class="career-desc"></p>
+      </div>
+
+      <div class="career-block">
+        <img src="" alt="Tool 2">
+        <p class="career-desc"></p>
+      </div>
+
+      <div class="career-block">
+        <img src="" alt="Tool 3">
+        <p class="career-desc"></p>
+      </div>
+
+    </div>
+
   </div>
 </section>
+
 
 <!-- ================= TOP COMPANIES ================= -->
 <section class="reveal">
@@ -860,6 +1308,82 @@ header{
     </div>
   </div>
 </section>
+<!-- ================= EXPERT TEAM ================= -->
+<section class="circle-section">
+  <div class="container">
+
+    <div class="title">
+      <h3>Expert Team</h3>
+      <p>Certified professionals with decades of combined experience</p>
+    </div>
+
+    <div class="circle-list">
+
+      <div class="circle-card">
+        <div class="circle-avatar">
+          <img src="https://randomuser.me/api/portraits/men/32.jpg">
+        </div>
+        <h4>Sarah Johnson</h4>
+        <span>Chief Financial Officer</span>
+        <p>15+ years of experience in corporate finance and strategic planning.</p>
+      </div>
+
+      <div class="circle-card">
+        <div class="circle-avatar">
+          <img src="https://randomuser.me/api/portraits/men/45.jpg">
+        </div>
+        <h4>Michael Chen</h4>
+        <span>AI & Tax Specialist</span>
+        <p>Certified advisor specializing in AI-powered financial optimization.</p>
+      </div>
+
+      <div class="circle-card">
+        <div class="circle-avatar">
+          <img src="https://randomuser.me/api/portraits/women/65.jpg">
+        </div>
+        <h4>Emily Rodriguez</h4>
+        <span>Investment Advisor</span>
+        <p>Portfolio manager with a strong record of consistent returns.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ================= WHY CHOOSE ================= -->
+<section class="circle-section light">
+  <div class="container">
+
+    <div class="title">
+      <h3>Why Choose SmartHire</h3>
+      <p>Built with innovation, trust, and performance</p>
+    </div>
+
+    <div class="circle-list">
+
+      <div class="circle-card">
+        <div class="circle-icon">👥</div>
+        <h4>Expert Guidance</h4>
+        <p>Work with verified professionals and trusted recruiters.</p>
+      </div>
+
+      <div class="circle-card">
+        <div class="circle-icon">🧠</div>
+        <h4>AI Powered</h4>
+        <p>Smart matching and insights driven by real hiring data.</p>
+      </div>
+
+      <div class="circle-card">
+        <div class="circle-icon">🚀</div>
+        <h4>Career Growth</h4>
+        <p>Tools and services designed for long-term success.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 
 <!-- ================= FOOTER ================= -->
 <footer class="footer">
@@ -930,64 +1454,214 @@ header{
 </footer>
 
 <script>
-/* ================= MENU ================= */
+/* =====================================================
+   MOBILE MENU (LEFT SLIDE)
+===================================================== */
 function toggleMenu(){
-  document.getElementById('mobileMenu').classList.toggle('active');
+  const menu = document.getElementById("mobileMenu");
+  if(menu) menu.classList.toggle("active");
 }
 
-/* ================= TYPEWRITER ================= */
-const txt="500,000+";
-let ti=0;
-function typing(){
-  if(ti<txt.length){
-    document.getElementById("typeText").innerHTML+=txt.charAt(ti);
-    ti++;
-    setTimeout(typing,120);
+/* =====================================================
+   HERO TYPEWRITER (STOPS PROPERLY)
+===================================================== */
+const typeTarget = document.getElementById("typeText");
+const typeValue = "500,000+";
+let typeIndex = 0;
+
+function startTyping(){
+  if(!typeTarget) return;
+  if(typeIndex < typeValue.length){
+    typeTarget.textContent += typeValue.charAt(typeIndex);
+    typeIndex++;
+    setTimeout(startTyping, 120);
   }
 }
-typing();
+startTyping();
 
-/* ================= SCROLL REVEAL ================= */
-const reveals=document.querySelectorAll('.reveal');
-window.addEventListener('scroll',()=>{
-  reveals.forEach(el=>{
-    if(el.getBoundingClientRect().top < window.innerHeight-100){
-      el.classList.add('show');
+/* =====================================================
+   SCROLL REVEAL ANIMATION
+===================================================== */
+const revealEls = document.querySelectorAll(".reveal");
+
+function handleReveal(){
+  revealEls.forEach(el => {
+    if(el.getBoundingClientRect().top < window.innerHeight - 120){
+      el.classList.add("show");
     }
   });
-});
+}
+window.addEventListener("scroll", handleReveal);
+window.addEventListener("load", handleReveal);
 
-/* ================= AUTO SLIDER ================= */
-const slides=[
-  {
-    img:"https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200",
-    text:"AI-powered resume optimization improves visibility and recruiter response rates."
-  },
-  {
-    img:"https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200",
-    text:"Mock interviews and assessments help candidates prepare confidently."
-  },
-  {
-    img:"https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200",
-    text:"Real-time market insights guide professionals toward future-ready skills."
+/* =====================================================
+   STICKY SEARCH BAR
+===================================================== */
+const searchBox = document.querySelector(".search-box");
+let stickyPoint = searchBox ? searchBox.offsetTop + 120 : 0;
+
+function handleStickySearch(){
+  if(!searchBox) return;
+  if(window.scrollY > stickyPoint){
+    searchBox.classList.add("sticky");
+  } else {
+    searchBox.classList.remove("sticky");
   }
+}
+window.addEventListener("scroll", handleStickySearch);
+
+/* =====================================================
+   SEARCH AUTOSUGGEST (SHINE STYLE)
+===================================================== */
+const skills = [
+  "Java Developer","Python Developer","React Developer","UI UX Designer",
+  "Data Scientist","DevOps Engineer","Cloud Architect","Cyber Security",
+  "Machine Learning","Digital Marketing","Android Developer","Finance Analyst"
 ];
 
-let si=0;
-const slideImg=document.getElementById("careerSlide");
-const slideTxt=document.getElementById("careerText");
+const skillInput = document.querySelector(".search-box input");
+let suggestBox;
 
-function slideShow(){
-  slideImg.style.opacity=0;
-  setTimeout(()=>{
-    slideImg.src=slides[si].img;
-    slideTxt.innerText=slides[si].text;
-    slideImg.style.opacity=1;
-    si=(si+1)%slides.length;
-  },500);
+if(skillInput){
+  suggestBox = document.createElement("div");
+  suggestBox.className = "autosuggest";
+  skillInput.parentElement.appendChild(suggestBox);
+
+  skillInput.addEventListener("input", () => {
+    const value = skillInput.value.toLowerCase();
+    suggestBox.innerHTML = "";
+    if(!value){
+      suggestBox.style.display = "none";
+      return;
+    }
+
+    skills
+      .filter(s => s.toLowerCase().includes(value))
+      .slice(0,6)
+      .forEach(s => {
+        const div = document.createElement("div");
+        div.innerHTML = s.replace(
+          new RegExp(value,"gi"),
+          match => `<strong>${match}</strong>`
+        );
+        div.onclick = () => {
+          skillInput.value = s;
+          suggestBox.style.display = "none";
+        };
+        suggestBox.appendChild(div);
+      });
+
+    suggestBox.style.display = "block";
+  });
+
+  document.addEventListener("click", e => {
+    if(!skillInput.contains(e.target)){
+      suggestBox.style.display = "none";
+    }
+  });
 }
-slideShow();
-setInterval(slideShow,3500);
+
+/* =====================================================
+    AUTO SWITCH – 3 SEPARATE BLOCKS (IMAGE + TEXT)
+===================================================== */
+
+const careerSlides = [
+  [
+    {
+      img: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900",
+      text: "AI-powered resume optimization improves recruiter visibility."
+    },
+    {
+      img: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=900",
+      text: "Mock interviews sharpen confidence and technical clarity."
+    },
+    {
+      img: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=900",
+      text: "Market analytics guide future-ready career decisions."
+    }
+  ],
+  [
+    {
+      img: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=900",
+      text: "Career mentoring aligned with industry demand."
+    },
+    {
+      img: "https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=900",
+      text: "Skill assessments reveal growth opportunities."
+    },
+    {
+      img: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=900",
+      text: "Personalized learning paths for faster promotions."
+    }
+  ],
+  [
+    {
+      img: "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=900",
+      text: "Leadership skills enhance long-term career success."
+    },
+    {
+      img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900",
+      text: "Continuous upskilling keeps professionals competitive."
+    },
+    {
+      img: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=900",
+      text: "Data-driven insights shape smarter job moves."
+    }
+  ]
+];
+
+let careerIndex = 0;
+const blocks = document.querySelectorAll(".career-block");
+
+function updateCareerBlocks(){
+  blocks.forEach((block, i) => {
+    const img = block.querySelector("img");
+    const text = block.querySelector(".career-desc");
+
+    img.style.opacity = 0;
+    text.style.opacity = 0;
+
+    setTimeout(() => {
+      img.src = careerSlides[careerIndex][i].img;
+      text.textContent = careerSlides[careerIndex][i].text;
+      img.style.opacity = 1;
+      text.style.opacity = 1;
+    }, 300);
+  });
+
+  careerIndex = (careerIndex + 1) % careerSlides.length;
+}
+
+/* init */
+updateCareerBlocks();
+setInterval(updateCareerBlocks, 4500);
+
+/* =====================================================
+   JOB CARD SLIDER (AUTO)
+===================================================== */
+const jobTrack = document.querySelector(".job-track");
+let jobIndex = 0;
+
+function moveJobSlide(dir = 1){
+  if(!jobTrack) return;
+
+  const max = jobTrack.children.length - 3;
+  jobIndex += dir;
+  jobIndex = Math.max(0, Math.min(jobIndex, max));
+  jobTrack.style.transform = `translateX(-${jobIndex * 340}px)`;
+}
+
+if(jobTrack){
+  setInterval(() => moveJobSlide(1), 4000);
+}
+
+function toggleSub(el){
+  const sub = el.nextElementSibling;
+  if(sub && sub.classList.contains("mobile-sub")){
+    sub.style.display = sub.style.display === "block" ? "none" : "block";
+  }
+}
+
 </script>
 
 </body>
