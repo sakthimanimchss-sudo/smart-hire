@@ -1132,139 +1132,70 @@ header{
 
 <script>
 /* =====================================================
-   SMART HIRE — FINAL JS (FIXED & STABLE)
+   SMART HIRE — FINAL CLEAN JS (MOBILE + DESKTOP SAFE)
 ===================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* ================= HELPERS ================= */
-  const qs  = s => document.querySelector(s);
-  const qsa = s => document.querySelectorAll(s);
+  /* ========= HELPERS ========= */
+  const $ = s => document.querySelector(s);
 
-  /* ================= ELEMENTS ================= */
-  const voiceBtn   = qs("#voiceBtn");
-  const voiceText  = qs("#voiceText");
-  const waveform   = qs(".waveform");
+  /* ========= ELEMENTS ========= */
+  const voiceBtn   = $("#voiceBtn");
+  const speakBtn   = $("#speakAnswer");
+  const voiceText  = $("#voiceText");
+  const answerBox  = $("#userAnswer");
+  const aiQuestion = $("#aiQuestion");
+  const startBtn   = $("#startInterview");
+  const submitBtn  = $("#submitAnswer");
+  const scoreBox   = $("#scoreBox");
 
-  const chatBtn    = qs(".chat-btn");
-  const chatPanel  = qs(".chat-panel");
-  const chatBody   = qs("#chatBody");
-  const chatInput  = qs("#chatInput");
+  /* ========= AUDIO UNLOCK (CRITICAL FOR MOBILE) ========= */
+  let audioUnlocked = false;
 
-  const careerBlocks = qsa(".career-block");
-  const statsEls = qsa(".stat h3");
-
-  const startBtn   = qs("#startInterview");
-  const submitBtn  = qs("#submitAnswer");
-  const userAnswer = qs("#userAnswer");
-  const aiQuestion = qs("#aiQuestion");
-  const scoreBox   = qs("#scoreBox");
-
-  /* ================= SPEAK ================= */
-  function speak(text){
-    if(!("speechSynthesis" in window)) return;
-
-    speechSynthesis.cancel();
-    waveform?.classList.add("active");
-
-    const msg = new SpeechSynthesisUtterance(text);
-    msg.lang = "en-US";
-
-    msg.onend = ()=> waveform?.classList.remove("active");
-    speechSynthesis.speak(msg);
+  function unlockAudio(){
+    if(audioUnlocked) return;
+    const u = new SpeechSynthesisUtterance(" ");
+    speechSynthesis.speak(u);
+    audioUnlocked = true;
   }
 
-  /* ================= TYPE EFFECT ================= */
-  function typeText(el, text, cb){
+  /* ========= SPEAK (DO NOT CANCEL) ========= */
+  function speak(text){
+    if(!("speechSynthesis" in window)) return;
+    unlockAudio();
+
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = "en-US";
+    u.rate = 1;
+    u.pitch = 1;
+
+    speechSynthesis.speak(u);
+  }
+
+  /* ========= TYPE EFFECT ========= */
+  function typeText(el, text){
     if(!el) return;
     el.textContent = "";
     let i = 0;
-
     (function t(){
       if(i < text.length){
         el.textContent += text.charAt(i++);
         setTimeout(t, 30);
-      } else cb && cb();
+      }
     })();
   }
 
-  /* ================= GREETING ================= */
+  /* ========= GREETING ========= */
   if(voiceBtn){
     voiceBtn.onclick = ()=>{
-      const greet =
-        "Welcome to SmartHire. I am your AI hiring assistant.";
-      typeText(voiceText, greet, ()=> speak(greet));
+      const greet = "Welcome to SmartHire. I am your AI hiring assistant.";
+      typeText(voiceText, greet);
+      speak(greet);
     };
   }
 
-  /* ================= CAREER AUTO ================= */
-  const careerData = [
-    {img:"https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900",text:"AI resume optimization boosts interviews."},
-    {img:"https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=900",text:"Mock interviews improve confidence."},
-    {img:"https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=900",text:"Career analytics guide growth."}
-  ];
-
-  let cIndex = 0;
-
-  function updateCareer(){
-    careerBlocks.forEach((block,i)=>{
-      let img  = block.querySelector("img");
-      let desc = block.querySelector(".career-desc");
-
-      if(!img){
-        img = document.createElement("img");
-        block.appendChild(img);
-      }
-      if(!desc){
-        desc = document.createElement("div");
-        desc.className = "career-desc";
-        block.appendChild(desc);
-      }
-
-      const d = careerData[(cIndex+i)%careerData.length];
-      img.src = d.img;
-      desc.textContent = d.text;
-    });
-    cIndex++;
-  }
-
-  if(careerBlocks.length){
-    updateCareer();
-    setInterval(updateCareer, 5000);
-  }
-
-  /* ================= STATS ================= */
-  function animateStats(){
-    statsEls.forEach(el=>{
-      const target = +el.dataset.target;
-      let val = 0;
-      const step = target / 60;
-
-      (function run(){
-        val += step;
-        if(val < target){
-          el.textContent = Math.floor(val);
-          requestAnimationFrame(run);
-        } else {
-          el.textContent = target;
-        }
-      })();
-    });
-  }
-
-  let statsDone = false;
-  window.addEventListener("scroll", ()=>{
-    if(statsDone) return;
-    const statsSection = qs(".stats");
-    if(!statsSection) return;
-
-    if(statsSection.getBoundingClientRect().top < window.innerHeight - 120){
-      statsDone = true;
-      animateStats();
-    }
-  });
-
-  /* ================= INTERVIEW ================= */
+  /* ========= INTERVIEW QUESTIONS ========= */
   const questions = [
     "Tell me about yourself.",
     "What technical skills do you have?",
@@ -1282,24 +1213,26 @@ document.addEventListener("DOMContentLoaded", () => {
       answers = [];
       scoreBox.style.display = "none";
       submitBtn.disabled = false;
-      userAnswer.value = "";
+      answerBox.value = "";
 
-      typeText(aiQuestion, questions[0], ()=> speak(questions[0]));
+      typeText(aiQuestion, questions[0]);
+      speak(questions[0]);
     };
   }
 
   if(submitBtn){
     submitBtn.onclick = ()=>{
-      const ans = userAnswer.value.trim();
+      const ans = answerBox.value.trim();
       if(!ans) return;
 
       answers.push(ans);
-      userAnswer.value = "";
+      answerBox.value = "";
       qIndex++;
 
       if(qIndex < questions.length){
-        typeText(aiQuestion, questions[qIndex], ()=> speak(questions[qIndex]));
-      } else {
+        typeText(aiQuestion, questions[qIndex]);
+        speak(questions[qIndex]);
+      }else{
         submitBtn.disabled = true;
         const score = answers.length * 20;
         scoreBox.style.display = "block";
@@ -1309,152 +1242,49 @@ document.addEventListener("DOMContentLoaded", () => {
     };
   }
 
-});
+  /* ========= VOICE INPUT (MIC → TEXTAREA) ========= */
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  let recognizer;
 
-window.addEventListener("load", ()=>{
-  const ta = document.getElementById("userAnswer");
-  if(ta){
-    ta.disabled = false;
-    ta.readOnly = false;
-    ta.style.pointerEvents = "auto";
+  if(SR){
+    recognizer = new SR();
+    recognizer.lang = "en-US";
+    recognizer.continuous = false;
+
+    recognizer.onresult = e=>{
+      const text = e.results[0][0].transcript;
+      answerBox.value = text;
+      speak("Answer recorded. You can submit now.");
+    };
+
+    recognizer.onerror = ()=>{
+      speak("Microphone error. Please allow access.");
+    };
   }
+
+  if(speakBtn && recognizer){
+    speakBtn.onclick = async ()=>{
+      unlockAudio();
+
+      try{
+        await navigator.mediaDevices.getUserMedia({audio:true});
+        recognizer.start();
+        speak("Please speak your answer now.");
+      }catch{
+        alert("Please allow microphone permission");
+      }
+    };
+  }
+
 });
-/* ================= INTERVIEW VOICE INPUT ================= */
-const speakBtn   = document.getElementById("speakAnswer");
-const answerBox  = document.getElementById("userAnswer");
 
-const SpeechRecognition =
-  window.SpeechRecognition || window.webkitSpeechRecognition;
-
-let interviewRecognizer = null;
-
-if(SpeechRecognition){
-  interviewRecognizer = new SpeechRecognition();
-  interviewRecognizer.lang = "en-US";
-  interviewRecognizer.interimResults = false;
-  interviewRecognizer.maxAlternatives = 1;
-
-  interviewRecognizer.onstart = () => {
-    console.log("🎤 Interview mic started");
-  };
-
-  interviewRecognizer.onresult = (event) => {
-    const transcript = event.results[0][0].transcript;
-    answerBox.value = transcript;        //  TEXT APPEARS
-    answerBox.focus();
-
-    speak(
-      "Answer recorded. You can edit it or submit."
-    );
-  };
-
-  interviewRecognizer.onerror = (event) => {
-    console.error("Mic error:", event.error);
-    speak("Microphone error. Please allow mic access.");
-  };
-
-  interviewRecognizer.onend = () => {
-    console.log("🎤 Mic stopped");
-  };
-}
-
-/* BUTTON CLICK — REQUIRED USER ACTION */
-if(speakBtn && interviewRecognizer){
-  speakBtn.addEventListener("click", () => {
-    interviewRecognizer.start();
-    speak("Please speak your answer now.");
-  });
-}
-
+/* ========= MOBILE MENU ========= */
 function toggleMenu(){
   document.querySelector(".menu-desktop")
     .classList.toggle("show");
 }
-/* ================= MOBILE SAFE VOICE SYSTEM ================= */
-
-const voiceBtn = document.getElementById("voiceBtn");
-const answerBox = document.getElementById("userAnswer");
-
-const SpeechRecognition =
-  window.SpeechRecognition || window.webkitSpeechRecognition;
-
-let recognizer;
-let listening = false;
-
-/*  SAFE SPEAK FUNCTION */
-function speak(text){
-  if(!("speechSynthesis" in window)) return;
-
-  const msg = new SpeechSynthesisUtterance(text);
-  msg.lang = "en-US";
-  msg.rate = 1;
-  msg.pitch = 1;
-
-  // REQUIRED FOR MOBILE
-  window.speechSynthesis.cancel();
-  window.speechSynthesis.speak(msg);
-}
-
-/*  MIC SETUP */
-if(SpeechRecognition){
-  recognizer = new SpeechRecognition();
-  recognizer.lang = "en-US";
-  recognizer.continuous = false;
-  recognizer.interimResults = false;
-
-  recognizer.onresult = e => {
-    const text = e.results[0][0].transcript;
-    answerBox.value = text;
-
-    recognizer.stop();   // STOP MIC FIRST
-
-    //  DELAY THEN SPEAK (CRITICAL)
-    setTimeout(() => {
-      speak("Answer recorded. You can submit now.");
-    }, 300);
-
-    listening = false;
-  };
-
-  recognizer.onerror = () => {
-    listening = false;
-    speak("I could not hear you clearly.");
-  };
-}
-
-/*  USER CLICK (MANDATORY) */
-voiceBtn.addEventListener("click", async () => {
-
-  //  Mic permission
-  try{
-    await navigator.mediaDevices.getUserMedia({ audio:true });
-  }catch{
-    alert("Please allow microphone access");
-    return;
-  }
-
-  if(!recognizer){
-    alert("Voice not supported on this browser");
-    return;
-  }
-
-  if(!listening){
-    listening = true;
-
-    //  UNLOCK AUDIO (MOBILE FIX)
-    speak("Listening now");
-
-    setTimeout(() => {
-      recognizer.start();
-    }, 400);
-  }
-});
-function toggleMenu(){
-  const menu = document.getElementById("mobileMenu");
-  menu.style.display = menu.style.display === "flex" ? "none" : "flex";
-}
-
 </script>
+
 
 </body>
 </html>
