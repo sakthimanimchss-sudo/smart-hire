@@ -7,7 +7,6 @@
 
 <!-- ICONS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<link rel="stylesheet" href="css/style.css">
 
 <style>
 /* =====================================================
@@ -18,7 +17,8 @@
 :root{
   --primary:#2b3990;
   --accent:#ff9900;
-  --success:#36e0a1;
+  --success:#3
+     6e0a1;
   --dark:#0f1c24;
   --dark2:#1b2a3a;
   --light:#f5f7fb;
@@ -641,163 +641,7 @@ header{
     display:block;
   }
 }
-/* ================= MOBILE HAMBURGER MENU FIX ================= */
 
-@media (max-width: 992px) {
-
-  /* Hide desktop auth */
-  .auth .login,
-  .auth .register {
-    display: none;
-  }
-
-  /* Mobile menu container */
-  .menu-desktop {
-    padding-bottom: 30px;
-  }
-
-  /* Mobile auth buttons */
-  .mobile-auth {
-    margin-top: 30px;
-    display: flex;
-    gap: 14px;
-    justify-content: center;
-  }
-
-  .mobile-auth a {
-    flex: 1;
-    text-align: center;
-    padding: 12px 0;
-    border-radius: 12px;
-    font-weight: 700;
-    font-size: 15px;
-  }
-
-  .mobile-login {
-    border: 2px solid var(--primary);
-    color: var(--primary);
-    background: #fff;
-  }
-
-  .mobile-register {
-    background: var(--primary);
-    color: #fff;
-  }
-}
-/* ================= MOBILE MENU FINAL FIX ================= */
-
-.menu-mobile {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background: #fff;
-  z-index: 9999;
-  padding: 20px;
-  display: none;
-  overflow-y: auto;
-}
-
-.menu-mobile.show {
-  display: block;
-}
-
-.menu-mobile a,
-.mobile-parent {
-  display: block;
-  padding: 14px 0;
-  font-size: 16px;
-  font-weight: 600;
-  border-bottom: 1px solid #eee;
-}
-
-.mobile-sub {
-  display: none;
-  padding-left: 14px;
-}
-
-.mobile-sub a {
-  font-size: 15px;
-  font-weight: 500;
-}
-
-.mobile-parent {
-  cursor: pointer;
-}
-
-.close {
-  font-size: 22px;
-  text-align: right;
-  margin-bottom: 10px;
-  cursor: pointer;
-}
-
-/* Mobile auth buttons */
-.mobile-auth {
-  margin-top: 30px;
-  display: flex;
-  gap: 14px;
-}
-
-.mobile-auth a {
-  flex: 1;
-  text-align: center;
-  padding: 12px 0;
-  border-radius: 12px;
-  font-weight: 700;
-}
-
-.mobile-auth .login {
-  border: 2px solid var(--primary);
-  color: var(--primary);
-}
-
-.mobile-auth .register {
-  background: var(--primary);
-  color: #fff;
-}
-
-/* RESPONSIVE VISIBILITY */
-@media (max-width: 992px) {
-  .menu-desktop {
-    display: none;
-  }
-  .auth .login,
-  .auth .register {
-    display: none;
-  }
-}
-/* =====================================================
-   FORCE SAME HAMBURGER DESIGN AS index.html
-===================================================== */
-
-/* RESET any previous hamburger styles */
-.hamburger {
-  all: unset;
-}
-
-/* EXACT hamburger look from index.html */
-.hamburger {
-  display: block;
-  font-size: 28px;
-  line-height: 1;
-  cursor: pointer;
-  padding: 6px;
-  color: #111;
-}
-
-/* Hide hamburger on desktop */
-@media (min-width: 993px) {
-  .hamburger {
-    display: none;
-  }
-}
-.nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
 
 /* =====================================================
    ADVANCED FOOTER
@@ -964,93 +808,95 @@ header{
     justify-content:center;
   }
 }
-/* ================= FINAL MENU FIX ================= */
-
-/* MOBILE MENU OVERLAY */
-.menu-mobile {
-  position: fixed;
-  inset: 0;
-  background: #fff;
-  z-index: 10000;
-  padding: 24px;
-  display: none;
-  overflow-y: auto;
+/* =====================================================
+   AUTH + HAMBURGER (FROM index.html)
+===================================================== */
+.auth{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.auth .login{
+  color:var(--primary);
+  font-weight:600;
+}
+.auth .register{
+  background:var(--primary);
+  color:#fff;
+  padding:10px 20px;
+  border-radius:8px;
+}
+.hamburger{
+  display:none;
+  font-size:26px;
+  cursor:pointer;
 }
 
-/* SHOW STATE */
-.menu-mobile.show {
-  display: block;
+/* =====================================================
+   MOBILE MENU – LEFT SLIDE (FROM index.html)
+===================================================== */
+.menu-mobile{
+  position:fixed;
+  top:0;
+  left:-100%;
+  width:85%;
+  height:100%;
+  background:#fff;
+  z-index:2000;
+  padding:25px;
+  transition:.45s ease;
+  display:flex;
+  flex-direction:column;
+  gap:18px;
 }
 
-/* MOBILE MENU ITEMS */
-.menu-mobile a,
-.mobile-parent {
-  display: block;
-  padding: 16px 0;
-  font-size: 17px;
-  font-weight: 600;
-  text-align: center;
-  border-bottom: 1px solid #eee;
+.menu-mobile.active{
+  left:0;
 }
 
-/* SUB MENU */
-.mobile-sub {
-  display: none;
-  padding-bottom: 10px;
+.menu-mobile .close{
+  font-size:28px;
+  align-self:flex-end;
+  cursor:pointer;
 }
 
-.mobile-sub a {
-  font-size: 16px;
-  opacity: 0.85;
+.menu-mobile a{
+  font-size:16px;
+  font-weight:600;
 }
 
-/* CLOSE BUTTON */
-.menu-mobile .close {
-  font-size: 24px;
-  text-align: right;
-  margin-bottom: 10px;
-  cursor: pointer;
+.menu-mobile .mobile-auth{
+  margin-top:auto;
+  display:flex;
+  gap:12px;
 }
 
-/* AUTH BUTTONS */
-.mobile-auth {
-  margin-top: 30px;
-  display: flex;
-  gap: 16px;
+.menu-mobile .mobile-auth a{
+  flex:1;
+  text-align:center;
+  padding:12px;
+  border-radius:8px;
 }
 
-.mobile-auth a {
-  flex: 1;
-  padding: 14px 0;
-  text-align: center;
-  border-radius: 12px;
-  font-weight: 700;
+.menu-mobile .mobile-auth .login{
+  border:2px solid var(--primary);
 }
 
-.mobile-auth .login {
-  border: 2px solid var(--primary);
-  color: var(--primary);
+.menu-mobile .mobile-auth .register{
+  background:var(--primary);
+  color:#fff;
 }
 
-.mobile-auth .register {
-  background: var(--primary);
-  color: #fff;
-}
-
-/* VISIBILITY RULES */
-@media (max-width: 992px) {
-  .menu-desktop,
+/* =====================================================
+   RESPONSIVE (FROM index.html)
+===================================================== */
+@media(max-width:900px){
+  .menu-desktop{display:none}
+  .hamburger{display:block}
   .auth .login,
-  .auth .register {
-    display: none !important;
-  }
+  .auth .register{display:none}
 }
 
-@media (min-width: 993px) {
-  .menu-mobile {
-    display: none !important;
-  }
-}
 
 </style>
 </head>
