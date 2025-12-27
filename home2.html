@@ -1029,148 +1029,111 @@ button:active {
   transform: scale(0.96);
 }
 /* =====================================================
-   MOBILE MENU – CLEAN (MATCH IMAGE 2)
+   FINAL MOBILE MENU — MATCH index.html EXACTLY
 ===================================================== */
 
-.menu-mobile {
-  position: fixed;
-  inset: 0;
-  background: #fff;
-  z-index: 10000;
-  padding: 20px;
-  display: none;
-  overflow-y: auto;
+/* hamburger */
+.hamburger{
+  display:none;
+  font-size:26px;
+  cursor:pointer;
+  padding:6px;
+  color:#111;
 }
 
-.menu-mobile.show {
-  display: block;
+/* mobile breakpoint */
+@media (max-width: 992px){
+
+  /* show hamburger */
+  .hamburger{
+    display:block;
+  }
+
+  /* hide desktop menu + auth */
+  .menu-desktop,
+  .auth .login,
+  .auth .register{
+    display:none !important;
+  }
 }
 
-/* main menu items */
+/* =====================================================
+   MOBILE MENU OVERLAY (FULL SCREEN, NO GAP)
+===================================================== */
+
+.menu-mobile{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100vh;
+  background:#fff;
+  z-index:99999;
+  padding:20px;
+  display:none;
+  overflow-y:auto;
+}
+
+/* open state */
+.menu-mobile.active{
+  display:block;
+}
+
+/* close icon (TOP RIGHT ONLY ☰ → ✕ swap handled by JS) */
+.menu-mobile .close{
+  font-size:26px;
+  text-align:right;
+  cursor:pointer;
+  margin-bottom:10px;
+}
+
+/* menu items */
 .menu-mobile a,
-.mobile-parent {
-  display: block;
-  padding: 14px 0;
-  font-size: 17px;
-  font-weight: 500;
-  border-bottom: 1px solid #eee;
-  background: none;
+.mobile-parent{
+  display:block;
+  padding:14px 0;
+  font-size:16px;
+  font-weight:600;
+  border-bottom:1px solid #eee;
 }
 
-/* parent arrow */
-.mobile-parent span {
-  float: right;
-  transition: transform 0.3s ease;
+/* sub menu */
+.mobile-sub{
+  display:none;
+  padding-left:14px;
 }
 
-/* rotate arrow */
-.mobile-parent.active span {
-  transform: rotate(180deg);
-}
-
-/* sub menu – SIMPLE INDENT */
-.mobile-sub {
-  display: none;
-  padding-left: 16px;
-}
-
-.mobile-sub a {
-  padding: 10px 0;
-  font-size: 15px;
-  font-weight: 400;
-  border-bottom: none;
-  color: #555;
+.mobile-sub a{
+  font-size:15px;
+  font-weight:500;
+  opacity:.85;
 }
 
 /* auth buttons */
-.mobile-auth {
-  margin-top: 24px;
-  display: flex;
-  gap: 14px;
+.mobile-auth{
+  margin-top:24px;
+  display:flex;
+  gap:14px;
 }
 
-.mobile-auth a {
-  flex: 1;
-  text-align: center;
-  padding: 14px 0;
-  border-radius: 12px;
-  font-weight: 700;
+.mobile-auth a{
+  flex:1;
+  text-align:center;
+  padding:12px 0;
+  border-radius:12px;
+  font-weight:700;
 }
 
-.mobile-auth .login {
-  border: 2px solid var(--primary);
-  color: var(--primary);
+.mobile-auth .login{
+  border:2px solid var(--primary);
+  color:var(--primary);
 }
 
-.mobile-auth .register {
-  background: var(--primary);
-  color: #fff;
+.mobile-auth .register{
+  background:var(--primary);
+  color:#fff;
 }
-/* =====================================================
-   MOBILE HERO & BUTTON FIT FIX
-===================================================== */
 
-@media (max-width: 768px) {
-
-  /* HERO SECTION HEIGHT FIX */
-  .hero {
-    min-height: auto;
-    padding: 80px 16px 60px;
-  }
-
-  /* HERO BUTTON WRAPPER */
-  .hero-actions {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    width: 100%;
-    margin-top: 28px;
-  }
-
-  /* HERO BUTTONS FULL WIDTH */
-  .hero-actions a,
-  .hero-actions button {
-    width: 100%;
-    max-width: 100%;
-    text-align: center;
-    padding: 14px 0;
-    border-radius: 14px;
-  }
-
-  /* POST A JOB */
-  .btn-primary {
-    font-size: 16px;
-  }
-
-  /* EXPLORE PLATFORM */
-  .btn-secondary {
-    font-size: 15px;
-  }
-
-  /* START SMART HIRE AI BUTTON */
-  .start-ai-btn,
-  .ai-start-btn {
-    width: 100%;
-    max-width: 100%;
-    margin: 30px auto 0;
-    display: flex;
-    justify-content: center;
-  }
-
-  .start-ai-btn button,
-  .ai-start-btn button {
-    width: 100%;
-    padding: 14px 0;
-    font-size: 16px;
-    border-radius: 30px;
-  }
-
-  /* REMOVE EXTRA WHITE GAP */
-  section {
-    padding-top: 60px;
-    padding-bottom: 60px;
-  }
-}
 
 
 </style>
