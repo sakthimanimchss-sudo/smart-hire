@@ -640,6 +640,50 @@ header{
     display:block;
   }
 }
+/* ================= MOBILE HAMBURGER MENU FIX ================= */
+
+@media (max-width: 992px) {
+
+  /* Hide desktop auth */
+  .auth .login,
+  .auth .register {
+    display: none;
+  }
+
+  /* Mobile menu container */
+  .menu-desktop {
+    padding-bottom: 30px;
+  }
+
+  /* Mobile auth buttons */
+  .mobile-auth {
+    margin-top: 30px;
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+  }
+
+  .mobile-auth a {
+    flex: 1;
+    text-align: center;
+    padding: 12px 0;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 15px;
+  }
+
+  .mobile-login {
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    background: #fff;
+  }
+
+  .mobile-register {
+    background: var(--primary);
+    color: #fff;
+  }
+}
+
 
 /* =====================================================
    ADVANCED FOOTER
@@ -852,6 +896,13 @@ header{
       <div class="hamburger" onclick="toggleMenu()">☰</div>
     </div>
   </div>
+   
+   <!-- MOBILE AUTH BUTTONS -->
+<div class="mobile-auth">
+  <a href="login.html" class="mobile-login">Login</a>
+  <a href="register.html" class="mobile-register">Register</a>
+</div>
+
 </header>
 
 <!-- HERO -->
