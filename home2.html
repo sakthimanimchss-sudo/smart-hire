@@ -640,67 +640,6 @@ header{
     display:block;
   }
 }
-.hamburger{
-  display:none;
-  font-size:26px;
-  cursor:pointer;
-}
-
-.mobile-menu{
-  display:none;
-  position:absolute;
-  top:70px;
-  right:0;
-  width:100%;
-  background:#fff;
-  box-shadow:0 10px 30px rgba(0,0,0,.15);
-  flex-direction:column;
-  z-index:1000;
-}
-
-.mobile-menu a{
-  padding:14px 20px;
-  border-bottom:1px solid #eee;
-  font-weight:600;
-}
-
-@media(max-width:900px){
-  .menu-desktop{ display:none; }
-  .hamburger{ display:block; }
-}
-@media(max-width:480px){
-
-  header{
-    padding:10px 14px;
-  }
-
-  .hero h1{
-    font-size:28px;
-    line-height:1.3;
-  }
-
-  .hero p{
-    font-size:14px;
-  }
-
-  .hero-actions{
-    flex-direction:column;
-    gap:12px;
-  }
-
-  .btn-primary,
-  .btn-secondary{
-    width:100%;
-  }
-
-  .interview-actions{
-    flex-direction:column;
-  }
-
-  textarea{
-    font-size:15px;
-  }
-}
 
 /* =====================================================
    ADVANCED FOOTER
@@ -1006,7 +945,7 @@ header{
       <button id="speakAnswer" class="btn-secondary">
   🎤 Speak Answer
 </button>
-<textarea id="userAnswer"></textarea>
+
     </div>
 
     <!-- Score -->
@@ -1132,80 +1071,149 @@ header{
 
 <script>
 /* =====================================================
-   SMART HIRE — OLD AI VERSION (STABLE v1)
-   ✔ Mobile voice
-   ✔ Typing
-   ✔ Mic input
-   ✔ Image auto switch
+   SMART HIRE — FINAL JS (FIXED & STABLE)
 ===================================================== */
+let audioUnlocked = false;
+
+function unlockAudio() {
+  if (audioUnlocked) return;
+  const test = new SpeechSynthesisUtterance("");
+  speechSynthesis.speak(test);
+  audioUnlocked = true;
+}
 
 document.addEventListener("DOMContentLoaded", () => {
 
   /* ================= HELPERS ================= */
-  const $ = s => document.querySelector(s);
-  const $$ = s => document.querySelectorAll(s);
+  const qs  = s => document.querySelector(s);
+  const qsa = s => document.querySelectorAll(s);
 
   /* ================= ELEMENTS ================= */
-  const voiceBtn   = $("#voiceBtn");
-  const voiceText  = $("#voiceText");
-  const answerBox  = $("#userAnswer");
-  const speakBtn   = $("#speakAnswer");
-  const aiQuestion = $("#aiQuestion");
-  const startBtn   = $("#startInterview");
-  const submitBtn  = $("#submitAnswer");
-  const scoreBox   = $("#scoreBox");
-  const waveform   = $(".waveform");
+  const voiceBtn   = qs("#voiceBtn");
+  const voiceText  = qs("#voiceText");
+  const waveform   = qs(".waveform");
 
-  /* ================= AUDIO UNLOCK (MOBILE FIX) ================= */
-  let audioUnlocked = false;
-  function unlockAudio(){
-    if(audioUnlocked) return;
-    const u = new SpeechSynthesisUtterance(" ");
-    speechSynthesis.speak(u);
-    audioUnlocked = true;
-  }
+  const chatBtn    = qs(".chat-btn");
+  const chatPanel  = qs(".chat-panel");
+  const chatBody   = qs("#chatBody");
+  const chatInput  = qs("#chatInput");
 
-  /* ================= AI SPEAK ================= */
+  const careerBlocks = qsa(".career-block");
+  const statsEls = qsa(".stat h3");
+
+  const startBtn   = qs("#startInterview");
+  const submitBtn  = qs("#submitAnswer");
+  const userAnswer = qs("#userAnswer");
+  const aiQuestion = qs("#aiQuestion");
+  const scoreBox   = qs("#scoreBox");
+
+  /* ================= SPEAK ================= */
   function speak(text){
     if(!("speechSynthesis" in window)) return;
-    unlockAudio();
 
     speechSynthesis.cancel();
-    waveform && waveform.classList.add("active");
+    waveform?.classList.add("active");
 
     const msg = new SpeechSynthesisUtterance(text);
     msg.lang = "en-US";
-    msg.rate = 1;
-    msg.pitch = 1;
 
-    msg.onend = ()=> waveform && waveform.classList.remove("active");
+    msg.onend = ()=> waveform?.classList.remove("active");
     speechSynthesis.speak(msg);
   }
 
   /* ================= TYPE EFFECT ================= */
-  function typeText(el, text){
+  function typeText(el, text, cb){
     if(!el) return;
     el.textContent = "";
     let i = 0;
+
     (function t(){
       if(i < text.length){
         el.textContent += text.charAt(i++);
         setTimeout(t, 30);
-      }
+      } else cb && cb();
     })();
   }
 
   /* ================= GREETING ================= */
-  if(voiceBtn){
-    voiceBtn.onclick = ()=>{
-      const greet =
-        "Welcome to SmartHire. I am your AI hiring assistant.";
-      typeText(voiceText, greet);
-      speak(greet);
-    };
+ voiceBtn.addEventListener("click", () => {
+  unlockAudio();
+
+  const greet = "Welcome to SmartHire. I am your AI hiring assistant.";
+
+  typeText(voiceText, greet);
+  speak(greet); // DIRECT USER ACTION
+});
+
+
+  /* ================= CAREER AUTO ================= */
+  const careerData = [
+    {img:"https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900",text:"AI resume optimization boosts interviews."},
+    {img:"https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=900",text:"Mock interviews improve confidence."},
+    {img:"https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=900",text:"Career analytics guide growth."}
+  ];
+
+  let cIndex = 0;
+
+  function updateCareer(){
+    careerBlocks.forEach((block,i)=>{
+      let img  = block.querySelector("img");
+      let desc = block.querySelector(".career-desc");
+
+      if(!img){
+        img = document.createElement("img");
+        block.appendChild(img);
+      }
+      if(!desc){
+        desc = document.createElement("div");
+        desc.className = "career-desc";
+        block.appendChild(desc);
+      }
+
+      const d = careerData[(cIndex+i)%careerData.length];
+      img.src = d.img;
+      desc.textContent = d.text;
+    });
+    cIndex++;
   }
 
-  /* ================= INTERVIEW QUESTIONS ================= */
+  if(careerBlocks.length){
+    updateCareer();
+    setInterval(updateCareer, 5000);
+  }
+
+  /* ================= STATS ================= */
+  function animateStats(){
+    statsEls.forEach(el=>{
+      const target = +el.dataset.target;
+      let val = 0;
+      const step = target / 60;
+
+      (function run(){
+        val += step;
+        if(val < target){
+          el.textContent = Math.floor(val);
+          requestAnimationFrame(run);
+        } else {
+          el.textContent = target;
+        }
+      })();
+    });
+  }
+
+  let statsDone = false;
+  window.addEventListener("scroll", ()=>{
+    if(statsDone) return;
+    const statsSection = qs(".stats");
+    if(!statsSection) return;
+
+    if(statsSection.getBoundingClientRect().top < window.innerHeight - 120){
+      statsDone = true;
+      animateStats();
+    }
+  });
+
+  /* ================= INTERVIEW ================= */
   const questions = [
     "Tell me about yourself.",
     "What technical skills do you have?",
@@ -1216,33 +1224,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let qIndex = 0;
   let answers = [];
+startBtn.onclick = () => {
+  unlockAudio();
 
-  if(startBtn){
-    startBtn.onclick = ()=>{
-      qIndex = 0;
-      answers = [];
-      scoreBox.style.display = "none";
-      submitBtn.disabled = false;
-      answerBox.value = "";
+  qIndex = 0;
+  answers = [];
+  scoreBox.style.display = "none";
+  submitBtn.disabled = false;
+  userAnswer.value = "";
 
-      typeText(aiQuestion, questions[0]);
-      speak(questions[0]);
-    };
-  }
+  typeText(aiQuestion, questions[0]);
+  speak(questions[0]); //  works on mobile
+};
+
 
   if(submitBtn){
     submitBtn.onclick = ()=>{
-      const ans = answerBox.value.trim();
+      const ans = userAnswer.value.trim();
       if(!ans) return;
 
       answers.push(ans);
-      answerBox.value = "";
+      userAnswer.value = "";
       qIndex++;
 
       if(qIndex < questions.length){
-        typeText(aiQuestion, questions[qIndex]);
-        speak(questions[qIndex]);
-      }else{
+        typeText(aiQuestion, questions[qIndex], ()=> speak(questions[qIndex]));
+      } else {
         submitBtn.disabled = true;
         const score = answers.length * 20;
         scoreBox.style.display = "block";
@@ -1252,83 +1259,74 @@ document.addEventListener("DOMContentLoaded", () => {
     };
   }
 
-  /* ================= MIC → TEXT (INTERVIEW) ================= */
-  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-  let recognizer;
-
-  if(SR){
-    recognizer = new SR();
-    recognizer.lang = "en-US";
-    recognizer.continuous = false;
-
-    recognizer.onresult = e=>{
-      const text = e.results[0][0].transcript;
-      answerBox.value = text;
-      speak("Answer recorded. You can submit now.");
-    };
-
-    recognizer.onerror = ()=>{
-      speak("Microphone error. Please allow access.");
-    };
-  }
-
-  if(speakBtn && recognizer){
-    speakBtn.onclick = async ()=>{
-      unlockAudio();
-      try{
-        await navigator.mediaDevices.getUserMedia({audio:true});
-        recognizer.start();
-        speak("Please speak your answer now.");
-      }catch{
-        alert("Please allow microphone permission");
-      }
-    };
-  }
-
-  /* ================= CAREER IMAGE AUTO SWITCH ================= */
-  const careerBlocks = $$(".career-block");
-  const careerData = [
-    {
-      img:"https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900",
-      text:"AI resume optimization boosts interview chances."
-    },
-    {
-      img:"https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=900",
-      text:"Mock interviews improve confidence."
-    },
-    {
-      img:"https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=900",
-      text:"Career analytics guide smarter job moves."
-    }
-  ];
-
-  let cIndex = 0;
-
-  function updateCareer(){
-    careerBlocks.forEach((block,i)=>{
-      const img  = block.querySelector("img");
-      const desc = block.querySelector(".career-desc");
-      const data = careerData[(cIndex+i)%careerData.length];
-
-      img.src = data.img;
-      desc.textContent = data.text;
-    });
-    cIndex++;
-  }
-
-  if(careerBlocks.length){
-    updateCareer();
-    setInterval(updateCareer, 5000);
-  }
-
 });
 
-/* ================= MOBILE MENU ================= */
+window.addEventListener("load", ()=>{
+  const ta = document.getElementById("userAnswer");
+  if(ta){
+    ta.disabled = false;
+    ta.readOnly = false;
+    ta.style.pointerEvents = "auto";
+  }
+});
+/* ================= INTERVIEW VOICE INPUT ================= */
+const speakBtn   = document.getElementById("speakAnswer");
+const answerBox  = document.getElementById("userAnswer");
+
+const SpeechRecognition =
+  window.SpeechRecognition || window.webkitSpeechRecognition;
+
+let interviewRecognizer = null;
+
+if(SpeechRecognition){
+  interviewRecognizer = new SpeechRecognition();
+  interviewRecognizer.lang = "en-US";
+  interviewRecognizer.interimResults = false;
+  interviewRecognizer.maxAlternatives = 1;
+
+  interviewRecognizer.onstart = () => {
+    console.log("🎤 Interview mic started");
+  };
+
+  interviewRecognizer.onresult = (event) => {
+    const transcript = event.results[0][0].transcript;
+    answerBox.value = transcript;        //  TEXT APPEARS
+    answerBox.focus();
+
+    speak(
+      "Answer recorded. You can edit it or submit."
+    );
+  };
+
+  interviewRecognizer.onerror = (event) => {
+    console.error("Mic error:", event.error);
+    speak("Microphone error. Please allow mic access.");
+  };
+
+  interviewRecognizer.onend = () => {
+    console.log("🎤 Mic stopped");
+  };
+}
+
+/* BUTTON CLICK — REQUIRED USER ACTION */
+if(speakBtn && interviewRecognizer){
+  speakBtn.addEventListener("click", () => {
+  unlockAudio();          //  REQUIRED
+  interviewRecognizer.start();
+  speak("Please speak your answer now.");
+});
+
+}
+
 function toggleMenu(){
   document.querySelector(".menu-desktop")
     .classList.toggle("show");
 }
+
+
 </script>
+
+
 
 </body>
 </html>
