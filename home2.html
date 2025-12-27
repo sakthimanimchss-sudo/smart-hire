@@ -1586,15 +1586,34 @@ interviewRecognizer.onstart = () => {
 interviewRecognizer.onend = () => {
   waveform.classList.remove("active");
 };
-function toggleMenu() {
-  document.getElementById("mobileMenu").classList.toggle("show");
-}
 
-function toggleSub(el) {
-  const sub = el.nextElementSibling;
-  el.classList.toggle("active");
-  sub.style.display = sub.style.display === "block" ? "none" : "block";
-}
+document.addEventListener("DOMContentLoaded", () => {
+
+  const hamburger = document.getElementById("hamburger");
+  const mobileMenu = document.getElementById("mobileMenu");
+  const closeBtn = document.getElementById("closeMenu");
+
+  // OPEN MENU
+  hamburger.addEventListener("click", () => {
+    mobileMenu.classList.add("active");
+    document.body.style.overflow = "hidden";
+  });
+
+  // CLOSE MENU
+  closeBtn.addEventListener("click", () => {
+    mobileMenu.classList.remove("active");
+    document.body.style.overflow = "";
+  });
+
+  // MOBILE DROPDOWN
+  document.querySelectorAll(".mobile-parent").forEach(parent => {
+    parent.addEventListener("click", () => {
+      const sub = parent.nextElementSibling;
+      sub.style.display = sub.style.display === "block" ? "none" : "block";
+    });
+  });
+
+});
 
 </script>
 
