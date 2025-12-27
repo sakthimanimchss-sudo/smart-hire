@@ -551,6 +551,41 @@ body {
   h2 { font-size: 22px; }
   p  { font-size: 14px; }
 }
+/* =====================================================
+   🔥 HERO TEXT OVERFLOW FIX (MOBILE)
+===================================================== */
+
+@media (max-width: 768px) {
+
+  .hero {
+    padding: 90px 14px 70px;
+  }
+
+  .hero-content {
+    max-width: 100%;
+    width: 100%;
+    padding: 0;
+  }
+
+  .hero h1 {
+    font-size: 30px;
+    line-height: 1.2;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+  }
+
+  .hero p {
+    font-size: 14px;
+    max-width: 100%;
+  }
+
+  /* STOP ANY RIGHT SHIFT */
+  .hero *,
+  .hero-content * {
+    transform: none !important;
+  }
+}
 
 </style>
 </head>
