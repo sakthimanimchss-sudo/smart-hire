@@ -1132,36 +1132,32 @@ header{
 
 <script>
 /* =====================================================
-   SMART HIRE — ALL IN ONE FINAL JS
-   Mobile + Desktop SAFE | NO CONFLICTS
+   SMART HIRE — OLD AI VERSION (STABLE v1)
+   ✔ Mobile voice
+   ✔ Typing
+   ✔ Mic input
+   ✔ Image auto switch
 ===================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* ========== HELPERS ========== */
-  const $  = s => document.querySelector(s);
+  /* ================= HELPERS ================= */
+  const $ = s => document.querySelector(s);
   const $$ = s => document.querySelectorAll(s);
 
-  /* ========== ELEMENTS ========== */
+  /* ================= ELEMENTS ================= */
   const voiceBtn   = $("#voiceBtn");
   const voiceText  = $("#voiceText");
-
+  const answerBox  = $("#userAnswer");
+  const speakBtn   = $("#speakAnswer");
+  const aiQuestion = $("#aiQuestion");
   const startBtn   = $("#startInterview");
   const submitBtn  = $("#submitAnswer");
-  const speakBtn   = $("#speakAnswer");
-
-  const aiQuestion = $("#aiQuestion");
-  const answerBox  = $("#userAnswer");
   const scoreBox   = $("#scoreBox");
+  const waveform   = $(".waveform");
 
-  const careerBlocks = $$(".career-block");
-  const statsEls     = $$(".stat h3");
-
-  /* =====================================================
-     AUDIO UNLOCK (CRITICAL FOR MOBILE)
-  ===================================================== */
+  /* ================= AUDIO UNLOCK (MOBILE FIX) ================= */
   let audioUnlocked = false;
-
   function unlockAudio(){
     if(audioUnlocked) return;
     const u = new SpeechSynthesisUtterance(" ");
@@ -1169,24 +1165,24 @@ document.addEventListener("DOMContentLoaded", () => {
     audioUnlocked = true;
   }
 
-  /* =====================================================
-     AI SPEAK (NO CANCEL – MOBILE SAFE)
-  ===================================================== */
+  /* ================= AI SPEAK ================= */
   function speak(text){
     if(!("speechSynthesis" in window)) return;
     unlockAudio();
 
-    const u = new SpeechSynthesisUtterance(text);
-    u.lang = "en-US";
-    u.rate = 1;
-    u.pitch = 1;
+    speechSynthesis.cancel();
+    waveform && waveform.classList.add("active");
 
-    speechSynthesis.speak(u);
+    const msg = new SpeechSynthesisUtterance(text);
+    msg.lang = "en-US";
+    msg.rate = 1;
+    msg.pitch = 1;
+
+    msg.onend = ()=> waveform && waveform.classList.remove("active");
+    speechSynthesis.speak(msg);
   }
 
-  /* =====================================================
-     TYPE EFFECT
-  ===================================================== */
+  /* ================= TYPE EFFECT ================= */
   function typeText(el, text){
     if(!el) return;
     el.textContent = "";
@@ -1194,103 +1190,22 @@ document.addEventListener("DOMContentLoaded", () => {
     (function t(){
       if(i < text.length){
         el.textContent += text.charAt(i++);
-        setTimeout(t, 28);
+        setTimeout(t, 30);
       }
     })();
   }
 
-  /* =====================================================
-     AI GREETING
-  ===================================================== */
+  /* ================= GREETING ================= */
   if(voiceBtn){
-    voiceBtn.addEventListener("click", ()=>{
+    voiceBtn.onclick = ()=>{
       const greet =
         "Welcome to SmartHire. I am your AI hiring assistant.";
       typeText(voiceText, greet);
       speak(greet);
-    });
+    };
   }
 
-  /* =====================================================
-     CAREER IMAGE SECTION (FIXED)
-  ===================================================== */
-  const careerData = [
-    {
-      img:"https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900",
-      text:"AI resume optimization boosts interview success."
-    },
-    {
-      img:"https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=900",
-      text:"Mock interviews improve confidence and clarity."
-    },
-    {
-      img:"https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=900",
-      text:"Career analytics guide smarter job decisions."
-    }
-  ];
-
-  let careerIndex = 0;
-
-  function updateCareer(){
-    careerBlocks.forEach((block,i)=>{
-      const img  = block.querySelector("img");
-      const desc = block.querySelector(".career-desc");
-      const item = careerData[(careerIndex+i)%careerData.length];
-
-      block.classList.add("fade-out");
-
-      setTimeout(()=>{
-        img.src = item.img;
-        desc.textContent = item.text;
-        block.classList.remove("fade-out");
-        block.classList.add("fade-in");
-      },300);
-    });
-    careerIndex++;
-  }
-
-  if(careerBlocks.length){
-    updateCareer();
-    setInterval(updateCareer, 4500);
-  }
-
-  /* =====================================================
-     STATS COUNT (NO SHAKE)
-  ===================================================== */
-  let statsDone = false;
-
-  function animateStats(){
-    statsEls.forEach(el=>{
-      const target = +el.dataset.target;
-      let val = 0;
-      const step = target / 60;
-
-      (function run(){
-        val += step;
-        if(val < target){
-          el.textContent = Math.floor(val);
-          requestAnimationFrame(run);
-        }else{
-          el.textContent = target;
-        }
-      })();
-    });
-  }
-
-  window.addEventListener("scroll", ()=>{
-    if(statsDone) return;
-    const statsSection = $(".stats");
-    if(!statsSection) return;
-
-    if(statsSection.getBoundingClientRect().top < window.innerHeight - 120){
-      statsDone = true;
-      animateStats();
-    }
-  });
-
-  /* =====================================================
-     AI INTERVIEW SYSTEM
-  ===================================================== */
+  /* ================= INTERVIEW QUESTIONS ================= */
   const questions = [
     "Tell me about yourself.",
     "What technical skills do you have?",
@@ -1337,9 +1252,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
   }
 
-  /* =====================================================
-     VOICE INPUT → TEXTAREA (INTERVIEW)
-  ===================================================== */
+  /* ================= MIC → TEXT (INTERVIEW) ================= */
   const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
   let recognizer;
 
@@ -1355,7 +1268,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     recognizer.onerror = ()=>{
-      speak("Microphone error. Please allow permission.");
+      speak("Microphone error. Please allow access.");
     };
   }
 
@@ -1367,16 +1280,50 @@ document.addEventListener("DOMContentLoaded", () => {
         recognizer.start();
         speak("Please speak your answer now.");
       }catch{
-        alert("Please allow microphone access");
+        alert("Please allow microphone permission");
       }
     };
   }
 
+  /* ================= CAREER IMAGE AUTO SWITCH ================= */
+  const careerBlocks = $$(".career-block");
+  const careerData = [
+    {
+      img:"https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900",
+      text:"AI resume optimization boosts interview chances."
+    },
+    {
+      img:"https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=900",
+      text:"Mock interviews improve confidence."
+    },
+    {
+      img:"https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=900",
+      text:"Career analytics guide smarter job moves."
+    }
+  ];
+
+  let cIndex = 0;
+
+  function updateCareer(){
+    careerBlocks.forEach((block,i)=>{
+      const img  = block.querySelector("img");
+      const desc = block.querySelector(".career-desc");
+      const data = careerData[(cIndex+i)%careerData.length];
+
+      img.src = data.img;
+      desc.textContent = data.text;
+    });
+    cIndex++;
+  }
+
+  if(careerBlocks.length){
+    updateCareer();
+    setInterval(updateCareer, 5000);
+  }
+
 });
 
-/* =====================================================
-   MOBILE MENU
-===================================================== */
+/* ================= MOBILE MENU ================= */
 function toggleMenu(){
   document.querySelector(".menu-desktop")
     .classList.toggle("show");
