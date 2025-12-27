@@ -1031,48 +1031,90 @@ button:active{
     justify-content:center;
   }
 }
-/* ===== MOBILE MENU – SAME AS index.html ===== */
+/* ===== MOBILE MENU ===== */
 .menu-mobile{
   position: fixed;
-  top: 70px;          /* below header */
-  left: 0;
+  top: 64px; /* below header */
+  left: -100%;
   width: 100%;
-  height: calc(100vh - 70px);
+  height: calc(100vh - 64px);
   background: #fff;
   z-index: 9999;
-  padding: 20px;
-  display: none;
-  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  transition: transform .35s ease;
 }
 
+/* open */
 .menu-mobile.active{
-  display: block;
+  transform: translateX(100%);
 }
+
+/* content scroll */
+.mobile-content{
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px 20px 120px;
+}
+
+/* links */
+.menu-mobile a,
+.mobile-parent{
+  display: block;
+  font-size: 17px;
+  font-weight: 500;
+  padding: 16px 0;
+  border-bottom: 1px solid #eee;
+}
+
+/* submenu */
+.mobile-sub{
+  display: none;
+  padding-left: 14px;
+}
+.mobile-sub a{
+  font-size: 15px;
+  padding: 12px 0;
+  opacity: .85;
+}
+
+/* bottom auth */
 .mobile-auth{
-  margin-top: 30px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  padding: 16px;
   display: flex;
   gap: 14px;
+  border-top: 1px solid #eee;
 }
 
 .mobile-auth a{
   flex: 1;
   text-align: center;
   padding: 14px 0;
-  border-radius: 12px;
+  border-radius: 14px;
   font-weight: 700;
+  font-size: 16px;
 }
 
 .mobile-auth .login{
-  border: 2px solid var(--primary);
-  color: var(--primary);
-  background: #fff;
+  border: 2px solid #2b3990;
+  color: #2b3990;
 }
 
 .mobile-auth .register{
-  background: var(--primary);
+  background: #2b3990;
   color: #fff;
 }
 
+/* hamburger visible only mobile */
+@media(max-width:992px){
+  .hamburger{display:block}
+  .menu-desktop,.auth{display:none}
+}
 
 </style>
 </head>
