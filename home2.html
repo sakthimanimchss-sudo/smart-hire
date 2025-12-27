@@ -1603,6 +1603,22 @@ interviewRecognizer.onstart = () => {
 interviewRecognizer.onend = () => {
   waveform.classList.remove("active");
 };
+function toggleMenu() {
+  document.getElementById("mobileMenu").classList.toggle("show");
+}
+
+/* mobile sub menu toggle */
+function toggleSub(el) {
+  const sub = el.nextElementSibling;
+
+  el.classList.toggle("active");
+
+  if (sub.style.display === "block") {
+    sub.style.display = "none";
+  } else {
+    sub.style.display = "block";
+  }
+}
 
 
 
