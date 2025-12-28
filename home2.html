@@ -176,6 +176,10 @@ header{
   padding: 10px 0;
   color: #444;
 }
+/* LOCK PAGE WHEN MENU OPEN */
+body.menu-open{
+  overflow: hidden;
+}
 
 /* ================= LOGIN / REGISTER (ALWAYS VISIBLE) ================= */
 
@@ -217,7 +221,7 @@ header{
   background: var(--primary);
   color: #fff;
 }
-
+padding-bottom: 160px;
 /* ================= MOBILE MENU BACKDROP ================= */
 .menu-backdrop{
   position: fixed;
@@ -315,25 +319,7 @@ body.menu-open{
   padding:15px 36px;
   border-radius:14px;
 }
-================ ANIMATION ================= */
-@keyframes fadeUp{
-  from{opacity:0;transform:translateY(40px)}
-  to{opacity:1;transform:none}
-}
 
-/* ================= HERO MOBILE FIX ================= */
-@media(max-width:768px){
-  .hero-content{
-    max-width:100%;
-  }
-  .hero h1{
-    font-size:30px;
-    word-break:break-word;
-  }
-  .hero *{
-    transform:none !important;
-  }
-}
 /* =====================================================
    SMART HIRE — FINAL CSS (PART 2 / 3)
    AI VOICE · WAVEFORM · CHAT · INTERVIEW
@@ -796,46 +782,6 @@ section{
   color:#444;
 }
 
-/* ================= MOBILE AUTH (FIXED BOTTOM) ================= */
-
-.menu-mobile .mobile-auth{
-  position: fixed;
-  bottom: 0;
-  left: 0;
-
-  width: min(82vw, 360px);
-  padding: 16px;
-
-  background: #fff;
-  border-top: 1px solid #eee;
-
-  display: flex;
-  gap: 12px;
-}
-
-.menu-mobile .mobile-auth a{
-  flex: 1;
-  height: 48px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border-radius: 10px;
-  font-weight: 600;
-}
-
-.menu-mobile .mobile-auth .login{
-  border: 2px solid var(--primary);
-  color: var(--primary);
-}
-
-.menu-mobile .mobile-auth .register{
-  background: var(--primary);
-  color: #fff;
-}
-
-
 /* ================= RESPONSIVE RULES ================= */
 @media(max-width:992px){
 
@@ -861,27 +807,21 @@ section{
 @media(max-width:768px){
 
   .hero{
-    min-height:100vh;           /* FULL SCREEN like Home1 */
+    min-height:100vh;
     display:flex;
     align-items:center;
     justify-content:center;
   }
 
-  .hero-content{
-    max-width:100%;
-    padding:0 20px;
-    margin-top:0;
-  }
-
   .hero h1{
-    font-size:28px;             /*  SAME AS VIDEO 1 */
+    font-size:28px;
     line-height:1.25;
   }
 
   .hero p{
-    font-size:15px;             /*  SAME AS VIDEO 1 */
-    margin-top:12px;
+    font-size:15px;
   }
+}
 
   .hero-actions{
     flex-direction:column;
@@ -893,16 +833,6 @@ section{
     width:100%;
   }
 }
-/* ================= MOBILE MENU BACKGROUND FIX ================= */
-body.menu-open{
-  overflow:hidden;
-}
-
-body.menu-open header,
-body.menu-open .hero{
-  visibility:hidden;    /* hides hero/video behind menu */
-}
-
 
 
 /* ================= CHAT MOBILE FIX ================= */
