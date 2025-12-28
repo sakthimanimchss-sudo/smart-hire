@@ -666,6 +666,55 @@ section{
 body.menu-open{
   overflow:hidden;
 }
+/* ================= HAMBURGER MOBILE MENU (GLOBAL) ================= */
+
+.hamburger{
+  display:none;
+  font-size:26px;
+  cursor:pointer;
+}
+
+@media(max-width:900px){
+  .menu-desktop{display:none}
+  .hamburger{display:block}
+  .auth .login,
+  .auth .register{display:none}
+}
+
+.menu-mobile{
+  position:fixed;
+  top:0;
+  left:-100%;
+  width:85%;
+  height:100%;
+  background:#fff;
+  z-index:2000;
+  padding:25px;
+  transition:.45s ease;
+}
+
+.menu-mobile.active{
+  left:0;
+}
+
+.menu-backdrop{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.55);
+  opacity:0;
+  visibility:hidden;
+  transition:.3s;
+  z-index:1500;
+}
+
+.menu-backdrop.active{
+  opacity:1;
+  visibility:visible;
+}
+
+body.menu-open{
+  overflow:hidden;
+}
 
 /* =====================================================
    SMART HIRE — FINAL CSS (PART 3 / 3)
@@ -1109,9 +1158,9 @@ body.menu-open .chat-btn{
 </div>
 
 </header>
-   
+<div class="menu-backdrop" id="menuBackdrop" onclick="toggleMenu()"></div>   
 <div class="menu-mobile" id="mobileMenu">
-   
+<div class="close" onclick="toggleMenu()">✕</div>
   <!-- HOME -->
   <div class="mobile-parent" onclick="toggleSub(this)">
     Home ▾
@@ -1629,18 +1678,32 @@ interviewRecognizer.onend = () => {
   waveform.classList.remove("active");
 };
    
+
 function toggleMenu(){
-  document.getElementById("mobileMenu")
-    .classList.toggle("active");
+  const menu = document.getElementById("mobileMenu");
+  const backdrop = document.getElementById("menuBackdrop");
+
+  const open = menu.classList.contains("active");
+
+  if(open){
+    menu.classList.remove("active");
+    backdrop.classList.remove("active");
+    document.body.classList.remove("menu-open");
+  }else{
+    menu.classList.add("active");
+    backdrop.classList.add("active");
+    document.body.classList.add("menu-open");
+  }
 }
 
 function toggleSub(el){
   const sub = el.nextElementSibling;
   if(sub){
-    sub.style.display =
-      sub.style.display === "block" ? "none" : "block";
+    sub.style.display = sub.style.display === "block" ? "none" : "block";
   }
 }
+
+
 
 </script>
 
