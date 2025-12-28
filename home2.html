@@ -569,16 +569,18 @@ section{
   position:fixed;
   top:70px;
   left:0;
-  width:78%;                 /* CREATES RIGHT GAP (LIKE IMAGE-1) */
-  max-width:320px;           /*  STABLE ON ALL PHONES */
+  width:78%;
+  max-width:320px;
   height:calc(100vh - 70px);
   background:#fff;
   z-index:10001;
-  padding:24px 20px 120px;
+  padding:20px 20px 80px;   /* 👈 reduced bottom space */
   overflow-y:auto;
   transform:translateX(-100%);
   transition:transform .3s ease;
+  box-sizing:border-box;
 }
+
 
 
 .menu-mobile.active{
@@ -624,13 +626,9 @@ section{
 
 /* login/register fixed bottom */
 .menu-mobile .mobile-auth{
-  position:fixed;
-  bottom:0;
-  left:0;
-  width:78%;
-  max-width:320px;
-  background:#fff;
-  padding:16px 20px;
+  position:relative;       /*  NOT fixed */
+  margin-top:30px;         /*  moved up */
+  padding-top:12px;
   border-top:1px solid #eee;
   display:flex;
   gap:14px;
@@ -639,18 +637,19 @@ section{
 .menu-mobile .mobile-auth a{
   flex:1;
   padding:12px 0;
-  text-align:center;
   font-size:15px;
+  font-weight:600;
+  text-align:center;
   border-radius:8px;
 }
 
-
-.menu-mobile .login{
+.menu-mobile .mobile-auth .login{
   border:2px solid var(--primary);
   color:var(--primary);
+  background:#fff;
 }
 
-.menu-mobile .register{
+.menu-mobile .mobile-auth .register{
   background:var(--primary);
   color:#fff;
 }
