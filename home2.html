@@ -1230,7 +1230,51 @@ header{
     display: block;
   }
 }
+/* REMOVE X ICON – SAME AS INDEX */
+.menu-mobile .close{
+  display:none !important;
+}
+/* REMOVE MENU DIVIDER LINES */
+.menu-mobile a,
+.mobile-parent{
+  border-bottom:none !important;
+}
+/* SMOOTH SLIDE – INDEX STYLE */
+.menu-mobile{
+  left:0;
+  transform:translateX(-100%);
+  transition:transform .4s ease;
+}
 
+.menu-mobile.active{
+  transform:translateX(0);
+}
+/* MATCH INDEX BACKGROUND FEEL */
+.menu-mobile{
+  background:#ffffff;
+  box-shadow:0 0 40px rgba(0,0,0,.35);
+}
+/* LOGIN / REGISTER SAME GAP AS INDEX */
+.menu-mobile .mobile-auth{
+  margin-top:auto;
+  padding-top:22px;
+}
+
+.menu-mobile .mobile-auth a{
+  padding:14px 0;
+  font-size:15px;
+  border-radius:14px;
+}
+/* SINGLE HAMBURGER CONTROL */
+.hamburger{
+  display:none;
+}
+
+@media(max-width:900px){
+  .hamburger{
+    display:block;
+  }
+}
 </style>
 </head>
 
