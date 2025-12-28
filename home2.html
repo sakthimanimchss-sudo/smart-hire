@@ -1139,7 +1139,8 @@ header{
 </div>
 
 </header>
-<div class="menu-backdrop" id="menuBackdrop" onclick="toggleMenu()"></div>   
+<div class="menu-backdrop" id="menuBackdrop" onclick="toggleMenu()"></div>  
+   
 <div class="menu-mobile" id="mobileMenu">
 <div class="close" onclick="toggleMenu()">✕</div>
   <!-- HOME -->
@@ -1663,26 +1664,12 @@ interviewRecognizer.onend = () => {
 function toggleMenu(){
   const menu = document.getElementById("mobileMenu");
   const backdrop = document.getElementById("menuBackdrop");
-
-  const open = menu.classList.contains("active");
-
-  if(open){
-    menu.classList.remove("active");
-    backdrop.classList.remove("active");
-    document.body.classList.remove("menu-open");
-  }else{
-    menu.classList.add("active");
-    backdrop.classList.add("active");
-    document.body.classList.add("menu-open");
-  }
+  document.body.classList.toggle("menu-open");
+  menu.classList.toggle("active");
+  backdrop.classList.toggle("active");
 }
 
-function toggleSub(el){
-  const sub = el.nextElementSibling;
-  if(sub){
-    sub.style.display = sub.style.display === "block" ? "none" : "block";
-  }
-}
+
 
 
 
