@@ -1305,28 +1305,98 @@ header{
   width: 100%;
 }
 /* =====================================================
-   MOBILE MENU – KEEP RIGHT GAP (IMAGE 1 FIX)
+   MOBILE MENU – LEFT PANEL WITH RIGHT GAP (FINAL)
+   (MATCHES IMAGE 1 EXACTLY)
 ===================================================== */
 
 .menu-mobile{
-  width: 85%;          /* keep right gap */
-  max-width: 420px;   /* stable on large phones */
-  left: -100%;
-}
-
-.menu-mobile.active{
+  position: fixed;
+  top: 0;
   left: 0;
+
+  width: 82%;              /* 👈 THIS creates right gap */
+  max-width: 360px;        /* keeps clean look */
+  height: 100vh;
+
+  background: #ffffff;
+  z-index: 3000;
+
+  padding: 80px 22px 120px;
+  overflow-y: auto;
+
+  transform: translateX(-100%);
+  transition: transform .35s ease;
 }
 
-/* prevent accidental full width override */
-@media (max-width: 900px){
-  .menu-mobile{
-    width: 85% !important;
-  }
+/* open */
+.menu-mobile.active{
+  transform: translateX(0);
 }
+
+/* keep background scroll locked */
 body.menu-open{
-  overflow:hidden;
+  overflow: hidden;
 }
+
+/* menu items – unchanged look */
+.menu-mobile a,
+.menu-mobile .mobile-parent{
+  font-size: 16px;
+  font-weight: 500;
+  padding: 14px 0;
+  display: block;
+  border-bottom: 1px solid #eee;
+}
+
+/* dropdown indent */
+.mobile-sub{
+  padding-left: 16px;
+}
+.mobile-sub a{
+  font-size: 15px;
+  padding: 10px 0;
+  border-bottom: none;
+}
+
+/* bottom auth – SAME as before */
+.menu-mobile .mobile-auth{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 82%;
+  max-width: 360px;
+
+  padding: 18px 16px 24px;
+  background: #ffffff;
+  border-top: 1px solid #eee;
+
+  display: flex;
+  gap: 12px;
+}
+
+/* buttons */
+.menu-mobile .mobile-auth a{
+  flex: 1;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.menu-mobile .mobile-auth .login{
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  background: #fff;
+}
+
+.menu-mobile .mobile-auth .register{
+  background: var(--primary);
+  color: #fff;
+}
+
 
 </style>
 </head>
