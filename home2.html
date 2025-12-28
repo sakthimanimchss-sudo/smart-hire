@@ -627,17 +627,12 @@ section{
 
 /* login/register fixed bottom */
 .menu-mobile .mobile-auth{
-  position:fixed;                 /*  FIXED */
-  bottom:0;                       /*  STICKS TO BOTTOM */
-  left:0;
-  width:78%;
-  max-width:320px;
-  background:#fff;
-  padding:16px 20px 20px;
+  position:static;          /* 👈 KEY FIX */
+  margin-top:24px;
+  padding-top:16px;
   border-top:1px solid #eee;
   display:flex;
   gap:16px;
-  box-sizing:border-box;
 }
 
 
@@ -664,11 +659,8 @@ section{
 /* MOBILE MENU TEXT – MATCH IMAGE 1 */
 .menu-mobile a,
 .mobile-parent{
-  display:block;
-  width:100%;
-  padding:14px 0;        /*  SAME GAP AS IMAGE-2 */
-  margin:0;
-  font-size:17px;        /*  SAME TEXT SIZE */
+  padding:12px 0;
+  font-size:16px;
   font-weight:500;
   color:#111;
   text-align:left;
