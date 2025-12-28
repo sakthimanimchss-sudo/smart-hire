@@ -883,7 +883,17 @@ section{
     width:100%;
   }
 }
+.hero,
+.hero video{
+  position: relative;
+  z-index: 1;
+}
 
+header{
+  position: sticky;
+  top: 0;
+  z-index: 100000; /* ABOVE VIDEO */
+}
 /* ================= CHAT MOBILE FIX ================= */
 @media(max-width:600px){
   .chat-panel{
