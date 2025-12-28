@@ -10,314 +10,75 @@
 
 <style>
 /* =====================================================
-   SMART HIRE — FINAL CSS (PART 1 / 3)
-   ROOT + HEADER + HERO + BASE
+   SMART HIRE — FINAL CSS (PART 2 / 3)
+   AI · CHAT · INTERVIEW
 ===================================================== */
 
-/* ================= ROOT ================= */
-:root{
-  --primary:#2b3990;
-  --accent:#ff9900;
-  --success:#36e0a1; /* FIXED */
-  --dark:#0f1c24;
-  --dark2:#1b2a3a;
-  --light:#f5f7fb;
-  --white:#fff;
-  --muted:#6b7280;
+section{padding:90px 20px}
+.container{max-width:1300px;margin:auto}
 
-  --radius:16px;
-  --shadow:0 25px 50px rgba(0,0,0,.12);
-  --shadow-lg:0 40px 80px rgba(0,0,0,.2);
-}
-
-/* ================= RESET ================= */
-*,
-*::before,
-*::after{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-
-html{scroll-behavior:smooth}
-
-body{
-  font-family:Inter,Segoe UI,Arial,sans-serif;
-  background:var(--light);
-  color:#111;
-  line-height:1.6;
-  overflow-x:hidden;
-}
-
-img,video{max-width:100%;display:block}
-a{text-decoration:none;color:inherit}
-
-/* =====================================================
-   HEADER
-===================================================== */
-header{
-  position:sticky;
-  top:0;
-  z-index:1200;
+.ai-voice-bar{
   background:#fff;
-  box-shadow:0 2px 15px rgba(0,0,0,.05);
-}
-.nav{
-  max-width:1400px;
-  margin:auto;
-  padding:14px 22px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-}
-.logo{
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-.logo span{
-  width:42px;height:42px;
-  background:var(--primary);
-  color:#fff;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border-radius:10px;
-  font-weight:800;
-}
-.logo h1{
-  font-size:22px;
-  color:var(--primary);
+  padding:50px 20px;
+  border-top:1px solid #eee;
+  border-bottom:1px solid #eee;
 }
 
-/* =====================================================
-   DESKTOP MENU
-===================================================== */
-.menu-desktop{
-  display:flex;
-  gap:18px;
-  font-size:14px;
-  font-weight:600;
-}
-.menu-desktop a:hover{color:var(--accent)}
-
-/* =====================================================
-   AUTH + HAMBURGER
-===================================================== */
-.auth{
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-.auth .login{color:var(--primary);font-weight:600}
-.auth .register{
+.voice-btn{
   background:var(--primary);
   color:#fff;
-  padding:10px 20px;
-  border-radius:8px;
-}
-.hamburger{
-  display:none;
-  font-size:26px;
+  padding:14px 30px;
+  border-radius:40px;
+  border:none;
+  font-weight:700;
   cursor:pointer;
 }
-/* =====================================================
-   MOBILE MENU – LEFT SLIDE
-===================================================== */
-/* ================= MOBILE MENU (MATCH INDEX 100%) ================= */
 
-.menu-mobile{
-  position: fixed;
-  top: 0;
-  left: 0;
-
-  width: 85vw;
-  max-width: 360px;
-  height: 100vh;
-
-  background: #ffffff;
-  z-index: 99999; /* ABOVE VIDEO */
-
-  padding: 70px 22px 140px; /* space for header + buttons */
-  overflow-y: auto;
-
-  transform: translateX(-100%);
-  transition: transform .35s cubic-bezier(.4,0,.2,1);
+.waveform{
+  margin-top:14px;
+  display:flex;
+  justify-content:center;
+  gap:6px;
 }
 
-/* OPEN */
-.menu-mobile.active{
-  transform: translateX(0);
-}
-
-/* REMOVE CLOSE ICON */
-.menu-mobile .close{
-  display: none !important;
-}
-
-/* MENU ITEMS */
-.menu-mobile a,
-.mobile-parent{
-  display: block;
-  padding: 14px 0;
-  font-size: 16px;
-  font-weight: 500;
-  color: #111;
-}
-
-/* DROPDOWN SUB */
-.mobile-sub{
-  display: none;
-  padding-left: 16px;
-}
-
-.mobile-sub a{
-  font-size: 14px;
-  padding: 10px 0;
-  color: #444;
-}
-/* LOCK PAGE WHEN MENU OPEN */
-body.menu-open{
-  overflow: hidden;
-}
-
-/* ================= LOGIN / REGISTER (ALWAYS VISIBLE) ================= */
-
-.menu-mobile .mobile-auth{
-  position: fixed;
-  bottom: 0;
-  left: 0;
-
-  width: 85vw;
-  max-width: 360px;
-
-  padding: 16px;
-  background: #fff;
-  border-top: 1px solid #eee;
-
-  display: flex;
-  gap: 12px;
-  z-index: 100000;
-}
-
-.menu-mobile .mobile-auth a{
-  flex: 1;
-  height: 48px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border-radius: 10px;
-  font-weight: 600;
-}
-
-.menu-mobile .mobile-auth .login{
-  border: 2px solid var(--primary);
-  color: var(--primary);
-}
-
-.menu-mobile .mobile-auth .register{
-  background: var(--primary);
-  color: #fff;
-}
-padding-bottom: 160px;
-/* ================= MOBILE MENU BACKDROP ================= */
-.menu-backdrop{
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.55);
-  z-index: 2999;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity .3s ease;
-}
-/* prevent background movement */
-body.menu-open{
-  overflow: hidden;
-}
-
-/* show backdrop */
-.menu-backdrop.active{
-  opacity: 1;
-  visibility: visible;
-}
-
-/* ================= HERO ================= */
-.hero{
-  position:relative;
-  min-height:90vh;
+.chat-btn{
+  position:fixed;
+  bottom:24px;
+  right:24px;
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  background:var(--primary);
+  color:#fff;
   display:flex;
   align-items:center;
   justify-content:center;
-  text-align:center;
-  color:#fff;
-  overflow:hidden;
+  font-size:24px;
+  box-shadow:0 15px 40px rgba(0,0,0,.35);
+  z-index:999;
 }
 
-.hero video{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  filter:brightness(.55);
+.chat-panel{
+  position:fixed;
+  bottom:100px;
+  right:24px;
+  width:320px;
+  background:#fff;
+  border-radius:18px;
+  box-shadow:var(--shadow);
+  display:none;
 }
 
-.hero::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(
-    135deg,
-    rgba(15,28,36,.85),
-    rgba(32,58,67,.85)
-  );
+.ai-interview{
+  background:#fff;
+  padding:90px 20px;
 }
 
-.hero-content{
-  position:relative;
-  max-width:900px;
-  padding:0 20px;
-  z-index:2;
-  animation:fadeUp 1.2s ease both;
-}
-
-.hero h1{
-  font-size:56px;
-  line-height:1.15;
-}
-
-.hero h1 span{color:var(--success)}
-
-.hero p{
-  margin:20px auto 0;
-  font-size:18px;
-  opacity:.9;
-  max-width:760px;
-}
-
-.hero-actions{
-  margin-top:34px;
-  display:flex;
-  gap:18px;
-  justify-content:center;
-  flex-wrap:wrap;
-}
-
-.btn-primary{
-  background:var(--accent);
-  color:#fff;
-  padding:15px 36px;
-  border-radius:14px;
-  font-weight:800;
-  box-shadow:0 12px 30px rgba(255,153,0,.45);
-}
-
-.btn-secondary{
-  border:1px solid rgba(255,255,255,.45);
-  padding:15px 36px;
-  border-radius:14px;
+.question-box{
+  background:#f5f7fb;
+  border-left:6px solid var(--accent);
+  padding:18px;
+  border-radius:12px;
 }
 
 /* =====================================================
@@ -731,16 +492,6 @@ section{
   transform:translateY(0);
 }
 
-/* ================= HAMBURGER ICON ================= */
-.hamburger{
-  display:none;
-  font-size:26px;
-  cursor:pointer;
-  padding:6px;
-  user-select:none;
-}
-
-
 /* ================= MOBILE LINKS ================= */
 .menu-mobile a,
 .mobile-parent{
@@ -748,7 +499,6 @@ section{
   padding:14px 0;
   font-size:16px;
   font-weight:600;
-  border-bottom:none;
 }
 
 /* touch feedback */
@@ -766,14 +516,9 @@ section{
   cursor:pointer;
 }
 
-.mobile-parent span{
-  font-size:14px;
-  opacity:.6;
-}
 .mobile-sub{
   display:none;
   padding-left:16px;
-  border-left:none;
 }
 
 .mobile-sub a{
@@ -797,13 +542,14 @@ section{
     display:block;
   }
 
-  /* dropdown disable hover on mobile */
+  /* disable hover dropdown */
   .nav-item:hover .dropdown-menu{
     opacity:0;
     visibility:hidden;
   }
 }
-/* ================= HERO MOBILE FIX (MATCH HOME1) ================= */
+
+/* ================= HERO MOBILE FIX (MATCH INDEX) ================= */
 @media(max-width:768px){
 
   .hero{
@@ -821,7 +567,6 @@ section{
   .hero p{
     font-size:15px;
   }
-}
 
   .hero-actions{
     flex-direction:column;
@@ -833,7 +578,6 @@ section{
     width:100%;
   }
 }
-
 
 /* ================= CHAT MOBILE FIX ================= */
 @media(max-width:600px){
@@ -876,24 +620,17 @@ section{
 }
 
 /* ================= FINAL CLEANUP ================= */
+*{-webkit-tap-highlight-color:transparent}
 
-/* remove tap highlight */
-*{
-  -webkit-tap-highlight-color:transparent;
-}
-
-/* prevent overflow bugs */
 html,body{
   width:100%;
   overflow-x:hidden;
 }
 
-/* safe button press */
 button:active{
   transform:scale(.96);
 }
 
-/* hamburger always clickable */
 .hamburger{
   cursor:pointer;
   z-index:10000;
