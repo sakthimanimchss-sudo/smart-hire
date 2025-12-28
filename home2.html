@@ -574,12 +574,13 @@ section{
   height:calc(100vh - 70px);
   background:#fff;
   z-index:10001;
-  padding:20px 20px 80px;   /* 👈 reduced bottom space */
+  padding:20px 20px 110px;   /* 👈 space for bottom buttons */
   overflow-y:auto;
   transform:translateX(-100%);
   transition:transform .3s ease;
   box-sizing:border-box;
 }
+
 
 
 
@@ -626,13 +627,19 @@ section{
 
 /* login/register fixed bottom */
 .menu-mobile .mobile-auth{
-  position:relative;       /*  NOT fixed */
-  margin-top:30px;         /*  moved up */
-  padding-top:12px;
+  position:fixed;                 /*  FIXED */
+  bottom:0;                       /*  STICKS TO BOTTOM */
+  left:0;
+  width:78%;
+  max-width:320px;
+  background:#fff;
+  padding:16px 20px 20px;
   border-top:1px solid #eee;
   display:flex;
-  gap:14px;
+  gap:16px;
+  box-sizing:border-box;
 }
+
 
 .menu-mobile .mobile-auth a{
   flex:1;
@@ -658,11 +665,15 @@ section{
 .menu-mobile a,
 .mobile-parent{
   display:block;
-  padding:14px 0;
-  font-size:16px;
+  width:100%;
+  padding:14px 0;        /*  SAME GAP AS IMAGE-2 */
+  margin:0;
+  font-size:17px;        /*  SAME TEXT SIZE */
   font-weight:500;
   color:#111;
+  text-align:left;
 }
+
 
 /* backdrop */
 .menu-backdrop{
