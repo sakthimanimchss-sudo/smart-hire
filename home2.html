@@ -564,11 +564,11 @@ section{
    SMART HIRE — FINAL CSS (PART 2 / 3)
    MOBILE MENU + BACKDROP
 ===================================================== */
-/* ================= MOBILE MENU FINAL (ONLY THIS) ================= */
+/* ================= MOBILE MENU (FINAL – SINGLE SOURCE) ================= */
 
 .menu-mobile{
   position:fixed;
-  top:70px;                  /* header height */
+  top:70px;                      /* header height */
   left:0;
   width:85vw;
   max-width:360px;
@@ -578,11 +578,64 @@ section{
   padding:22px 22px 120px;
   overflow-y:auto;
   transform:translateX(-100%);
-  transition:transform .35s ease;
+  transition:transform .35s cubic-bezier(.4,0,.2,1);
 }
 
 .menu-mobile.active{
   transform:translateX(0);
+}
+
+/* menu links */
+.menu-mobile a,
+.mobile-parent{
+  display:block;
+  padding:14px 0;
+  font-size:16px;
+  font-weight:600;
+  color:#111;
+}
+
+/* dropdown */
+.mobile-parent{
+  display:flex;
+  justify-content:space-between;
+  cursor:pointer;
+}
+
+.mobile-sub{
+  display:none;
+  padding-left:16px;
+}
+
+.mobile-sub a{
+  font-size:14px;
+  padding:10px 0;
+  color:#444;
+}
+
+/* login/register fixed bottom */
+.menu-mobile .mobile-auth{
+  position:fixed;
+  bottom:0;
+  left:0;
+  width:85vw;
+  max-width:360px;
+  padding:16px;
+  background:#fff;
+  border-top:1px solid #eee;
+  display:flex;
+  gap:12px;
+  z-index:10002;
+}
+
+.menu-mobile .login{
+  border:2px solid var(--primary);
+  color:var(--primary);
+}
+
+.menu-mobile .register{
+  background:var(--primary);
+  color:#fff;
 }
 
 /* backdrop */
@@ -605,6 +658,7 @@ section{
 body.menu-open{
   overflow:hidden;
 }
+
 
 
 
@@ -982,14 +1036,33 @@ button:active{
 }
 body.menu-open{
   overflow: hidden;
-}
-   
+}  
+/* ================= HEADER + HAMBURGER FINAL FIX ================= */
+
 header{
   position:sticky;
   top:0;
-  z-index:10000;
+  z-index:11000;
   background:#fff;
 }
+
+.hamburger{
+  cursor:pointer;
+  z-index:12000;
+}
+
+@media(max-width:992px){
+  .menu-desktop,
+  .auth .login,
+  .auth .register{
+    display:none !important;
+  }
+
+  .hamburger{
+    display:block;
+  }
+}
+
 
 </style>
 </head>
@@ -1559,9 +1632,19 @@ interviewRecognizer.onend = () => {
 };
    
 function toggleMenu(){
+  const menu = document.getElementById("mobileMenu");
+  const backdrop = document.querySelector(".menu-backdrop");
+
   document.body.classList.toggle("menu-open");
-  document.getElementById("mobileMenu").classList.toggle("active");
-  document.getElementById("menuBackdrop").classList.toggle("active");
+  menu.classList.toggle("active");
+  backdrop.classList.toggle("active");
+}
+
+function toggleSub(el){
+  const sub = el.nextElementSibling;
+  if(sub){
+    sub.style.display = sub.style.display === "block" ? "none" : "block";
+  }
 }
 
 
