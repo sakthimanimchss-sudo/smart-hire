@@ -1042,6 +1042,26 @@ button:active{
 body.menu-open{
   overflow: hidden;
 }
+/* FORCE MENU ABOVE EVERYTHING */
+.menu-mobile{
+  z-index: 10001;
+}
+
+.menu-backdrop{
+  z-index: 10000;
+}
+
+/* LOCK PAGE WHEN MENU IS OPEN */
+body.menu-open{
+  overflow: hidden;
+}
+
+/* HIDE PAGE BEHIND MENU */
+body.menu-open header,
+body.menu-open .hero,
+body.menu-open .chat-btn{
+  visibility: hidden;
+}
 
 </style>
 </head>
