@@ -1295,6 +1295,31 @@ header{
   font-size: 15px;
   border-radius: 10px;
 }
+/* ❌ REMOVE if exists */
+.menu-mobile{
+  width: 100%;
+}
+/* =====================================================
+   MOBILE MENU – KEEP RIGHT GAP (IMAGE 1 FIX)
+===================================================== */
+
+.menu-mobile{
+  width: 85%;          /* keep right gap */
+  max-width: 420px;   /* stable on large phones */
+  left: -100%;
+}
+
+.menu-mobile.active{
+  left: 0;
+}
+
+/* prevent accidental full width override */
+@media (max-width: 900px){
+  .menu-mobile{
+    width: 85% !important;
+  }
+}
+
 </style>
 </head>
 
