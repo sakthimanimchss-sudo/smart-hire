@@ -1133,72 +1133,69 @@ header{
   font-size: 26px;
   cursor: pointer;
 }
+/* ================= MOBILE MENU – FINAL FIX ================= */
 
-/* MOBILE MENU */
 .menu-mobile{
   position: fixed;
   top: 0;
   left: -100%;
   width: 100%;
   height: 100vh;
-  background: #fff;
+  background: #ffffff;
   z-index: 9999;
+  transition: transform .45s ease;
   display: flex;
   flex-direction: column;
-  transition: transform .35s ease;
 }
 
 .menu-mobile.active{
   transform: translateX(100%);
 }
 
-/* MOBILE TOP */
-.mobile-top{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 14px 20px;
-  border-bottom: 1px solid #eee;
+/* menu scroll area */
+.menu-content{
+  flex: 1;
+  padding: 24px;
+  overflow-y: auto;
 }
 
-.close{
-  font-size: 26px;
+/* links */
+.menu-mobile a,
+.mobile-parent{
+  display: block;
+  padding: 18px 0;
+  font-size: 18px;
+  font-weight: 600;
+  border-bottom: 1px solid #eee;
+  color: #111;
+}
+
+/* dropdown */
+.mobile-parent{
+  display: flex;
+  justify-content: space-between;
   cursor: pointer;
 }
 
-/* MOBILE CONTENT */
-.mobile-content{
-  flex: 1;
-  overflow-y: auto;
-  padding: 20px;
-}
-
-.mobile-content a,
-.mobile-parent{
-  display: block;
-  padding: 14px 0;
-  font-size: 16px;
-  font-weight: 600;
-  border-bottom: 1px solid #eee;
-}
-
-/* SUB MENU */
 .mobile-sub{
   display: none;
-  padding-left: 14px;
+  padding-left: 16px;
 }
 
 .mobile-sub a{
-  font-size: 15px;
-  padding: 10px 0;
-  opacity: .85;
+  font-size: 16px;
+  padding: 14px 0;
+  opacity: .8;
 }
 
-/* LOGIN REGISTER BOTTOM */
+/* bottom buttons */
 .mobile-auth{
+  position: sticky;
+  bottom: 0;
+  background: #fff;
+  padding: 16px;
   display: flex;
   gap: 14px;
-  padding: 16px 20px;
   border-top: 1px solid #eee;
 }
 
@@ -1207,29 +1204,28 @@ header{
   text-align: center;
   padding: 14px 0;
   border-radius: 14px;
+  font-size: 16px;
   font-weight: 700;
 }
 
 .mobile-auth .login{
-  border: 2px solid #2b3990;
+  border: 2px solid var(--primary);
+  color: var(--primary);
 }
 
 .mobile-auth .register{
-  background: #2b3990;
+  background: var(--primary);
   color: #fff;
 }
 
-/* RESPONSIVE */
-@media(max-width: 992px){
-  .menu-desktop,
+/* hamburger visibility */
+@media (max-width: 900px){
+  .menu-desktop{display:none}
+  .hamburger{display:block}
   .auth .login,
-  .auth .register{
-    display: none;
-  }
-  .hamburger{
-    display: block;
-  }
+  .auth .register{display:none}
 }
+
 /* REMOVE X ICON – SAME AS INDEX */
 .menu-mobile .close{
   display:none !important;
