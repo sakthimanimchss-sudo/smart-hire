@@ -124,25 +124,34 @@ header{
 /* =====================================================
    MOBILE MENU – LEFT SLIDE
 ===================================================== */
+/* ================= MOBILE MENU – SAME AS index.html ================= */
+
 .menu-mobile{
-  position:fixed;
-  top:0;
-  left:-100%;
-  width:85%;
-  height:100%;
-  background:#fff;
-  z-index:2000;
-  padding:25px;
-  transition:.45s ease;
-  display:flex;
-  flex-direction:column;
-  gap:18px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 85%;
+  height: 100vh;
+  background: #fff;
+  z-index: 2000;
+
+  padding: 25px;
+  display: none;
+  flex-direction: column;
+  gap: 18px;
+
+  transform: translateX(-100%);
+  transition: transform .45s ease;
 }
-.menu-mobile.active{left:0}
+
+.menu-mobile.active{
+  display: flex;
+  transform: translateX(0);
+}
+
+/* REMOVE CLOSE ICON COMPLETELY */
 .menu-mobile .close{
-  font-size:28px;
-  align-self:flex-end;
-  cursor:pointer;
+  display: none !important;
 }
 .menu-mobile a{
   font-size:16px;
