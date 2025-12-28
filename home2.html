@@ -1325,7 +1325,7 @@ header{
   background: #ffffff;
   z-index: 3000;
 
-  padding: 72px 22px 110px;
+  padding: 88px 22px 110px; /* header + breathing space */
   overflow-y: auto;
 
   /*  CLEAN SLIDE */
@@ -1342,6 +1342,22 @@ header{
 /* LOCK SCROLL */
 body.menu-open{
   overflow: hidden;
+}
+header{
+  position: sticky;
+  top: 0;
+  z-index: 4000;
+  background: #fff;
+}
+@media (max-width: 900px){
+  .logo span{
+    width: 36px;
+    height: 36px;
+  }
+
+  .logo h1{
+    font-size: 19px;
+  }
 }
 
 </style>
