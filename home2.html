@@ -613,8 +613,56 @@ section{
   padding:10px 0;
   color:#444;
 }
+/* ================= MOBILE MENU + BACKDROP (FINAL – KEEP ONLY THIS) ================= */
 
-/* ================= MOBILE AUTH ================= */
+.menu-mobile{
+  position:fixed;
+  top:70px;                     /* header height */
+  left:0;
+  width:85vw;
+  max-width:360px;
+  height:calc(100vh - 70px);
+  background:#fff;
+  z-index:9000;
+  padding:22px 22px 120px;
+  overflow-y:auto;
+  transform:translateX(-100%);
+  transition:transform .35s cubic-bezier(.4,0,.2,1);
+}
+
+.menu-mobile.active{
+  transform:translateX(0);
+}
+
+/* menu links */
+.menu-mobile a,
+.mobile-parent{
+  display:block;
+  padding:14px 0;
+  font-size:16px;
+  font-weight:600;
+  color:#111;
+}
+
+/* dropdown */
+.mobile-parent{
+  display:flex;
+  justify-content:space-between;
+  cursor:pointer;
+}
+
+.mobile-sub{
+  display:none;
+  padding-left:16px;
+}
+
+.mobile-sub a{
+  font-size:14px;
+  padding:10px 0;
+  color:#444;
+}
+
+/* login / register fixed bottom */
 .menu-mobile .mobile-auth{
   position:fixed;
   bottom:0;
@@ -626,85 +674,28 @@ section{
   border-top:1px solid #eee;
   display:flex;
   gap:12px;
+  z-index:9100;
 }
 
-.menu-mobile .mobile-auth a{
-  flex:1;
-  height:48px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border-radius:10px;
-  font-weight:600;
-}
-
-.menu-mobile .mobile-auth .login{
+.menu-mobile .login{
   border:2px solid var(--primary);
   color:var(--primary);
 }
 
-.menu-mobile .mobile-auth .register{
+.menu-mobile .register{
   background:var(--primary);
   color:#fff;
 }
 
-/* ================= BACKDROP ================= */
+/* backdrop */
 .menu-backdrop{
   position:fixed;
   inset:0;
   background:rgba(0,0,0,.55);
-  z-index:2999;
-  opacity:0;
-  visibility:hidden;
-}
-
-.menu-backdrop.active{
-  opacity:1;
-  visibility:visible;
-}
-
-body.menu-open{
-  overflow:hidden;
-}
-/* ================= HAMBURGER MOBILE MENU (GLOBAL) ================= */
-
-.hamburger{
-  display:none;
-  font-size:26px;
-  cursor:pointer;
-}
-
-@media(max-width:900px){
-  .menu-desktop{display:none}
-  .hamburger{display:block}
-  .auth .login,
-  .auth .register{display:none}
-}
-
-.menu-mobile{
-  position:fixed;
-  top:0;
-  left:-100%;
-  width:85%;
-  height:100%;
-  background:#fff;
-  z-index:2000;
-  padding:25px;
-  transition:.45s ease;
-}
-
-.menu-mobile.active{
-  left:0;
-}
-
-.menu-backdrop{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.55);
+  z-index:8000;
   opacity:0;
   visibility:hidden;
   transition:.3s;
-  z-index:1500;
 }
 
 .menu-backdrop.active{
@@ -712,9 +703,12 @@ body.menu-open{
   visibility:visible;
 }
 
+/* lock scroll */
 body.menu-open{
   overflow:hidden;
 }
+
+
 
 /* =====================================================
    SMART HIRE — FINAL CSS (PART 3 / 3)
@@ -1091,25 +1085,12 @@ button:active{
 body.menu-open{
   overflow: hidden;
 }
-/* FORCE MENU ABOVE EVERYTHING */
-.menu-mobile{
-  z-index: 10001;
-}
-
-.menu-backdrop{
-  z-index: 10000;
-}
-
-/* LOCK PAGE WHEN MENU IS OPEN */
-body.menu-open{
-  overflow: hidden;
-}
-
-/* HIDE PAGE BEHIND MENU */
-body.menu-open header,
-body.menu-open .hero,
-body.menu-open .chat-btn{
-  visibility: hidden;
+   
+header{
+  position:sticky;
+  top:0;
+  z-index:10000;
+  background:#fff;
 }
 
 </style>
