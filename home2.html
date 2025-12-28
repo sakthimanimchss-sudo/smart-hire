@@ -565,24 +565,32 @@ section{
    MOBILE MENU + BACKDROP
 ===================================================== */
 /* ================= MOBILE MENU (FINAL – SINGLE SOURCE) ================= */
-
 .menu-mobile{
   position:fixed;
-  top:70px;                      /* header height */
+  top:70px;
   left:0;
-  width:85vw;
-  max-width:360px;
+  width:100vw;              /* FULL WIDTH */
+  max-width:360px;          /* OPTIONAL: looks nice */
   height:calc(100vh - 70px);
   background:#fff;
   z-index:10001;
   padding:22px 22px 120px;
   overflow-y:auto;
   transform:translateX(-100%);
-  transition:transform .35s cubic-bezier(.4,0,.2,1);
+  transition:transform .35s ease;
 }
 
 .menu-mobile.active{
   transform:translateX(0);
+}
+.menu-mobile .close{
+  position:absolute;
+  top:14px;
+  right:14px;
+  font-size:26px;
+  cursor:pointer;
+  color:#111;
+  z-index:10002;
 }
 
 /* menu links */
@@ -641,13 +649,17 @@ section{
 /* backdrop */
 .menu-backdrop{
   position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.6);
+  top:0;
+  left:0;
+  width:100vw;
+  height:100vh;
+  background:rgba(0,0,0,.55);
   z-index:10000;
   opacity:0;
   visibility:hidden;
   transition:.3s;
 }
+
 
 .menu-backdrop.active{
   opacity:1;
@@ -1647,6 +1659,9 @@ function toggleSub(el){
   }
 }
 
+document.querySelectorAll('.menu-mobile a').forEach(link=>{
+  link.addEventListener('click', toggleMenu);
+});
 
 </script>
 
