@@ -857,20 +857,30 @@ section{
     visibility:hidden;
   }
 }
-
-/* ================= HERO MOBILE FIX ================= */
+/* ================= HERO MOBILE FIX (MATCH HOME1) ================= */
 @media(max-width:768px){
+
   .hero{
-    min-height:80vh;
+    min-height:100vh;           /* FULL SCREEN like Home1 */
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  .hero-content{
+    max-width:100%;
+    padding:0 20px;
+    margin-top:0;
   }
 
   .hero h1{
-    font-size:34px;
-    line-height:1.2;
+    font-size:28px;             /*  SAME AS VIDEO 1 */
+    line-height:1.25;
   }
 
   .hero p{
-    font-size:16px;
+    font-size:15px;             /*  SAME AS VIDEO 1 */
+    margin-top:12px;
   }
 
   .hero-actions{
@@ -883,14 +893,17 @@ section{
     width:100%;
   }
 }
-.hero,
-.hero video{
-  z-index: 1;
+/* ================= MOBILE MENU BACKGROUND FIX ================= */
+body.menu-open{
+  overflow:hidden;
 }
 
-header{
-  z-index: 100000;
+body.menu-open header,
+body.menu-open .hero{
+  visibility:hidden;    /* hides hero/video behind menu */
 }
+
+
 
 /* ================= CHAT MOBILE FIX ================= */
 @media(max-width:600px){
