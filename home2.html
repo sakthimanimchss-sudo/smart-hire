@@ -1133,243 +1133,134 @@ header{
   font-size: 26px;
   cursor: pointer;
 }
-/* ================= MOBILE MENU – FINAL FIX ================= */
+/* =====================================================
+   FINAL MOBILE MENU – MATCH IMAGE 2 EXACTLY
+===================================================== */
 
-.menu-mobile{
-  position: fixed;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100vh;
-  background: #ffffff;
-  z-index: 9999;
-  transition: transform .45s ease;
-  display: flex;
-  flex-direction: column;
-}
-
-.menu-mobile.active{
-  transform: translateX(100%);
-}
-
-/* menu scroll area */
-.menu-content{
-  flex: 1;
-  padding: 24px;
-  overflow-y: auto;
-}
-
-/* links */
-.menu-mobile a,
-.mobile-parent{
-  display: block;
-  padding: 18px 0;
-  font-size: 18px;
-  font-weight: 600;
-  border-bottom: 1px solid #eee;
-  color: #111;
-}
-
-/* dropdown */
-.mobile-parent{
-  display: flex;
-  justify-content: space-between;
-  cursor: pointer;
-}
-
-.mobile-sub{
-  display: none;
-  padding-left: 16px;
-}
-
-.mobile-sub a{
-  font-size: 16px;
-  padding: 14px 0;
-  opacity: .8;
-}
-
-/* bottom buttons */
-.mobile-auth{
-  position: sticky;
-  bottom: 0;
-  background: #fff;
-  padding: 16px;
-  display: flex;
-  gap: 14px;
-  border-top: 1px solid #eee;
-}
-
-.mobile-auth a{
-  flex: 1;
-  text-align: center;
-  padding: 14px 0;
-  border-radius: 14px;
-  font-size: 16px;
-  font-weight: 700;
-}
-
-.mobile-auth .login{
-  border: 2px solid var(--primary);
-  color: var(--primary);
-}
-
-.mobile-auth .register{
-  background: var(--primary);
-  color: #fff;
-}
-
-/* hamburger visibility */
 @media (max-width: 900px){
-  .menu-desktop{display:none}
-  .hamburger{display:block}
-  .auth .login,
-  .auth .register{display:none}
-}
 
-/* REMOVE X ICON – SAME AS INDEX */
-.menu-mobile .close{
-  display:none !important;
-}
-/* REMOVE MENU DIVIDER LINES */
-.menu-mobile a,
-.mobile-parent{
-  border-bottom:none !important;
-}
-/* SMOOTH SLIDE – INDEX STYLE */
-.menu-mobile{
-  left:0;
-  transform:translateX(-100%);
-  transition:transform .4s ease;
-}
+  /* HEADER BAR */
+  header{
+    height:64px;
+  }
 
-.menu-mobile.active{
-  transform:translateX(0);
-}
-/* MATCH INDEX BACKGROUND FEEL */
-.menu-mobile{
-  background:#ffffff;
-  box-shadow:0 0 40px rgba(0,0,0,.35);
-}
-/* LOGIN / REGISTER SAME GAP AS INDEX */
-.menu-mobile .mobile-auth{
-  margin-top:auto;
-  padding-top:22px;
-}
+  .nav{
+    height:64px;
+    padding:0 16px;
+  }
 
-.menu-mobile .mobile-auth a{
-  padding:14px 0;
-  font-size:15px;
-  border-radius:14px;
-}
-/* SINGLE HAMBURGER CONTROL */
-.hamburger{
-  display:none;
-}
+  .logo span{
+    width:38px;
+    height:38px;
+    font-size:18px;
+  }
 
-@media(max-width:900px){
+  .logo h1{
+    font-size:20px;
+    font-weight:700;
+  }
+
+  /* HAMBURGER */
   .hamburger{
-    display:block;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:44px;
+    height:44px;
+    font-size:26px;
+    cursor:pointer;
+  }
+
+  /* ================= MOBILE MENU PANEL ================= */
+
+  .menu-mobile{
+    position:fixed;
+    top:64px;                /* BELOW HEADER */
+    left:-100%;
+    width:100%;
+    height:calc(100vh - 64px);
+    background:#fff;
+    z-index:3000;
+    padding:18px 18px 90px;
+    display:flex;
+    flex-direction:column;
+    transition:transform .35s ease;
+    transform:translateX(-100%);
+  }
+
+  .menu-mobile.active{
+    transform:translateX(0);
+    left:0;
+  }
+
+  /* REMOVE CLOSE ICON COMPLETELY */
+  .menu-mobile .close{
+    display:none !important;
+  }
+
+  /* MENU ITEMS */
+  .menu-mobile a,
+  .mobile-parent{
+    font-size:17px;
+    font-weight:500;
+    padding:14px 0;
+    border-bottom:1px solid #eee;
+    color:#111;
+  }
+
+  /* DROPDOWN */
+  .mobile-sub{
+    padding-left:14px;
+    border-left:3px solid #f1f1f1;
+    margin-bottom:6px;
+  }
+
+  .mobile-sub a{
+    font-size:15px;
+    padding:10px 0;
+    color:#444;
+  }
+
+  /* ================= BOTTOM AUTH BAR ================= */
+
+  .mobile-auth{
+    position:fixed;
+    bottom:0;
+    left:0;
+    width:100%;
+    padding:16px;
+    background:#fff;
+    display:flex;
+    gap:14px;
+    border-top:1px solid #eee;
+  }
+
+  .mobile-auth a{
+    flex:1;
+    text-align:center;
+    padding:14px 0;
+    font-size:16px;
+    font-weight:700;
+    border-radius:14px;
+  }
+
+  .mobile-auth .login{
+    border:2px solid var(--primary);
+    color:var(--primary);
+    background:#fff;
+  }
+
+  .mobile-auth .register{
+    background:var(--primary);
+    color:#fff;
+  }
+
+  /* PREVENT BODY SCROLL WHEN MENU OPEN */
+  body.menu-open{
+    overflow:hidden;
   }
 }
-/* =====================================================
-   FINAL MOBILE HEADER & HAMBURGER FIX (NO REDESIGN)
-===================================================== */
 
-/* HEADER HEIGHT FIX */
-header {
-  height: 64px;
-}
-
-/* LOGO SIZE & ALIGN (MATCH IMAGE 1) */
-.logo span {
-  width: 40px;
-  height: 40px;
-  font-size: 18px;
-}
-
-.logo h1 {
-  font-size: 20px;
-  line-height: 1;
-}
-
-/* HAMBURGER – BIGGER TOUCH AREA */
-.hamburger {
-  font-size: 28px;
-  padding: 8px;
-  line-height: 1;
-}
-
-/* =====================================================
-   MOBILE MENU FULL PANEL (NO ❌ ICON)
-===================================================== */
-
-.menu-mobile {
-  left: -100%;
-  width: 100%;
-  height: 100vh;
-  padding: 80px 22px 120px; /* top space for header */
-  gap: 0;
-}
-
-/* OPEN */
-.menu-mobile.active {
-  left: 0;
-}
-
-/* REMOVE CLOSE ICON COMPLETELY */
-.menu-mobile .close {
-  display: none !important;
-}
-
-/* =====================================================
-   MENU TEXT SIZE + GAP FIX
-===================================================== */
-
-.menu-mobile a,
-.mobile-parent {
-  font-size: 16px;
-  padding: 16px 0;
-  border-bottom: 1px solid #eee;
-}
-
-/* DROPDOWN CHILD */
-.mobile-sub {
-  padding-left: 14px;
-  margin-bottom: 10px;
-}
-
-.mobile-sub a {
-  font-size: 15px;
-  padding: 10px 0;
-}
-
-/* =====================================================
-   LOGIN / REGISTER – SLIDE FROM BOTTOM
-===================================================== */
-
-.menu-mobile .mobile-auth {
-  position: fixed;
-  bottom: 16px;
-  left: 0;
-  width: 100%;
-  padding: 16px;
-  background: #fff;
-  box-shadow: 0 -10px 30px rgba(0,0,0,.08);
-}
-
-.menu-mobile .mobile-auth a {
-  font-size: 16px;
-  padding: 14px 0;
-  border-radius: 12px;
-}
-
-/* =====================================================
-   PREVENT CONTENT GAP ON RIGHT SIDE
-===================================================== */
-
-body.menu-open {
-  overflow: hidden;
-}
 </style>
 </head>
 
