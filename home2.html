@@ -192,6 +192,27 @@ header{
   background:var(--primary);
   color:#fff;
 }
+/* ================= MOBILE MENU BACKDROP ================= */
+.menu-backdrop{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: 2999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .3s ease;
+}
+/* prevent background movement */
+body.menu-open{
+  overflow: hidden;
+}
+
+/* show backdrop */
+.menu-backdrop.active{
+  opacity: 1;
+  visibility: visible;
+}
+
 /* ================= HERO ================= */
 .hero{
   position:relative;
