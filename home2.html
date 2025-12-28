@@ -1311,7 +1311,38 @@ header{
   }
 
 }
+/* ================= PERFECT SLIDE ANIMATION ================= */
 
+.menu-mobile{
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 82%;
+  max-width: 360px;
+  height: 100vh;
+
+  background: #ffffff;
+  z-index: 3000;
+
+  padding: 72px 22px 110px;
+  overflow-y: auto;
+
+  /*  CLEAN SLIDE */
+  transform: translate3d(-100%, 0, 0);
+  transition: transform 0.35s cubic-bezier(.4,0,.2,1);
+  will-change: transform;
+}
+
+/* OPEN STATE */
+.menu-mobile.active{
+  transform: translate3d(0, 0, 0);
+}
+
+/* LOCK SCROLL */
+body.menu-open{
+  overflow: hidden;
+}
 
 </style>
 </head>
