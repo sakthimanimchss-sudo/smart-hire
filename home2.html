@@ -574,14 +574,12 @@ section{
   height:calc(100vh - 70px);
   background:#fff;
   z-index:10001;
-  padding:20px 20px 110px;   /* 👈 space for bottom buttons */
+  padding:20px 20px 110px;   /*  space for bottom buttons */
   overflow-y:auto;
   transform:translateX(-100%);
   transition:transform .3s ease;
   box-sizing:border-box;
 }
-
-
 
 
 .menu-mobile.active{
@@ -610,6 +608,7 @@ section{
 /* dropdown */
 .mobile-parent{
   display:flex;
+  align-items:center;
   justify-content:space-between;
   cursor:pointer;
 }
@@ -617,32 +616,22 @@ section{
 .mobile-sub{
   display:none;
   padding-left:16px;
+  margin-top:6px;
 }
 
 .mobile-sub a{
-  font-size:14px;
-  padding:10px 0;
-  color:#444;
+  padding:8px 0;
+  font-size:15px;
 }
 
 /* login/register fixed bottom */
 .menu-mobile .mobile-auth{
-  position:static;          /* 👈 KEY FIX */
+  position:static;          /*  KEY FIX */
   margin-top:24px;
   padding-top:16px;
   border-top:1px solid #eee;
   display:flex;
   gap:16px;
-}
-
-
-.menu-mobile .mobile-auth a{
-  flex:1;
-  padding:12px 0;
-  font-size:15px;
-  font-weight:600;
-  text-align:center;
-  border-radius:8px;
 }
 
 .menu-mobile .mobile-auth .login{
@@ -692,9 +681,7 @@ section{
 body.menu-open{
   overflow:hidden;
 }
-
-
-
+    
 
 /* =====================================================
    SMART HIRE — FINAL CSS (PART 3 / 3)
