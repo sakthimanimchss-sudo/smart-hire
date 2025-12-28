@@ -1284,6 +1284,33 @@ header{
 .menu-mobile {
   padding-top: 20px; /* keeps menu tight like Image 1 */
 }
+/* ================= MOBILE MENU CLEANUP ================= */
+@media (max-width: 900px){
+
+  /* REMOVE ALL DIVIDER LINES */
+  .menu-mobile a,
+  .menu-mobile .mobile-parent{
+    border-bottom: none !important;
+  }
+
+  .mobile-sub{
+    border-left: none !important;
+  }
+
+  /* REDUCE TEXT SIZE SLIGHTLY */
+  .menu-mobile a,
+  .menu-mobile .mobile-parent{
+    font-size: 15px !important;   /* smaller like Image 1 */
+    padding: 10px 0 !important;   /* tighter spacing */
+    font-weight: 500;
+  }
+
+  .mobile-sub a{
+    font-size: 14px !important;
+    padding: 8px 0 !important;
+  }
+
+}
 
 
 </style>
