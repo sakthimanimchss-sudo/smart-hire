@@ -133,23 +133,26 @@ header{
   top: 0;
   left: 0;
 
-  width: min(82vw, 360px);
+  width: 85vw;
+  max-width: 360px;
   height: 100vh;
 
-  background: #fff;
-  z-index: 3000;
+  background: #ffffff;
+  z-index: 9999;
 
-  padding: 24px 22px 120px;
+  padding: 24px 22px 110px;
   overflow-y: auto;
 
-  display: block;
   transform: translateX(-100%);
-  transition: transform .35s cubic-bezier(.4,0,.2,1);
+  transition: transform .35s ease;
+
+  box-shadow: 4px 0 20px rgba(0,0,0,.15);
 }
 
 .menu-mobile.active{
   transform: translateX(0);
 }
+
 
 /* REMOVE ❌ CLOSE ICON */
 .menu-mobile .close{
@@ -713,7 +716,7 @@ section{
   padding:14px 0;
   font-size:16px;
   font-weight:600;
-  border-bottom:1px solid #eee;
+  border-bottom:none;
 }
 
 /* touch feedback */
@@ -1064,6 +1067,9 @@ button:active{
     justify-content:center;
   }
 }
+body.menu-open{
+  overflow: hidden;
+}
 
 </style>
 </head>
@@ -1114,13 +1120,6 @@ button:active{
    
 <div class="menu-mobile" id="mobileMenu">
    
-<!-- MOBILE MENU TITLE -->
-<div class="menu-mobile-header">
-  <div class="logo">
-    <span>S</span>
-    <h1>SmartHire</h1>
-  </div>
-</div>
   <!-- HOME -->
   <div class="mobile-parent" onclick="toggleSub(this)">
     Home ▾
