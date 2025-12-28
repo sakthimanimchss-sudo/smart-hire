@@ -1172,21 +1172,26 @@ header{
   }
 
   /* ================= MOBILE MENU PANEL ================= */
-
-  .menu-mobile{
-    position:fixed;
-    top:64px;                /* BELOW HEADER */
-    left:-100%;
-    width:100%;
-    height:calc(100vh - 64px);
-    background:#fff;
-    z-index:3000;
-    padding:18px 18px 90px;
-    display:flex;
-    flex-direction:column;
-    transition:transform .35s ease;
-    transform:translateX(-100%);
-  }
+.menu-mobile{
+  position:fixed;
+  top:0;
+  left:-100%;
+  width:100vw;              /* FULL SCREEN WIDTH */
+  max-width:100vw;          /* NO RIGHT GAP */
+  height:100vh;             /* FULL HEIGHT */
+  background:#fff;
+  z-index:2000;
+  padding:25px 22px;
+  transition:transform .45s ease;
+  transform:translateX(-100%);
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+  overflow-y:auto;          /* SAFE SCROLL */
+}
+.menu-mobile.active{
+  transform:translateX(0);  /* CLEAN SLIDE */
+}
 
   .menu-mobile.active{
     transform:translateX(0);
@@ -1318,6 +1323,9 @@ header{
   .menu-mobile{
     width: 85% !important;
   }
+}
+body.menu-open{
+  overflow:hidden;
 }
 
 </style>
