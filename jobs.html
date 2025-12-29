@@ -408,123 +408,178 @@ header{
   --accent:#ff9900;
   --dark:#0f1c24;
 }
-/* ================= HERO ================= */
+/* ================= RESET SAFETY ================= */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  overflow-x:hidden;
+  background:#fff;
+}
+
+/* ================= HERO SLIDER ================= */
 .hero-slider{
   position:relative;
   width:100%;
-  height:100vh;
+  height:calc(100vh - 70px);   /* header height */
+  margin-top:70px;
   overflow:hidden;
   background:#000;
 }
 
-/* SLIDE */
+/* ================= SLIDE ================= */
 .slide{
   position:absolute;
   inset:0;
   opacity:0;
-  transition:opacity .6s ease;
+  transition:opacity .8s ease;
+  pointer-events:none;
 }
+
 .slide.active{
   opacity:1;
+  pointer-events:auto;
+  z-index:2;
+}
+
+/* ================= VIDEO + IMAGE WRAPPER ================= */
+.video-wrap{
+  position:absolute;
+  inset:0;
+  overflow:hidden;
+}
+
+/* SAME FOR VIDEO & IMAGE */
+.hero-video,
+.hero-poster{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+}
+
+/* IMAGE FIRST */
+.hero-poster{
+  display:block;
   z-index:1;
 }
 
-/* VIDEO (DESKTOP ONLY) */
+/* VIDEO HIDDEN UNTIL PLAY */
 .hero-video{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  z-index:0;
-}
-
-/* IMAGE FALLBACK */
-.hero-image{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  z-index:0;
   display:none;
+  z-index:2;
 }
 
-/* OVERLAY */
+/* ================= PLAY ICON ================= */
+.play-icon{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:64px;
+  color:#fff;
+  background:rgba(0,0,0,.25);
+  z-index:3;
+  transition:.3s;
+}
+
+.video-wrap:hover .play-icon{
+  background:rgba(0,0,0,.4);
+}
+
+/* ================= OVERLAY ================= */
 .hero-overlay{
   position:absolute;
   inset:0;
   background:linear-gradient(
-    180deg,
     rgba(0,0,0,.35),
-    rgba(0,0,0,.65)
+    rgba(0,0,0,.75)
   );
-  z-index:1;
+  z-index:4;
 }
 
-/* CONTENT */
+/* ================= CONTENT ================= */
 .hero-content{
   position:relative;
-  z-index:2;
+  z-index:5;
   height:100%;
   display:flex;
   flex-direction:column;
-  align-items:center;
   justify-content:center;
+  align-items:center;
   text-align:center;
   padding:20px;
   color:#fff;
 }
 
 .hero-content h1{
-  font-size:clamp(26px,6vw,48px);
+  font-size:clamp(26px,6vw,52px);
   font-weight:800;
-  line-height:1.2;
+  line-height:1.15;
+  max-width:900px;
 }
 
 .hero-content p{
-  margin-top:10px;
-  font-size:clamp(14px,3.5vw,18px);
+  margin-top:8px;
+  font-size:clamp(14px,3vw,18px);
   opacity:.95;
 }
 
-/* DOTS */
+/* ================= DOTS ================= */
 .slider-dots{
   position:absolute;
-  bottom:20px;
+  bottom:22px;
   left:50%;
   transform:translateX(-50%);
   display:flex;
   gap:10px;
-  z-index:3;
+  z-index:6;
 }
+
 .slider-dots span{
-  width:8px;
-  height:8px;
+  width:10px;
+  height:10px;
   border-radius:50%;
   background:rgba(255,255,255,.4);
 }
+
 .slider-dots span.active{
   background:#ff9900;
 }
 
-/* ================= MOBILE FIX ================= */
+/* ================= MOBILE ================= */
 @media(max-width:768px){
-  .hero-video{display:none;}
-  .hero-image{display:block;}
-  .hero-slider{height:88vh;}
-}
- 
-body{
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior:smooth;
-}
-.hero-slider,
-.slide,
-.hero-content{
-  will-change:transform;
+
+  .hero-slider{
+    height:85vh;
+    margin-top:64px;
+  }
+
+  .hero-content h1{
+    font-size:28px;
+  }
+
+  .hero-content p{
+    font-size:15px;
+  }
+
+  .play-icon{
+    font-size:52px;
+  }
 }
 
+/* ================= PERFORMANCE ================= */
+.hero-video,
+.hero-poster{
+  backface-visibility:hidden;
+  transform:translateZ(0);
+}
 
 </style>
 </head>
@@ -601,16 +656,57 @@ body{
     <a href="register.html" class="register">Register</a>
   </div>
 </div>
+ 
+<!-- ================= HERO SLIDER ================= -->
 <section class="hero-slider">
 
+  <!-- ===== SLIDE 1 (VIDEO + IMAGE) ===== -->
   <div class="slide active">
-    <!-- DESKTOP VIDEO -->
-    <video class="hero-video" autoplay muted loop playsinline preload="none">
-      <source src="https://videos.pexels.com/video-files/3195394/3195394-hd_1920_1080_25fps.mp4" type="video/mp4">
-    </video>
 
-    <!-- MOBILE IMAGE FALLBACK -->
-    <img class="hero-image" src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d" alt="Jobs">
+    <div class="video-wrap">
+      <!-- IMAGE (ALWAYS VISIBLE FIRST) -->
+      <img 
+        src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d"
+        class="hero-poster"
+        alt="Jobs Background"
+      >
+
+      <!-- VIDEO (PLAYS ON TAP / DESKTOP) -->
+      <video
+        class="hero-video"
+        muted
+        loop
+        playsinline
+        preload="metadata"
+      >
+        <source src="https://videos.pexels.com/video-files/3195394/3195394-hd_1920_1080_25fps.mp4" type="video/mp4">
+      </video>
+
+      <!-- PLAY ICON -->
+      <div class="play-icon" onclick="playHeroVideo(this)">▶</div>
+    </div>
+
+    <!-- OVERLAY -->
+    <div class="hero-overlay"></div>
+
+    <!-- CONTENT -->
+    <div class="hero-content">
+      <h1>Find Your Dream Job</h1>
+      <p>AI-powered hiring & career growth</p>
+    </div>
+
+  </div>
+
+  <!-- ===== SLIDE 2 (IMAGE) ===== -->
+  <div class="slide">
+
+    <div class="video-wrap">
+      <img 
+        src="https://images.unsplash.com/photo-1519389950473-47ba0277781c"
+        class="hero-poster"
+        alt="Careers"
+      >
+    </div>
 
     <div class="hero-overlay"></div>
 
@@ -618,8 +714,30 @@ body{
       <h1>30,000+ Opportunities</h1>
       <p>From startups to top companies</p>
     </div>
+
   </div>
 
+  <!-- ===== SLIDE 3 (IMAGE) ===== -->
+  <div class="slide">
+
+    <div class="video-wrap">
+      <img 
+        src="https://images.unsplash.com/photo-1522071820081-009f0129c71c"
+        class="hero-poster"
+        alt="Upskill"
+      >
+    </div>
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+      <h1>Upskill & Get Hired</h1>
+      <p>Industry-ready programs & mentors</p>
+    </div>
+
+  </div>
+
+  <!-- DOTS -->
   <div class="slider-dots">
     <span class="active"></span>
     <span></span>
@@ -627,7 +745,7 @@ body{
   </div>
 
 </section>
-
+ 
 <section class="programs-section">
   <div class="programs-container">
 
@@ -742,10 +860,13 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* ================= HERO SLIDER ================= */
-  const slides = document.querySelectorAll(".slide");
+const slides = document.querySelectorAll(".slide");
   const dotsContainer = document.querySelector(".slider-dots");
 
-  if(!slides.length || !dotsContainer) return; // ✅ SAFETY
+  if (!slides.length || !dotsContainer) {
+    console.warn("Hero slider elements not found");
+    return;
+  }
 
   let index = 0;
   let timer;
@@ -759,12 +880,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const dots = dotsContainer.querySelectorAll("span");
 
+  /* VIDEO CONTROL */
   function playVideo(slide){
     const video = slide.querySelector("video");
     if(video){
       video.muted = true;
       video.currentTime = 0;
-      video.play().catch(()=>{});
+      video.play().catch(() => {});
     }
   }
 
@@ -772,6 +894,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".slide video").forEach(v => v.pause());
   }
 
+  /* SHOW SLIDE */
   function show(i){
     pauseVideos();
     slides.forEach(s => s.classList.remove("active"));
@@ -802,11 +925,12 @@ document.addEventListener("DOMContentLoaded", () => {
     start();
   }
 
-  /* INIT IMMEDIATELY */
+  /* INIT */
   show(0);
   start();
 
 });
+
 </script>
 
 </body>
