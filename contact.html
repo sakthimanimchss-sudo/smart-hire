@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SmartHire | Contact Us</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Font Awesome -->
+<link rel="stylesheet"
+ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+/* ================= ROOT ================= */
+:root{
+  --primary:#2b3990;
+  --accent:#ff9900;
+  --light:#f5f7fb;
+  --shadow:0 20px 40px rgba(0,0,0,.12);
+  --shadow-lg:0 30px 70px rgba(0,0,0,.18);
+}
+
+/* ================= RESET ================= */
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:Segoe UI,Arial,sans-serif;
+  background:var(--light);
+  overflow-x:hidden;
+}
+a{text-decoration:none;color:inherit}
+
+/* ================= HEADER ================= */
+header{
+  position:sticky;
+  top:0;
+  background:#fff;
+  z-index:11000;
+  box-shadow:0 2px 10px rgba(0,0,0,.05);
+}
+.nav{
+  max-width:1400px;
+  margin:auto;
+  padding:14px 22px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.logo{
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+.logo span{
+  width:42px;height:42px;
+  background:var(--primary);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:10px;
+  font-weight:800;
+}
+.logo h1{
+  font-size:22px;
+  color:var(--primary);
+}
+
+
+/* ================= DESKTOP MENU ================= */
+.menu-desktop{
+  display:flex;
+  align-items:center;
+  gap:18px;
+  font-size:14px;
+  font-weight:600;
+}
+.menu-desktop a:hover{color:var(--accent)}
+
+.nav-item{position:relative}
+.dropdown-menu{
+  position:absolute;
+  top:120%;
+  left:0;
+  background:#fff;
+  min-width:180px;
+  border-radius:8px;
+  box-shadow:0 10px 30px rgba(0,0,0,.15);
+  opacity:0;
+  visibility:hidden;
+  transition:.25s;
+}
+.dropdown-menu a{
+  display:block;
+  padding:12px 16px;
+  font-size:14px;
+}
+.dropdown-menu a:hover{
+  background:#f5f7fb;
+  color:var(--accent);
+}
+.nav-item:hover .dropdown-menu{
+  opacity:1;
+  visibility:visible;
+}
+
+
+/* ================= AUTH ================= */
+.auth{
+  display:flex;
+  gap:12px;
+  align-items:center;
+}
+.auth .login{
+  color:var(--primary);
+  font-weight:600;
+}
+.auth .register{
+  background:var(--primary);
+  color:#fff;
+  padding:10px 18px;
+  border-radius:8px;
+}
+
+
+/* ================= HAMBURGER ================= */
+.hamburger{
+  display:none;
+  font-size:26px;
+  cursor:pointer;
+}
+
+/* ================= BACKDROP ================= */
+.menu-backdrop{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.55);
+  opacity:0;
+  visibility:hidden;
+  transition:.3s;
+  z-index:10000;
+}
+.menu-backdrop.active{
+  opacity:1;
+  visibility:visible;
+}
+
+/* ================= MOBILE MENU ================= */
+.menu-mobile{
+  position:fixed;
+  top:70px;
+  left:0;
+  width:78%;                 /* right-side gap */
+  max-width:320px;
+  height:calc(100vh - 70px);
+  background:#fff;
+  padding:20px;
+  overflow-y:auto;
+  transform:translateX(-100%);
+  transition:.3s ease;
+  z-index:10001;
+}
+.menu-mobile.active{transform:translateX(0)}
+
+.menu-mobile a,
+.mobile-parent{
+  display:block;
+  padding:14px 0;
+  font-size:16px;
+  font-weight:500;
+}
+
+.mobile-parent{
+  display:flex;
+  justify-content:space-between;
+  cursor:pointer;
+}
+
+.mobile-sub{
+  display:none;
+  padding-left:16px;
+  margin-top:6px;
+}
+.mobile-sub a{
+  padding:8px 0;
+  font-size:15px;
+}
+
+/* login/register (scroll to see) */
+.mobile-auth{
+  margin-top:32px;
+  padding-top:16px;
+  border-top:1px solid #eee;
+  display:flex;
+  gap:16px;
+}
+.mobile-auth a{
+  flex:1;
+  padding:12px 0;
+  text-align:center;
+  font-size:15px;
+  font-weight:600;
+  border-radius:8px;
+}
+.mobile-auth .login{
+  border:2px solid var(--primary);
+  color:var(--primary);
+}
+.mobile-auth .register{
+  background:var(--primary);
+  color:#fff;
+}
+/* ================= RESPONSIVE ================= */
+@media(max-width:992px){
+  .menu-desktop,
+  .auth .login,
+  .auth .register{display:none}
+  .hamburger{display:block}
+}
+/* ================= ROOT ================= */
+:root{
+  --primary:#2b3990;
+  --accent:#ff9900;
+  --light:#f5f7fb;
+  --shadow-lg:0 30px 70px rgba(0,0,0,.18);
+}
+
+/* ================= CONTACT HERO ================= */
+.contact-hero{
+  position:relative;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:100px 20px;
+
+  background:
+    linear-gradient(
+      rgba(15,23,42,.35),
+      rgba(15,23,42,.35)
+    ),
+    url("https://images.unsplash.com/photo-1557804506-669a67965ba0");
+
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+}
+
+/* SOFT LIGHT FOCUS */
+.contact-hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(255,255,255,.35),
+      rgba(255,255,255,0) 60%
+    );
+  pointer-events:none;
+}
+
+/* ================= CONTACT CARD ================= */
+.contact-card{
+  position:relative;
+  max-width:920px;
+  width:100%;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
+
+  background:#fff;
+  border-radius:22px;
+  padding:50px;
+
+  border:1px solid #e5e7eb;
+  box-shadow:var(--shadow-lg);
+
+  animation:fadeUp .7s ease forwards;
+  z-index:2;
+}
+
+/* CARD ANIMATION */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(40px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* ================= LEFT INFO ================= */
+.contact-info h2{
+  font-size:40px;
+  font-weight:900;
+  margin-bottom:14px;
+  color:#111827;
+}
+
+.contact-info p{
+  font-size:15.5px;
+  color:#4b5563;
+  line-height:1.8;
+}
+
+.contact-info ul{
+  margin-top:26px;
+  padding-left:0;
+}
+
+.contact-info li{
+  list-style:none;
+  margin-bottom:14px;
+  font-weight:600;
+  color:#1f2937;
+}
+
+/* ================= FORM ================= */
+form{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+}
+
+form input,
+form textarea{
+  padding:14px 16px;
+  border-radius:12px;
+  background:#f9fafb;
+  border:1.5px solid #d1d5db;
+  font-size:15px;
+  outline:none;
+  transition:.25s ease;
+  color:#111827;
+}
+
+form textarea{
+  grid-column:1 / 3;
+  height:120px;
+  resize:none;
+}
+
+/* INPUT FOCUS GLOW */
+form input:focus,
+form textarea:focus{
+  background:#fff;
+  border-color:var(--accent);
+  box-shadow:0 0 0 3px rgba(255,153,0,.28);
+}
+
+/* ================= BUTTON ================= */
+button{
+  grid-column:1 / 3;
+  padding:15px;
+  border:none;
+  border-radius:999px;
+
+  background:var(--accent);
+  color:#fff;
+
+  font-weight:800;
+  font-size:16px;
+  cursor:pointer;
+
+  box-shadow:0 18px 35px rgba(255,153,0,.35);
+  transition:.3s ease;
+}
+
+button:hover{
+  transform:translateY(-3px);
+  box-shadow:0 22px 45px rgba(255,153,0,.45);
+}
+
+/* ================= SUCCESS MESSAGE ================= */
+.success{
+  display:none;
+  grid-column:1 / 3;
+  background:#16a34a;
+  color:#fff;
+  padding:12px;
+  border-radius:12px;
+  text-align:center;
+  font-weight:700;
+  animation:pop .4s ease;
+}
+
+@keyframes pop{
+  from{opacity:0;transform:scale(.9)}
+  to{opacity:1;transform:scale(1)}
+}
+
+/* ================= MOBILE ================= */
+@media(max-width:900px){
+  .contact-card{
+    grid-template-columns:1fr;
+    padding:30px;
+  }
+
+  form{
+    grid-template-columns:1fr;
+  }
+
+  textarea,
+  button,
+  .success{
+    grid-column:1;
+  }
+}
+
+/* ================= CONTACT INSTRUCTIONS ================= */
+.contact-instructions{
+  background:#f9fafb;
+  padding:90px 20px;
+}
+
+.instruction-wrap{
+  max-width:1200px;
+  margin:auto;
+  text-align:center;
+}
+
+.instruction-wrap h2{
+  font-size:36px;
+  font-weight:900;
+  color:#111827;
+  margin-bottom:10px;
+}
+
+.instruction-wrap .sub{
+  color:#6b7280;
+  font-size:16px;
+  max-width:720px;
+  margin:0 auto 50px;
+}
+
+/* GRID */
+.instruction-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:30px;
+}
+
+/* BOX */
+.instruction-box{
+  background:#ffffff;
+  padding:32px 28px;
+  border-radius:18px;
+  text-align:left;
+
+  border:1px solid #e5e7eb;
+  box-shadow:0 18px 40px rgba(0,0,0,.08);
+
+  transition:.35s ease;
+  position:relative;
+}
+
+.instruction-box:hover{
+  transform:translateY(-8px);
+  box-shadow:0 25px 55px rgba(0,0,0,.12);
+}
+
+/* STEP NUMBER */
+.instruction-box .step{
+  font-size:14px;
+  font-weight:800;
+  color:#ff9900;
+  display:inline-block;
+  margin-bottom:10px;
+}
+
+/* TEXT */
+.instruction-box h4{
+  font-size:18px;
+  font-weight:800;
+  margin-bottom:10px;
+  color:#1f2937;
+}
+
+.instruction-box p{
+  font-size:15px;
+  line-height:1.7;
+  color:#4b5563;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .instruction-wrap h2{
+    font-size:30px;
+  }
+}
+
+/* ================= MAP SECTION ================= */
+.contact-map{
+  width:100vw;                 /* full screen width */
+  margin-left:calc(50% - 50vw);/* break container alignment */
+  margin-top:60px;
+  overflow:hidden;
+  background:#fff;
+}
+
+/* MAP IFRAME */
+.contact-map iframe{
+  width:100%;
+  height:460px;
+  border:0;
+
+  display:block;
+  opacity:0;
+  transform:translateY(40px);
+
+  animation:mapReveal .8s ease forwards;
+}
+
+/* MAP ANIMATION */
+@keyframes mapReveal{
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+
+/* ================= HEADER DROP ================= */
+header{
+  animation:headerDrop .5s ease forwards;
+}
+
+@keyframes headerDrop{
+  from{opacity:0;transform:translateY(-12px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* ================= NAV HOVER ================= */
+.menu-desktop a{
+  position:relative;
+}
+
+.menu-desktop a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-6px;
+  width:0;
+  height:2px;
+  background:var(--accent);
+  transition:.3s ease;
+}
+
+.menu-desktop a:hover::after{
+  width:100%;
+}
+
+
+
+/* =====================================================
+   ADVANCED FOOTER
+===================================================== */
+.footer{
+  position:relative;
+  background:linear-gradient(135deg,#0f1c24,#1b2a3a);
+  color:#fff;
+  padding:90px 20px 40px;
+  overflow:hidden;
+}
+
+/* glass overlay */
+.footer-glass{
+  position:absolute;
+  inset:0;
+  background:rgba(255,255,255,.04);
+  backdrop-filter:blur(14px);
+  pointer-events:none;
+}
+
+/* grid */
+.footer-grid{
+  position:relative;
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr 1.4fr;
+  gap:50px;
+  z-index:2;
+}
+
+/* brand */
+.footer-logo{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:18px;
+}
+.footer-logo span{
+  width:46px;
+  height:46px;
+  background:var(--primary);
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:800;
+  font-size:22px;
+}
+.footer-logo h2{
+  font-size:24px;
+}
+.footer-brand p{
+  font-size:14px;
+  line-height:1.7;
+  opacity:.75;
+}
+
+/* columns */
+.footer-col h4{
+  font-size:16px;
+  margin-bottom:18px;
+  position:relative;
+}
+.footer-col h4::after{
+  content:"";
+  width:32px;
+  height:3px;
+  background:var(--accent);
+  position:absolute;
+  bottom:-8px;
+  left:0;
+  border-radius:2px;
+}
+.footer-col a{
+  display:block;
+  font-size:14px;
+  margin-bottom:12px;
+  opacity:.7;
+  transition:.3s;
+}
+.footer-col a:hover{
+  opacity:1;
+  color:var(--accent);
+  transform:translateX(4px);
+}
+
+/* newsletter */
+.footer-note{
+  font-size:14px;
+  opacity:.7;
+  margin-bottom:14px;
+}
+.footer-newsletter{
+  display:flex;
+  gap:10px;
+}
+.footer-newsletter input{
+  flex:1;
+  padding:12px;
+  border-radius:8px;
+  border:none;
+  outline:none;
+}
+.footer-newsletter button{
+  background:var(--accent);
+  color:#fff;
+  border:none;
+  border-radius:8px;
+  padding:12px 18px;
+  font-weight:700;
+  cursor:pointer;
+  transition:.3s;
+}
+.footer-newsletter button:hover{
+  background:#e68a00;
+}
+
+/* bottom */
+.footer-bottom{
+  position:relative;
+  z-index:2;
+  border-top:1px solid rgba(255,255,255,.1);
+  margin-top:60px;
+  padding-top:25px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:20px;
+  align-items:center;
+  justify-content:space-between;
+  font-size:13px;
+  opacity:.7;
+}
+
+/* socials */
+.socials{
+  display:flex;
+  gap:14px;
+}
+.socials a{
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  background:rgba(255,255,255,.1);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  font-size:16px;
+  transition:.3s;
+}
+.socials a:hover{
+  background:var(--accent);
+  transform:translateY(-4px);
+}
+
+/* responsive */
+@media(max-width:900px){
+  .footer-grid{
+    grid-template-columns:1fr;
+    gap:40px;
+  }
+  .footer-bottom{
+    text-align:center;
+    justify-content:center;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+<header>
+  <div class="nav">
+    <div class="logo">
+      <span>S</span>
+      <h1>SmartHire</h1>
+    </div>
+
+    <!-- DESKTOP MENU -->
+    <div class="menu-desktop">
+      <div class="nav-item">
+        <a href="#">Home ▾</a>
+        <div class="dropdown-menu">
+          <a href="index.html">Home 1</a>
+          <a href="home2.html">Home 2</a>
+        </div>
+      </div>
+      <a href="jobs.html">Jobs</a>
+      <a href="recruiters.html">Recruiters</a>
+      <a href="career.html">Career Services</a>
+      <a href="courses.html">Courses</a>
+      <a href="contact.html">Contact</a>
+
+      <div class="nav-item">
+        <a href="#">Dashboard ▾</a>
+        <div class="dropdown-menu">
+          <a href="dashboard/user.html">User Dashboard</a>
+          <a href="dashboard/admin.html">Admin Dashboard</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- AUTH -->
+    <div class="auth">
+      <a href="login.html" class="login">Login</a>
+      <a href="register.html" class="register">Register</a>
+      <div class="hamburger" onclick="toggleMenu()">☰</div>
+    </div>
+  </div>
+</header>
+
+<div class="menu-backdrop" onclick="toggleMenu()"></div>
+
+<!-- MOBILE MENU -->
+<div class="menu-mobile" id="mobileMenu">
+
+  <div class="mobile-parent" onclick="toggleSub(this)">Home ▾</div>
+  <div class="mobile-sub">
+    <a href="index.html">Home 1</a>
+    <a href="home2.html">Home 2</a>
+  </div>
+
+  <a href="jobs.html">Jobs</a>
+  <a href="recruiters.html">Recruiters</a>
+  <a href="career.html">Career Services</a>
+  <a href="courses.html">Courses</a>
+  <a href="contact.html">Contact</a>
+
+  <div class="mobile-parent" onclick="toggleSub(this)">Dashboard ▾</div>
+  <div class="mobile-sub">
+    <a href="dashboard/user.html">User Dashboard</a>
+    <a href="dashboard/admin.html">Admin Dashboard</a>
+  </div>
+
+  <div class="mobile-auth">
+    <a href="login.html" class="login">Login</a>
+    <a href="register.html" class="register">Register</a>
+  </div>
+</div>
+
+<!-- ================= HERO ================= -->
+<section class="contact-hero">
+  <div class="contact-card">
+
+    <div class="contact-info">
+      <h2>Contact SmartHire</h2>
+      <p>
+        Have a question about jobs, resumes, or career services?
+        Our support team responds within <strong>24 hours</strong>.
+      </p>
+
+      <ul>
+        <li>📧 support@smarthire.com</li>
+        <li>📞 +91 90000 00000</li>
+        <li>🌍 Serving candidates worldwide</li>
+      </ul>
+    </div>
+
+    <form id="contactForm">
+      <input type="text" id="fname" placeholder="First Name" required>
+      <input type="text" id="lname" placeholder="Last Name" required>
+      <input type="email" id="email" placeholder="Email" required>
+      <input type="tel" id="phone" placeholder="Phone">
+      <textarea id="message" placeholder="Your message" required></textarea>
+
+      <button type="submit">Send Message</button>
+      <div class="success">✅ Message sent successfully!</div>
+    </form>
+
+  </div>
+</section>
+
+<!-- ================= CONTACT INSTRUCTIONS ================= -->
+<section class="contact-instructions">
+  <div class="instruction-wrap">
+
+    <h2>How Can We Help You?</h2>
+    <p class="sub">
+      Follow the steps below to get faster support from the SmartHire team.
+    </p>
+
+    <div class="instruction-grid">
+
+      <div class="instruction-box">
+        <span class="step">01</span>
+        <h4>Fill the Contact Form</h4>
+        <p>
+          Enter your name, email, phone number, and describe your query clearly
+          so our support team understands your requirement.
+        </p>
+      </div>
+
+      <div class="instruction-box">
+        <span class="step">02</span>
+        <h4>Choose the Right Topic</h4>
+        <p>
+          Mention whether your issue is related to jobs, recruiters, resumes,
+          career services, or account support.
+        </p>
+      </div>
+
+      <div class="instruction-box">
+        <span class="step">03</span>
+        <h4>Response Within 24 Hours</h4>
+        <p>
+          Our support executives review every request and respond within
+          24 hours on working days.
+        </p>
+      </div>
+
+      <div class="instruction-box">
+        <span class="step">04</span>
+        <h4>Urgent Support</h4>
+        <p>
+          For urgent matters, you can directly contact us via WhatsApp or email
+          mentioned above for faster assistance.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= MAP ================= -->
+
+<section class="contact-map">
+  <iframe src="https://maps.google.com/maps?q=Chennai&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div class="footer-glass"></div>
+
+  <div class="container footer-grid">
+
+    <!-- BRAND -->
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <span>S</span>
+        <h2>SmartHire</h2>
+      </div>
+      <p>
+        SmartHire is an AI-powered recruitment and career platform connecting
+        verified recruiters with skilled professionals. Using intelligent
+        job matching, real-time hiring insights, and career tools, we help
+        candidates discover meaningful opportunities faster and smarter.
+      </p>
+    </div>
+
+    <!-- QUICK LINKS -->
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <a href="jobs.html">Find Jobs</a>
+      <a href="companies.html">Companies</a>
+      <a href="recruiters.html">Recruiters</a>
+      <a href="career.html">Career Services</a>
+      <a href="courses.html">Courses</a>
+    </div>
+
+    <!-- RESOURCES -->
+    <div class="footer-col">
+      <h4>Resources</h4>
+      <a href="#">Blog</a>
+      <a href="#">Resume Tips</a>
+      <a href="#">Interview Prep</a>
+      <a href="#">Skill Trends</a>
+      <a href="#">Success Stories</a>
+    </div>
+
+    <!-- NEWSLETTER -->
+    <div class="footer-col">
+      <h4>Stay Updated</h4>
+      <p class="footer-note">
+        Subscribe to receive the latest job alerts, hiring trends,
+        and career insights directly in your inbox.
+      </p>
+      <div class="footer-newsletter">
+        <input type="email" placeholder="Enter your email">
+        <button>Subscribe</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SOCIAL + COPYRIGHT -->
+  <div class="footer-bottom">
+    <div class="socials">
+      <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+      <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    </div>
+
+    <p>© 2026 SmartHire Recruitment Solutions Pvt Ltd. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+/* ================= MOBILE MENU ================= */
+function toggleMenu(){
+  document.getElementById("mobileMenu")?.classList.toggle("active");
+  document.querySelector(".menu-backdrop")?.classList.toggle("active");
+  document.body.classList.toggle("menu-open");
+}
+
+function toggleSub(el){
+  const sub = el.nextElementSibling;
+  if(sub){
+    sub.style.display = sub.style.display === "block" ? "none" : "block";
+  }
+}
+
+/* Toggle mobile submenu */
+document.getElementById("contactForm").addEventListener("submit", e=>{
+  e.preventDefault();
+
+  const msg = document.getElementById("message").value;
+  const phone = document.getElementById("phone").value || "Not provided";
+  const email = document.getElementById("email").value;
+
+  /* EMAIL */
+  window.location.href =
+    `mailto:support@smarthire.com?subject=Contact Request&body=${encodeURIComponent(msg)}`;
+
+  /* WHATSAPP */
+  window.open(
+    `https://wa.me/919000000000?text=${encodeURIComponent(msg + "\nPhone: " + phone + "\nEmail: " + email)}`
+  );
+
+  document.querySelector(".success").style.display="block";
+  e.target.reset();
+});
+</script>
+
+</body>
+</html>
