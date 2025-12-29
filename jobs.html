@@ -231,7 +231,7 @@ header{
 .programs-section{
   background:var(--light);
   padding:70px 20px 90px;
-  font-family:Inter,Segoe UI,Arial,sans-serif;
+  font-family:Inter, Segoe UI, Arial, sans-serif;
 }
 
 .programs-container{
@@ -244,11 +244,13 @@ header{
   text-align:center;
   margin-bottom:36px;
 }
+
 .programs-title h2{
   font-size:36px;
   font-weight:800;
   color:var(--primary);
 }
+
 .programs-title p{
   color:#666;
   margin-top:10px;
@@ -262,13 +264,15 @@ header{
   overflow-x:auto;
   padding-bottom:12px;
   margin-bottom:42px;
+  justify-content:center;
 }
+
 .program-filters::-webkit-scrollbar{
   display:none;
 }
 
 .filter-btn{
-  padding:9px 20px;
+  padding:9px 22px;
   border-radius:22px;
   border:1.6px solid var(--primary);
   background:#fff;
@@ -279,6 +283,7 @@ header{
   white-space:nowrap;
   transition:.3s ease;
 }
+
 .filter-btn:hover,
 .filter-btn.active{
   background:var(--primary);
@@ -288,8 +293,9 @@ header{
 /* ================= GRID ================= */
 .program-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
+  grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));
   gap:30px;
+  align-items:stretch;
 }
 
 /* ================= CARD ================= */
@@ -299,24 +305,32 @@ header{
   overflow:hidden;
   box-shadow:0 10px 30px rgba(0,0,0,.08);
   transition:.35s ease;
+
+  display:flex;
+  flex-direction:column;
+  height:100%;
 }
+
 .program-card:hover{
-  transform:translateY(-8px);
+  transform:translateY(-6px);
   box-shadow:0 18px 50px rgba(0,0,0,.15);
 }
 
 /* ================= IMAGE ================= */
 .program-img{
   position:relative;
-  height:180px;
+  width:100%;
+  aspect-ratio:16 / 9;        /* 🔑 PERFECT IMAGE SIZE */
   overflow:hidden;
 }
+
 .program-img img{
   width:100%;
   height:100%;
   object-fit:cover;
   transition:.6s ease;
 }
+
 .program-card:hover .program-img img{
   transform:scale(1.08);
 }
@@ -337,12 +351,16 @@ header{
 /* ================= BODY ================= */
 .program-body{
   padding:18px;
+  display:flex;
+  flex-direction:column;
+  flex:1;
 }
+
 .program-body h3{
   font-size:16px;
   font-weight:700;
   margin-bottom:14px;
-  min-height:44px;
+  min-height:48px;
   line-height:1.4;
 }
 
@@ -353,7 +371,9 @@ header{
   font-size:13px;
   color:#555;
   margin-bottom:16px;
+  flex-wrap:wrap;
 }
+
 .program-meta span{
   display:flex;
   align-items:center;
@@ -364,7 +384,9 @@ header{
 .program-actions{
   display:flex;
   gap:12px;
+  margin-top:auto;
 }
+
 .program-actions a{
   flex:1;
   padding:10px 0;
@@ -375,20 +397,24 @@ header{
   transition:.3s ease;
 }
 
+/* APPLY */
 .apply-btn{
   border:1.6px solid var(--primary);
   color:var(--primary);
   background:#fff;
 }
+
 .apply-btn:hover{
   background:var(--primary);
   color:#fff;
 }
 
+/* VIEW */
 .view-btn{
   background:var(--primary);
   color:#fff;
 }
+
 .view-btn:hover{
   filter:brightness(.92);
 }
@@ -398,10 +424,17 @@ header{
   .programs-title h2{
     font-size:28px;
   }
+
   .program-body h3{
     font-size:15px;
+    min-height:auto;
+  }
+
+  .program-actions{
+    flex-direction:column;
   }
 }
+
 /* ================= HERO FULL ================= */
 
 .hero-full{
@@ -518,6 +551,292 @@ header{
   .hero-points{
     justify-content:center;
     flex-wrap:wrap;
+  }
+}
+/* ===== SCROLL REVEAL ANIMATION ===== */
+.program-card{
+  opacity:0;
+  transform:translateY(40px);
+  transition:opacity .6s ease, transform .6s ease;
+}
+
+.program-card.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* Optional subtle hover polish */
+.program-card:hover{
+  transform:translateY(-6px);
+}
+
+/* Smooth page scrolling */
+html{
+  scroll-behavior:smooth;
+}
+/* ================= EDGE SECTION ================= */
+
+.edge-section{
+  background:linear-gradient(135deg,#0b3a66,#021c33);
+  padding:90px 20px;
+  color:#fff;
+}
+
+.edge-container{
+  max-width:1300px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:1fr 1.2fr;
+  gap:60px;
+  align-items:center;
+}
+
+/* IMAGE */
+.edge-image{
+  position:relative;
+  border-radius:18px;
+  overflow:hidden;
+}
+
+.edge-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:18px;
+}
+
+.edge-accent{
+  position:absolute;
+  bottom:-20px;
+  left:-20px;
+  width:120px;
+  height:120px;
+  background:#ffb703;
+  border-radius:12px;
+  z-index:-1;
+}
+
+/* CONTENT */
+.edge-content h2{
+  font-size:42px;
+  font-weight:800;
+  margin-bottom:36px;
+}
+
+.edge-list{
+  display:flex;
+  flex-direction:column;
+  gap:26px;
+}
+
+/* ITEM */
+.edge-item{
+  display:flex;
+  gap:18px;
+  align-items:flex-start;
+}
+
+.edge-item i{
+  font-size:28px;
+  color:#ffb703;
+  min-width:32px;
+}
+
+.edge-item h4{
+  font-size:18px;
+  margin-bottom:6px;
+}
+
+.edge-item p{
+  font-size:14.5px;
+  color:#d6e4f0;
+  line-height:1.6;
+}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:900px){
+  .edge-container{
+    grid-template-columns:1fr;
+    text-align:center;
+  }
+
+  .edge-item{
+    justify-content:center;
+    text-align:left;
+  }
+
+  .edge-image{
+    max-width:420px;
+    margin:auto;
+  }
+
+  .edge-content h2{
+    font-size:32px;
+  }
+}
+/* =====================================================
+   ADVANCED FOOTER
+===================================================== */
+.footer{
+  position:relative;
+  background:linear-gradient(135deg,#0f1c24,#1b2a3a);
+  color:#fff;
+  padding:90px 20px 40px;
+  overflow:hidden;
+}
+
+/* glass overlay */
+.footer-glass{
+  position:absolute;
+  inset:0;
+  background:rgba(255,255,255,.04);
+  backdrop-filter:blur(14px);
+  pointer-events:none;
+}
+
+/* grid */
+.footer-grid{
+  position:relative;
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr 1.4fr;
+  gap:50px;
+  z-index:2;
+}
+
+/* brand */
+.footer-logo{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:18px;
+}
+.footer-logo span{
+  width:46px;
+  height:46px;
+  background:var(--primary);
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:800;
+  font-size:22px;
+}
+.footer-logo h2{
+  font-size:24px;
+}
+.footer-brand p{
+  font-size:14px;
+  line-height:1.7;
+  opacity:.75;
+}
+
+/* columns */
+.footer-col h4{
+  font-size:16px;
+  margin-bottom:18px;
+  position:relative;
+}
+.footer-col h4::after{
+  content:"";
+  width:32px;
+  height:3px;
+  background:var(--accent);
+  position:absolute;
+  bottom:-8px;
+  left:0;
+  border-radius:2px;
+}
+.footer-col a{
+  display:block;
+  font-size:14px;
+  margin-bottom:12px;
+  opacity:.7;
+  transition:.3s;
+}
+.footer-col a:hover{
+  opacity:1;
+  color:var(--accent);
+  transform:translateX(4px);
+}
+
+/* newsletter */
+.footer-note{
+  font-size:14px;
+  opacity:.7;
+  margin-bottom:14px;
+}
+.footer-newsletter{
+  display:flex;
+  gap:10px;
+}
+.footer-newsletter input{
+  flex:1;
+  padding:12px;
+  border-radius:8px;
+  border:none;
+  outline:none;
+}
+.footer-newsletter button{
+  background:var(--accent);
+  color:#fff;
+  border:none;
+  border-radius:8px;
+  padding:12px 18px;
+  font-weight:700;
+  cursor:pointer;
+  transition:.3s;
+}
+.footer-newsletter button:hover{
+  background:#e68a00;
+}
+
+/* bottom */
+.footer-bottom{
+  position:relative;
+  z-index:2;
+  border-top:1px solid rgba(255,255,255,.1);
+  margin-top:60px;
+  padding-top:25px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:20px;
+  align-items:center;
+  justify-content:space-between;
+  font-size:13px;
+  opacity:.7;
+}
+
+/* socials */
+.socials{
+  display:flex;
+  gap:14px;
+}
+.socials a{
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  background:rgba(255,255,255,.1);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  font-size:16px;
+  transition:.3s;
+}
+.socials a:hover{
+  background:var(--accent);
+  transform:translateY(-4px);
+}
+
+/* responsive */
+@media(max-width:900px){
+  .footer-grid{
+    grid-template-columns:1fr;
+    gap:40px;
+  }
+  .footer-bottom{
+    text-align:center;
+    justify-content:center;
   }
 }
 </style>
@@ -645,7 +964,7 @@ header{
   </div>
 
 </section>
- 
+
 <section class="programs-section">
   <div class="programs-container">
 
@@ -664,7 +983,7 @@ header{
       <button class="filter-btn" data-filter="MTECH">M.Tech</button>
     </div>
 
-    <!-- GRID -->
+    <!-- GRID (🔥 ALL CARDS MUST BE INSIDE THIS) -->
     <div class="program-grid" id="programGrid">
 
       <!-- CARD 1 -->
@@ -723,55 +1042,174 @@ header{
           </div>
         </div>
       </div>
+
+    </div><!-- END program-grid -->
+
+  </div>
+</section>
+<section class="edge-section">
+  <div class="edge-container">
+
+    <!-- LEFT IMAGE -->
+    <div class="edge-image">
+      <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f" alt="Learning Online">
+      <span class="edge-accent"></span>
+    </div>
+
+    <!-- RIGHT CONTENT -->
+    <div class="edge-content">
+      <h2>The SmartHire Edge</h2>
+
+      <div class="edge-list">
+
+        <div class="edge-item">
+          <i class="fa-solid fa-layer-group"></i>
+          <div>
+            <h4>Curated Programs</h4>
+            <p>Handpicked programs aligned with industry needs and real-world hiring trends.</p>
+          </div>
+        </div>
+
+        <div class="edge-item">
+          <i class="fa-solid fa-briefcase"></i>
+          <div>
+            <h4>Industry-Aligned Skills</h4>
+            <p>Develop job-ready skills tailored for today’s fast-changing job market.</p>
+          </div>
+        </div>
+
+        <div class="edge-item">
+          <i class="fa-solid fa-star"></i>
+          <div>
+            <h4>Premier Experience</h4>
+            <p>Learn from expert mentors and top institutions through immersive programs.</p>
+          </div>
+        </div>
+
+        <div class="edge-item">
+          <i class="fa-solid fa-graduation-cap"></i>
+          <div>
+            <h4>Career-Focused Learning</h4>
+            <p>Programs designed to maximize employability and long-term career growth.</p>
+          </div>
+        </div>
+
+        <div class="edge-item">
+          <i class="fa-solid fa-clock"></i>
+          <div>
+            <h4>Flexible & Accessible</h4>
+            <p>Study anytime, anywhere with self-paced and instructor-led learning options.</p>
+          </div>
+        </div>
+
+        <div class="edge-item">
+          <i class="fa-solid fa-rocket"></i>
+          <div>
+            <h4>Future-Ready Education</h4>
+            <p>Stay ahead with cutting-edge technology, tools, and domain expertise.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div class="footer-glass"></div>
+
+  <div class="container footer-grid">
+
+    <!-- BRAND -->
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <span>S</span>
+        <h2>SmartHire</h2>
+      </div>
+      <p>
+        SmartHire is an AI-powered recruitment and career platform connecting
+        verified recruiters with skilled professionals. Using intelligent
+        job matching, real-time hiring insights, and career tools, we help
+        candidates discover meaningful opportunities faster and smarter.
+      </p>
+    </div>
+
+    <!-- QUICK LINKS -->
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <a href="jobs.html">Find Jobs</a>
+      <a href="companies.html">Companies</a>
+      <a href="recruiters.html">Recruiters</a>
+      <a href="career.html">Career Services</a>
+      <a href="courses.html">Courses</a>
+    </div>
+
+    <!-- RESOURCES -->
+    <div class="footer-col">
+      <h4>Resources</h4>
+      <a href="#">Blog</a>
+      <a href="#">Resume Tips</a>
+      <a href="#">Interview Prep</a>
+      <a href="#">Skill Trends</a>
+      <a href="#">Success Stories</a>
+    </div>
+
+    <!-- NEWSLETTER -->
+    <div class="footer-col">
+      <h4>Stay Updated</h4>
+      <p class="footer-note">
+        Subscribe to receive the latest job alerts, hiring trends,
+        and career insights directly in your inbox.
+      </p>
+      <div class="footer-newsletter">
+        <input type="email" placeholder="Enter your email">
+        <button>Subscribe</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SOCIAL + COPYRIGHT -->
+  <div class="footer-bottom">
+    <div class="socials">
+      <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+      <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    </div>
+
+    <p>© 2026 SmartHire Recruitment Solutions Pvt Ltd. All rights reserved.</p>
+  </div>
+</footer>
+
 <script>
+/* ================= MOBILE MENU ================= */
+window.toggleMenu = function(){
+  document.getElementById("mobileMenu")?.classList.toggle("active");
+  document.querySelector(".menu-backdrop")?.classList.toggle("active");
+};
 
-  /* ================= MOBILE MENU ================= */
-  window.toggleMenu = function(){
-    document.getElementById("mobileMenu")?.classList.toggle("active");
-    document.querySelector(".menu-backdrop")?.classList.toggle("active");
-    document.body.classList.toggle("menu-open");
-  };
+window.toggleSub = function(el){
+  const sub = el.nextElementSibling;
+  if(sub){
+    sub.style.display = sub.style.display === "block" ? "none" : "block";
+  }
+};
 
-  window.toggleSub = function(el){
-    const sub = el.nextElementSibling;
-    if(sub){
-      sub.style.display = sub.style.display === "block" ? "none" : "block";
-    }
-  };
-
-  /* ================= FILTER ================= */
-  const filterBtns = document.querySelectorAll(".filter-btn");
-  const cards = document.querySelectorAll(".program-card");
-
-  filterBtns.forEach(btn=>{
-    btn.addEventListener("click",()=>{
-      filterBtns.forEach(b=>b.classList.remove("active"));
-      btn.classList.add("active");
-
-      const filter = btn.dataset.filter;
-      cards.forEach(card=>{
-        card.style.display =
-          filter === "all" || card.dataset.category.includes(filter)
-          ? "block"
-          : "none";
-      });
-    });
-  });
-
-  /* ================= HERO SLIDER ================= */
-/* TYPING TEXT */
+/* ================= HERO TYPING ================= */
 const heroTexts = [
   "Search jobs from top IT & non-IT companies.",
   "Get hired faster with smart AI recommendations.",
   "Apply to jobs with one click resume upload."
 ];
-let t = 0, c = 0;
-const el = document.getElementById("heroTyping");
+let t=0,c=0;
+const el=document.getElementById("heroTyping");
 
 function typeHero(){
   if(c < heroTexts[t].length){
     el.textContent += heroTexts[t][c++];
-    setTimeout(typeHero, 40);
+    setTimeout(typeHero,40);
   }else{
     setTimeout(()=>{
       el.textContent="";
@@ -783,15 +1221,89 @@ function typeHero(){
 }
 typeHero();
 
-/* MEDIA SLIDER */
-const slides = document.querySelectorAll(".media-slide");
-let i = 0;
+/* ================= HERO MEDIA SLIDER ================= */
+const slides=document.querySelectorAll(".media-slide");
+let s=0;
 setInterval(()=>{
-  slides.forEach(s=>s.classList.remove("active"));
-  i = (i+1) % slides.length;
-  slides[i].classList.add("active");
+  slides.forEach(sl=>sl.classList.remove("active"));
+  s=(s+1)%slides.length;
+  slides[s].classList.add("active");
 },4500);
+
+/* ================= PROGRAM DATA (30+) ================= */
+const programs = Array.from({length:30},(_,i)=>({
+  title:[
+    "Executive MBA in Digital Transformation & AI",
+    "M.Tech in Data Science & Analytics",
+    "MBA in Finance",
+    "M.Tech in Cloud Computing",
+    "Executive Program in Product Management"
+  ][i%5],
+  category:["IIM","IIT","MBA","MTECH"][i%4],
+  tag:["IIM Mumbai","IIT Patna","IIT Bhilai","IIM Kashipur"][i%4],
+  duration:i%2?"2 Years":"6 Months",
+  img:[
+    "https://images.unsplash.com/photo-1521737604893-d14cc237f11d",
+    "https://images.unsplash.com/photo-1519389950473-47ba0277781c",
+    "https://images.unsplash.com/photo-1555066931-4365d14bab8c"
+  ][i%3]
+}));
+
+const grid=document.getElementById("programGrid");
+
+/* ================= RENDER ================= */
+function renderPrograms(filter="all"){
+  grid.innerHTML="";
+  programs
+    .filter(p=>filter==="all"||p.category===filter)
+    .forEach(p=>{
+      grid.innerHTML+=`
+      <div class="program-card" data-category="${p.category}">
+        <div class="program-img">
+          <img src="${p.img}">
+          <span class="program-tag">${p.tag}</span>
+        </div>
+        <div class="program-body">
+          <h3>${p.title}</h3>
+          <div class="program-meta">
+            <span>⏱ ${p.duration}</span>
+            <span>💻 Online</span>
+          </div>
+          <div class="program-actions">
+            <a class="apply-btn" href="#">Apply Now</a>
+            <a class="view-btn" href="#">View Program</a>
+          </div>
+        </div>
+      </div>`;
+    });
+  revealCards();
+}
+renderPrograms();
+
+/* ================= FILTER ================= */
+document.querySelectorAll(".filter-btn").forEach(btn=>{
+  btn.onclick=()=>{
+    document.querySelectorAll(".filter-btn").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    renderPrograms(btn.dataset.filter);
+  };
+});
+
+/* ================= SCROLL REVEAL ================= */
+function revealCards(){
+  const cards=document.querySelectorAll(".program-card");
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add("show");
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:0.15});
+  cards.forEach(c=>io.observe(c));
+}
 </script>
+
 
 </body>
 </html>
