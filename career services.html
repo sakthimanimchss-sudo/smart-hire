@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SmartHire | Career Services</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Font Awesome -->
+<link rel="stylesheet"
+ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- PART 2 CSS WILL BE PASTED HERE -->
+<style>
+/* ================= ROOT ================= */
+:root{
+  --primary:#2b3990;
+  --accent:#ff9900;
+  --light:#f5f7fb;
+
+  --shadow:0 20px 40px rgba(0,0,0,.12);
+  --shadow-lg:0 30px 70px rgba(0,0,0,.18);
+}
+
+/* ================= RESET ================= */
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:Segoe UI,Arial,sans-serif;
+  background:var(--light);
+  overflow-x:hidden;
+}
+a{text-decoration:none;color:inherit}
+
+
+/* ================= HEADER ================= */
+header{
+  position:sticky;
+  top:0;
+  background:#fff;
+  z-index:11000;
+  box-shadow:0 2px 10px rgba(0,0,0,.05);
+}
+.nav{
+  max-width:1400px;
+  margin:auto;
+  padding:14px 22px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.logo{
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+.logo span{
+  width:42px;height:42px;
+  background:var(--primary);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:10px;
+  font-weight:800;
+}
+.logo h1{
+  font-size:22px;
+  color:var(--primary);
+}
+
+/* ================= DESKTOP MENU ================= */
+.menu-desktop{
+  display:flex;
+  align-items:center;
+  gap:18px;
+  font-size:14px;
+  font-weight:600;
+}
+.menu-desktop a:hover{color:var(--accent)}
+
+.nav-item{position:relative}
+.dropdown-menu{
+  position:absolute;
+  top:120%;
+  left:0;
+  background:#fff;
+  min-width:180px;
+  border-radius:8px;
+  box-shadow:0 10px 30px rgba(0,0,0,.15);
+  opacity:0;
+  visibility:hidden;
+  transition:.25s;
+}
+.dropdown-menu a{
+  display:block;
+  padding:12px 16px;
+  font-size:14px;
+}
+.dropdown-menu a:hover{
+  background:#f5f7fb;
+  color:var(--accent);
+}
+.nav-item:hover .dropdown-menu{
+  opacity:1;
+  visibility:visible;
+}
+
+
+/* ================= AUTH ================= */
+.auth{
+  display:flex;
+  gap:12px;
+  align-items:center;
+}
+.auth .login{
+  color:var(--primary);
+  font-weight:600;
+}
+.auth .register{
+  background:var(--primary);
+  color:#fff;
+  padding:10px 18px;
+  border-radius:8px;
+}
+
+/* ================= HAMBURGER ================= */
+.hamburger{
+  display:none;
+  font-size:26px;
+  cursor:pointer;
+}
+
+/* ================= BACKDROP ================= */
+.menu-backdrop{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.55);
+  opacity:0;
+  visibility:hidden;
+  transition:.3s;
+  z-index:10000;
+}
+.menu-backdrop.active{
+  opacity:1;
+  visibility:visible;
+}
+
+/* ================= MOBILE MENU ================= */
+.menu-mobile{
+  position:fixed;
+  top:70px;
+  left:0;
+  width:78%;                 /* right-side gap */
+  max-width:320px;
+  height:calc(100vh - 70px);
+  background:#fff;
+  padding:20px;
+  overflow-y:auto;
+  transform:translateX(-100%);
+  transition:.3s ease;
+  z-index:10001;
+}
+.menu-mobile.active{transform:translateX(0)}
+
+.menu-mobile a,
+.mobile-parent{
+  display:block;
+  padding:14px 0;
+  font-size:16px;
+  font-weight:500;
+}
+
+.mobile-parent{
+  display:flex;
+  justify-content:space-between;
+  cursor:pointer;
+}
+
+.mobile-sub{
+  display:none;
+  padding-left:16px;
+  margin-top:6px;
+}
+.mobile-sub a{
+  padding:8px 0;
+  font-size:15px;
+}
+
+/* login/register (scroll to see) */
+.mobile-auth{
+  margin-top:32px;
+  padding-top:16px;
+  border-top:1px solid #eee;
+  display:flex;
+  gap:16px;
+}
+.mobile-auth a{
+  flex:1;
+  padding:12px 0;
+  text-align:center;
+  font-size:15px;
+  font-weight:600;
+  border-radius:8px;
+}
+.mobile-auth .login{
+  border:2px solid var(--primary);
+  color:var(--primary);
+}
+.mobile-auth .register{
+  background:var(--primary);
+  color:#fff;
+}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:992px){
+  .menu-desktop,
+  .auth .login,
+  .auth .register{display:none}
+  .hamburger{display:block}
+}
+
+/* ================= PAGE CONTENT ================= */
+.page{
+  padding:100px 20px;
+  max-width:1200px;
+  margin:auto;
+}
+.page h2{
+  font-size:36px;
+  color:var(--primary);
+  margin-bottom:20px;
+}
+.page p{
+  font-size:16px;
+  line-height:1.7;
+  color:#444;
+}
+/* ================= HERO ================= */
+.career-hero{
+  background:linear-gradient(135deg,#f7f9ff,#eef2ff);
+  padding:80px 20px 90px;
+}
+
+.hero-container{
+  max-width:1300px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:1.2fr 1fr;
+  gap:60px;
+  align-items:center;
+}
+.hero-left h2{
+  font-size:46px;
+  line-height:1.15;
+  font-weight:900;
+  color:var(--primary);
+}
+.hero-left p{
+  margin-top:18px;
+  font-size:17px;
+  line-height:1.8;
+  color:#444;
+}
+.hero-actions{
+  margin-top:30px;
+  display:flex;
+  gap:18px;
+}
+.btn-primary{
+  background:var(--accent);
+  color:#fff;
+  padding:14px 30px;
+  border-radius:30px;
+  font-weight:800;
+  box-shadow:var(--shadow);
+}
+.btn-outline{
+  border:2px solid var(--primary);
+  color:var(--primary);
+  padding:12px 30px;
+  border-radius:30px;
+  font-weight:700;
+}
+.hero-right{
+  position:relative;
+}
+
+.hero-right img{
+  width:100%;              /*  responsive */
+  max-width:480px;         /*  prevents oversized image */
+  height:auto;             /*  keeps aspect ratio */
+  display:block;           /*  removes inline gap */
+  margin:auto;             /* centers image */
+  border-radius:18px;
+  box-shadow:var(--shadow-lg);
+}
+
+.resume-badge{
+  position:absolute;
+  bottom:-20px;
+  left:20px;
+  background:#fff;
+  padding:14px 22px;
+  border-radius:14px;
+  box-shadow:var(--shadow);
+  font-weight:700;
+}
+.resume-badge span{
+  color:#16a34a;
+  font-weight:900;
+}
+
+/* ================= TRUSTED ================= */
+.trusted-section{
+  background:#fff;
+  padding:70px 20px;
+  text-align:center;
+}
+.trusted-section h3{
+  font-size:26px;
+  font-weight:800;
+  color:var(--primary);
+}
+.trusted-section p{
+  max-width:900px;
+  margin:12px auto 30px;
+  color:#555;
+}
+.brand-strip{
+  display:flex;
+  gap:34px;
+  justify-content:center;
+  flex-wrap:wrap;
+  font-weight:700;
+  opacity:.7;
+}
+
+/* ================= OVERVIEW ================= */
+.resume-overview{
+  padding:90px 20px;
+  max-width:1100px;
+  margin:auto;
+}
+.resume-overview h2{
+  font-size:38px;
+  color:var(--primary);
+  margin-bottom:24px;
+}
+.resume-overview p{
+  margin-bottom:18px;
+  line-height:1.85;
+  color:#444;
+}
+
+/* ================= ATS ================= */
+.ats-section{
+  background:#fff;
+  padding:90px 20px;
+}
+.ats-section h2{
+  text-align:center;
+  font-size:38px;
+  color:var(--primary);
+}
+.ats-section p{
+  max-width:1000px;
+  margin:18px auto;
+  text-align:center;
+  line-height:1.8;
+}
+.ats-points{
+  max-width:800px;
+  margin:30px auto;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+}
+.ats-points li{
+  background:#f5f7fb;
+  padding:16px 20px;
+  border-radius:12px;
+  font-weight:600;
+}
+.ats-score-box{
+  margin:40px auto 0;
+  width:280px;
+  height:280px;
+  border-radius:50%;
+  background:conic-gradient(var(--accent) 0deg, #e5e7eb 0deg);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  box-shadow:var(--shadow-lg);
+}
+.ats-score-box h4{font-size:16px}
+.ats-score-box .score{
+  font-size:44px;
+  font-weight:900;
+  color:#16a34a;
+}
+
+/* ================= UPLOAD ================= */
+.upload-section{
+  padding:90px 20px;
+  text-align:center;
+}
+.upload-section h2{
+  font-size:38px;
+  color:var(--primary);
+}
+.upload-section p{
+  max-width:900px;
+  margin:14px auto 30px;
+}
+.upload-box{
+  max-width:420px;
+  margin:auto;
+  padding:40px;
+  background:#fff;
+  border-radius:18px;
+  box-shadow:var(--shadow);
+}
+.upload-box input{
+  width:100%;
+  padding:14px;
+  border:2px dashed #cbd5e1;
+  border-radius:12px;
+  background:#f9fafb;
+}
+
+/* ================= AI ================= */
+.ai-section{
+  background:linear-gradient(135deg,#0f1c24,#1b2a3a);
+  color:#fff;
+  padding:90px 20px;
+}
+.ai-section h2{
+  font-size:40px;
+}
+.ai-section p{
+  max-width:1000px;
+  margin-top:18px;
+  line-height:1.8;
+  opacity:.9;
+}
+
+/* ================= STEPS ================= */
+.steps-section{
+  padding:90px 20px;
+}
+.steps-section h2{
+  text-align:center;
+  font-size:38px;
+  color:var(--primary);
+}
+.steps-grid{
+  max-width:1100px;
+  margin:40px auto 0;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:24px;
+}
+.step{
+  background:#fff;
+  padding:28px;
+  border-radius:18px;
+  box-shadow:var(--shadow);
+  transition:.3s;
+}
+.step:hover{transform:translateY(-8px)}
+.step h4{
+  margin-bottom:10px;
+  color:var(--primary);
+}
+
+/* ================= BENEFITS ================= */
+.benefits-section{
+  background:#fff;
+  padding:90px 20px;
+}
+.benefits-section h2{
+  text-align:center;
+  font-size:38px;
+  color:var(--primary);
+}
+.benefits-section p{
+  max-width:1000px;
+  margin:18px auto;
+  text-align:center;
+}
+.benefits-section ul{
+  max-width:800px;
+  margin:30px auto 0;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+}
+.benefits-section li{
+  background:#f5f7fb;
+  padding:16px 20px;
+  border-radius:12px;
+  font-weight:600;
+}
+
+/* ================= CTA ================= */
+.career-cta{
+  background:linear-gradient(135deg,#2b3990,#1e2a78);
+  color:#fff;
+  padding:100px 20px;
+  text-align:center;
+}
+.career-cta h2{
+  font-size:44px;
+}
+.career-cta p{
+  max-width:900px;
+  margin:16px auto 30px;
+  opacity:.9;
+}
+
+/* =====================================================
+   ADVANCED FOOTER
+===================================================== */
+.footer{
+  position:relative;
+  background:linear-gradient(135deg,#0f1c24,#1b2a3a);
+  color:#fff;
+  padding:90px 20px 40px;
+  overflow:hidden;
+}
+
+/* glass overlay */
+.footer-glass{
+  position:absolute;
+  inset:0;
+  background:rgba(255,255,255,.04);
+  backdrop-filter:blur(14px);
+  pointer-events:none;
+}
+
+/* grid */
+.footer-grid{
+  position:relative;
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr 1.4fr;
+  gap:50px;
+  z-index:2;
+}
+
+/* brand */
+.footer-logo{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:18px;
+}
+.footer-logo span{
+  width:46px;
+  height:46px;
+  background:var(--primary);
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:800;
+  font-size:22px;
+}
+.footer-logo h2{
+  font-size:24px;
+}
+.footer-brand p{
+  font-size:14px;
+  line-height:1.7;
+  opacity:.75;
+}
+
+/* columns */
+.footer-col h4{
+  font-size:16px;
+  margin-bottom:18px;
+  position:relative;
+}
+.footer-col h4::after{
+  content:"";
+  width:32px;
+  height:3px;
+  background:var(--accent);
+  position:absolute;
+  bottom:-8px;
+  left:0;
+  border-radius:2px;
+}
+.footer-col a{
+  display:block;
+  font-size:14px;
+  margin-bottom:12px;
+  opacity:.7;
+  transition:.3s;
+}
+.footer-col a:hover{
+  opacity:1;
+  color:var(--accent);
+  transform:translateX(4px);
+}
+
+/* newsletter */
+.footer-note{
+  font-size:14px;
+  opacity:.7;
+  margin-bottom:14px;
+}
+.footer-newsletter{
+  display:flex;
+  gap:10px;
+}
+.footer-newsletter input{
+  flex:1;
+  padding:12px;
+  border-radius:8px;
+  border:none;
+  outline:none;
+}
+.footer-newsletter button{
+  background:var(--accent);
+  color:#fff;
+  border:none;
+  border-radius:8px;
+  padding:12px 18px;
+  font-weight:700;
+  cursor:pointer;
+  transition:.3s;
+}
+.footer-newsletter button:hover{
+  background:#e68a00;
+}
+
+/* bottom */
+.footer-bottom{
+  position:relative;
+  z-index:2;
+  border-top:1px solid rgba(255,255,255,.1);
+  margin-top:60px;
+  padding-top:25px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:20px;
+  align-items:center;
+  justify-content:space-between;
+  font-size:13px;
+  opacity:.7;
+}
+
+/* socials */
+.socials{
+  display:flex;
+  gap:14px;
+}
+.socials a{
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  background:rgba(255,255,255,.1);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  font-size:16px;
+  transition:.3s;
+}
+.socials a:hover{
+  background:var(--accent);
+  transform:translateY(-4px);
+}
+
+/* responsive */
+@media(max-width:900px){
+  .footer-grid{
+    grid-template-columns:1fr;
+    gap:40px;
+  }
+  .footer-bottom{
+    text-align:center;
+    justify-content:center;
+  }
+}
+/* ================= MOBILE ================= */
+@media(max-width:900px){
+  .hero-container{grid-template-columns:1fr;text-align:center}
+  .hero-actions{justify-content:center;flex-direction:column}
+  .ats-points,.benefits-section ul{grid-template-columns:1fr}
+  .hero-left h2{font-size:32px}
+}
+
+.typing-text{
+  margin-top:16px;
+  font-size:22px;
+  font-weight:700;
+  color:#ff9900;
+  min-height:30px;
+}
+
+body.menu-open{
+  overflow:hidden;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+<header>
+  <div class="nav">
+    <div class="logo">
+      <span>S</span>
+      <h1>SmartHire</h1>
+    </div>
+
+    <!-- DESKTOP MENU -->
+    <div class="menu-desktop">
+      <div class="nav-item">
+        <a href="#">Home ▾</a>
+        <div class="dropdown-menu">
+          <a href="index.html">Home 1</a>
+          <a href="home2.html">Home 2</a>
+        </div>
+      </div>
+      <a href="jobs.html">Jobs</a>
+      <a href="recruiters.html">Recruiters</a>
+      <a href="career.html">Career Services</a>
+      <a href="courses.html">Courses</a>
+      <a href="companies.html">Companies</a>
+      <a href="contact.html">Contact</a>
+
+      <div class="nav-item">
+        <a href="#">Dashboard ▾</a>
+        <div class="dropdown-menu">
+          <a href="dashboard/user.html">User Dashboard</a>
+          <a href="dashboard/admin.html">Admin Dashboard</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- AUTH -->
+    <div class="auth">
+      <a href="login.html" class="login">Login</a>
+      <a href="register.html" class="register">Register</a>
+      <div class="hamburger" onclick="toggleMenu()">☰</div>
+    </div>
+  </div>
+</header>
+
+<div class="menu-backdrop" onclick="toggleMenu()"></div>
+
+<!-- MOBILE MENU -->
+<div class="menu-mobile" id="mobileMenu">
+
+  <div class="mobile-parent" onclick="toggleSub(this)">Home ▾</div>
+  <div class="mobile-sub">
+    <a href="index.html">Home 1</a>
+    <a href="home2.html">Home 2</a>
+  </div>
+
+  <a href="jobs.html">Jobs</a>
+  <a href="recruiters.html">Recruiters</a>
+  <a href="career.html">Career Services</a>
+  <a href="courses.html">Courses</a>
+  <a href="companies.html">Companies</a>
+  <a href="contact.html">Contact</a>
+
+  <div class="mobile-parent" onclick="toggleSub(this)">Dashboard ▾</div>
+  <div class="mobile-sub">
+    <a href="dashboard/user.html">User Dashboard</a>
+    <a href="dashboard/admin.html">Admin Dashboard</a>
+  </div>
+
+  <div class="mobile-auth">
+    <a href="login.html" class="login">Login</a>
+    <a href="register.html" class="register">Register</a>
+  </div>
+</div>
+
+<!-- ================= HERO SECTION ================= -->
+<section class="career-hero">
+  <div class="hero-container">
+
+    <div class="hero-left">
+      <h2>Build a Job-Winning Resume That Beats ATS</h2>
+      <h3 class="typing-text"></h3>
+
+      <p>
+        In today’s competitive job market, a resume is more than a document —
+        it is your professional identity. SmartHire Career Services helps you
+        create resumes that are not only visually impressive but also fully
+        optimized for Applicant Tracking Systems (ATS). Our AI-powered resume
+        builder ensures that your profile is parsed correctly by automated
+        systems used by recruiters while still appealing to human decision-makers.
+      </p>
+
+      <p>
+        Whether you are a fresher applying for your first job, a working
+        professional planning a career switch, or an experienced leader aiming
+        for senior roles, SmartHire provides resume tools that adapt to your
+        career level, industry, and job role. Our platform combines intelligent
+        keyword optimization, recruiter-approved templates, and AI suggestions
+        to dramatically improve interview shortlisting rates.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#" class="btn-primary">Create New CV</a>
+        <a href="#" class="btn-outline">Improve My CV</a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4"
+           alt="Resume Preview">
+      <div class="resume-badge">
+        <strong>ATS Score:</strong> <span>92%</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= TRUSTED BRANDS ================= -->
+<section class="trusted-section">
+  <h3>Trusted by Professionals Worldwide</h3>
+  <p>
+    SmartHire Career Services is trusted by job seekers who have successfully
+    landed interviews at startups, enterprises, and global brands. Our resume
+    optimization techniques align with modern recruitment standards used by
+    top organizations.
+  </p>
+
+  <div class="brand-strip">
+    <span>Forbes</span>
+    <span>Financial Times</span>
+    <span>Business.com</span>
+    <span>Lifehacker</span>
+    <span>The Guardian</span>
+  </div>
+</section>
+
+<!-- ================= RESUME BUILDER OVERVIEW ================= -->
+<section class="resume-overview">
+  <h2>AI-Powered Resume Builder</h2>
+
+  <p>
+    SmartHire’s resume builder is designed to simplify resume creation without
+    sacrificing quality. Instead of struggling with formatting, structure, or
+    keyword placement, our platform intelligently guides you through each
+    section of your resume. From professional summaries to technical skills,
+    every component is analyzed and optimized for ATS compatibility.
+  </p>
+
+  <p>
+    Our AI analyzes thousands of job descriptions and hiring patterns to
+    recommend role-specific keywords, measurable achievements, and action
+    verbs that increase recruiter engagement. This ensures your resume speaks
+    the same language as both ATS software and hiring managers.
+  </p>
+
+  <p>
+    You can create a resume from scratch using modern templates or upload an
+    existing resume to receive instant improvement suggestions. SmartHire
+    supports multiple formats including PDF, Word, and image-based resumes,
+    making it flexible for all users.
+  </p>
+</section>
+
+<!-- ================= ATS CHECKER ================= -->
+<section class="ats-section">
+  <h2>ATS Resume Checker</h2>
+
+  <p>
+    Applicant Tracking Systems automatically filter resumes before they ever
+    reach recruiters. Many qualified candidates are rejected simply because
+    their resumes are not ATS-friendly. SmartHire’s ATS Resume Checker scans
+    your resume against industry-standard parsing rules and highlights
+    potential issues that could block shortlisting.
+  </p>
+
+  <ul class="ats-points">
+    <li>Keyword match analysis</li>
+    <li>Formatting and structure validation</li>
+    <li>Skill relevance scoring</li>
+    <li>Job role compatibility check</li>
+  </ul>
+
+  <div class="ats-score-box">
+    <h4>Your ATS Compatibility Score</h4>
+    <span class="score">0%</span>
+  </div>
+</section>
+
+<!-- ================= RESUME UPLOAD ================= -->
+<section class="upload-section">
+  <h2>Upload Your Resume</h2>
+
+  <p>
+    Already have a resume? Upload it to SmartHire and let our AI analyze it
+    instantly. Supported formats include PDF, DOC, DOCX, and JPG. Once uploaded,
+    our system extracts content, evaluates ATS readiness, and provides actionable
+    recommendations.
+  </p>
+
+  <div class="upload-box">
+    <input type="file" accept=".pdf,.doc,.docx,.jpg">
+    <p>Supported formats: PDF, Word, JPG</p>
+  </div>
+</section>
+
+<!-- ================= AI KEYWORD SECTION ================= -->
+<section class="ai-section">
+  <h2>AI Keyword Optimization</h2>
+
+  <p>
+    Keywords play a critical role in resume shortlisting. SmartHire’s AI
+    identifies missing keywords based on your target job role and industry.
+    These recommendations are generated by analyzing real job postings,
+    recruiter preferences, and ATS ranking algorithms.
+  </p>
+
+  <p>
+    The system suggests both technical skills and soft skills, ensuring your
+    resume reflects a balanced professional profile. With AI-assisted keyword
+    placement, your resume gains visibility without keyword stuffing.
+  </p>
+</section>
+
+<!-- ================= STEP PROCESS ================= -->
+<section class="steps-section">
+  <h2>How It Works</h2>
+
+  <div class="steps-grid">
+    <div class="step">
+      <h4>1. Choose a Template</h4>
+      <p>Select from ATS-friendly resume templates designed by hiring experts.</p>
+    </div>
+
+    <div class="step">
+      <h4>2. Fill Your Details</h4>
+      <p>Enter experience, education, skills, and achievements.</p>
+    </div>
+
+    <div class="step">
+      <h4>3. Optimize with AI</h4>
+      <p>Apply AI suggestions to improve keyword relevance and structure.</p>
+    </div>
+
+    <div class="step">
+      <h4>4. Download & Apply</h4>
+      <p>Export your resume in ATS-friendly PDF or Word format.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= BENEFITS ================= -->
+<section class="benefits-section">
+  <h2>Why Choose SmartHire Career Services?</h2>
+
+  <p>
+    SmartHire goes beyond resume creation. Our career services ecosystem
+    supports long-term career growth by combining AI intelligence with
+    recruiter insights. We help candidates position themselves competitively
+    in evolving job markets.
+  </p>
+
+  <ul>
+    <li>Higher interview shortlisting rates</li>
+    <li>Industry-specific optimization</li>
+    <li>Modern resume designs</li>
+    <li>AI-powered feedback</li>
+    <li>Lifetime resume access</li>
+  </ul>
+</section>
+
+<!-- ================= CTA ================= -->
+<section class="career-cta">
+  <h2>Start Building Your Career Today</h2>
+  <p>
+    Thousands of professionals trust SmartHire Career Services to build resumes
+    that get noticed. Take the next step in your career journey with confidence.
+  </p>
+
+  <a href="#" class="btn-primary">Get Started Now</a>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div class="footer-glass"></div>
+
+  <div class="container footer-grid">
+
+    <!-- BRAND -->
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <span>S</span>
+        <h2>SmartHire</h2>
+      </div>
+      <p>
+        SmartHire is an AI-powered recruitment and career platform connecting
+        verified recruiters with skilled professionals. Using intelligent
+        job matching, real-time hiring insights, and career tools, we help
+        candidates discover meaningful opportunities faster and smarter.
+      </p>
+    </div>
+
+    <!-- QUICK LINKS -->
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <a href="jobs.html">Find Jobs</a>
+      <a href="companies.html">Companies</a>
+      <a href="recruiters.html">Recruiters</a>
+      <a href="career.html">Career Services</a>
+      <a href="courses.html">Courses</a>
+    </div>
+
+    <!-- RESOURCES -->
+    <div class="footer-col">
+      <h4>Resources</h4>
+      <a href="#">Blog</a>
+      <a href="#">Resume Tips</a>
+      <a href="#">Interview Prep</a>
+      <a href="#">Skill Trends</a>
+      <a href="#">Success Stories</a>
+    </div>
+
+    <!-- NEWSLETTER -->
+    <div class="footer-col">
+      <h4>Stay Updated</h4>
+      <p class="footer-note">
+        Subscribe to receive the latest job alerts, hiring trends,
+        and career insights directly in your inbox.
+      </p>
+      <div class="footer-newsletter">
+        <input type="email" placeholder="Enter your email">
+        <button>Subscribe</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SOCIAL + COPYRIGHT -->
+  <div class="footer-bottom">
+    <div class="socials">
+      <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+      <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    </div>
+
+    <p>© 2026 SmartHire Recruitment Solutions Pvt Ltd. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- PART 3 JAVASCRIPT WILL BE PASTED HERE -->
+<script>
+
+/* =====================================================
+   SMART HIRE – CAREER SERVICES (PART 3 JS)
+===================================================== */
+/* ================= MOBILE MENU ================= */
+function toggleMenu(){
+  document.getElementById("mobileMenu")?.classList.toggle("active");
+  document.querySelector(".menu-backdrop")?.classList.toggle("active");
+  document.body.classList.toggle("menu-open");
+}
+
+function toggleSub(el){
+  const sub = el.nextElementSibling;
+  if(sub){
+    sub.style.display = sub.style.display === "block" ? "none" : "block";
+  }
+}
+/* ================= MOBILE SCROLL FIX ================= */
+(function(){
+  document.body.style.overflowX = "hidden";
+  document.documentElement.style.scrollBehavior = "smooth";
+})();
+
+/* ================= AUTO TYPING HERO ================= */
+const typingTexts = [
+  "ATS-Optimized Resumes",
+  "AI-Powered Career Tools",
+  "Recruiter-Approved CVs",
+  "Land Interviews Faster"
+];
+
+let tIndex = 0;
+let cIndex = 0;
+const typingEl = document.querySelector(".typing-text");
+
+function typeHero(){
+  if(!typingEl) return;
+
+  if(cIndex < typingTexts[tIndex].length){
+    typingEl.textContent += typingTexts[tIndex][cIndex++];
+    setTimeout(typeHero, 70);
+  }else{
+    setTimeout(() => {
+      typingEl.textContent = "";
+      cIndex = 0;
+      tIndex = (tIndex + 1) % typingTexts.length;
+      typeHero();
+    }, 1500);
+  }
+}
+typeHero();
+
+/* ================= ATS SCORE COUNTER ================= */
+const atsBox = document.querySelector(".ats-score-box");
+const atsScoreEl = document.querySelector(".ats-score-box .score");
+
+if(atsBox && atsScoreEl){
+  let started = false;
+
+  const atsObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting && !started){
+        started = true;
+        let score = 0;
+        const target = 92;
+        const speed = target / 90;
+
+        const animate = () => {
+          score += speed;
+          if(score < target){
+            atsScoreEl.textContent = Math.floor(score) + "%";
+            atsBox.style.background =
+              `conic-gradient(#ff9900 ${score * 3.6}deg, #e5e7eb 0deg)`;
+            requestAnimationFrame(animate);
+          }else{
+            const deg = target * 3.6;
+              atsBox.style.background =
+            `conic-gradient(#16a34a ${deg}deg, #e5e7eb 0deg)`;
+
+
+          }
+        };
+        animate();
+      }
+    });
+  }, { threshold: 0.4 });
+
+  atsObserver.observe(atsBox);
+}
+
+/* ================= RESUME UPLOAD CHECK ================= */
+const uploadInput = document.querySelector(".upload-box input");
+
+if(uploadInput){
+  uploadInput.addEventListener("change", () => {
+    const file = uploadInput.files[0];
+    if(!file) return;
+
+    const allowed = [
+      "application/pdf",
+      "application/msword",
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "image/jpeg",
+      "image/png"
+    ];
+
+    if(!allowed.includes(file.type)){
+      alert("❌ Invalid file type. Upload PDF, Word, JPG or PNG.");
+      uploadInput.value = "";
+      return;
+    }
+
+    if(file.size > 5 * 1024 * 1024){
+      alert("❌ File too large. Max 5MB allowed.");
+      uploadInput.value = "";
+      return;
+    }
+
+    alert("✅ Resume uploaded successfully!");
+  });
+}
+
+/* ================= AI KEYWORD SIMULATION ================= */
+const aiKeywords = [
+  "JavaScript",
+  "React",
+  "Node.js",
+  "REST APIs",
+  "SQL",
+  "Problem Solving",
+  "Communication",
+  "Team Collaboration",
+  "Leadership",
+  "Agile"
+];
+
+const aiSection = document.querySelector(".ai-section");
+
+if(aiSection){
+  const list = document.createElement("div");
+  list.style.marginTop = "30px";
+  list.style.display = "flex";
+  list.style.flexWrap = "wrap";
+  list.style.gap = "12px";
+
+  aiKeywords.forEach(word => {
+    const tag = document.createElement("span");
+    tag.textContent = word;
+    tag.style.background = "#ff9900";
+    tag.style.color = "#fff";
+    tag.style.padding = "8px 14px";
+    tag.style.borderRadius = "20px";
+    tag.style.fontWeight = "600";
+    tag.style.opacity = "0";
+    tag.style.transform = "translateY(20px)";
+    list.appendChild(tag);
+  });
+
+  aiSection.appendChild(list);
+
+  const tags = list.querySelectorAll("span");
+  let i = 0;
+
+  const revealTags = () => {
+    if(i < tags.length){
+      tags[i].style.opacity = "1";
+      tags[i].style.transform = "translateY(0)";
+      tags[i].style.transition = ".4s ease";
+      i++;
+      setTimeout(revealTags, 120);
+    }
+  };
+
+  const tagObserver = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        revealTags();
+        tagObserver.disconnect();
+      }
+    });
+  }, {threshold:.4});
+
+  tagObserver.observe(aiSection);
+}
+
+/* ================= STEP HIGHLIGHT LOOP ================= */
+const steps = document.querySelectorAll(".step");
+let stepIndex = 0;
+
+if(steps.length){
+  setInterval(() => {
+    steps.forEach(s => s.classList.remove("active"));
+    steps[stepIndex].classList.add("active");
+    stepIndex = (stepIndex + 1) % steps.length;
+  }, 1800);
+}
+
+/* ================= SCROLL REVEAL ================= */
+const revealEls = document.querySelectorAll(
+  ".resume-overview, .ats-section, .upload-section, .steps-section, .benefits-section"
+);
+
+const revealObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.style.opacity = "1";
+      entry.target.style.transform = "translateY(0)";
+      entry.target.style.transition = "all .8s ease";
+      revealObserver.unobserve(entry.target);
+    }
+  });
+},{ threshold: 0.15 });
+
+revealEls.forEach(el => {
+  el.style.opacity = "0";
+  el.style.transform = "translateY(40px)";
+  revealObserver.observe(el);
+});
+
+/* ================= SAFE MOBILE FIX ================= */
+window.addEventListener("resize", ()=>{
+  document.body.style.overflowX = "hidden";
+});
+</script>
+
+
+</body>
+</html>
