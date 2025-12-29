@@ -601,46 +601,32 @@ body{
     <a href="register.html" class="register">Register</a>
   </div>
 </div>
-
 <section class="hero-slider">
 
-  <!-- SLIDE 1 : VIDEO -->
   <div class="slide active">
-    <video autoplay muted loop playsinline preload="metadata">
+    <!-- DESKTOP VIDEO -->
+    <video class="hero-video" autoplay muted loop playsinline preload="none">
       <source src="https://videos.pexels.com/video-files/3195394/3195394-hd_1920_1080_25fps.mp4" type="video/mp4">
     </video>
 
+    <!-- MOBILE IMAGE FALLBACK -->
+    <img class="hero-image" src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d" alt="Jobs">
+
     <div class="hero-overlay"></div>
 
-    <div class="hero-content">
-      <h1>Find Your Dream Job</h1>
-      <p>AI-powered hiring & career growth</p>
-    </div>
-  </div>
-
-  <!-- SLIDE 2 : IMAGE -->
-  <div class="slide">
-    <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d">
-    <div class="hero-overlay"></div>
     <div class="hero-content">
       <h1>30,000+ Opportunities</h1>
       <p>From startups to top companies</p>
     </div>
   </div>
 
-  <!-- SLIDE 3 : IMAGE -->
-  <div class="slide">
-    <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <h1>Upskill & Get Hired</h1>
-      <p>Learn industry-ready skills</p>
-    </div>
+  <div class="slider-dots">
+    <span class="active"></span>
+    <span></span>
+    <span></span>
   </div>
 
-  <div class="slider-dots"></div>
 </section>
-
 
 <section class="programs-section">
   <div class="programs-container">
