@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SmartHire |Recruiter</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet"
+ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+/* ================= ROOT ================= */
+:root{
+  --primary:#2b3990;
+  --accent:#ff9900;
+  --light:#f5f7fb;
+}
+
+/* ================= RESET ================= */
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:Segoe UI,Arial,sans-serif;
+  background:var(--light);
+  overflow-x:hidden;
+}
+a{text-decoration:none;color:inherit}
+
+/* ================= HEADER ================= */
+header{
+  position:sticky;
+  top:0;
+  background:#fff;
+  z-index:11000;
+  box-shadow:0 2px 10px rgba(0,0,0,.05);
+}
+.nav{
+  max-width:1400px;
+  margin:auto;
+  padding:14px 22px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.logo{
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+.logo span{
+  width:42px;height:42px;
+  background:var(--primary);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:10px;
+  font-weight:800;
+}
+.logo h1{
+  font-size:22px;
+  color:var(--primary);
+}
+
+/* ================= DESKTOP MENU ================= */
+.menu-desktop{
+  display:flex;
+  align-items:center;
+  gap:18px;
+  font-size:14px;
+  font-weight:600;
+}
+.menu-desktop a:hover{color:var(--accent)}
+
+.nav-item{position:relative}
+.dropdown-menu{
+  position:absolute;
+  top:120%;
+  left:0;
+  background:#fff;
+  min-width:180px;
+  border-radius:8px;
+  box-shadow:0 10px 30px rgba(0,0,0,.15);
+  opacity:0;
+  visibility:hidden;
+  transition:.25s;
+}
+.dropdown-menu a{
+  display:block;
+  padding:12px 16px;
+  font-size:14px;
+}
+.dropdown-menu a:hover{
+  background:#f5f7fb;
+  color:var(--accent);
+}
+.nav-item:hover .dropdown-menu{
+  opacity:1;
+  visibility:visible;
+}
+
+/* ================= AUTH ================= */
+.auth{
+  display:flex;
+  gap:12px;
+  align-items:center;
+}
+.auth .login{
+  color:var(--primary);
+  font-weight:600;
+}
+.auth .register{
+  background:var(--primary);
+  color:#fff;
+  padding:10px 18px;
+  border-radius:8px;
+}
+
+/* ================= HAMBURGER ================= */
+.hamburger{
+  display:none;
+  font-size:26px;
+  cursor:pointer;
+}
+
+/* ================= BACKDROP ================= */
+.menu-backdrop{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.55);
+  opacity:0;
+  visibility:hidden;
+  transition:.3s;
+  z-index:10000;
+}
+.menu-backdrop.active{
+  opacity:1;
+  visibility:visible;
+}
+
+/* ================= MOBILE MENU ================= */
+.menu-mobile{
+  position:fixed;
+  top:70px;
+  left:0;
+  width:78%;                 /* right-side gap */
+  max-width:320px;
+  height:calc(100vh - 70px);
+  background:#fff;
+  padding:20px;
+  overflow-y:auto;
+  transform:translateX(-100%);
+  transition:.3s ease;
+  z-index:10001;
+}
+.menu-mobile.active{transform:translateX(0)}
+
+.menu-mobile a,
+.mobile-parent{
+  display:block;
+  padding:14px 0;
+  font-size:16px;
+  font-weight:500;
+}
+
+.mobile-parent{
+  display:flex;
+  justify-content:space-between;
+  cursor:pointer;
+}
+
+.mobile-sub{
+  display:none;
+  padding-left:16px;
+  margin-top:6px;
+}
+.mobile-sub a{
+  padding:8px 0;
+  font-size:15px;
+}
+
+/* login/register (scroll to see) */
+.mobile-auth{
+  margin-top:32px;
+  padding-top:16px;
+  border-top:1px solid #eee;
+  display:flex;
+  gap:16px;
+}
+.mobile-auth a{
+  flex:1;
+  padding:12px 0;
+  text-align:center;
+  font-size:15px;
+  font-weight:600;
+  border-radius:8px;
+}
+.mobile-auth .login{
+  border:2px solid var(--primary);
+  color:var(--primary);
+}
+.mobile-auth .register{
+  background:var(--primary);
+  color:#fff;
+}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:992px){
+  .menu-desktop,
+  .auth .login,
+  .auth .register{display:none}
+  .hamburger{display:block}
+}
+
+/* ================= PAGE CONTENT ================= */
+.page{
+  padding:100px 20px;
+  max-width:1200px;
+  margin:auto;
+}
+.page h2{
+  font-size:36px;
+  color:var(--primary);
+  margin-bottom:20px;
+}
+.page p{
+  font-size:16px;
+  line-height:1.7;
+  color:#444;
+}
+/* ================= RECRUITER HERO ================= */
+.recruiter-hero{
+  background:linear-gradient(135deg,#1f2d7a,#2b3990,#1b255f);
+  color:#fff;
+  padding:90px 20px 80px;
+  text-align:center;
+}
+
+/* TITLE */
+.recruiter-hero h2{
+  font-size:44px;
+  font-weight:800;
+}
+.recruiter-hero p{
+  margin-top:14px;
+  font-size:17px;
+  opacity:.9;
+}
+
+/* ================= LOGO STRIP ================= */
+.logo-strip{
+  margin:50px auto 40px;
+  overflow:hidden;
+  width:100%;
+}
+
+.logo-track{
+  display:flex;
+  gap:60px;
+  align-items:center;
+  width:max-content;
+  animation:logoScroll 30s linear infinite;
+}
+
+.logo-strip:hover .logo-track{
+  animation-play-state:paused;
+}
+
+/* ICON STYLE */
+.logo-track i{
+  font-size:40px;
+  color:#ffffff;
+  opacity:.85;
+  transition:.3s ease;
+}
+
+.logo-track i:hover{
+  opacity:1;
+  transform:scale(1.2);
+}
+
+/* ANIMATION */
+@keyframes logoScroll{
+  from{ transform:translateX(0); }
+  to{ transform:translateX(-50%); }
+}
+
+/* ================= STATS ================= */
+.stats{
+  display:flex;
+  justify-content:center;
+  gap:30px;
+  flex-wrap:wrap;
+  margin-top:30px;
+}
+
+.stat{
+  background:rgba(255,255,255,.15);
+  backdrop-filter:blur(6px);
+  padding:28px 40px;
+  border-radius:16px;
+  min-width:220px;
+}
+
+.stat h3{
+  font-size:34px;
+  font-weight:800;
+}
+
+.stat p{
+  margin-top:6px;
+  font-size:14px;
+  opacity:.9;
+}
+
+/* ================= MOBILE ================= */
+@media(max-width:768px){
+  .recruiter-hero h2{font-size:32px}
+  .logo-track i{font-size:32px}
+}
+/* ================= HEADER SPACING FIX ================= */
+.recruiter-hero{
+  padding-top:120px;   /* pushes heading down */
+  padding-bottom:90px;
+}
+
+/* ================= AUTO TYPING ================= */
+.typing-text{
+  font-size:42px;
+  font-weight:900;
+  margin-top:40px;      /* step down from stats */
+  margin-bottom:14px;
+  min-height:52px;
+}
+
+/* ================= SUB TEXT ================= */
+.typing-sub{
+  font-size:16px;
+  opacity:.9;
+  margin-bottom:26px;
+}
+
+/* ================= CTA BUTTON ================= */
+.cta-btn{
+  display:inline-block;
+  background:#fff;
+  color:#2b3990;
+  padding:14px 34px;
+  border-radius:30px;
+  font-weight:700;
+  transition:.3s ease;
+}
+
+.cta-btn:hover{
+  background:#ff9900;
+  color:#fff;
+}
+
+/* ================= COUNTER ================= */
+.stat h3{
+  font-size:36px;
+  font-weight:900;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .typing-text{font-size:30px}
+}
+/* ================= RECRUITER COMPANIES ================= */
+.recruiter-companies{
+  background:#fff;
+  padding:90px 20px;
+  text-align:center;
+}
+
+.recruiter-companies h2{
+  font-size:38px;
+  color:var(--primary);
+  font-weight:800;
+}
+
+.recruiter-companies p{
+  margin:10px 0 40px;
+  color:#666;
+}
+
+.company-grid{
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(90px,1fr));
+  gap:40px;
+  align-items:center;
+}
+.company-grid i{
+  font-size:44px;
+  color:#2b3990;           /* primary color */
+  opacity:0.85;
+  transition:.3s ease;
+}
+
+.company-grid i:hover{
+  opacity:1;
+  transform:scale(1.2);
+}
+
+.company-grid img{
+  filter: grayscale(100%) brightness(0.4);
+}
+.company-grid img:hover{
+  filter:none;
+}
+
+/* ================= FEATURED RECRUITERS ================= */
+.featured-recruiters{
+  background:var(--light);
+  padding:90px 20px;
+  text-align:center;
+}
+
+.featured-recruiters h2{
+  font-size:38px;
+  font-weight:800;
+  margin-bottom:50px;
+}
+
+.recruiter-cards{
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:40px;
+}
+
+.recruiter-card{
+  background:#fff;
+  padding:30px;
+  border-radius:20px;
+  box-shadow:0 15px 40px rgba(0,0,0,.1);
+  transition:.3s;
+}
+
+.recruiter-card:hover{
+  transform:translateY(-8px);
+}
+
+.recruiter-card img{
+  width:96px;
+  height:96px;
+  border-radius:50%;
+  object-fit:cover;
+  margin-bottom:16px;
+}
+
+.recruiter-card h4{
+  font-size:18px;
+  font-weight:700;
+}
+
+.recruiter-card span{
+  font-size:13px;
+  color:#777;
+}
+
+.recruiter-card p{
+  font-size:14.5px;
+  color:#555;
+  margin-top:14px;
+  line-height:1.6;
+}
+/* ================= WHY RECRUITERS ================= */
+.why-recruiters{
+  background:#fff;
+  padding:100px 20px;
+}
+
+.why-grid{
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:1.1fr 1fr;
+  gap:60px;
+  align-items:center;
+}
+
+.why-grid h2{
+  font-size:40px;
+  font-weight:800;
+  color:var(--primary);
+}
+
+.why-grid p{
+  margin:20px 0;
+  font-size:16px;
+  color:#555;
+  line-height:1.7;
+}
+
+.why-grid ul{
+  list-style:none;
+}
+
+.why-grid li{
+  margin-bottom:12px;
+  font-size:15px;
+  font-weight:600;
+}
+
+.why-grid img{
+  width:100%;
+  border-radius:20px;
+  object-fit:cover;
+}
+
+@media(max-width:900px){
+  .why-grid{
+    grid-template-columns:1fr;
+    text-align:center;
+  }
+}
+/* ================= AI WORKFLOW ================= */
+.ai-workflow{
+  padding:90px 20px;
+  background:linear-gradient(135deg,#2b3990,#1f2d7a);
+  color:#fff;
+  text-align:center;
+}
+
+.ai-workflow h2{
+  font-size:36px;
+}
+
+.ai-workflow p{
+  margin:12px 0 40px;
+  opacity:.85;
+}
+
+.workflow-steps{
+  display:flex;
+  justify-content:center;
+  gap:18px;
+  flex-wrap:wrap;
+}
+
+.step{
+  padding:14px 26px;
+  border-radius:30px;
+  background:rgba(255,255,255,.2);
+  font-weight:600;
+  opacity:.4;
+  transition:.4s;
+}
+
+.step.active{
+  background:#ff9900;
+  color:#000;
+  opacity:1;
+}
+/* ================= DASHBOARD PREVIEW ================= */
+.dashboard-preview{
+  padding:90px 20px;
+  background:#fff;
+  text-align:center;
+}
+
+.dashboard-preview h2{
+  font-size:36px;
+  color:#2b3990;
+}
+
+.dashboard-preview p{
+  margin:10px 0 50px;
+  color:#666;
+}
+
+.dashboard-grid{
+  max-width:1000px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:30px;
+}
+
+.dash-card{
+  background:#f6f8fc;
+  padding:30px;
+  border-radius:16px;
+  box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+.dash-card h3{
+  font-size:16px;
+  color:#555;
+}
+
+.dash-card span{
+  display:block;
+  margin-top:14px;
+  font-size:36px;
+  font-weight:900;
+  color:#2b3990;
+}
+/* =====================================================
+   ADVANCED FOOTER
+===================================================== */
+.footer{
+  position:relative;
+  background:linear-gradient(135deg,#0f1c24,#1b2a3a);
+  color:#fff;
+  padding:90px 20px 40px;
+  overflow:hidden;
+}
+
+/* glass overlay */
+.footer-glass{
+  position:absolute;
+  inset:0;
+  background:rgba(255,255,255,.04);
+  backdrop-filter:blur(14px);
+  pointer-events:none;
+}
+
+/* grid */
+.footer-grid{
+  position:relative;
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr 1.4fr;
+  gap:50px;
+  z-index:2;
+}
+
+/* brand */
+.footer-logo{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:18px;
+}
+.footer-logo span{
+  width:46px;
+  height:46px;
+  background:var(--primary);
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:800;
+  font-size:22px;
+}
+.footer-logo h2{
+  font-size:24px;
+}
+.footer-brand p{
+  font-size:14px;
+  line-height:1.7;
+  opacity:.75;
+}
+
+/* columns */
+.footer-col h4{
+  font-size:16px;
+  margin-bottom:18px;
+  position:relative;
+}
+.footer-col h4::after{
+  content:"";
+  width:32px;
+  height:3px;
+  background:var(--accent);
+  position:absolute;
+  bottom:-8px;
+  left:0;
+  border-radius:2px;
+}
+.footer-col a{
+  display:block;
+  font-size:14px;
+  margin-bottom:12px;
+  opacity:.7;
+  transition:.3s;
+}
+.footer-col a:hover{
+  opacity:1;
+  color:var(--accent);
+  transform:translateX(4px);
+}
+
+/* newsletter */
+.footer-note{
+  font-size:14px;
+  opacity:.7;
+  margin-bottom:14px;
+}
+.footer-newsletter{
+  display:flex;
+  gap:10px;
+}
+.footer-newsletter input{
+  flex:1;
+  padding:12px;
+  border-radius:8px;
+  border:none;
+  outline:none;
+}
+.footer-newsletter button{
+  background:var(--accent);
+  color:#fff;
+  border:none;
+  border-radius:8px;
+  padding:12px 18px;
+  font-weight:700;
+  cursor:pointer;
+  transition:.3s;
+}
+.footer-newsletter button:hover{
+  background:#e68a00;
+}
+
+/* bottom */
+.footer-bottom{
+  position:relative;
+  z-index:2;
+  border-top:1px solid rgba(255,255,255,.1);
+  margin-top:60px;
+  padding-top:25px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:20px;
+  align-items:center;
+  justify-content:space-between;
+  font-size:13px;
+  opacity:.7;
+}
+
+/* socials */
+.socials{
+  display:flex;
+  gap:14px;
+}
+.socials a{
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  background:rgba(255,255,255,.1);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  font-size:16px;
+  transition:.3s;
+}
+.socials a:hover{
+  background:var(--accent);
+  transform:translateY(-4px);
+}
+
+/* responsive */
+@media(max-width:900px){
+  .footer-grid{
+    grid-template-columns:1fr;
+    gap:40px;
+  }
+  .footer-bottom{
+    text-align:center;
+    justify-content:center;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="nav">
+    <div class="logo">
+      <span>S</span>
+      <h1>SmartHire</h1>
+    </div>
+
+    <!-- DESKTOP MENU -->
+    <div class="menu-desktop">
+      <div class="nav-item">
+        <a href="#">Home ▾</a>
+        <div class="dropdown-menu">
+          <a href="index.html">Home 1</a>
+          <a href="home2.html">Home 2</a>
+        </div>
+      </div>
+      <a href="jobs.html">Jobs</a>
+      <a href="recruiters.html">Recruiters</a>
+      <a href="career.html">Career Services</a>
+      <a href="courses.html">Courses</a>
+      <a href="companies.html">Companies</a>
+      <a href="contact.html">Contact</a>
+
+      <div class="nav-item">
+        <a href="#">Dashboard ▾</a>
+        <div class="dropdown-menu">
+          <a href="dashboard/user.html">User Dashboard</a>
+          <a href="dashboard/admin.html">Admin Dashboard</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- AUTH -->
+    <div class="auth">
+      <a href="login.html" class="login">Login</a>
+      <a href="register.html" class="register">Register</a>
+      <div class="hamburger" onclick="toggleMenu()">☰</div>
+    </div>
+  </div>
+</header>
+
+<div class="menu-backdrop" onclick="toggleMenu()"></div>
+
+<!-- MOBILE MENU -->
+<div class="menu-mobile" id="mobileMenu">
+
+  <div class="mobile-parent" onclick="toggleSub(this)">Home ▾</div>
+  <div class="mobile-sub">
+    <a href="index.html">Home 1</a>
+    <a href="home2.html">Home 2</a>
+  </div>
+
+  <a href="jobs.html">Jobs</a>
+  <a href="recruiters.html">Recruiters</a>
+  <a href="career.html">Career Services</a>
+  <a href="courses.html">Courses</a>
+  <a href="companies.html">Companies</a>
+  <a href="contact.html">Contact</a>
+
+  <div class="mobile-parent" onclick="toggleSub(this)">Dashboard ▾</div>
+  <div class="mobile-sub">
+    <a href="dashboard/user.html">User Dashboard</a>
+    <a href="dashboard/admin.html">Admin Dashboard</a>
+  </div>
+
+  <div class="mobile-auth">
+    <a href="login.html" class="login">Login</a>
+    <a href="register.html" class="register">Register</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="recruiter-hero">
+
+  <h2>Trusted by Top Recruiters</h2>
+  <p>Leading global companies hire talent through SmartHire</p>
+
+  <!-- LOGO SCROLLER -->
+  <div class="logo-strip">
+    <div class="logo-track">
+
+      <!-- FONT AWESOME / ICON BASED (NO IMAGE ISSUES) -->
+      <i class="fa-brands fa-google"></i>
+      <i class="fa-brands fa-amazon"></i>
+      <i class="fa-brands fa-microsoft"></i>
+      <i class="fa-brands fa-apple"></i>
+      <i class="fa-brands fa-facebook"></i>
+      <i class="fa-brands fa-spotify"></i>
+      <i class="fa-brands fa-uber"></i>
+      <i class="fa-brands fa-airbnb"></i>
+      <i class="fa-brands fa-paypal"></i>
+      <i class="fa-brands fa-linkedin"></i>
+      <i class="fa-brands fa-samsung"></i>
+      <i class="fa-brands fa-tesla"></i>
+      <i class="fa-brands fa-slack"></i>
+      <i class="fa-brands fa-github"></i>
+      <i class="fa-brands fa-twitter"></i>
+
+      <!-- DUPLICATE FOR CONTINUOUS LOOP -->
+      <i class="fa-brands fa-google"></i>
+      <i class="fa-brands fa-amazon"></i>
+      <i class="fa-brands fa-microsoft"></i>
+      <i class="fa-brands fa-apple"></i>
+      <i class="fa-brands fa-facebook"></i>
+
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat">
+      <h3>500+</h3>
+      <p>Hiring Companies</p>
+    </div>
+    <div class="stat">
+      <h3>10,00,000+</h3>
+      <p>Job Openings</p>
+    </div>
+    <div class="stat">
+      <h3>95%</h3>
+      <p>Placement Rate</p>
+    </div>
+  </div>
+
+<!-- CTA -->
+  <h2 class="typing-text">Hire Smarter. Faster. Better.</h2>
+
+<p class="typing-sub">
+  Access pre-vetted talent, AI-powered hiring tools, and seamless recruitment workflows.
+</p>
+<a href="#" class="cta-btn">Post a Job</a>
+
+</section>
+
+<!-- ================= RECRUITER COMPANIES ================= -->
+<section class="recruiter-companies">
+  <h2>Recruiters Hiring Through SmartHire</h2>
+  <p>Trusted by startups, enterprises, and global brands</p>
+
+  <div class="company-grid">
+
+    <!-- FONT AWESOME (SAFE) -->
+    <i class="fa-brands fa-google"></i>
+    <i class="fa-brands fa-amazon"></i>
+    <i class="fa-brands fa-microsoft"></i>
+    <i class="fa-brands fa-apple"></i>
+    <i class="fa-brands fa-meta"></i>
+    <i class="fa-brands fa-uber"></i>
+    <i class="fa-brands fa-airbnb"></i>
+    <i class="fa-brands fa-shopify"></i>
+    <i class="fa-brands fa-paypal"></i>
+    <i class="fa-brands fa-slack"></i>
+    <i class="fa-brands fa-github"></i>
+    <i class="fa-brands fa-twitter"></i>
+    <i class="fa-brands fa-linkedin"></i>
+    <i class="fa-brands fa-dropbox"></i>
+    <i class="fa-brands fa-atlassian"></i>
+    <i class="fa-brands fa-reddit"></i>
+    <i class="fa-brands fa-spotify"></i>
+    <i class="fa-brands fa-twitch"></i>
+    <i class="fa-brands fa-youtube"></i>
+   <i class="fa-brands fa-windows"></i>
+
+  </div>
+</section>
+
+
+<!-- ================= FEATURED RECRUITERS ================= -->
+<section class="featured-recruiters">
+  <h2>Meet Our Top Recruiters</h2>
+
+  <div class="recruiter-cards">
+
+    <div class="recruiter-card">
+      <img src="https://randomuser.me/api/portraits/women/44.jpg">
+      <h4>Emily Dubow</h4>
+      <span>Senior UX Recruiter · Ex Samsung</span>
+      <p>
+        Specializes in hiring top UX/UI designers for global enterprises.
+        Uses SmartHire to source pre-vetted creative talent quickly.
+      </p>
+    </div>
+
+    <div class="recruiter-card">
+      <img src="https://randomuser.me/api/portraits/men/32.jpg">
+      <h4>Daniel Roberts</h4>
+      <span>Tech Hiring Manager · Startup Lead</span>
+      <p>
+        Focused on scaling engineering teams for fast-growing startups
+        using AI-powered candidate matching.
+      </p>
+    </div>
+
+    <div class="recruiter-card">
+      <img src="https://randomuser.me/api/portraits/women/65.jpg">
+      <h4>Ruth Madrigal</h4>
+      <span>HR Director · Enterprise Hiring</span>
+      <p>
+        Leads large-scale recruitment initiatives across multiple domains
+        with SmartHire’s automation tools.
+      </p>
+    </div>
+
+  </div>
+</section>
+<!-- ================= WHY RECRUITERS ================= -->
+<section class="why-recruiters">
+  <div class="why-grid">
+
+    <div>
+      <h2>Why Recruiters Choose SmartHire</h2>
+      <p>
+        SmartHire helps recruiters hire faster, smarter, and at scale.
+        Our AI-driven platform eliminates screening bottlenecks and
+        connects you with verified, job-ready candidates.
+      </p>
+
+      <ul>
+        <li>✔ AI-powered talent matching</li>
+        <li>✔ Verified candidate profiles</li>
+        <li>✔ Faster time-to-hire</li>
+        <li>✔ End-to-end hiring workflow</li>
+        <li>✔ Scalable for startups & enterprises</li>
+      </ul>
+    </div>
+
+    <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df">
+  </div>
+</section>
+<!-- ================= AI WORKFLOW ================= -->
+<section class="ai-workflow">
+  <h2>AI-Powered Hiring Workflow</h2>
+  <p>From job post to hire — automated by AI</p>
+
+  <div class="workflow-steps">
+    <div class="step active">Post Job</div>
+    <div class="step">AI Match Candidates</div>
+    <div class="step">Shortlist</div>
+    <div class="step">Interview</div>
+    <div class="step">Hire</div>
+  </div>
+</section>
+<!-- ================= DASHBOARD PREVIEW ================= -->
+<section class="dashboard-preview" id="dashboardPreview">
+  <h2>Recruiter Dashboard Preview</h2>
+  <p>Track hiring performance in real time</p>
+
+  <div class="dashboard-grid">
+    <div class="dash-card">
+      <h3>Active Jobs</h3>
+      <span class="counter" data-target="124">0</span>
+    </div>
+
+    <div class="dash-card">
+      <h3>Applications</h3>
+      <span class="counter" data-target="8450">0</span>
+    </div>
+
+    <div class="dash-card">
+      <h3>Interviews</h3>
+      <span class="counter" data-target="1120">0</span>
+    </div>
+
+    <div class="dash-card">
+      <h3>Hires</h3>
+      <span class="counter" data-target="312">0</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div class="footer-glass"></div>
+
+  <div class="container footer-grid">
+
+    <!-- BRAND -->
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <span>S</span>
+        <h2>SmartHire</h2>
+      </div>
+      <p>
+        SmartHire is an AI-powered recruitment and career platform connecting
+        verified recruiters with skilled professionals. Using intelligent
+        job matching, real-time hiring insights, and career tools, we help
+        candidates discover meaningful opportunities faster and smarter.
+      </p>
+    </div>
+
+    <!-- QUICK LINKS -->
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <a href="jobs.html">Find Jobs</a>
+      <a href="companies.html">Companies</a>
+      <a href="recruiters.html">Recruiters</a>
+      <a href="career.html">Career Services</a>
+      <a href="courses.html">Courses</a>
+    </div>
+
+    <!-- RESOURCES -->
+    <div class="footer-col">
+      <h4>Resources</h4>
+      <a href="#">Blog</a>
+      <a href="#">Resume Tips</a>
+      <a href="#">Interview Prep</a>
+      <a href="#">Skill Trends</a>
+      <a href="#">Success Stories</a>
+    </div>
+
+    <!-- NEWSLETTER -->
+    <div class="footer-col">
+      <h4>Stay Updated</h4>
+      <p class="footer-note">
+        Subscribe to receive the latest job alerts, hiring trends,
+        and career insights directly in your inbox.
+      </p>
+      <div class="footer-newsletter">
+        <input type="email" placeholder="Enter your email">
+        <button>Subscribe</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SOCIAL + COPYRIGHT -->
+  <div class="footer-bottom">
+    <div class="socials">
+      <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+      <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    </div>
+
+    <p>© 2026 SmartHire Recruitment Solutions Pvt Ltd. All rights reserved.</p>
+  </div>
+</footer>
+
+
+<script>
+/* ================= MOBILE MENU ================= */
+function toggleMenu(){
+  document.getElementById("mobileMenu")?.classList.toggle("active");
+  document.querySelector(".menu-backdrop")?.classList.toggle("active");
+  document.body.classList.toggle("menu-open");
+}
+
+function toggleSub(el){
+  const sub = el.nextElementSibling;
+  if(sub){
+    sub.style.display = sub.style.display === "block" ? "none" : "block";
+  }
+}
+
+/* ================= HERO / STATS COUNTER ================= */
+const statCounters = document.querySelectorAll(".stat h3");
+
+const statObserver = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      const el = entry.target;
+      const target = parseInt(el.innerText.replace(/[^0-9]/g,""));
+      const suffix = el.innerText.replace(/[0-9]/g,"");
+      let count = 0;
+      const speed = target / 80;
+
+      const update = () => {
+        count += speed;
+        if(count < target){
+          el.innerText = Math.floor(count).toLocaleString() + suffix;
+          requestAnimationFrame(update);
+        } else {
+          el.innerText = target.toLocaleString() + suffix;
+        }
+      };
+
+      update();
+      statObserver.unobserve(el);
+    }
+  });
+},{threshold:.5});
+
+statCounters.forEach(c=>statObserver.observe(c));
+
+/* ================= AUTO TYPING ================= */
+const typingTexts = [
+  "Hire Smarter.",
+  "Hire Faster.",
+  "Hire Better."
+];
+
+let ti = 0, ci = 0;
+const typingEl = document.querySelector(".typing-text");
+
+function typeText(){
+  if(!typingEl) return;
+
+  if(ci < typingTexts[ti].length){
+    typingEl.textContent += typingTexts[ti][ci++];
+    setTimeout(typeText,70);
+  } else {
+    setTimeout(()=>{
+      typingEl.textContent = "";
+      ci = 0;
+      ti = (ti + 1) % typingTexts.length;
+      typeText();
+    },1500);
+  }
+}
+
+/* ✅ START TYPING */
+typeText();
+
+/* ================= AI WORKFLOW STEPS ================= */
+const steps = document.querySelectorAll(".step");
+let si = 0;
+
+if(steps.length){
+  setInterval(()=>{
+    steps.forEach(s=>s.classList.remove("active"));
+    steps[si].classList.add("active");
+    si = (si + 1) % steps.length;
+  },1600);
+}
+
+/* ================= DASHBOARD AUTO COUNTER ================= */
+const dashboardCounters = document.querySelectorAll(".counter");
+let dashboardStarted = false;
+
+const dashboardObserver = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting && !dashboardStarted){
+      dashboardStarted = true;
+
+      dashboardCounters.forEach(counter=>{
+        const target = +counter.dataset.target;
+        let current = 0;
+        const speed = target / 120;
+
+        const updateCounter = () => {
+          current += speed;
+          if(current < target){
+            counter.innerText = Math.floor(current).toLocaleString();
+            requestAnimationFrame(updateCounter);
+          } else {
+            counter.innerText = target.toLocaleString();
+          }
+        };
+
+        updateCounter();
+      });
+    }
+  });
+},{threshold:0.4});
+
+const dashboard = document.getElementById("dashboardPreview");
+if(dashboard){
+  dashboardObserver.observe(dashboard);
+}
+</script>
+
+
+</body>
+</html>
