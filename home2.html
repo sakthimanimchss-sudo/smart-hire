@@ -560,55 +560,33 @@ section{
     flex-direction:column;
   }
 }
-/* =====================================================
-   SMART HIRE — FINAL CSS (PART 2 / 3)
-   MOBILE MENU + BACKDROP
-===================================================== */
-/* ================= MOBILE MENU (FINAL – SINGLE SOURCE) ================= */
+/* ================= MOBILE MENU ================= */
 .menu-mobile{
   position:fixed;
   top:70px;
   left:0;
-  width:78%;
+  width:78%;                 /* right-side gap */
   max-width:320px;
   height:calc(100vh - 70px);
   background:#fff;
-  z-index:10001;
-  padding:20px 20px 110px;   /*  space for bottom buttons */
+  padding:20px;
   overflow-y:auto;
   transform:translateX(-100%);
-  transition:transform .3s ease;
-  box-sizing:border-box;
+  transition:.3s ease;
+  z-index:10001;
 }
+.menu-mobile.active{transform:translateX(0)}
 
-
-.menu-mobile.active{
-  transform:translateX(0);
-}
-.menu-mobile .close{
-  position:absolute;
-  top:14px;
-  right:14px;
-  font-size:26px;
-  cursor:pointer;
-  color:#111;
-  z-index:10002;
-}
-
-/* menu links */
 .menu-mobile a,
 .mobile-parent{
   display:block;
   padding:14px 0;
   font-size:16px;
-  font-weight:600;
-  color:#111;
+  font-weight:500;
 }
 
-/* dropdown */
 .mobile-parent{
   display:flex;
-  align-items:center;
   justify-content:space-between;
   cursor:pointer;
 }
@@ -618,71 +596,60 @@ section{
   padding-left:16px;
   margin-top:6px;
 }
-
 .mobile-sub a{
   padding:8px 0;
   font-size:15px;
 }
 
-/* login/register fixed bottom */
-.menu-mobile .mobile-auth{
-  position:static;          /*  KEY FIX */
-  margin-top:24px;
+/* login/register (scroll to see) */
+.mobile-auth{
+  margin-top:32px;
   padding-top:16px;
   border-top:1px solid #eee;
   display:flex;
   gap:16px;
 }
-
-.menu-mobile .mobile-auth .login{
+.mobile-auth a{
+  flex:1;
+  padding:12px 0;
+  text-align:center;
+  font-size:15px;
+  font-weight:600;
+  border-radius:8px;
+}
+.mobile-auth .login{
   border:2px solid var(--primary);
   color:var(--primary);
-  background:#fff;
 }
-
-.menu-mobile .mobile-auth .register{
+.mobile-auth .register{
   background:var(--primary);
   color:#fff;
 }
 
-/* MOBILE MENU TEXT – MATCH IMAGE 1 */
-.menu-mobile a,
-.mobile-parent{
-  padding:12px 0;
+/* ================= RESPONSIVE ================= */
+@media(max-width:992px){
+  .menu-desktop,
+  .auth .login,
+  .auth .register{display:none}
+  .hamburger{display:block}
+}
+
+/* ================= PAGE CONTENT ================= */
+.page{
+  padding:100px 20px;
+  max-width:1200px;
+  margin:auto;
+}
+.page h2{
+  font-size:36px;
+  color:var(--primary);
+  margin-bottom:20px;
+}
+.page p{
   font-size:16px;
-  font-weight:500;
-  color:#111;
-  text-align:left;
+  line-height:1.7;
+  color:#444;
 }
-
-
-/* backdrop */
-.menu-backdrop{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.55);
-  z-index:10000;
-  opacity:0;
-  visibility:hidden;
-  transition:.3s;
-}
-.menu-backdrop.active{
-  opacity:1;
-  visibility:visible;
-}
-
-
-.menu-backdrop.active{
-  opacity:1;
-  visibility:visible;
-}
-
-/* lock page */
-body.menu-open{
-  overflow:hidden;
-}
-    
-
 /* =====================================================
    SMART HIRE — FINAL CSS (PART 3 / 3)
    HAMBURGER · DROPDOWN · RESPONSIVE · CLEANUP
