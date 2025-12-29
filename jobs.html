@@ -850,11 +850,28 @@ html{
   }
 }
 
-.program-img img{
+/* ===== FIX MOBILE SCROLL ISSUE ===== */
+html, body{
   width:100%;
-  height:100%;
-  object-fit:cover;
-  background:#eaeaea;
+  height:auto;
+  overflow-x:hidden;
+  overflow-y:auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Prevent fixed header from blocking scroll */
+header{
+  position:sticky;
+  top:0;
+}
+
+/* Ensure main sections can scroll */
+.hero-full,
+.programs-section,
+.edge-section,
+.footer{
+  position:relative;
+  overflow:visible;
 }
 
 </style>
@@ -1201,8 +1218,17 @@ html{
 <script>
 /* ================= MOBILE MENU ================= */
 window.toggleMenu = function(){
-  document.getElementById("mobileMenu")?.classList.toggle("active");
-  document.querySelector(".menu-backdrop")?.classList.toggle("active");
+  const menu = document.getElementById("mobileMenu");
+  const backdrop = document.querySelector(".menu-backdrop");
+
+  menu.classList.toggle("active");
+  backdrop.classList.toggle("active");
+
+  if(menu.classList.contains("active")){
+    document.body.style.overflow = "hidden";
+  }else{
+    document.body.style.overflow = "auto";
+  }
 };
 
 window.toggleSub = function(el){
@@ -1293,16 +1319,18 @@ function renderPrograms(filter="all"){
   jobs
     .filter(j => filter==="all" || j.category===filter)
     .forEach(j=>{
-      grid.innerHTML += `
-      <div class="program-card">
-        <div class="program-img">
-    <img 
-       src="${j.img}" 
+grid.innerHTML += `
+  <div class="program-card">
+    <div class="program-img">
+      <img 
+        src="${j.img}"
+        alt="${j.title} job in ${j.location}"
+        title="${j.title} | ${j.location} | ${j.type}"
         loading="lazy"
-       onerror="this.src='https://images.unsplash.com/photo-1522071820081-009f0129c71c'">
+        onerror="this.src='https://images.unsplash.com/photo-1522071820081-009f0129c71c'">
+      <span class="program-tag">${j.tag}</span>
+    </div>
 
-          <span class="program-tag">${j.tag}</span>
-        </div>
         <div class="program-body">
           <h3>${j.title}</h3>
           <div class="program-meta">
