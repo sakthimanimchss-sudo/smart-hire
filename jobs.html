@@ -402,30 +402,12 @@ header{
     font-size:15px;
   }
 }
-/* ================= ROOT COLORS ================= */
-:root{
-  --primary:#2b3990;
-  --accent:#ff9900;
-  --dark:#0f1c24;
-}
-/* ================= RESET ================= */
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
+/* ================= HERO SLIDER – FINAL ================= */
 
-body{
-  overflow-x:hidden;
-  background:#000;
-  font-family:Arial, sans-serif;
-}
-
-/* ================= HERO SLIDER ================= */
 .hero-slider{
   position:relative;
   width:100%;
-  height:100vh;
+  min-height:100svh;          /* correct mobile viewport */
   overflow:hidden;
   background:#000;
 }
@@ -443,29 +425,22 @@ body{
   z-index:2;
 }
 
-/* ================= VIDEO / IMAGE ================= */
+/* ================= MEDIA WRAPPER ================= */
 .video-wrap{
   position:absolute;
   inset:0;
   overflow:hidden;
 }
 
+/* IMAGE + VIDEO */
 .hero-video,
 .hero-poster{
   position:absolute;
   inset:0;
   width:100%;
   height:100%;
-  object-fit:cover;
-}
-
-/* MOBILE – SHOW FULL IMAGE */
-@media(max-width:768px){
-  .hero-video,
-  .hero-poster{
-    object-fit:contain;
-    background:#000;
-  }
+  object-fit:cover;           /* IMPORTANT: no black gaps */
+  object-position:center;
 }
 
 /* ================= OVERLAY ================= */
@@ -496,6 +471,7 @@ body{
 .hero-content h1{
   font-size:clamp(28px,6vw,56px);
   font-weight:800;
+  line-height:1.15;
 }
 
 .hero-content p{
@@ -796,7 +772,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* ================= HERO SLIDER ================= */
-const slides = document.querySelectorAll(".slide");
+ const slides = document.querySelectorAll(".slide");
   const dots = document.querySelectorAll(".slider-dots span");
   let index = 0;
   let timer;
