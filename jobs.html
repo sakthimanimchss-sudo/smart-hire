@@ -408,8 +408,7 @@ header{
   --accent:#ff9900;
   --dark:#0f1c24;
 }
-
-/* ================= HERO SLIDER ================= */
+/* ================= HERO ================= */
 .hero-slider{
   position:relative;
   width:100%;
@@ -418,21 +417,20 @@ header{
   background:#000;
 }
 
-/* ================= SLIDES ================= */
+/* SLIDE */
 .slide{
   position:absolute;
   inset:0;
   opacity:0;
-  transition:opacity .9s ease;
+  transition:opacity .6s ease;
 }
 .slide.active{
   opacity:1;
   z-index:1;
 }
 
-/* ================= MEDIA ================= */
-.slide video,
-.slide img{
+/* VIDEO (DESKTOP ONLY) */
+.hero-video{
   position:absolute;
   inset:0;
   width:100%;
@@ -441,19 +439,30 @@ header{
   z-index:0;
 }
 
-/* ================= OVERLAY ================= */
+/* IMAGE FALLBACK */
+.hero-image{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:0;
+  display:none;
+}
+
+/* OVERLAY */
 .hero-overlay{
   position:absolute;
   inset:0;
   background:linear-gradient(
-    135deg,
-    rgba(15,28,36,.45),
-    rgba(15,28,36,.65)
+    180deg,
+    rgba(0,0,0,.35),
+    rgba(0,0,0,.65)
   );
   z-index:1;
 }
 
-/* ================= CONTENT ================= */
+/* CONTENT */
 .hero-content{
   position:relative;
   z-index:2;
@@ -463,29 +472,26 @@ header{
   align-items:center;
   justify-content:center;
   text-align:center;
-  padding:0 20px;
+  padding:20px;
   color:#fff;
 }
 
-/* ================= TEXT ================= */
 .hero-content h1{
-  font-size:clamp(30px,5vw,56px);
+  font-size:clamp(26px,6vw,48px);
   font-weight:800;
   line-height:1.2;
-  margin-bottom:14px;
-  max-width:900px;
 }
 
 .hero-content p{
-  font-size:clamp(14px,2.5vw,18px);
+  margin-top:10px;
+  font-size:clamp(14px,3.5vw,18px);
   opacity:.95;
-  max-width:650px;
 }
 
-/* ================= DOTS ================= */
+/* DOTS */
 .slider-dots{
   position:absolute;
-  bottom:26px;
+  bottom:20px;
   left:50%;
   transform:translateX(-50%);
   display:flex;
@@ -493,21 +499,32 @@ header{
   z-index:3;
 }
 .slider-dots span{
-  width:10px;
-  height:10px;
+  width:8px;
+  height:8px;
   border-radius:50%;
   background:rgba(255,255,255,.4);
-  cursor:pointer;
 }
 .slider-dots span.active{
   background:#ff9900;
 }
 
-/* ================= MOBILE ================= */
+/* ================= MOBILE FIX ================= */
 @media(max-width:768px){
-  .slide video{ display:none; }
-  .hero-slider{ height:85vh; }
+  .hero-video{display:none;}
+  .hero-image{display:block;}
+  .hero-slider{height:88vh;}
 }
+ 
+body{
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior:smooth;
+}
+.hero-slider,
+.slide,
+.hero-content{
+  will-change:transform;
+}
+
 
 </style>
 </head>
