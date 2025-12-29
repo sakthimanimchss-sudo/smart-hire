@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SmartHire | Jobs</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet"
+ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+/* ================= ROOT ================= */
+:root{
+  --primary:#2b3990;
+  --accent:#ff9900;
+  --light:#f5f7fb;
+}
+
+/* ================= RESET ================= */
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:Segoe UI,Arial,sans-serif;
+  background:var(--light);
+  overflow-x:hidden;
+}
+a{text-decoration:none;color:inherit}
+
+/* ================= HEADER ================= */
+header{
+  position:sticky;
+  top:0;
+  background:#fff;
+  z-index:11000;
+  box-shadow:0 2px 10px rgba(0,0,0,.05);
+}
+.nav{
+  max-width:1400px;
+  margin:auto;
+  padding:14px 22px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.logo{
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+.logo span{
+  width:42px;height:42px;
+  background:var(--primary);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:10px;
+  font-weight:800;
+}
+.logo h1{
+  font-size:22px;
+  color:var(--primary);
+}
+
+/* ================= DESKTOP MENU ================= */
+.menu-desktop{
+  display:flex;
+  align-items:center;
+  gap:18px;
+  font-size:14px;
+  font-weight:600;
+}
+.menu-desktop a:hover{color:var(--accent)}
+
+.nav-item{position:relative}
+.dropdown-menu{
+  position:absolute;
+  top:120%;
+  left:0;
+  background:#fff;
+  min-width:180px;
+  border-radius:8px;
+  box-shadow:0 10px 30px rgba(0,0,0,.15);
+  opacity:0;
+  visibility:hidden;
+  transition:.25s;
+}
+.dropdown-menu a{
+  display:block;
+  padding:12px 16px;
+  font-size:14px;
+}
+.dropdown-menu a:hover{
+  background:#f5f7fb;
+  color:var(--accent);
+}
+.nav-item:hover .dropdown-menu{
+  opacity:1;
+  visibility:visible;
+}
+
+/* ================= AUTH ================= */
+.auth{
+  display:flex;
+  gap:12px;
+  align-items:center;
+}
+.auth .login{
+  color:var(--primary);
+  font-weight:600;
+}
+.auth .register{
+  background:var(--primary);
+  color:#fff;
+  padding:10px 18px;
+  border-radius:8px;
+}
+
+/* ================= HAMBURGER ================= */
+.hamburger{
+  display:none;
+  font-size:26px;
+  cursor:pointer;
+}
+
+/* ================= BACKDROP ================= */
+.menu-backdrop{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.55);
+  opacity:0;
+  visibility:hidden;
+  transition:.3s;
+  z-index:10000;
+}
+.menu-backdrop.active{
+  opacity:1;
+  visibility:visible;
+}
+
+/* ================= MOBILE MENU ================= */
+.menu-mobile{
+  position:fixed;
+  top:70px;
+  left:0;
+  width:78%;                 /* right-side gap */
+  max-width:320px;
+  height:calc(100vh - 70px);
+  background:#fff;
+  padding:20px;
+  overflow-y:auto;
+  transform:translateX(-100%);
+  transition:.3s ease;
+  z-index:10001;
+}
+.menu-mobile.active{transform:translateX(0)}
+
+.menu-mobile a,
+.mobile-parent{
+  display:block;
+  padding:14px 0;
+  font-size:16px;
+  font-weight:500;
+}
+
+.mobile-parent{
+  display:flex;
+  justify-content:space-between;
+  cursor:pointer;
+}
+
+.mobile-sub{
+  display:none;
+  padding-left:16px;
+  margin-top:6px;
+}
+.mobile-sub a{
+  padding:8px 0;
+  font-size:15px;
+}
+
+/* login/register (scroll to see) */
+.mobile-auth{
+  margin-top:32px;
+  padding-top:16px;
+  border-top:1px solid #eee;
+  display:flex;
+  gap:16px;
+}
+.mobile-auth a{
+  flex:1;
+  padding:12px 0;
+  text-align:center;
+  font-size:15px;
+  font-weight:600;
+  border-radius:8px;
+}
+.mobile-auth .login{
+  border:2px solid var(--primary);
+  color:var(--primary);
+}
+.mobile-auth .register{
+  background:var(--primary);
+  color:#fff;
+}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:992px){
+  .menu-desktop,
+  .auth .login,
+  .auth .register{display:none}
+  .hamburger{display:block}
+}
+
+/* ================= PAGE CONTENT ================= */
+.page{
+  padding:100px 20px;
+  max-width:1200px;
+  margin:auto;
+}
+.page h2{
+  font-size:36px;
+  color:var(--primary);
+  margin-bottom:20px;
+}
+.page p{
+  font-size:16px;
+  line-height:1.7;
+  color:#444;
+}
+/* ================= PROGRAMS SECTION ================= */
+.programs-section{
+  background:var(--light);
+  padding:70px 20px 90px;
+  font-family:Inter,Segoe UI,Arial,sans-serif;
+}
+
+.programs-container{
+  max-width:1400px;
+  margin:auto;
+}
+
+/* ================= TITLE ================= */
+.programs-title{
+  text-align:center;
+  margin-bottom:36px;
+}
+.programs-title h2{
+  font-size:36px;
+  font-weight:800;
+  color:var(--primary);
+}
+.programs-title p{
+  color:#666;
+  margin-top:10px;
+  font-size:15px;
+}
+
+/* ================= FILTER TABS ================= */
+.program-filters{
+  display:flex;
+  gap:12px;
+  overflow-x:auto;
+  padding-bottom:12px;
+  margin-bottom:42px;
+}
+.program-filters::-webkit-scrollbar{
+  display:none;
+}
+
+.filter-btn{
+  padding:9px 20px;
+  border-radius:22px;
+  border:1.6px solid var(--primary);
+  background:#fff;
+  color:var(--primary);
+  font-size:14px;
+  font-weight:600;
+  cursor:pointer;
+  white-space:nowrap;
+  transition:.3s ease;
+}
+.filter-btn:hover,
+.filter-btn.active{
+  background:var(--primary);
+  color:#fff;
+}
+
+/* ================= GRID ================= */
+.program-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
+  gap:30px;
+}
+
+/* ================= CARD ================= */
+.program-card{
+  background:#fff;
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 10px 30px rgba(0,0,0,.08);
+  transition:.35s ease;
+}
+.program-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 18px 50px rgba(0,0,0,.15);
+}
+
+/* ================= IMAGE ================= */
+.program-img{
+  position:relative;
+  height:180px;
+  overflow:hidden;
+}
+.program-img img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:.6s ease;
+}
+.program-card:hover .program-img img{
+  transform:scale(1.08);
+}
+
+/* ================= TAG ================= */
+.program-tag{
+  position:absolute;
+  top:12px;
+  right:12px;
+  background:var(--accent);
+  color:#fff;
+  padding:5px 12px;
+  font-size:12px;
+  border-radius:6px;
+  font-weight:700;
+}
+
+/* ================= BODY ================= */
+.program-body{
+  padding:18px;
+}
+.program-body h3{
+  font-size:16px;
+  font-weight:700;
+  margin-bottom:14px;
+  min-height:44px;
+  line-height:1.4;
+}
+
+/* ================= META ================= */
+.program-meta{
+  display:flex;
+  gap:18px;
+  font-size:13px;
+  color:#555;
+  margin-bottom:16px;
+}
+.program-meta span{
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+
+/* ================= BUTTONS ================= */
+.program-actions{
+  display:flex;
+  gap:12px;
+}
+.program-actions a{
+  flex:1;
+  padding:10px 0;
+  text-align:center;
+  font-size:14px;
+  font-weight:600;
+  border-radius:8px;
+  transition:.3s ease;
+}
+
+.apply-btn{
+  border:1.6px solid var(--primary);
+  color:var(--primary);
+  background:#fff;
+}
+.apply-btn:hover{
+  background:var(--primary);
+  color:#fff;
+}
+
+.view-btn{
+  background:var(--primary);
+  color:#fff;
+}
+.view-btn:hover{
+  filter:brightness(.92);
+}
+
+/* ================= MOBILE ================= */
+@media(max-width:600px){
+  .programs-title h2{
+    font-size:28px;
+  }
+  .program-body h3{
+    font-size:15px;
+  }
+}
+/* ================= ROOT COLORS ================= */
+:root{
+  --primary:#2b3990;
+  --accent:#ff9900;
+  --dark:#0f1c24;
+}
+
+/* ================= HERO SLIDER ================= */
+.hero-slider{
+  position:relative;
+  width:100%;
+  height:100vh;
+  overflow:hidden;
+  background:#000;
+}
+
+/* ================= SLIDES ================= */
+.slide{
+  position:absolute;
+  inset:0;
+  opacity:0;
+  transition:opacity .9s ease;
+}
+.slide.active{
+  opacity:1;
+  z-index:1;
+}
+
+/* ================= MEDIA ================= */
+.slide video,
+.slide img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:0;
+}
+
+/* ================= OVERLAY ================= */
+.hero-overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    135deg,
+    rgba(15,28,36,.45),
+    rgba(15,28,36,.65)
+  );
+  z-index:1;
+}
+
+/* ================= CONTENT ================= */
+.hero-content{
+  position:relative;
+  z-index:2;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:0 20px;
+  color:#fff;
+}
+
+/* ================= TEXT ================= */
+.hero-content h1{
+  font-size:clamp(30px,5vw,56px);
+  font-weight:800;
+  line-height:1.2;
+  margin-bottom:14px;
+  max-width:900px;
+}
+
+.hero-content p{
+  font-size:clamp(14px,2.5vw,18px);
+  opacity:.95;
+  max-width:650px;
+}
+
+/* ================= DOTS ================= */
+.slider-dots{
+  position:absolute;
+  bottom:26px;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  gap:10px;
+  z-index:3;
+}
+.slider-dots span{
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:rgba(255,255,255,.4);
+  cursor:pointer;
+}
+.slider-dots span.active{
+  background:#ff9900;
+}
+
+/* ================= MOBILE ================= */
+@media(max-width:768px){
+  .slide video{ display:none; }
+  .hero-slider{ height:85vh; }
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="nav">
+    <div class="logo">
+      <span>S</span>
+      <h1>SmartHire</h1>
+    </div>
+
+    <!-- DESKTOP MENU -->
+    <div class="menu-desktop">
+      <div class="nav-item">
+        <a href="#">Home ▾</a>
+        <div class="dropdown-menu">
+          <a href="index.html">Home 1</a>
+          <a href="home2.html">Home 2</a>
+        </div>
+      </div>
+      <a href="jobs.html">Jobs</a>
+      <a href="recruiters.html">Recruiters</a>
+      <a href="career.html">Career Services</a>
+      <a href="courses.html">Courses</a>
+      <a href="companies.html">Companies</a>
+      <a href="contact.html">Contact</a>
+
+      <div class="nav-item">
+        <a href="#">Dashboard ▾</a>
+        <div class="dropdown-menu">
+          <a href="dashboard/user.html">User Dashboard</a>
+          <a href="dashboard/admin.html">Admin Dashboard</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- AUTH -->
+    <div class="auth">
+      <a href="login.html" class="login">Login</a>
+      <a href="register.html" class="register">Register</a>
+      <div class="hamburger" onclick="toggleMenu()">☰</div>
+    </div>
+  </div>
+</header>
+
+<div class="menu-backdrop" onclick="toggleMenu()"></div>
+
+<!-- MOBILE MENU -->
+<div class="menu-mobile" id="mobileMenu">
+
+  <div class="mobile-parent" onclick="toggleSub(this)">Home ▾</div>
+  <div class="mobile-sub">
+    <a href="index.html">Home 1</a>
+    <a href="home2.html">Home 2</a>
+  </div>
+
+  <a href="jobs.html">Jobs</a>
+  <a href="recruiters.html">Recruiters</a>
+  <a href="career.html">Career Services</a>
+  <a href="courses.html">Courses</a>
+  <a href="companies.html">Companies</a>
+  <a href="contact.html">Contact</a>
+
+  <div class="mobile-parent" onclick="toggleSub(this)">Dashboard ▾</div>
+  <div class="mobile-sub">
+    <a href="dashboard/user.html">User Dashboard</a>
+    <a href="dashboard/admin.html">Admin Dashboard</a>
+  </div>
+
+  <div class="mobile-auth">
+    <a href="login.html" class="login">Login</a>
+    <a href="register.html" class="register">Register</a>
+  </div>
+</div>
+
+<section class="hero-slider">
+
+  <!-- SLIDE 1 : VIDEO -->
+  <div class="slide active">
+    <video autoplay muted loop playsinline preload="metadata">
+      <source src="https://videos.pexels.com/video-files/3195394/3195394-hd_1920_1080_25fps.mp4" type="video/mp4">
+    </video>
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+      <h1>Find Your Dream Job</h1>
+      <p>AI-powered hiring & career growth</p>
+    </div>
+  </div>
+
+  <!-- SLIDE 2 : IMAGE -->
+  <div class="slide">
+    <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>30,000+ Opportunities</h1>
+      <p>From startups to top companies</p>
+    </div>
+  </div>
+
+  <!-- SLIDE 3 : IMAGE -->
+  <div class="slide">
+    <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>Upskill & Get Hired</h1>
+      <p>Learn industry-ready skills</p>
+    </div>
+  </div>
+
+  <div class="slider-dots"></div>
+</section>
+
+
+<section class="programs-section">
+  <div class="programs-container">
+
+    <!-- TITLE -->
+    <div class="programs-title">
+      <h2>Our Programs</h2>
+      <p>Industry-aligned programs from IITs & IIMs</p>
+    </div>
+
+    <!-- FILTERS -->
+    <div class="program-filters">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="IIT">IIT</button>
+      <button class="filter-btn" data-filter="IIM">IIM</button>
+      <button class="filter-btn" data-filter="MBA">MBA</button>
+      <button class="filter-btn" data-filter="MTECH">M.Tech</button>
+    </div>
+
+    <!-- GRID -->
+    <div class="program-grid" id="programGrid">
+
+      <!-- CARD 1 -->
+      <div class="program-card" data-category="IIM MBA">
+        <div class="program-img">
+          <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d">
+          <span class="program-tag">IIM Mumbai</span>
+        </div>
+        <div class="program-body">
+          <h3>Executive MBA in Digital Transformation & AI</h3>
+          <div class="program-meta">
+            <span>⏱ 6 Months</span>
+            <span>💻 Online</span>
+          </div>
+          <div class="program-actions">
+            <a class="apply-btn" href="#">Apply Now</a>
+            <a class="view-btn" href="#">View Program</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 2 -->
+      <div class="program-card" data-category="IIT MTECH">
+        <div class="program-img">
+          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475">
+          <span class="program-tag">IIT Patna</span>
+        </div>
+        <div class="program-body">
+          <h3>M.Tech in Blockchain Technology & Big Data</h3>
+          <div class="program-meta">
+            <span>⏱ 2 Years</span>
+            <span>💻 Online</span>
+          </div>
+          <div class="program-actions">
+            <a class="apply-btn" href="#">Apply Now</a>
+            <a class="view-btn" href="#">View Program</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 3 -->
+      <div class="program-card" data-category="IIT MTECH">
+        <div class="program-img">
+          <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c">
+          <span class="program-tag">IIT Bhilai</span>
+        </div>
+        <div class="program-body">
+          <h3>Executive MTech in Data Science & Analytics</h3>
+          <div class="program-meta">
+            <span>⏱ 2 Years</span>
+            <span>💻 Online</span>
+          </div>
+          <div class="program-actions">
+            <a class="apply-btn" href="#">Apply Now</a>
+            <a class="view-btn" href="#">View Program</a>
+          </div>
+        </div>
+      </div>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  /* ================= MOBILE MENU ================= */
+  window.toggleMenu = function(){
+    document.getElementById("mobileMenu")?.classList.toggle("active");
+    document.querySelector(".menu-backdrop")?.classList.toggle("active");
+    document.body.classList.toggle("menu-open");
+  };
+
+  window.toggleSub = function(el){
+    const sub = el.nextElementSibling;
+    if(sub){
+      sub.style.display = sub.style.display === "block" ? "none" : "block";
+    }
+  };
+
+  /* ================= FILTER ================= */
+  const filterBtns = document.querySelectorAll(".filter-btn");
+  const cards = document.querySelectorAll(".program-card");
+
+  filterBtns.forEach(btn=>{
+    btn.addEventListener("click",()=>{
+      filterBtns.forEach(b=>b.classList.remove("active"));
+      btn.classList.add("active");
+
+      const filter = btn.dataset.filter;
+      cards.forEach(card=>{
+        card.style.display =
+          filter === "all" || card.dataset.category.includes(filter)
+          ? "block"
+          : "none";
+      });
+    });
+  });
+
+  /* ================= HERO SLIDER ================= */
+  const slides = document.querySelectorAll(".slide");
+  const dotsContainer = document.querySelector(".slider-dots");
+
+  if(!slides.length || !dotsContainer) return; // ✅ SAFETY
+
+  let index = 0;
+  let timer;
+
+  /* CREATE DOTS */
+  slides.forEach((_, i) => {
+    const dot = document.createElement("span");
+    dot.addEventListener("click", () => goTo(i));
+    dotsContainer.appendChild(dot);
+  });
+
+  const dots = dotsContainer.querySelectorAll("span");
+
+  function playVideo(slide){
+    const video = slide.querySelector("video");
+    if(video){
+      video.muted = true;
+      video.currentTime = 0;
+      video.play().catch(()=>{});
+    }
+  }
+
+  function pauseVideos(){
+    document.querySelectorAll(".slide video").forEach(v => v.pause());
+  }
+
+  function show(i){
+    pauseVideos();
+    slides.forEach(s => s.classList.remove("active"));
+    dots.forEach(d => d.classList.remove("active"));
+
+    slides[i].classList.add("active");
+    dots[i].classList.add("active");
+    playVideo(slides[i]);
+    index = i;
+  }
+
+  function next(){
+    index = (index + 1) % slides.length;
+    show(index);
+  }
+
+  function goTo(i){
+    show(i);
+    restart();
+  }
+
+  function start(){
+    timer = setInterval(next, 6000);
+  }
+
+  function restart(){
+    clearInterval(timer);
+    start();
+  }
+
+  /* INIT IMMEDIATELY */
+  show(0);
+  start();
+
+});
+</script>
+
+</body>
+</html>
