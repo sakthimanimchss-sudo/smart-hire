@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SmartHire | Register</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- ICONS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+:root{
+  --primary:#1f2a8c;
+  --accent:#ff9900;
+  --text:#111827;
+  --muted:#6b7280;
+  --border:#d1d5db;
+  --bg:#f5f7fb;
+}
+
+*{
+  box-sizing:border-box;
+  font-family:Inter,sans-serif;
+}
+
+body{
+  margin:0;
+  min-height:100vh;
+  background:var(--bg);
+}
+
+/* ================= LAYOUT ================= */
+.register-page{
+  min-height:100vh;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+}
+
+/* LEFT INFO */
+.left-panel{
+  padding:80px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  background:#fff;
+}
+
+.brand{
+  font-weight:800;
+  color:var(--primary);
+  margin-bottom:16px;
+}
+
+.left-panel h1{
+  font-size:44px;
+  margin:0 0 16px;
+  color:var(--text);
+}
+
+.left-panel p{
+  color:var(--muted);
+  font-size:17px;
+  line-height:1.8;
+  max-width:520px;
+}
+
+/* RIGHT FORM */
+.right-panel{
+  padding:60px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.form-wrapper{
+  width:100%;
+  max-width:520px;
+}
+
+/* HEADER */
+.form-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:32px;
+}
+
+.title{
+  font-size:32px;
+  font-weight:800;
+  color:var(--text);
+}
+
+.logo{
+  width:52px;
+  height:52px;
+  border-radius:14px;
+  background:var(--primary);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:900;
+  font-size:20px;
+}
+
+/* FORM */
+form{
+  display:grid;
+  gap:16px;
+}
+
+label{
+  font-size:13px;
+  font-weight:600;
+  color:#374151;
+}
+
+label span{color:#ef4444}
+
+input,select{
+  width:100%;
+  padding:14px 44px 14px 14px;
+  border-radius:12px;
+  border:1.5px solid var(--border);
+  background:#fff;
+  font-size:14px;
+  outline:none;
+  transition:.25s;
+}
+
+input:focus,select:focus{
+  border-color:var(--accent);
+ outline:0;
+  box-shadow:0 0 0 3px rgba(255,153,0,.25);
+}
+
+.field{
+  position:relative;
+}
+
+.field i{
+  position:absolute;
+  right:14px;
+  top:50%;
+  transform:translateY(-50%);
+  color:#9ca3af;
+  cursor:pointer;
+}
+
+/* GRID */
+.grid-2{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+
+/* BUTTON */
+button{
+  margin-top:10px;
+  padding:16px;
+  border:none;
+  border-radius:999px;
+  background:var(--accent);
+  color:#fff;
+  font-size:16px;
+  font-weight:800;
+  cursor:pointer;
+  transition:.3s;
+}
+
+button:hover{
+  transform:translateY(-2px);
+}
+
+/* FOOTER */
+.footer{
+  margin-top:20px;
+  text-align:center;
+  font-size:14px;
+}
+
+.footer a{
+  color:var(--primary);
+  font-weight:700;
+  text-decoration:none;
+}
+
+/* ================= MOBILE ================= */
+@media(max-width:900px){
+  .register-page{
+    grid-template-columns:1fr;
+  }
+
+  .left-panel{
+    display:none;
+  }
+
+  .right-panel{
+    padding:40px 20px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="register-page">
+
+  <!-- LEFT -->
+  <div class="left-panel">
+    <div class="brand">SmartHire</div>
+    <h1>Build Your Career Faster</h1>
+    <p>
+      Create your SmartHire account to apply for jobs, manage resumes,
+      access AI career tools, and connect with recruiters worldwide —
+      all from one powerful platform.
+    </p>
+  </div>
+
+  <!-- RIGHT -->
+  <div class="right-panel">
+    <div class="form-wrapper">
+
+      <div class="form-header">
+        <div class="title">User Registration</div>
+        <div class="logo">S</div>
+      </div>
+
+      <form>
+
+        <label>Email <span>*</span></label>
+        <div class="field">
+          <input type="email" required>
+          <i class="fa-regular fa-envelope"></i>
+        </div>
+
+        <div class="grid-2">
+          <div>
+            <label>Password <span>*</span></label>
+            <div class="field">
+              <input type="password" id="p1" required>
+              <i class="fa-regular fa-eye" onclick="toggle('p1',this)"></i>
+            </div>
+          </div>
+
+          <div>
+            <label>Retype Password <span>*</span></label>
+            <div class="field">
+              <input type="password" id="p2" required>
+              <i class="fa-regular fa-eye" onclick="toggle('p2',this)"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div>
+            <label>First Name <span>*</span></label>
+            <input type="text" required>
+          </div>
+          <div>
+            <label>Last Name <span>*</span></label>
+            <input type="text" required>
+          </div>
+        </div>
+
+        <label>Phone Number <span>*</span></label>
+        <input type="tel" required>
+
+        <label>Address <span>*</span></label>
+        <input type="text" required>
+
+        <div class="grid-2">
+          <div>
+            <label>Town</label>
+            <input type="text">
+          </div>
+          <div>
+            <label>Region <span>*</span></label>
+            <input type="text" required>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div>
+            <label>Postcode / Zip <span>*</span></label>
+            <input type="text" required>
+          </div>
+          <div>
+            <label>Country <span>*</span></label>
+            <select required>
+              <option>India</option>
+              <option>United Kingdom</option>
+              <option>United States</option>
+              <option>Canada</option>
+            </select>
+          </div>
+        </div>
+
+        <button>Create Account</button>
+
+      </form>
+
+      <div class="footer">
+        Already have an account?
+        <a href="login.html">Login</a>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<script>
+function toggle(id,el){
+  const i=document.getElementById(id);
+  if(i.type==="password"){
+    i.type="text";
+    el.classList.replace("fa-eye","fa-eye-slash");
+  }else{
+    i.type="password";
+    el.classList.replace("fa-eye-slash","fa-eye");
+  }
+}
+</script>
+
+</body>
+</html>
