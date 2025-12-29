@@ -402,139 +402,124 @@ header{
     font-size:15px;
   }
 }
-/* ================= HERO – DIGIVARSITY STYLE (FINAL) ================= */
+/* ================= HERO FULL ================= */
 
-.hero-slider{
-  position:relative;
-  width:100%;
-  min-height:100svh;                 /* correct mobile viewport */
-  padding-top:var(--header-h,70px);  /* sticky header safe */
-  background:#000;
-  overflow:hidden;
+.hero-full{
+  background:#f6f8fc;
+  padding:60px 20px;
 }
 
-/* ================= SLIDE ================= */
-.slide{
-  position:absolute;
-  inset:0;
-  opacity:0;
-  transition:opacity .8s ease;
-}
-.slide.active{
-  opacity:1;
-  z-index:2;
-}
-
-/* ================= VIDEO WRAPPER ================= */
-.video-wrap{
-  position:absolute;
-  inset:0;
-  overflow:hidden;
-}
-
-/* ================= VIDEO + IMAGE (DIGIVARSITY METHOD) ================= */
-.hero-video,
-.hero-poster{
-  position:absolute;
-  top:50%;
-  left:50%;
-  min-width:100%;
-  min-height:100%;
-  width:auto;
-  height:auto;
-  transform:translate(-50%, -50%);
-  object-fit:cover;
-}
-
-/* MOBILE SAFETY */
-@media (max-width:768px){
-  .hero-video,
-  .hero-poster{
-    width:100%;
-    height:100%;
-  }
-}
-
-/* ================= OVERLAY ================= */
-.hero-overlay{
-  position:absolute;
-  inset:0;
-  background:linear-gradient(
-    to bottom,
-    rgba(0,0,0,.25) 0%,
-    rgba(0,0,0,.55) 45%,
-    rgba(0,0,0,.85) 100%
-  );
-  z-index:3;
-}
-
-/* ================= CONTENT (DIGIVARSITY POSITION) ================= */
-.hero-content{
-  position:relative;
-  z-index:4;
-  height:100%;
-  display:flex;
-  flex-direction:column;
-  justify-content:flex-end;      /* text lower */
-  align-items:flex-start;        /* left aligned */
-  text-align:left;
-  padding:0 24px 90px;
+.hero-container{
   max-width:1200px;
   margin:auto;
-  color:#fff;
+  background:#fff;
+  border-radius:20px;
+  padding:50px;
+  display:grid;
+  grid-template-columns:1.2fr 1fr;
+  gap:40px;
+  align-items:center;
+  box-shadow:0 20px 50px rgba(0,0,0,.08);
 }
 
-/* TEXT */
-.hero-content h1{
-  font-size:clamp(30px,5vw,56px);
+/* LEFT */
+.hero-left h1{
+  font-size:42px;
+  color:#2b3990;
   font-weight:800;
-  line-height:1.15;
-  max-width:720px;
 }
 
-.hero-content p{
-  margin-top:12px;
-  font-size:18px;
-  max-width:620px;
-  opacity:.95;
+.hero-desc{
+  margin:16px 0;
+  font-size:17px;
+  min-height:48px;
+  color:#444;
 }
 
-/* ================= DOTS ================= */
-.slider-dots{
-  position:absolute;
-  bottom:28px;
-  left:50%;
-  transform:translateX(-50%);
+.hero-search{
   display:flex;
-  gap:10px;
-  z-index:5;
+  gap:12px;
+  margin:22px 0;
 }
-
-.slider-dots span{
-  width:10px;
-  height:10px;
-  border-radius:50%;
-  background:rgba(255,255,255,.4);
+.hero-search input{
+  flex:1;
+  padding:14px;
+  border-radius:8px;
+  border:1.5px solid #ccc;
+  font-size:15px;
+}
+.hero-search button{
+  padding:14px 22px;
+  border:none;
+  border-radius:8px;
+  background:#ff9900;
+  color:#fff;
+  font-weight:700;
   cursor:pointer;
 }
 
-.slider-dots span.active{
-  background:var(--accent);
+.hero-points{
+  display:flex;
+  gap:18px;
+  font-size:14px;
+  color:#555;
 }
 
-/* ================= MOBILE TUNING ================= */
-@media(max-width:768px){
-  .hero-content{
-    padding:0 18px 70px;
-  }
-  .hero-content h1{
-    font-size:30px;
-  }
-  .hero-content p{
-    font-size:16px;
-  }
+/* RIGHT MEDIA */
+.hero-right{
+  position:relative;
+  height:320px;
+  border-radius:16px;
+  overflow:hidden;
 }
 
+.media-slide{
+  position:absolute;
+  inset:0;
+  opacity:0;
+  transform:translateY(20px);
+  transition:.8s ease;
+}
+
+.media-slide.active{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.media-slide img,
+.media-slide video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* MEDIA TEXT */
+.media-text{
+  position:absolute;
+  bottom:16px;
+  left:16px;
+  background:rgba(0,0,0,.65);
+  color:#fff;
+  padding:6px 14px;
+  border-radius:20px;
+  font-size:14px;
+}
+
+/* ================= MOBILE ================= */
+@media(max-width:900px){
+  .hero-container{
+    grid-template-columns:1fr;
+    padding:30px;
+    text-align:center;
+  }
+  .hero-search{
+    flex-direction:column;
+  }
+  .hero-points{
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+}
 </style>
 </head>
 
@@ -610,82 +595,53 @@ header{
     <a href="register.html" class="register">Register</a>
   </div>
 </div>
- 
-<!-- ================= HERO SLIDER ================= -->
-<section class="hero-slider">
+ <!-- ================= HERO FULL ================= -->
+<section class="hero-full">
 
-  <!-- SLIDE 1 (VIDEO) -->
-  <div class="slide active">
-    <div class="video-wrap">
+  <div class="hero-container">
 
-      <img
-        src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d"
-        class="hero-poster"
-        alt="Jobs"
-      >
+    <!-- LEFT CONTENT -->
+    <div class="hero-left">
+      <h1>Find Your First Job Faster</h1>
+      <p class="hero-desc" id="heroTyping"></p>
 
-      <video
-        class="hero-video"
-        muted
-        autoplay
-        loop
-        playsinline
-        preload="auto"
-      >
-        <source src="https://videos.pexels.com/video-files/3195394/3195394-hd_1920_1080_25fps.mp4" type="video/mp4">
-      </video>
+      <div class="hero-search">
+        <input type="text" placeholder="Search Job Title, Skills, Company">
+        <button>Search Jobs</button>
+      </div>
 
+      <div class="hero-points">
+        <span>✔ 30,000+ Jobs</span>
+        <span>✔ Top Companies</span>
+        <span>✔ Freshers Friendly</span>
+      </div>
     </div>
 
-    <div class="hero-overlay"></div>
+    <!-- RIGHT MEDIA -->
+    <div class="hero-right">
+      <div class="media-slide active">
+        <video muted autoplay loop playsinline>
+          <source src="https://videos.pexels.com/video-files/3195394/3195394-hd_1920_1080_25fps.mp4">
+        </video>
+        <div class="media-text">AI Matching Jobs</div>
+      </div>
 
-    <div class="hero-content">
-      <h1>Find Your Dream Job</h1>
-      <p>AI-powered hiring & career growth</p>
-    </div>
-  </div>
+      <div class="media-slide">
+        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d">
+        <div class="media-text">Top IT Companies</div>
+      </div>
 
-  <!-- SLIDE 2 -->
-  <div class="slide">
-    <div class="video-wrap">
-      <img
-        src="https://images.unsplash.com/photo-1519389950473-47ba0277781c"
-        class="hero-poster"
-        alt="Careers"
-      >
-    </div>
+      <div class="media-slide">
+        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c">
+        <div class="media-text">Startup Careers</div>
+      </div>
 
-    <div class="hero-overlay"></div>
-
-    <div class="hero-content">
-      <h1>30,000+ Opportunities</h1>
-      <p>From startups to top companies</p>
-    </div>
-  </div>
-
-  <!-- SLIDE 3 -->
-  <div class="slide">
-    <div class="video-wrap">
-      <img
-        src="https://images.unsplash.com/photo-1522071820081-009f0129c71c"
-        class="hero-poster"
-        alt="Upskill"
-      >
+      <div class="media-slide">
+        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c">
+        <div class="media-text">Skill-Based Hiring</div>
+      </div>
     </div>
 
-    <div class="hero-overlay"></div>
-
-    <div class="hero-content">
-      <h1>Upskill & Get Hired</h1>
-      <p>Industry-ready programs & mentors</p>
-    </div>
-  </div>
-
-  <!-- DOTS -->
-  <div class="slider-dots">
-    <span class="active"></span>
-    <span></span>
-    <span></span>
   </div>
 
 </section>
@@ -804,65 +760,38 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* ================= HERO SLIDER ================= */
- const slides = document.querySelectorAll(".slide");
-  const dots = document.querySelectorAll(".slider-dots span");
-  let index = 0;
-  let timer;
+/* TYPING TEXT */
+const heroTexts = [
+  "Search jobs from top IT & non-IT companies.",
+  "Get hired faster with smart AI recommendations.",
+  "Apply to jobs with one click resume upload."
+];
+let t = 0, c = 0;
+const el = document.getElementById("heroTyping");
 
-  function playVideo(slide){
-    const video = slide.querySelector("video");
-    if(video){
-      video.muted = true;
-      video.play().catch(()=>{});
-    }
+function typeHero(){
+  if(c < heroTexts[t].length){
+    el.textContent += heroTexts[t][c++];
+    setTimeout(typeHero, 40);
+  }else{
+    setTimeout(()=>{
+      el.textContent="";
+      c=0;
+      t=(t+1)%heroTexts.length;
+      typeHero();
+    },1500);
   }
+}
+typeHero();
 
-  function pauseVideos(){
-    document.querySelectorAll(".slide video").forEach(v=>{
-      v.pause();
-      v.currentTime = 0;
-    });
-  }
-
-  function show(i){
-    pauseVideos();
-    slides.forEach(s => s.classList.remove("active"));
-    dots.forEach(d => d.classList.remove("active"));
-
-    slides[i].classList.add("active");
-    dots[i].classList.add("active");
-    playVideo(slides[i]);
-    index = i;
-  }
-
-  function next(){
-    show((index + 1) % slides.length);
-  }
-
-  function start(){
-    timer = setInterval(next, 6000);
-  }
-
-  function restart(){
-    clearInterval(timer);
-    start();
-  }
-
-  dots.forEach((dot,i)=>{
-    dot.addEventListener("click", ()=>{
-      show(i);
-      restart();
-    });
-  });
-
-  /* MOBILE AUTOPLAY UNLOCK */
-  document.body.addEventListener("touchstart", ()=>{
-    playVideo(slides[index]);
-  }, { once:true });
-
-  show(0);
-  start();
-});
+/* MEDIA SLIDER */
+const slides = document.querySelectorAll(".media-slide");
+let i = 0;
+setInterval(()=>{
+  slides.forEach(s=>s.classList.remove("active"));
+  i = (i+1) % slides.length;
+  slides[i].classList.add("active");
+},4500);
 </script>
 
 </body>
