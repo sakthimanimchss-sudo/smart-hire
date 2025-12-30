@@ -457,6 +457,18 @@ function toggleSidebar(){
   document.querySelector('.sidebar').classList.toggle('active');
   document.querySelector('.sidebar-backdrop').classList.toggle('active');
 }
+
+function signOut(e){
+  e.preventDefault();
+
+  // Close sidebar if open (mobile safe)
+  document.querySelector('.sidebar')?.classList.remove('active');
+  document.querySelector('.sidebar-backdrop')?.classList.remove('active');
+
+  // Force navigation (GitHub Pages safe)
+  window.location.replace('./index.html');
+}
+
 </script>
 
 </body>
