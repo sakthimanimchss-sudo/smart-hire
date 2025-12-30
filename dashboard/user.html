@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SmartHire | User Dashboard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ICONS -->
+<link rel="stylesheet"
+ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- CHART -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+/* =====================================================
+   ROOT THEME
+===================================================== */
+:root{
+  --primary:#2b3990;
+  --blue:#5a67d8;
+  --green:#38a169;
+  --orange:#ed8936;
+  --pink:#d53f8c;
+  --dark:#020617;
+  --light:#f8fafc;
+  --muted:#64748b;
+  --white:#fff;
+  --shadow:0 20px 45px rgba(0,0,0,.12);
+}
+
+/* RESET */
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:Segoe UI,Arial,sans-serif;
+  background:var(--light);
+  min-height:100vh;
+  display:flex;
+  color:#1e293b;
+}
+
+/* =====================================================
+   SIDEBAR
+===================================================== */
+.sidebar{
+  width:260px;
+  background:linear-gradient(180deg,#eef2ff,#e0e7ff);
+  padding:22px;
+  position:fixed;
+  inset:0 auto 0 0;
+  z-index:999;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:36px;
+}
+.logo-icon{
+  width:44px;height:44px;
+  background:#2b3990;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:12px;
+  font-size:22px;
+  font-weight:800;
+}
+.logo-text{
+  font-size:22px;
+  font-weight:800;
+  color:#2b3990;
+}
+
+.sidebar a{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:14px 16px;
+  margin-bottom:10px;
+  border-radius:12px;
+  font-weight:600;
+  color:#334155;
+  transition:.3s;
+}
+.sidebar a.active,
+.sidebar a:hover{
+  background:#fff;
+  box-shadow:var(--shadow);
+}
+
+/* =====================================================
+   MAIN
+===================================================== */
+.main{
+  margin-left:260px;
+  width:calc(100% - 260px);
+  max-width:100%;
+  overflow-x:hidden;
+}
+
+/* =====================================================
+   TOPBAR
+===================================================== */
+.topbar{
+  background:var(--dark);
+  color:#fff;
+  padding:14px 26px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.menu-toggle{
+  font-size:24px;
+  cursor:pointer;
+  color:#fff;
+  display:none;
+}
+.search-box{
+  background:#1e293b;
+  border-radius:30px;
+  padding:8px 16px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  width:320px;
+}
+.search-box input{
+  background:none;border:none;outline:none;
+  color:#fff;width:100%;
+}
+.top-icons i{margin-left:22px;cursor:pointer}
+
+/* =====================================================
+   CONTENT
+===================================================== */
+.content{
+  padding:40px;
+  max-width:1400px;
+  width:100%;
+  margin:0 auto;
+}
+
+/* =====================================================
+   KPI
+===================================================== */
+.kpis{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:26px;
+  margin-bottom:46px;
+}
+.kpi{
+  padding:28px;
+  border-radius:24px;
+  color:#fff;
+  box-shadow:var(--shadow);
+}
+.kpi h2{font-size:34px}
+.kpi span{font-size:14px}
+.kpi.orange{background:linear-gradient(135deg,#f6ad55,#ed8936)}
+.kpi.blue{background:linear-gradient(135deg,#667eea,#5a67d8)}
+.kpi.green{background:linear-gradient(135deg,#48bb78,#38a169)}
+.kpi.pink{background:linear-gradient(135deg,#ed64a6,#d53f8c)}
+
+/* =====================================================
+   GRID + CARD
+===================================================== */
+.grid{
+  display:grid;
+  grid-template-columns:2.6fr 1.2fr;
+  gap:36px;
+  margin-bottom:46px;
+}
+.card{
+  background:#fff;
+  border-radius:26px;
+  padding:32px;
+  box-shadow:var(--shadow);
+  position:relative;
+  overflow:hidden;
+}
+.card h3{margin-bottom:18px}
+.card{
+  position:relative;
+  overflow:hidden;
+}
+
+.card canvas{
+  width:100% !important;
+  height:260px !important;
+}
+
+/* =====================================================
+   USER INFO
+===================================================== */
+.user-header{
+  display:flex;
+  align-items:center;
+  gap:16px;
+}
+.user-header img{
+  width:72px;height:72px;border-radius:50%;
+}
+.user-meta p{
+  font-size:14px;
+  color:var(--muted);
+}
+.user-stats{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:14px;
+  margin-top:16px;
+}
+.user-stats div{
+  background:#f1f5f9;
+  padding:14px;
+  border-radius:12px;
+  font-size:14px;
+}
+
+/* =====================================================
+   TABLE
+===================================================== */
+table{
+  width:100%;
+  border-collapse:collapse;
+}
+th,td{
+  padding:14px;
+  border-bottom:1px solid #e5e7eb;
+  font-size:14px;
+}
+th{color:var(--muted);text-align:left}
+
+/* =====================================================
+   MOBILE
+===================================================== */
+.sidebar-backdrop{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.45);
+  opacity:0;
+  visibility:hidden;
+  transition:.3s;
+  z-index:998;
+}
+
+@media(max-width:720px){
+  .menu-toggle{display:block}
+  .sidebar{left:-260px;transition:.3s}
+  .sidebar.active{left:0}
+  .sidebar-backdrop.active{opacity:1;visibility:visible}
+  .main{margin-left:0;width:100%}
+  .search-box{display:none}
+  .kpis{grid-template-columns:1fr}
+  .grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="brand">
+    <span class="logo-icon">S</span>
+    <span class="logo-text">SmartHire</span>
+  </div>
+
+  <a class="active"><i class="fa fa-gauge"></i> Dashboard</a>
+  <a><i class="fa fa-briefcase"></i> My Jobs</a>
+  <a><i class="fa fa-chart-line"></i> Analytics</a>
+  <a href="admin.html"><i class="fa fa-user-shield"></i> Admin</a>
+  <a href="login.html"><i class="fa fa-sign-out-alt"></i> Sign Out</a>
+</aside>
+
+<div class="sidebar-backdrop" onclick="toggleSidebar()"></div>
+
+<div class="main">
+
+<div class="topbar">
+  <i class="fa-solid fa-bars menu-toggle" onclick="toggleSidebar()"></i>
+
+  <div class="search-box">
+    <i class="fa fa-search"></i>
+    <input placeholder="Search jobs">
+  </div>
+
+  <div class="top-icons">
+    <i class="fa fa-bell"></i>
+    <i class="fa fa-user-circle"></i>
+  </div>
+</div>
+
+<div class="content">
+
+<!-- KPI -->
+<div class="kpis">
+  <div class="kpi orange"><h2 class="count" data-target="12">0</h2><span>Applied Jobs</span></div>
+  <div class="kpi blue"><h2 class="count" data-target="4">0</h2><span>Interviews</span></div>
+  <div class="kpi green"><h2 class="count" data-target="2">0</h2><span>Offers</span></div>
+  <div class="kpi pink"><h2 class="count" data-target="38">0</h2><span>Profile Views</span></div>
+</div>
+
+<div class="grid">
+
+  <!-- GRAPH -->
+  <div class="card">
+    <h3>Application Progress</h3>
+    <canvas id="userChart" style="height:260px"></canvas>
+  </div>
+
+  <!-- USER INFO -->
+  <div class="card">
+    <h3>User Profile</h3>
+    <div class="user-header">
+      <img src="https://i.pravatar.cc/150?img=32">
+      <div class="user-meta">
+        <strong>Arun Kumar</strong>
+        <p>Job Seeker</p>
+        <p>Last login: Today 09:20 AM</p>
+      </div>
+    </div>
+    <div class="user-stats">
+      <div>Experience: 2 Years</div>
+      <div>Skills: HTML, CSS, JS</div>
+      <div>Location: India</div>
+      <div>Status: Actively Applying</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="card">
+  <h3>Recent Activity</h3>
+  <table>
+    <tr><th>Company</th><th>Action</th><th>Status</th></tr>
+    <tr><td>TCS</td><td>Applied</td><td>Under Review</td></tr>
+    <tr><td>Infosys</td><td>Interview</td><td>Scheduled</td></tr>
+    <tr><td>Wipro</td><td>Offer</td><td>Received</td></tr>
+  </table>
+</div>
+
+</div>
+</div>
+
+<script>
+/* COUNTER */
+document.querySelectorAll('.count').forEach(el=>{
+  let t=+el.dataset.target,c=0,step=Math.max(1,t/40);
+  (function run(){
+    c+=step;
+    el.textContent=c<t?Math.floor(c):t;
+    if(c<t)requestAnimationFrame(run);
+  })();
+});
+
+/* CHART */
+let apps=[1,2,3,4,6,8,12];
+
+const userChart=new Chart(document.getElementById('userChart'),{
+  type:'line',
+  data:{
+    labels:['Jan','Feb','Mar','Apr','May','Jun','Jul'],
+    datasets:[{
+      label:'Applications',
+      data:apps,
+      fill:true,
+      backgroundColor:'rgba(90,103,216,.25)',
+      borderColor:'#5a67d8',
+      tension:0.45,
+      pointRadius:4,
+      pointHoverRadius:6
+    }]
+  },
+  options:{
+    responsive:true,
+    maintainAspectRatio:false,
+    layout:{padding:10},
+    plugins:{legend:{position:'top'}},
+    scales:{
+      x:{grid:{display:false}},
+      y:{grid:{color:'#e5e7eb'}}
+    }
+  }
+});
+
+/* AUTO-INCREASING GRAPH */
+setInterval(()=>{
+  let last = apps[apps.length - 1];
+  apps.push(last + Math.floor(Math.random()*3) + 1);
+  apps.shift();
+  userChart.update();
+},2500);
+
+
+function toggleSidebar(){
+  document.querySelector('.sidebar').classList.toggle('active');
+  document.querySelector('.sidebar-backdrop').classList.toggle('active');
+}
+</script>
+
+</body>
+</html>
