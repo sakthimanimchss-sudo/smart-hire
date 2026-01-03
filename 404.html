@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>404 | Page Not Found – SmartHire</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ICONS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+:root{
+  --primary:#2b3990;
+  --accent:#ff9900;
+  --dark:#0f1c24;
+  --light:#f5f7fb;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:Inter,Segoe UI,Arial,sans-serif;
+  background:linear-gradient(135deg,#0f1c24,#1b2a3a);
+  color:#fff;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+
+.container{
+  max-width:700px;
+  padding:20px;
+  animation:fadeUp 1s ease;
+}
+
+.logo{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:12px;
+  margin-bottom:40px;
+}
+
+.logo span{
+  width:48px;
+  height:48px;
+  background:var(--primary);
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:800;
+  font-size:22px;
+}
+
+.logo h1{
+  font-size:24px;
+}
+
+.error-code{
+  font-size:120px;
+  font-weight:900;
+  color:var(--accent);
+  line-height:1;
+}
+
+.error-title{
+  font-size:32px;
+  margin-top:10px;
+}
+
+.error-text{
+  margin-top:12px;
+  font-size:16px;
+  opacity:.85;
+}
+
+.actions{
+  margin-top:40px;
+  display:flex;
+  gap:16px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+.btn{
+  padding:14px 34px;
+  border-radius:30px;
+  font-weight:700;
+  text-decoration:none;
+  transition:.3s ease;
+}
+
+.btn-primary{
+  background:var(--accent);
+  color:#fff;
+}
+
+.btn-secondary{
+  border:2px solid rgba(255,255,255,.4);
+  color:#fff;
+}
+
+.btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 12px 30px rgba(0,0,0,.35);
+}
+
+.footer-note{
+  margin-top:50px;
+  font-size:13px;
+  opacity:.6;
+}
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(40px)}
+  to{opacity:1;transform:none}
+}
+
+/* MOBILE */
+@media(max-width:600px){
+  .error-code{
+    font-size:90px;
+  }
+  .error-title{
+    font-size:24px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="logo">
+    <span>S</span>
+    <h1>SmartHire</h1>
+  </div>
+
+  <div class="error-code">404</div>
+  <div class="error-title">Page Not Found</div>
+
+  <p class="error-text">
+    Sorry, the page you’re looking for doesn’t exist or has been moved.
+    Let’s get you back on track.
+  </p>
+
+  <div class="actions">
+    <a href="index.html" class="btn btn-primary">
+      <i class="fa-solid fa-house"></i> Go to Home
+    </a>
+    <a href="jobs.html" class="btn btn-secondary">
+      <i class="fa-solid fa-briefcase"></i> Browse Jobs
+    </a>
+  </div>
+
+  <div class="footer-note">
+    © 2026 SmartHire Recruitment Solutions Pvt Ltd
+  </div>
+
+</div>
+
+</body>
+</html>
