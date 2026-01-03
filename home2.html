@@ -435,19 +435,23 @@ section{padding:90px 20px}
   }
 }
    
-/* ================= HERO IMAGE MOBILE FIT ================= */
-@media (max-width: 768px){
+/* ================= HERO MOBILE LAYOUT FIX ================= */
+@media(max-width:768px){
 
-  .hero img{
-    width: 100%;
-    max-width: 100%;
-    height: auto;                /* keep natural ratio */
-    max-height: 32vh;            /* PREVENT too tall image */
-    object-fit: cover;
-    border-radius: 16px;
-    margin-bottom: 18px;
+  .hero{
+    min-height:auto;          /* REMOVE height lock */
+    display:block;            /* STOP flex centering */
+    padding:20px 14px 80px;   /* SPACE for text + buttons */
+    text-align:center;
+  }
+
+  .hero-actions{
+    flex-direction:column;
+    gap:14px;
   }
 }
+   
+
 
 /* ================= MOBILE BUTTON FIX ================= */
 @media (max-width: 768px){
@@ -558,35 +562,6 @@ section{padding:90px 20px}
   }
 }
 
-/* ================= HERO MOBILE FIX (MATCH INDEX) ================= */
-@media(max-width:768px){
-
-  .hero{
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-  }
-
-  .hero h1{
-    font-size:28px;
-    line-height:1.25;
-  }
-
-  .hero p{
-    font-size:15px;
-  }
-
-  .hero-actions{
-    flex-direction:column;
-    gap:14px;
-  }
-
-  .btn-primary,
-  .btn-secondary{
-    width:100%;
-  }
-}
 
 /* ================= CHAT MOBILE FIX ================= */
 @media(max-width:600px){
