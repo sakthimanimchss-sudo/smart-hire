@@ -395,6 +395,30 @@ section{padding:90px 20px}
 .hero-actions .btn-secondary:hover{
   background: rgba(255,255,255,.1);
 }
+/* ================= HERO TEXT VISIBILITY FIX (FINAL) ================= */
+@media (max-width: 768px){
+
+  .hero{
+    min-height: unset !important;      /* remove height lock */
+    height: auto !important;
+    align-items: flex-start !important; /* stop vertical centering */
+    padding: 16px 14px 80px !important; /* bottom space for buttons */
+  }
+
+  .hero-content{
+    padding-top: 12px;
+  }
+
+  .hero p{
+    margin-bottom: 28px;               /* ensure paragraph ends before buttons */
+    font-size: 14px;
+    line-height: 1.65;
+  }
+
+  .hero-actions{
+    margin-top: 10px;
+  }
+}
 
 /* ================= MOBILE BUTTON FIX ================= */
 @media (max-width: 768px){
@@ -409,24 +433,8 @@ section{padding:90px 20px}
     margin: 0 auto;
   }
 }
-/* ================= HERO CONTENT VISIBILITY FIX ================= */
-@media (max-width: 768px){
 
-  .hero{
-    min-height: auto !important;     /* allow content to expand */
-    padding-bottom: 70px !important; /* space for buttons */
-  }
-
-  .hero-content{
-    padding-bottom: 20px;
-  }
-
-  .hero p{
-    margin-bottom: 22px;             /* ensure text is visible */
-  }
-}
-
-/* ================= DROPDOWN (DESKTOP) ================= */
+/*================= DROPDOWN (DESKTOP) ================= */
 .nav-item{
   position:relative;
 }
