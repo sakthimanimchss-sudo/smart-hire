@@ -10,10 +10,25 @@
 
 <style>
 /* =====================================================
-   SMARTHIRE — PRODUCTION CLEAN CSS v1.0
-   Author: Optimized by ChatGPT
-   Purpose: Desktop + Mobile + Ultra-small phones
+   SMART HIRE — FINAL CSS (PART 1 / 3)
+   ROOT + HEADER + HERO + BASE
 ===================================================== */
+
+/* ================= ROOT ================= */
+:root{
+  --primary:#2b3990;
+  --accent:#ff9900;
+  --success:#36e0a1;
+  --dark:#0f1c24;
+  --dark2:#1b2a3a;
+  --light:#f5f7fb;
+  --white:#fff;
+  --muted:#6b7280;
+
+  --radius:16px;
+  --shadow:0 25px 50px rgba(0,0,0,.12);
+  --shadow-lg:0 40px 80px rgba(0,0,0,.2);
+}
 
 /* ================= RESET ================= */
 *,
@@ -24,59 +39,24 @@
   box-sizing:border-box;
 }
 
-html{
-  scroll-behavior:smooth;
-}
+html{scroll-behavior:smooth}
 
 body{
   font-family:Inter,Segoe UI,Arial,sans-serif;
-  background:#f5f7fb;
+  background:var(--light);
   color:#111;
   line-height:1.6;
   overflow-x:hidden;
-  -webkit-font-smoothing:antialiased;
 }
 
-img{
-  max-width:100%;
-  display:block;
-}
+img,video{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
 
-a{
-  text-decoration:none;
-  color:inherit;
-}
-
-button{
-  border:none;
-  background:none;
-  font-family:inherit;
-  cursor:pointer;
-}
-
-:root{
-  --primary:#2b3990;
-  --accent:#ff9900;
-  --dark:#0f1c24;
-  --dark2:#1b2a3a;
-  --light:#f5f7fb;
-  --white:#ffffff;
-  --muted:#6b7280;
-
-  --radius:18px;
-  --radius-sm:12px;
-
-  --shadow:0 25px 50px rgba(0,0,0,.12);
-  --shadow-lg:0 40px 90px rgba(0,0,0,.25);
-}
-
-/* =====================================================
-   HEADER / NAV
-===================================================== */
+/* ================= HEADER ================= */
 header{
   position:sticky;
   top:0;
-  z-index:10000;
+  z-index:1200;
   background:#fff;
   box-shadow:0 2px 15px rgba(0,0,0,.05);
 }
@@ -97,14 +77,14 @@ header{
 }
 
 .logo span{
-  width:44px;
-  height:44px;
+  width:42px;
+  height:42px;
   background:var(--primary);
   color:#fff;
-  border-radius:12px;
   display:flex;
   align-items:center;
   justify-content:center;
+  border-radius:10px;
   font-weight:800;
 }
 
@@ -116,38 +96,20 @@ header{
 /* ================= DESKTOP MENU ================= */
 .menu-desktop{
   display:flex;
-  align-items:center;
-  gap:22px;
+  gap:18px;
   font-size:14px;
   font-weight:600;
 }
 
-.menu-desktop a{
-  position:relative;
-  transition:.25s;
-}
-
-.menu-desktop a:hover,
-.menu-desktop a.active{
+.menu-desktop a:hover{
   color:var(--accent);
 }
 
-.menu-desktop a.active::after{
-  content:"";
-  position:absolute;
-  left:0;
-  bottom:-8px;
-  width:100%;
-  height:3px;
-  background:var(--accent);
-  border-radius:3px;
-}
-
-/* ================= AUTH ================= */
+/* ================= AUTH + HAMBURGER ================= */
 .auth{
   display:flex;
   align-items:center;
-  gap:14px;
+  gap:12px;
 }
 
 .auth .login{
@@ -159,25 +121,126 @@ header{
   background:var(--primary);
   color:#fff;
   padding:10px 20px;
-  border-radius:10px;
-  font-weight:700;
+  border-radius:8px;
 }
 
-/* ================= HAMBURGER ================= */
 .hamburger{
   display:none;
   font-size:26px;
   cursor:pointer;
+  user-select:none;
 }
 
-/* =====================================================
-   MOBILE MENU
-===================================================== */
+/* ================= ANIMATION ================= */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(40px)}
+  to{opacity:1;transform:none}
+}
+/* ================= HERO – FULL PHONE FIT ================= */
+.hero{
+  min-height: 100vh;
+  background: linear-gradient(135deg,var(--dark),var(--dark2));
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 80px 16px 60px;
+}
+
+.hero-content{
+  max-width: 680px;
+  margin: auto;
+}
+
+/* Title */
+.hero h1{
+  font-size: 42px;
+  line-height: 1.25;
+}
+
+.hero h1 span{
+  color: var(--accent);
+}
+
+/* Paragraph */
+.hero p{
+  margin-top: 14px;
+  font-size: 16px;
+  line-height: 1.6;
+  opacity: .9;
+}
+
+/* Buttons */
+.hero-actions{
+  margin-top: 24px;
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.hero-actions a{
+  width: auto;
+}
+
+/* ================= SECTION ================= */
+section{padding:90px 20px}
+.container{max-width:1200px;margin:auto}
+
+.title{
+  border-left:6px solid var(--accent);
+  padding-left:16px;
+  margin-bottom:40px;
+}
+.title h2{font-size:36px;color:var(--primary)}
+.title p{color:var(--muted)}
+
+.workflow{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:26px;
+}
+.step{
+  background:#fff;
+  padding:30px;
+  border-radius:18px;
+  box-shadow:var(--shadow);
+}
+.step span{
+  font-size:48px;
+  font-weight:900;
+  color:rgba(43,57,144,.15);
+}
+
+/* ================= STATS ================= */
+.stats{
+  background:linear-gradient(135deg,var(--dark),var(--dark2));
+  color:#fff;
+}
+.stats-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:30px;
+  text-align:center;
+}
+.stat h3{font-size:46px;color:var(--accent)}
+
+/* ================= MOBILE INTERVIEW FIX ================= */
+@media(max-width:600px){
+  .question-box{
+    font-size:16px;
+  }
+  .interview-actions{
+    flex-direction:column;
+  }
+}
+/* ================= MOBILE MENU ================= */
 .menu-mobile{
   position:fixed;
   top:70px;
   left:0;
-  width:80%;
+  width:78%;                 /* right-side gap */
   max-width:320px;
   height:calc(100vh - 70px);
   background:#fff;
@@ -187,17 +250,14 @@ header{
   transition:.3s ease;
   z-index:10001;
 }
-
-.menu-mobile.active{
-  transform:translateX(0);
-}
+.menu-mobile.active{transform:translateX(0)}
 
 .menu-mobile a,
 .mobile-parent{
   display:block;
   padding:14px 0;
   font-size:16px;
-  font-weight:600;
+  font-weight:500;
 }
 
 .mobile-parent{
@@ -209,321 +269,327 @@ header{
 .mobile-sub{
   display:none;
   padding-left:16px;
+  margin-top:6px;
+}
+.mobile-sub a{
+  padding:8px 0;
+  font-size:15px;
 }
 
+/* login/register (scroll to see) */
 .mobile-auth{
-  margin-top:30px;
-  padding-top:20px;
+  margin-top:32px;
+  padding-top:16px;
   border-top:1px solid #eee;
   display:flex;
-  gap:12px;
+  gap:16px;
 }
-
 .mobile-auth a{
   flex:1;
+  padding:12px 0;
   text-align:center;
-  padding:12px;
-  border-radius:10px;
-  font-weight:700;
+  font-size:15px;
+  font-weight:600;
+  border-radius:8px;
 }
-
 .mobile-auth .login{
   border:2px solid var(--primary);
   color:var(--primary);
 }
-
 .mobile-auth .register{
   background:var(--primary);
   color:#fff;
 }
 
-/* =====================================================
-   HERO SECTION (FINAL FIX)
-===================================================== */
-.hero{
-  background:linear-gradient(135deg,var(--dark),var(--dark2));
-  color:#fff;
-  padding:80px 20px 100px;
-}
-
-.hero-content{
-  max-width:720px;
-  margin:auto;
-  text-align:center;
-}
-
-.hero img{
-  max-width:420px;
-  margin:0 auto 28px;
-  border-radius:20px;
-  box-shadow:0 30px 60px rgba(0,0,0,.35);
-}
-
-.hero h1{
-  font-size:42px;
-  line-height:1.25;
-}
-
-.hero h1 span{
-  color:var(--accent);
-}
-
-.hero p{
-  margin-top:14px;
-  font-size:16px;
-  opacity:.9;
-}
-
-/* ================= HERO BUTTONS ================= */
-.hero-actions{
-  margin-top:26px;
-  display:flex;
-  gap:16px;
-  justify-content:center;
-  flex-wrap:wrap;
-}
-
-.hero-actions a{
-  min-width:220px;
-  padding:14px 34px;
-  font-size:15px;
-  font-weight:800;
-  border-radius:30px;
-  transition:transform .25s, box-shadow .25s;
-}
-
-/* Primary */
-.btn-primary{
-  background:var(--accent);
-  color:#fff;
-  box-shadow:0 18px 40px rgba(255,153,0,.35);
-}
-
-.btn-primary:hover{
-  transform:translateY(-3px);
-  box-shadow:0 26px 60px rgba(255,153,0,.45);
-}
-
-/* Secondary */
-.btn-secondary{
-  border:2px solid rgba(255,255,255,.6);
-  color:#fff;
-}
-
-.btn-secondary:hover{
-  background:rgba(255,255,255,.1);
-}
-
-/* =====================================================
-   SECTIONS
-===================================================== */
-section{
-  padding:90px 20px;
-}
-
-.container{
-  max-width:1200px;
-  margin:auto;
-}
-
-.title{
-  border-left:6px solid var(--accent);
-  padding-left:16px;
-  margin-bottom:40px;
-}
-
-.title h2{
-  font-size:36px;
-  color:var(--primary);
-}
-
-.title p{
-  color:var(--muted);
-}
-
-/* ================= CARDS / WORKFLOW ================= */
-.workflow{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:26px;
-}
-
-.step{
-  background:#fff;
-  padding:30px;
-  border-radius:18px;
-  box-shadow:var(--shadow);
-  transition:transform .3s, box-shadow .3s;
-}
-
-.step:hover{
-  transform:translateY(-10px);
-  box-shadow:var(--shadow-lg);
-}
-
-/* =====================================================
-   STATS
-===================================================== */
-.stats{
-  background:linear-gradient(135deg,var(--dark),var(--dark2));
-  color:#fff;
-}
-
-.stats-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:30px;
-  text-align:center;
-}
-
-.stat h3{
-  font-size:46px;
-  color:var(--accent);
-}
-
-/* =====================================================
-   PRICING
-===================================================== */
-.pricing-card{
-  text-align:center;
-}
-
-.pricing-card img{
-  height:160px;
-  object-fit:cover;
-  border-radius:14px;
-  margin-bottom:16px;
-}
-
-/* =====================================================
-   FOOTER
-===================================================== */
-.footer{
-  background:linear-gradient(135deg,#0f1c24,#1b2a3a);
-  color:#fff;
-  padding:90px 20px 40px;
-}
-
-.footer-grid{
-  display:grid;
-  grid-template-columns:2fr 1fr 1fr 1.4fr;
-  gap:50px;
-}
-
-.footer-logo{
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-
-.footer-logo span{
-  width:46px;
-  height:46px;
-  background:var(--primary);
-  border-radius:12px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight:800;
-}
-
-.footer-col h4{
-  margin-bottom:18px;
-}
-
-.footer-col a{
-  display:block;
-  font-size:14px;
-  margin-bottom:12px;
-  opacity:.7;
-}
-
-.footer-col a:hover{
-  opacity:1;
-  color:var(--accent);
-}
-
-/* =====================================================
-   MOBILE FIXES
-===================================================== */
+/* ================= RESPONSIVE ================= */
 @media(max-width:992px){
   .menu-desktop,
   .auth .login,
-  .auth .register{
-    display:none;
+  .auth .register{display:none}
+  .hamburger{display:block}
+}
+
+/* ================= PAGE CONTENT ================= */
+.page{
+  padding:100px 20px;
+  max-width:1200px;
+  margin:auto;
+}
+.page h2{
+  font-size:36px;
+  color:var(--primary);
+  margin-bottom:20px;
+}
+.page p{
+  font-size:16px;
+  line-height:1.7;
+  color:#444;
+}
+/* =====================================================
+   SMART HIRE — FINAL CSS (PART 3 / 3)
+   HAMBURGER · DROPDOWN · RESPONSIVE · CLEANUP
+===================================================== */
+
+/* ================= DESKTOP NAV ================= */
+.menu-desktop{
+  display:flex;
+  align-items:center;
+  gap:22px;
+  white-space:nowrap;
+}
+
+.menu-desktop a{
+  font-size:14px;
+  font-weight:600;
+  position:relative;
+  transition:color .25s ease;
+}
+
+.menu-desktop a:hover,
+.menu-desktop a.active{
+  color:var(--accent);
+}
+
+/* ================= HERO BUTTON FINAL FIX ================= */
+
+.hero-actions{
+  margin-top: 26px;
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.hero-actions a{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 220px;
+  padding: 14px 34px;
+  font-size: 15px;
+  font-weight: 700;
+  border-radius: 30px;
+  transition: all .3s ease;
+  text-decoration: none;
+}
+
+/* Primary */
+.hero-actions .btn-primary{
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 18px 40px rgba(255,153,0,.35);
+}
+
+.hero-actions .btn-primary:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 26px 60px rgba(255,153,0,.45);
+}
+
+/* Secondary */
+.hero-actions .btn-secondary{
+  border: 2px solid rgba(255,255,255,.6);
+  color: #fff;
+  background: transparent;
+}
+
+.hero-actions .btn-secondary:hover{
+  background: rgba(255,255,255,.1);
+}
+
+/* ================= MOBILE BUTTON FIX ================= */
+@media (max-width: 768px){
+  .hero-actions{
+    flex-direction: column;
+    gap: 14px;
   }
-  .hamburger{
-    display:block;
+
+  .hero-actions a{
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
   }
 }
 
+/* ================= DROPDOWN (DESKTOP) ================= */
+.nav-item{
+  position:relative;
+}
+
+.dropdown-menu{
+  position:absolute;
+  top:120%;
+  left:0;
+  background:#fff;
+  min-width:180px;
+  border-radius:10px;
+  box-shadow:0 15px 40px rgba(0,0,0,.15);
+  display:flex;
+  flex-direction:column;
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(10px);
+  transition:.25s ease;
+  z-index:999;
+}
+
+.dropdown-menu a{
+  padding:12px 16px;
+  font-size:14px;
+}
+
+.dropdown-menu a:hover{
+  background:#f5f7fb;
+  color:var(--accent);
+}
+
+.nav-item:hover .dropdown-menu{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0);
+}
+
+/* ================= MOBILE LINKS ================= */
+.menu-mobile a,
+.mobile-parent{
+  display:block;
+  padding:14px 0;
+  font-size:16px;
+  font-weight:600;
+}
+
+/* touch feedback */
+.menu-mobile a:active,
+.mobile-parent:active{
+  background:rgba(255,153,0,.12);
+  color:var(--accent);
+}
+
+/* ================= MOBILE DROPDOWN ================= */
+.mobile-parent{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  cursor:pointer;
+}
+
+.mobile-sub{
+  display:none;
+  padding-left:16px;
+}
+
+.mobile-sub a{
+  font-size:14px;
+  padding:10px 0;
+  color:#444;
+}
+
+/* ================= RESPONSIVE RULES ================= */
+@media(max-width:992px){
+
+  /* hide desktop */
+  .menu-desktop,
+  .auth .login,
+  .auth .register{
+    display:none !important;
+  }
+
+  /* show hamburger */
+  .hamburger{
+    display:block;
+  }
+
+  /* disable hover dropdown */
+  .nav-item:hover .dropdown-menu{
+    opacity:0;
+    visibility:hidden;
+  }
+}
+
+/* ================= HERO MOBILE FIX (MATCH INDEX) ================= */
 @media(max-width:768px){
 
   .hero{
-    padding:24px 14px 80px;
-  }
-
-  .hero img{
-    max-height:32vh;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
   }
 
   .hero h1{
     font-size:28px;
+    line-height:1.25;
   }
 
   .hero p{
-    font-size:14px;
+    font-size:15px;
   }
 
   .hero-actions{
     flex-direction:column;
+    gap:14px;
   }
 
-  .hero-actions a{
+  .btn-primary,
+  .btn-secondary{
     width:100%;
-    max-width:320px;
-    margin:auto;
+  }
+}
+
+/* ================= CHAT MOBILE FIX ================= */
+@media(max-width:600px){
+  .chat-panel{
+    width:92%;
+    right:4%;
+  }
+}
+
+/* ================= INTERVIEW MOBILE FIX ================= */
+@media(max-width:600px){
+  .ai-interview{
+    padding:60px 16px;
   }
 
-  .workflow{
-    grid-template-columns:1fr;
+  .question-box{
+    font-size:16px;
   }
 
+  #userAnswer{
+    font-size:14px;
+  }
+
+  .interview-actions{
+    flex-direction:column;
+  }
+}
+
+/* ================= FOOTER MOBILE FIX ================= */
+@media(max-width:900px){
   .footer-grid{
     grid-template-columns:1fr;
     gap:40px;
   }
-}
 
-/* =====================================================
-   ULTRA SMALL PHONES (320px)
-===================================================== */
-@media(max-width:360px){
-
-  .hero h1{
-    font-size:24px;
-  }
-
-  .hero p{
-    font-size:13px;
-  }
-
-  .hero-actions a{
-    min-width:auto;
-    padding:12px;
+  .footer-bottom{
+    text-align:center;
+    justify-content:center;
   }
 }
 
-/* =====================================================
-   PERFORMANCE + UX
-===================================================== */
-*{
-  -webkit-tap-highlight-color:transparent;
+/* ================= FINAL CLEANUP ================= */
+*{-webkit-tap-highlight-color:transparent}
+
+html,body{
+  width:100%;
+  overflow-x:hidden;
 }
 
-button:active,
-a:active{
-  transform:scale(.97);
+button:active{
+  transform:scale(.96);
+}
+
+.hamburger{
+  cursor:pointer;
+  z-index:10000;
 }
 
 /* =====================================================
@@ -799,30 +865,6 @@ header{
   0%{box-shadow:0 0 0 0 rgba(255,153,0,.45)}
   70%{box-shadow:0 0 0 22px rgba(255,153,0,0)}
   100%{box-shadow:0 0 0 0 rgba(255,153,0,0)}
-}
-/* ================= PRICING MOBILE VISIBILITY FIX ================= */
-@media (max-width: 768px){
-
-  .pricing-section{
-    padding-bottom: 60px;   /* breathing space */
-  }
-
-  .pricing-grid{
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-
-  .pricing-card{
-    height: auto !important;      /* REMOVE fixed height */
-    min-height: unset !important;
-    overflow: visible !important; /* ALLOW full content */
-    padding-bottom: 28px;
-  }
-
-  .pricing-card:last-child{
-    margin-bottom: 40px;          /* FIX last card cut */
-  }
 }
 
 </style>
