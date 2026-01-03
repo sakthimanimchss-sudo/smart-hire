@@ -443,6 +443,20 @@ header{
   line-height:1.8;
   opacity:.9;
 }
+.ai-section{
+  text-align: center;
+}
+
+.ai-section h2{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ai-section p{
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 900px;
+}
 
 /* ================= STEPS ================= */
 .steps-section{
@@ -1196,9 +1210,10 @@ const aiSection = document.querySelector(".ai-section");
 if(aiSection){
   const list = document.createElement("div");
   list.style.marginTop = "30px";
-  list.style.display = "flex";
-  list.style.flexWrap = "wrap";
-  list.style.gap = "12px";
+list.style.display = "flex";
+list.style.flexWrap = "wrap";
+list.style.gap = "12px";
+list.style.justifyContent = "center";   // ✅ CENTER TAGS
 
   aiKeywords.forEach(word => {
     const tag = document.createElement("span");
@@ -1239,6 +1254,7 @@ if(aiSection){
 
   tagObserver.observe(aiSection);
 }
+
 
 /* ================= STEP HIGHLIGHT LOOP ================= */
 const steps = document.querySelectorAll(".step");
