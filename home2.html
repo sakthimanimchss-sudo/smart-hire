@@ -434,6 +434,20 @@ section{padding:90px 20px}
     line-height: 1.7;
   }
 }
+   
+/* ================= HERO IMAGE MOBILE FIT ================= */
+@media (max-width: 768px){
+
+  .hero img{
+    width: 100%;
+    max-width: 100%;
+    height: auto;                /* keep natural ratio */
+    max-height: 32vh;            /* PREVENT too tall image */
+    object-fit: cover;
+    border-radius: 16px;
+    margin-bottom: 18px;
+  }
+}
 
 /* ================= MOBILE BUTTON FIX ================= */
 @media (max-width: 768px){
