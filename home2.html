@@ -409,6 +409,22 @@ section{padding:90px 20px}
     margin: 0 auto;
   }
 }
+/* ================= HERO CONTENT VISIBILITY FIX ================= */
+@media (max-width: 768px){
+
+  .hero{
+    min-height: auto !important;     /* allow content to expand */
+    padding-bottom: 70px !important; /* space for buttons */
+  }
+
+  .hero-content{
+    padding-bottom: 20px;
+  }
+
+  .hero p{
+    margin-bottom: 22px;             /* ensure text is visible */
+  }
+}
 
 /* ================= DROPDOWN (DESKTOP) ================= */
 .nav-item{
