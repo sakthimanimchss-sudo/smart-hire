@@ -895,6 +895,46 @@ header{
   70%{box-shadow:0 0 0 22px rgba(255,153,0,0)}
   100%{box-shadow:0 0 0 0 rgba(255,153,0,0)}
 }
+/* =====================================================
+   SCROLL ANIMATIONS — CLEAN & FAST
+===================================================== */
+
+/* Base hidden state */
+.reveal{
+  opacity:0;
+  transform:translateY(40px);
+  transition:
+    opacity .8s ease,
+    transform .8s ease;
+  will-change:opacity, transform;
+}
+
+/* Visible state */
+.reveal.active{
+  opacity:1;
+  transform:none;
+}
+
+/* Delay helpers */
+.reveal.delay-1{transition-delay:.1s}
+.reveal.delay-2{transition-delay:.2s}
+.reveal.delay-3{transition-delay:.3s}
+.reveal.delay-4{transition-delay:.4s}
+
+/* Card hover stays smooth */
+.step,
+.pricing-card{
+  will-change:transform;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce){
+  .reveal{
+    opacity:1;
+    transform:none;
+    transition:none;
+  }
+}
 
 </style>
 </head>
@@ -977,6 +1017,7 @@ header{
 
 <section class="hero">
   <div class="hero-content">
+     <div class="hero-content reveal">
     <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7"
          alt="Recruitment team"
          style="max-width:420px;margin:0 auto 30px;border-radius:20px;box-shadow:0 30px 60px rgba(0,0,0,.35)">
@@ -997,24 +1038,28 @@ header{
 <section style="background:#fff">
   <div class="container">
     <div class="title">
+       <div class="title reveal">
       <h2>Why Choose SmartHire Membership</h2>
       <p>Designed for serious recruiters and growing companies</p>
     </div>
 
     <div class="workflow">
       <div class="step">
+         <div class="step reveal delay-1">
         <i class="fa-solid fa-user-check fa-2x" style="color:#2b3990"></i>
         <h4>Verified Talent Pool</h4>
         <p>Pre-screened candidates verified by skills, experience, and availability.</p>
       </div>
 
       <div class="step">
+         <div class="step reveal delay-2">
         <i class="fa-solid fa-arrow-trend-up fa-2x" style="color:#2b3990"></i>
         <h4>Priority Job Visibility</h4>
         <p>Your jobs rank higher, bringing better applicants faster.</p>
       </div>
 
       <div class="step">
+         <div class="step reveal delay-3">
         <i class="fa-solid fa-clock fa-2x" style="color:#2b3990"></i>
         <h4>Time-Saving Tools</h4>
         <p>Advanced filters, saved searches, and smart shortlisting.</p>
@@ -1108,6 +1153,7 @@ header{
 <section class="stats">
   <div class="container">
     <div class="stats-grid">
+       <div class="stat reveal delay-1">
 
       <div class="stat">
         <h3 data-target="500">0</h3>
@@ -1192,6 +1238,7 @@ header{
   <div class="container">
     <div class="title">
       <h2>Membership Pricing</h2>
+       <div class="step pricing-card reveal delay-1">
       <p>Choose the right plan for your hiring needs</p>
     </div>
 
@@ -1478,6 +1525,37 @@ document.querySelectorAll('.menu-mobile a').forEach(link=>{
     });
 
 })();
+   
+/* =====================================================
+   SCROLL REVEAL — ULTRA LIGHT
+===================================================== */
+document.addEventListener("DOMContentLoaded", () => {
+
+  const reveals = document.querySelectorAll(".reveal");
+
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add("active");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold:0.15,
+      rootMargin:"0px 0px -60px 0px"
+    }
+  );
+
+  reveals.forEach(el => observer.observe(el));
+
+});
+   
+document.querySelectorAll(
+  "section, .step, .stat, .pricing-card"
+).forEach(el => el.classList.add("reveal"));
+
 </script>
 
 </body>
