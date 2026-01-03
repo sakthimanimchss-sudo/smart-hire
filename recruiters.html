@@ -764,6 +764,20 @@ header{
     justify-content:center;
   }
 }
+.menu-desktop a{
+  position: relative;
+}
+
+.menu-desktop a.active::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: 100%;
+  height: 3px;
+  background: #ff9900;
+  border-radius: 2px;
+}
 
 </style>
 </head>
@@ -1223,6 +1237,14 @@ const dashboard = document.getElementById("dashboardPreview");
 if(dashboard){
   dashboardObserver.observe(dashboard);
 }
+const currentPage = location.pathname.split("/").pop();
+
+document.querySelectorAll(".menu-desktop a").forEach(link => {
+  if(link.getAttribute("href") === currentPage){
+    link.classList.add("active");
+  }
+});
+ 
 </script>
 
 
