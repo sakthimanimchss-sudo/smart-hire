@@ -947,6 +947,25 @@ header{
   font-size:14px;
   opacity:.85;
 }
+.menu-desktop a{
+  position: relative;
+}
+
+.menu-desktop a.active{
+  color: #ff9900;
+}
+
+.menu-desktop a.active::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: 100%;
+  height: 3px;
+  background: #ff9900;
+  border-radius: 2px;
+}
+
 </style>
 
  
@@ -1435,10 +1454,11 @@ header{
     <div class="footer-col">
       <h4>Resources</h4>
       <a href="#">Blog</a>
-      <a href="#">Resume Tips</a>
+      <a href="career.html">Resume Tips</a>
       <a href="#">Interview Prep</a>
       <a href="#">Skill Trends</a>
       <a href="#">Success Stories</a>
+      <a href="404.html">404 Page</a>
     </div>
 
     <!-- NEWSLETTER -->
@@ -1677,6 +1697,34 @@ function toggleSub(el){
     sub.style.display = sub.style.display === "block" ? "none" : "block";
   }
 }
+
+(function(){
+
+  const page = window.location.pathname.split("/").pop();
+
+  // define HOME pages
+  const homePages = ["", "index.html", "home2.html"];
+
+  document.querySelectorAll(".menu-desktop > a, .menu-desktop .nav-item > a")
+    .forEach(link => {
+
+      const href = link.getAttribute("href");
+
+      if(!href || href === "#") return;
+
+      // HOME logic (parent dropdown)
+      if(homePages.includes(page) && link.textContent.trim().startsWith("Home")){
+        link.classList.add("active");
+        return;
+      }
+
+      // Normal pages
+      if(href === page){
+        link.classList.add("active");
+      }
+    });
+
+})();
 
 </script>
 
