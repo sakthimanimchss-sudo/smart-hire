@@ -1,331 +1,435 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- =====================================================
+     SMARTHIRE – REGISTER PAGE (ADVANCED)
+     Author: SmartHire UI
+     Version: 1.0
+===================================================== -->
+
 <meta charset="UTF-8">
 <title>SmartHire | Register</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- FONT -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<!-- ✅ FAVICON (WORKING ON ALL PAGES) -->
+<link rel="icon" type="image/png"
+ href="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
 
-<!-- ICONS -->
+<!-- ================= ICONS ================= -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
+<!-- ================= STYLES ================= -->
 <style>
+
+/* =====================================================
+   1. ROOT VARIABLES
+===================================================== */
 :root{
-  --primary:#1f2a8c;
-  --accent:#ff9900;
+  --primary:#2b3990;
+  --primary-dark:#1f2d73;
+  --primary-soft:#eef2ff;
+  --bg:#f5f7fb;
+  --white:#ffffff;
   --text:#111827;
   --muted:#6b7280;
-  --border:#d1d5db;
-  --bg:#f5f7fb;
+  --success:#22c55e;
+  --error:#ef4444;
+
+  --radius-lg:22px;
+  --radius:14px;
+  --shadow-lg:0 40px 90px rgba(0,0,0,.12);
+  --shadow:0 20px 40px rgba(0,0,0,.08);
 }
 
-*{
+/* =====================================================
+   2. RESET & BASE
+===================================================== */
+*,
+*::before,
+*::after{
+  margin:0;
+  padding:0;
   box-sizing:border-box;
-  font-family:Inter,sans-serif;
+}
+
+html{
+  scroll-behavior:smooth;
 }
 
 body{
-  margin:0;
+  font-family:Inter,Segoe UI,Arial,sans-serif;
+  background:linear-gradient(135deg,#eef2ff,#f8fafc);
   min-height:100vh;
-  background:var(--bg);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--text);
+  line-height:1.6;
 }
 
-/* ================= LAYOUT ================= */
-.register-page{
-  min-height:100vh;
+a{
+  text-decoration:none;
+  color:var(--primary);
+}
+
+img{
+  max-width:100%;
+  display:block;
+}
+
+/* =====================================================
+   3. PAGE WRAPPER
+===================================================== */
+.register-wrapper{
+  width:100%;
+  max-width:1100px;
+  padding:20px;
+}
+
+/* =====================================================
+   4. CARD LAYOUT
+===================================================== */
+.register-card{
+  background:var(--white);
+  border-radius:var(--radius-lg);
+  box-shadow:var(--shadow-lg);
   display:grid;
-  grid-template-columns:1fr 1fr;
+  grid-template-columns:1.1fr 1fr;
+  overflow:hidden;
+  animation:fadeUp .6s ease;
 }
 
-/* LEFT INFO */
-.left-panel{
-  padding:80px;
+/* =====================================================
+   5. LEFT INFO PANEL
+===================================================== */
+.register-info{
+  background:linear-gradient(135deg,var(--primary),var(--primary-dark));
+  color:#fff;
+  padding:48px 40px;
   display:flex;
   flex-direction:column;
-  justify-content:center;
-  background:#fff;
-}
-
-.brand{
-  font-weight:800;
-  color:var(--primary);
-  margin-bottom:16px;
-}
-
-.left-panel h1{
-  font-size:44px;
-  margin:0 0 16px;
-  color:var(--text);
-}
-
-.left-panel p{
-  color:var(--muted);
-  font-size:17px;
-  line-height:1.8;
-  max-width:520px;
-}
-
-/* RIGHT FORM */
-.right-panel{
-  padding:60px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-.form-wrapper{
-  width:100%;
-  max-width:520px;
-}
-
-/* HEADER */
-.form-header{
-  display:flex;
-  align-items:center;
   justify-content:space-between;
-  margin-bottom:32px;
 }
 
-.title{
+.info-top h2{
   font-size:32px;
-  font-weight:800;
-  color:var(--text);
+  line-height:1.25;
 }
 
-.logo{
-  width:52px;
-  height:52px;
+.info-top p{
+  margin-top:12px;
+  opacity:.9;
+  font-size:15px;
+}
+
+/* FEATURES */
+.features{
+  margin-top:30px;
+}
+.features li{
+  list-style:none;
+  margin-bottom:14px;
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+}
+.features i{
+  color:#a5b4fc;
+  margin-top:4px;
+}
+
+/* SECURITY NOTE */
+.security-box{
+  margin-top:40px;
+  padding:16px;
   border-radius:14px;
+  background:rgba(255,255,255,.1);
+  font-size:13px;
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+}
+
+/* =====================================================
+   6. RIGHT FORM PANEL
+===================================================== */
+.register-form{
+  padding:48px 44px;
+}
+
+/* BRAND */
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  justify-content:center;
+}
+.brand span{
+  width:44px;
+  height:44px;
+  border-radius:12px;
   background:var(--primary);
   color:#fff;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-weight:900;
-  font-size:20px;
+  font-weight:800;
+}
+.brand h1{
+  font-size:22px;
+  color:var(--primary);
 }
 
-/* FORM */
-form{
+/* TITLES */
+.register-form h2{
+  text-align:center;
+  margin-top:18px;
+}
+.register-form p{
+  text-align:center;
+  font-size:14px;
+  color:var(--muted);
+  margin-top:6px;
+}
+
+/* =====================================================
+   7. FORM GRID
+===================================================== */
+.form-grid{
+  margin-top:28px;
   display:grid;
-  gap:16px;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+
+.form-group{
+  display:flex;
+  flex-direction:column;
+}
+
+.form-group.full{
+  grid-column:1 / -1;
 }
 
 label{
   font-size:13px;
   font-weight:600;
-  color:#374151;
+  margin-bottom:6px;
 }
 
-label span{color:#ef4444}
-
-input,select{
-  width:100%;
-  padding:14px 44px 14px 14px;
+input, select{
+  padding:14px 14px;
   border-radius:12px;
-  border:1.5px solid var(--border);
-  background:#fff;
+  border:1px solid #e5e7eb;
   font-size:14px;
   outline:none;
-  transition:.25s;
 }
 
-input:focus,select:focus{
-  border-color:var(--accent);
- outline:0;
-  box-shadow:0 0 0 3px rgba(255,153,0,.25);
+input:focus{
+  border-color:var(--primary);
 }
 
-.field{
-  position:relative;
+/* =====================================================
+   8. GENDER
+===================================================== */
+.gender-group{
+  display:flex;
+  gap:18px;
+  margin-top:6px;
+  font-size:14px;
 }
 
-.field i{
-  position:absolute;
-  right:14px;
-  top:50%;
-  transform:translateY(-50%);
-  color:#9ca3af;
-  cursor:pointer;
+/* =====================================================
+   9. TERMS
+===================================================== */
+.terms{
+  margin-top:18px;
+  font-size:13px;
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
 }
 
-/* GRID */
-.grid-2{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:14px;
-}
-
-/* BUTTON */
-button{
-  margin-top:10px;
-  padding:16px;
+/* =====================================================
+   10. BUTTON
+===================================================== */
+.btn-submit{
+  margin-top:26px;
+  width:100%;
+  padding:15px;
+  border-radius:30px;
   border:none;
-  border-radius:999px;
-  background:var(--accent);
+  background:linear-gradient(135deg,var(--primary),var(--primary-dark));
   color:#fff;
-  font-size:16px;
-  font-weight:800;
+  font-size:15px;
+  font-weight:700;
   cursor:pointer;
   transition:.3s;
 }
-
-button:hover{
-  transform:translateY(-2px);
+.btn-submit:hover{
+  transform:translateY(-1px);
+  box-shadow:0 20px 40px rgba(43,57,144,.35);
 }
 
-/* FOOTER */
-.footer{
-  margin-top:20px;
+/* =====================================================
+   11. FOOT LINKS
+===================================================== */
+.form-footer{
+  margin-top:22px;
   text-align:center;
-  font-size:14px;
+  font-size:13px;
 }
 
-.footer a{
-  color:var(--primary);
-  font-weight:700;
-  text-decoration:none;
+/* =====================================================
+   12. ANIMATION
+===================================================== */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(30px)}
+  to{opacity:1;transform:none}
 }
 
-/* ================= MOBILE ================= */
+/* =====================================================
+   13. RESPONSIVE
+===================================================== */
 @media(max-width:900px){
-  .register-page{
+  .register-card{
     grid-template-columns:1fr;
   }
-
-  .left-panel{
+  .register-info{
     display:none;
   }
+}
 
-  .right-panel{
-    padding:40px 20px;
+@media(max-width:500px){
+  .form-grid{
+    grid-template-columns:1fr;
   }
 }
+
 </style>
 </head>
 
 <body>
 
-<div class="register-page">
+<div class="register-wrapper">
+  <div class="register-card">
 
-  <!-- LEFT -->
-  <div class="left-panel">
-    <div class="brand">SmartHire</div>
-    <h1>Build Your Career Faster</h1>
-    <p>
-      Create your SmartHire account to apply for jobs, manage resumes,
-      access AI career tools, and connect with recruiters worldwide —
-      all from one powerful platform.
-    </p>
-  </div>
+    <!-- ================= LEFT INFO ================= -->
+    <div class="register-info">
+      <div class="info-top">
+        <h2>Build Your Hiring Future<br>With SmartHire</h2>
+        <p>
+          Join India’s next-generation AI hiring platform.
+          Hire faster, smarter, and with confidence.
+        </p>
 
-  <!-- RIGHT -->
-  <div class="right-panel">
-    <div class="form-wrapper">
-
-      <div class="form-header">
-        <div class="title">User Registration</div>
-        <div class="logo">S</div>
+        <ul class="features">
+          <li><i class="fa-solid fa-circle-check"></i> Verified recruiters & candidates</li>
+          <li><i class="fa-solid fa-circle-check"></i> AI-powered job matching</li>
+          <li><i class="fa-solid fa-circle-check"></i> Enterprise-grade dashboards</li>
+          <li><i class="fa-solid fa-circle-check"></i> Secure & scalable platform</li>
+        </ul>
       </div>
 
-      <form>
+      <div class="security-box">
+        <i class="fa-solid fa-shield-halved"></i>
+        <p>
+          Your personal information is encrypted and never shared
+          without your consent.
+        </p>
+      </div>
+    </div>
 
-        <label>Email <span>*</span></label>
-        <div class="field">
-          <input type="email" required>
-          <i class="fa-regular fa-envelope"></i>
-        </div>
+    <!-- ================= RIGHT FORM ================= -->
+    <div class="register-form">
 
-        <div class="grid-2">
-          <div>
-            <label>Password <span>*</span></label>
-            <div class="field">
-              <input type="password" id="p1" required>
-              <i class="fa-regular fa-eye" onclick="toggle('p1',this)"></i>
-            </div>
+      <div class="brand">
+        <a href="index.html">
+          <span>S</span>
+          <h1>SmartHire</h1>
+        </a>
+      </div>
+
+      <h2>Create Your Account</h2>
+      <p>Start your SmartHire journey in less than 2 minutes</p>
+
+      <form id="registerForm">
+
+        <div class="form-grid">
+
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" placeholder="John Doe" required>
           </div>
 
-          <div>
-            <label>Retype Password <span>*</span></label>
-            <div class="field">
-              <input type="password" id="p2" required>
-              <i class="fa-regular fa-eye" onclick="toggle('p2',this)"></i>
-            </div>
+          <div class="form-group">
+            <label>Username</label>
+            <input type="text" placeholder="john_doe" required>
           </div>
-        </div>
 
-        <div class="grid-2">
-          <div>
-            <label>First Name <span>*</span></label>
-            <input type="text" required>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" placeholder="you@company.com" required>
           </div>
-          <div>
-            <label>Last Name <span>*</span></label>
-            <input type="text" required>
-          </div>
-        </div>
 
-        <label>Phone Number <span>*</span></label>
-        <input type="tel" required>
-
-        <label>Address <span>*</span></label>
-        <input type="text" required>
-
-        <div class="grid-2">
-          <div>
-            <label>Town</label>
-            <input type="text">
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" placeholder="+91 XXXXX XXXXX">
           </div>
-          <div>
-            <label>Region <span>*</span></label>
-            <input type="text" required>
-          </div>
-        </div>
 
-        <div class="grid-2">
-          <div>
-            <label>Postcode / Zip <span>*</span></label>
-            <input type="text" required>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" placeholder="••••••••" required>
           </div>
-          <div>
-            <label>Country <span>*</span></label>
-            <select required>
-              <option>India</option>
-              <option>United Kingdom</option>
-              <option>United States</option>
-              <option>Canada</option>
+
+          <div class="form-group">
+            <label>Confirm Password</label>
+            <input type="password" placeholder="••••••••" required>
+          </div>
+
+          <div class="form-group full">
+            <label>Account Type</label>
+            <select>
+              <option>Job Seeker</option>
+              <option>Recruiter</option>
+              <option>Company / HR</option>
             </select>
           </div>
+
+          <div class="form-group full">
+            <label>Gender</label>
+            <div class="gender-group">
+              <label><input type="radio" name="g"> Male</label>
+              <label><input type="radio" name="g"> Female</label>
+              <label><input type="radio" name="g" checked> Prefer not to say</label>
+            </div>
+          </div>
+
         </div>
 
-        <button>Create Account</button>
+        <div class="terms">
+          <input type="checkbox" required>
+          <p>
+            I agree to SmartHire’s
+            <a href="#">Terms</a> &
+            <a href="#">Privacy Policy</a>
+          </p>
+        </div>
+
+        <button class="btn-submit">Create Account</button>
 
       </form>
 
-      <div class="footer">
+      <div class="form-footer">
         Already have an account?
         <a href="login.html">Login</a>
       </div>
 
     </div>
+
   </div>
-
 </div>
-
-<script>
-function toggle(id,el){
-  const i=document.getElementById(id);
-  if(i.type==="password"){
-    i.type="text";
-    el.classList.replace("fa-eye","fa-eye-slash");
-  }else{
-    i.type="password";
-    el.classList.replace("fa-eye-slash","fa-eye");
-  }
-}
-</script>
 
 </body>
 </html>
+
