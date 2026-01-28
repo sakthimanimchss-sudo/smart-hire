@@ -5,6 +5,10 @@
 <title>SmartHire | Contact Us</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<!-- ✅ FAVICON (WORKING ON ALL PAGES) -->
+<link rel="icon" type="image/png"
+ href="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
+
 <!-- Font Awesome -->
 <link rel="stylesheet"
  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -486,9 +490,9 @@ button:hover{
 
 /* ================= MAP SECTION ================= */
 .contact-map{
-  width:100vw;                 /* full screen width */
-  margin-left:calc(50% - 50vw);/* break container alignment */
-  margin-top:60px;
+ opacity:0;
+transform:translateY(40px);   /* ← pushes layout */
+animation:mapReveal .8s ease forwards;
   overflow:hidden;
   background:#fff;
 }
@@ -504,6 +508,14 @@ button:hover{
   transform:translateY(40px);
 
   animation:mapReveal .8s ease forwards;
+}
+
+.contact-map{
+  width:100%;
+  margin:0;              /* REMOVE GAP */
+  padding:0;
+  overflow:hidden;
+  background:#fff;
 }
 
 /* MAP ANIMATION */
@@ -805,11 +817,10 @@ header{
 
 <!-- ================= HEADER ================= -->
 <header>
-  <div class="nav">
-    <div class="logo">
-      <span>S</span>
-      <h1>SmartHire</h1>
-    </div>
+     <div class="nav">
+     <a href="index.html" class="logo">
+      <span>S</span><h1>SmartHire</h1>
+    </a>
 
     <!-- DESKTOP MENU -->
     <div class="menu-desktop">
@@ -902,7 +913,6 @@ header{
 
   </div>
 </section>
-
 <!-- ================= CONTACT INSTRUCTIONS ================= -->
 <section class="contact-instructions">
   <div class="instruction-wrap">
