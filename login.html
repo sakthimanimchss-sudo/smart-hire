@@ -1,41 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
 
-<!-- ✅ FAVICON (WORKING ON ALL PAGES) -->
-<link rel="icon" type="image/png"
- href="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
+<!-- =========================================================
+  BASIC META
+========================================================= -->
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>SmartHire | Login</title>
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- FAVICON (ADD ON ALL PAGES) -->
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="shortcut icon" href="assets/favicon.png">
 
-<!-- ================= ICONS ================= -->
+<!-- =========================================================
+  GOOGLE FONT
+========================================================= -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- =========================================================
+  ICONS
+========================================================= -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
+<!-- =========================================================
+  GLOBAL STYLE
+========================================================= -->
 <style>
-/* =====================================================
-   SMARTHIRE LOGIN — FULL CSS
-===================================================== */
 
-/* ================= ROOT ================= */
+/* =========================================================
+   ROOT VARIABLES
+========================================================= */
 :root{
   --primary:#2b3990;
-  --primary-dark:#1e2a78;
-  --light:#f5f7fb;
-  --white:#ffffff;
-  --text:#111;
+  --primary-dark:#1f2b70;
+  --light:#f4f7fc;
+  --text:#1a1a1a;
   --muted:#6b7280;
   --border:#e5e7eb;
-  --radius:16px;
-  --shadow:0 30px 60px rgba(0,0,0,.15);
+  --success:#16a34a;
+  --error:#dc2626;
 }
 
-/* ================= RESET ================= */
-*,
-*::before,
-*::after{
+/* =========================================================
+   RESET
+========================================================= */
+*{
   margin:0;
   padding:0;
   box-sizing:border-box;
@@ -47,104 +59,118 @@ html,body{
 }
 
 body{
-  font-family:Inter,Segoe UI,Arial,sans-serif;
+  font-family:"Inter",system-ui,Segoe UI,Arial,sans-serif;
   background:linear-gradient(135deg,#eef2ff,#f8fafc);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
   color:var(--text);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow-x:hidden;
 }
 
-a{
-  text-decoration:none;
-  color:inherit;
+/* =========================================================
+   BACKGROUND DECOR
+========================================================= */
+.bg-shape{
+  position:absolute;
+  width:420px;
+  height:420px;
+  background:radial-gradient(circle at top,var(--primary),transparent 70%);
+  opacity:.15;
+  border-radius:50%;
+  filter:blur(40px);
 }
 
-/* ================= HEADER ================= */
-.header{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  background:#fff;
-  box-shadow:0 4px 18px rgba(0,0,0,.06);
-  z-index:1000;
-}
+.bg-shape.one{top:-120px;left:-120px}
+.bg-shape.two{bottom:-140px;right:-140px}
 
-.nav{
-  max-width:1400px;
-  margin:auto;
-  padding:14px 22px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-}
-
-.logo{
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-
-.logo span{
-  width:42px;
-  height:42px;
-  background:var(--primary);
-  color:#fff;
-  border-radius:10px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight:800;
-  font-size:18px;
-}
-
-.logo h1{
-  font-size:22px;
-  color:var(--primary);
-}
-
-/* ================= LOGIN WRAPPER ================= */
+/* =========================================================
+   LOGIN CARD
+========================================================= */
 .login-wrapper{
-  width:100%;
-  padding:120px 16px 40px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-/* ================= CARD ================= */
-.login-card{
+  position:relative;
   width:100%;
   max-width:420px;
   background:#fff;
   border-radius:20px;
-  box-shadow:var(--shadow);
-  padding:36px;
-  animation:fadeUp .8s ease;
+  padding:40px 36px;
+  box-shadow:0 30px 70px rgba(0,0,0,.15);
+  animation:cardIn .8s ease;
 }
 
-/* ================= ANIMATION ================= */
-@keyframes fadeUp{
-  from{opacity:0;transform:translateY(40px)}
+@keyframes cardIn{
+  from{opacity:0;transform:translateY(30px)}
   to{opacity:1;transform:none}
 }
 
-/* ================= TITLE ================= */
-.login-card h2{
-  font-size:28px;
-  color:var(--primary);
-  margin-bottom:8px;
+/* =========================================================
+   BRAND
+========================================================= */
+.brand{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  margin-bottom:28px;
 }
 
-.login-card p{
+.brand span{
+  width:46px;
+  height:46px;
+  background:var(--primary);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:22px;
+  font-weight:800;
+  border-radius:12px;
+}
+
+.brand h1{
+  font-size:22px;
+  color:var(--primary);
+  font-weight:800;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  margin-bottom:28px;
+  text-decoration:none;      /* 🔥 remove underline */
+  cursor:pointer;
+}
+
+.brand h1{
+  color:var(--primary);      /* keep blue */
+}
+
+.brand:hover h1{
+  text-decoration:underline; /* optional hover effect */
+}
+
+/* =========================================================
+   TITLES
+========================================================= */
+.login-wrapper h2{
+  font-size:24px;
+  font-weight:700;
+  text-align:center;
+  margin-bottom:6px;
+}
+
+.login-wrapper p.subtitle{
+  text-align:center;
   font-size:14px;
   color:var(--muted);
-  margin-bottom:26px;
+  margin-bottom:30px;
 }
 
-/* ================= FORM ================= */
+/* =========================================================
+   FORM
+========================================================= */
 .form-group{
   margin-bottom:18px;
 }
@@ -163,72 +189,77 @@ a{
 .input-wrap input{
   width:100%;
   padding:14px 44px 14px 14px;
-  border:1px solid var(--border);
   border-radius:10px;
-  font-size:15px;
+  border:1.6px solid var(--border);
+  font-size:14px;
   outline:none;
+  transition:.25s;
 }
 
 .input-wrap input:focus{
   border-color:var(--primary);
+  box-shadow:0 0 0 3px rgba(43,57,144,.15);
 }
 
 .input-wrap i{
   position:absolute;
-  top:50%;
   right:14px;
+  top:50%;
   transform:translateY(-50%);
-  color:#9ca3af;
+  color:var(--muted);
   cursor:pointer;
 }
 
-/* ================= OPTIONS ================= */
-.options{
+/* =========================================================
+   FORM OPTIONS
+========================================================= */
+.form-options{
   display:flex;
-  align-items:center;
   justify-content:space-between;
-  margin:16px 0 24px;
-  font-size:14px;
-}
-
-.options label{
-  display:flex;
   align-items:center;
-  gap:6px;
-  cursor:pointer;
+  font-size:13px;
+  margin:12px 0 22px;
 }
 
-.options a{
+.form-options a{
   color:var(--primary);
   font-weight:600;
+  text-decoration:none;
 }
 
-/* ================= BUTTON ================= */
-.btn{
+.form-options a:hover{text-decoration:underline}
+
+/* =========================================================
+   BUTTON
+========================================================= */
+.btn-login{
   width:100%;
-  padding:14px;
   border:none;
-  border-radius:30px;
-  background:var(--primary);
+  background:linear-gradient(135deg,var(--primary),var(--primary-dark));
   color:#fff;
-  font-size:16px;
+  padding:14px;
+  font-size:15px;
   font-weight:700;
+  border-radius:30px;
   cursor:pointer;
   transition:.3s;
 }
 
-.btn:hover{
-  background:var(--primary-dark);
+.btn-login:hover{
+  filter:brightness(1.05);
+  transform:translateY(-1px);
 }
 
-/* ================= DIVIDER ================= */
+/* =========================================================
+   DIVIDER
+========================================================= */
 .divider{
   display:flex;
   align-items:center;
   gap:12px;
   margin:26px 0;
-  color:#9ca3af;
   font-size:13px;
+  color:var(--muted);
 }
 
 .divider::before,
@@ -236,150 +267,224 @@ a{
   content:"";
   flex:1;
   height:1px;
-  background:#e5e7eb;
+  background:var(--border);
 }
 
-/* ================= SOCIAL LOGIN ================= */
-.social-login{
+/* =========================================================
+   SOCIAL LOGIN
+========================================================= */
+.socials{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:12px;
 }
 
-.social-btn{
-  padding:12px;
-  border:1px solid var(--border);
-  border-radius:10px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:20px;
-  cursor:pointer;
-  transition:.3s;
+.socials button{
+  border:1.6px solid var(--border);
   background:#fff;
+  padding:10px 0;
+  border-radius:10px;
+  font-size:18px;
+  cursor:pointer;
+  transition:.25s;
 }
 
-.social-btn:hover{
-  background:#f3f4f6;
+.socials button:hover{
+  border-color:var(--primary);
+  transform:translateY(-2px);
 }
 
-/* ================= FOOT ================= */
-.footer-text{
-  margin-top:22px;
+/* =========================================================
+   FOOTER
+========================================================= */
+.form-footer{
   text-align:center;
+  margin-top:26px;
   font-size:14px;
 }
 
-.footer-text a{
+.form-footer a{
   color:var(--primary);
   font-weight:700;
+  text-decoration:none;
 }
 
-/* ================= RESPONSIVE ================= */
+.form-footer a:hover{text-decoration:underline}
+
+/* =========================================================
+   ERROR & SUCCESS
+========================================================= */
+.msg{
+  display:none;
+  padding:10px 14px;
+  border-radius:8px;
+  font-size:13px;
+  margin-bottom:16px;
+}
+
+.msg.error{
+  background:#fee2e2;
+  color:var(--error);
+}
+
+.msg.success{
+  background:#dcfce7;
+  color:var(--success);
+}
+
+/* =========================================================
+   LOADER
+========================================================= */
+.loader{
+  display:none;
+  justify-content:center;
+  margin-top:14px;
+}
+
+.loader span{
+  width:8px;
+  height:8px;
+  background:var(--primary);
+  border-radius:50%;
+  margin:0 4px;
+  animation:bounce 1.4s infinite ease-in-out both;
+}
+
+.loader span:nth-child(2){animation-delay:.2s}
+.loader span:nth-child(3){animation-delay:.4s}
+
+@keyframes bounce{
+  0%,80%,100%{transform:scale(0)}
+  40%{transform:scale(1)}
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
 @media(max-width:480px){
-  .login-card{
-    padding:28px 22px;
-  }
-  .login-card h2{
-    font-size:24px;
-  }
+  .login-wrapper{padding:30px 22px}
 }
-
-/* ================= ACCESSIBILITY ================= */
-button:active{
-  transform:scale(.97);
-}
-
-*{-webkit-tap-highlight-color:transparent}
 
 </style>
 </head>
 
 <body>
 
-<!-- ================= HEADER ================= -->
-<header class="header">
-  <div class="nav">
-    <a href="index.html" class="logo">
-      <span>S</span>
-      <h1>SmartHire</h1>
-    </a>
-  </div>
-</header>
+<!-- BACKGROUND SHAPES -->
+<div class="bg-shape one"></div>
+<div class="bg-shape two"></div>
 
-<!-- ================= LOGIN ================= -->
+<!-- =========================================================
+  LOGIN CARD
+========================================================= -->
 <div class="login-wrapper">
 
-  <div class="login-card">
+  <!-- BRAND -->
+<a href="index.html" class="brand">
+  <span>S</span>
+  <h1>SmartHire</h1>
+</a>
 
-    <h2>Welcome Back</h2>
-    <p>Please enter your login details to continue</p>
 
-    <form>
+  <h2>Welcome Back</h2>
+  <p class="subtitle">Login to access your dashboard</p>
 
-      <!-- EMAIL -->
-      <div class="form-group">
-        <label>Email Address</label>
-        <div class="input-wrap">
-          <input type="email" placeholder="you@company.com" required>
-          <i class="fa-solid fa-envelope"></i>
-        </div>
+  <!-- MESSAGE -->
+  <div class="msg error" id="errorMsg">Invalid email or password</div>
+  <div class="msg success" id="successMsg">Login successful</div>
+
+  <!-- FORM -->
+  <form id="loginForm">
+
+    <div class="form-group">
+      <label>Email Address</label>
+      <div class="input-wrap">
+        <input type="email" id="email" placeholder="you@company.com" required>
+        <i class="fa-regular fa-envelope"></i>
       </div>
+    </div>
 
-      <!-- PASSWORD -->
-      <div class="form-group">
-        <label>Password</label>
-        <div class="input-wrap">
-          <input type="password" id="password" placeholder="Enter password" required>
-          <i class="fa-solid fa-eye" id="togglePassword"></i>
-        </div>
+    <div class="form-group">
+      <label>Password</label>
+      <div class="input-wrap">
+        <input type="password" id="password" placeholder="••••••••" required>
+        <i class="fa-regular fa-eye" id="togglePass"></i>
       </div>
+    </div>
 
-      <!-- OPTIONS -->
-      <div class="options">
-        <label>
-          <input type="checkbox">
-          Remember me
-        </label>
-        <a href="#">Forgot password?</a>
-      </div>
+    <div class="form-options">
+      <label>
+        <input type="checkbox"> Remember me
+      </label>
+      <a href="#">Forgot password?</a>
+    </div>
 
-      <!-- SUBMIT -->
-      <button class="btn" type="submit">Sign In</button>
+    <button class="btn-login" type="submit">Sign In</button>
 
-    </form>
+    <div class="loader" id="loader">
+      <span></span><span></span><span></span>
+    </div>
 
-    <!-- DIVIDER -->
     <div class="divider">OR</div>
 
-    <!-- SOCIAL LOGIN -->
-    <div class="social-login">
-      <div class="social-btn"><i class="fab fa-google"></i></div>
-      <div class="social-btn"><i class="fab fa-facebook-f"></i></div>
-      <div class="social-btn"><i class="fab fa-apple"></i></div>
+    <div class="socials">
+      <button><i class="fab fa-google"></i></button>
+      <button><i class="fab fa-facebook-f"></i></button>
+      <button><i class="fab fa-apple"></i></button>
     </div>
 
-    <!-- FOOTER -->
-    <div class="footer-text">
-      Don’t have an account?
-      <a href="register.html">Sign up</a>
+    <div class="form-footer">
+      Don’t have an account? <a href="register.html">Sign up</a>
     </div>
 
-  </div>
+  </form>
 </div>
 
-<!-- ================= JS ================= -->
+<!-- =========================================================
+  SCRIPT
+========================================================= -->
 <script>
-/* PASSWORD TOGGLE */
-const toggle = document.getElementById("togglePassword");
-const password = document.getElementById("password");
 
-toggle.addEventListener("click", ()=>{
-  const type = password.getAttribute("type") === "password" ? "text" : "password";
-  password.setAttribute("type", type);
-  toggle.classList.toggle("fa-eye");
-  toggle.classList.toggle("fa-eye-slash");
+/* =========================================================
+   PASSWORD TOGGLE
+========================================================= */
+const toggle = document.getElementById("togglePass");
+const pass = document.getElementById("password");
+
+toggle.onclick = () => {
+  if(pass.type === "password"){
+    pass.type = "text";
+    toggle.classList.replace("fa-eye","fa-eye-slash");
+  }else{
+    pass.type = "password";
+    toggle.classList.replace("fa-eye-slash","fa-eye");
+  }
+};
+
+/* =========================================================
+   LOGIN SIMULATION
+========================================================= */
+const form = document.getElementById("loginForm");
+const loader = document.getElementById("loader");
+const err = document.getElementById("errorMsg");
+const ok = document.getElementById("successMsg");
+
+form.addEventListener("submit", e=>{
+  e.preventDefault();
+  err.style.display="none";
+  ok.style.display="none";
+  loader.style.display="flex";
+
+  setTimeout(()=>{
+    loader.style.display="none";
+    ok.style.display="block";
+
+    setTimeout(()=>{
+      window.location.href="index.html";
+    },1200);
+  },1600);
 });
+
 </script>
 
 </body>
