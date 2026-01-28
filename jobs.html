@@ -5,6 +5,11 @@
 <title>SmartHire | Jobs</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<!-- ✅ FAVICON (WORKING ON ALL PAGES) -->
+<link rel="icon" type="image/png"
+ href="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
+
+<!-- Font Awesome -->
 <link rel="stylesheet"
  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
@@ -12,25 +17,34 @@
 /* ================= ROOT ================= */
 :root{
   --primary:#2b3990;
-  --accent:#ff9900;
+  --accent:#ffb703;
   --light:#f5f7fb;
+  --dark1:#0b3a66;
+  --dark2:#021c33;
 }
 
 /* ================= RESET ================= */
-*{margin:0;padding:0;box-sizing:border-box}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 body{
   font-family:Segoe UI,Arial,sans-serif;
   background:var(--light);
   overflow-x:hidden;
 }
-a{text-decoration:none;color:inherit}
+a{
+  text-decoration:none;
+  color:inherit;
+}
 
 /* ================= HEADER ================= */
 header{
   position:sticky;
   top:0;
   background:#fff;
-  z-index:11000;
+  z-index:9999;
   box-shadow:0 2px 10px rgba(0,0,0,.05);
 }
 .nav{
@@ -43,11 +57,12 @@ header{
 }
 .logo{
   display:flex;
-  gap:10px;
   align-items:center;
+  gap:10px;
 }
 .logo span{
-  width:42px;height:42px;
+  width:42px;
+  height:42px;
   background:var(--primary);
   color:#fff;
   display:flex;
@@ -61,17 +76,19 @@ header{
   color:var(--primary);
 }
 
-/* ================= DESKTOP MENU ================= */
+/* Desktop menu */
 .menu-desktop{
   display:flex;
-  align-items:center;
   gap:18px;
   font-size:14px;
   font-weight:600;
 }
-.menu-desktop a:hover{color:var(--accent)}
-
-.nav-item{position:relative}
+.menu-desktop a:hover{
+  color:var(--accent);
+}
+.nav-item{
+  position:relative;
+}
 .dropdown-menu{
   position:absolute;
   top:120%;
@@ -87,18 +104,13 @@ header{
 .dropdown-menu a{
   display:block;
   padding:12px 16px;
-  font-size:14px;
-}
-.dropdown-menu a:hover{
-  background:#f5f7fb;
-  color:var(--accent);
 }
 .nav-item:hover .dropdown-menu{
   opacity:1;
   visibility:visible;
 }
 
-/* ================= AUTH ================= */
+/* Auth */
 .auth{
   display:flex;
   gap:12px;
@@ -115,14 +127,14 @@ header{
   border-radius:8px;
 }
 
-/* ================= HAMBURGER ================= */
+/* Hamburger */
 .hamburger{
   display:none;
   font-size:26px;
   cursor:pointer;
 }
 
-/* ================= BACKDROP ================= */
+/* ================= MOBILE MENU ================= */
 .menu-backdrop{
   position:fixed;
   inset:0;
@@ -130,19 +142,18 @@ header{
   opacity:0;
   visibility:hidden;
   transition:.3s;
-  z-index:10000;
+  z-index:9998;
 }
 .menu-backdrop.active{
   opacity:1;
   visibility:visible;
 }
 
-/* ================= MOBILE MENU ================= */
 .menu-mobile{
   position:fixed;
   top:70px;
   left:0;
-  width:78%;                 /* right-side gap */
+  width:78%;
   max-width:320px;
   height:calc(100vh - 70px);
   background:#fff;
@@ -150,9 +161,11 @@ header{
   overflow-y:auto;
   transform:translateX(-100%);
   transition:.3s ease;
-  z-index:10001;
+  z-index:9999;
 }
-.menu-mobile.active{transform:translateX(0)}
+.menu-mobile.active{
+  transform:translateX(0);
+}
 
 .menu-mobile a,
 .mobile-parent{
@@ -161,36 +174,27 @@ header{
   font-size:16px;
   font-weight:500;
 }
-
 .mobile-parent{
   display:flex;
   justify-content:space-between;
   cursor:pointer;
 }
-
 .mobile-sub{
   display:none;
   padding-left:16px;
-  margin-top:6px;
-}
-.mobile-sub a{
-  padding:8px 0;
-  font-size:15px;
 }
 
-/* login/register (scroll to see) */
 .mobile-auth{
-  margin-top:32px;
-  padding-top:16px;
+  margin-top:24px;
+  padding-top:20px;
   border-top:1px solid #eee;
   display:flex;
-  gap:16px;
+  gap:14px;
 }
 .mobile-auth a{
   flex:1;
   padding:12px 0;
   text-align:center;
-  font-size:15px;
   font-weight:600;
   border-radius:8px;
 }
@@ -203,464 +207,211 @@ header{
   color:#fff;
 }
 
-/* ================= RESPONSIVE ================= */
 @media(max-width:992px){
   .menu-desktop,
   .auth .login,
-  .auth .register{display:none}
-  .hamburger{display:block}
+  .auth .register{
+    display:none;
+  }
+  .hamburger{
+    display:block;
+  }
 }
 
-/* ================= PAGE CONTENT ================= */
-.page{
-  padding:100px 20px;
-  max-width:1200px;
+/* ================= HERO ================= */
+.hero{
+  background:linear-gradient(135deg,var(--dark1),var(--dark2));
+  padding:80px 20px;
+  color:#fff;
+}
+.hero-container{
+  max-width:1300px;
   margin:auto;
+  display:grid;
+  grid-template-columns:1.2fr 1fr;
+  gap:50px;
+  align-items:center;
 }
-.page h2{
-  font-size:36px;
-  color:var(--primary);
-  margin-bottom:20px;
-}
-.page p{
-  font-size:16px;
-  line-height:1.7;
-  color:#444;
-}
-/* ================= PROGRAMS SECTION ================= */
-.programs-section{
-  background:var(--light);
-  padding:70px 20px 90px;
-  font-family:Inter, Segoe UI, Arial, sans-serif;
-}
-
-.programs-container{
-  max-width:1400px;
-  margin:auto;
-}
-
-/* ================= TITLE ================= */
-.programs-title{
-  text-align:center;
-  margin-bottom:36px;
-}
-
-.programs-title h2{
-  font-size:36px;
+.hero h1{
+  font-size:42px;
   font-weight:800;
-  color:var(--primary);
 }
-
-.programs-title p{
-  color:#666;
-  margin-top:10px;
-  font-size:15px;
+.hero p{
+  margin:16px 0;
+  font-size:17px;
+  color:#dbe7f3;
 }
-
-/* ================= FILTER TABS ================= */
-.program-filters{
+.hero-search{
   display:flex;
   gap:12px;
-  overflow-x:auto;
-  padding-bottom:12px;
-  margin-bottom:42px;
-  justify-content:center;
+  margin-top:22px;
 }
-
-.program-filters::-webkit-scrollbar{
-  display:none;
+.hero-search input{
+  flex:1;
+  padding:14px;
+  border-radius:8px;
+  border:none;
 }
-
-.filter-btn{
-  padding:9px 22px;
-  border-radius:22px;
-  border:1.6px solid var(--primary);
-  background:#fff;
-  color:var(--primary);
-  font-size:14px;
-  font-weight:600;
+.hero-search button{
+  background:var(--accent);
+  border:none;
+  padding:14px 26px;
+  border-radius:8px;
+  font-weight:700;
   cursor:pointer;
-  white-space:nowrap;
-  transition:.3s ease;
+}
+.hero-right{
+  height:320px;
+  border-radius:18px;
+  overflow:hidden;
+}
+.hero-right img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:18px;
 }
 
-.filter-btn:hover,
+@media(max-width:900px){
+  .hero-container{
+    grid-template-columns:1fr;
+    text-align:center;
+  }
+  .hero-search{
+    flex-direction:column;
+  }
+}
+
+/* ================= EDGE SECTION ================= */
+.edge-section{
+  background:#0b3a66;
+  padding:80px 20px;
+  color:#fff;
+}
+.edge-container{
+  max-width:1300px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:1fr 1.2fr;
+  gap:50px;
+  align-items:center;
+}
+.edge-image img{
+  width:100%;
+  border-radius:18px;
+}
+.edge-content h2{
+  font-size:36px;
+  margin-bottom:24px;
+}
+.edge-list{
+  display:grid;
+  gap:18px;
+}
+.edge-item{
+  display:flex;
+  gap:16px;
+  align-items:flex-start;
+}
+.edge-item i{
+  font-size:22px;
+  color:var(--accent);
+  margin-top:4px;
+}
+.edge-item h4{
+  font-size:18px;
+}
+.edge-item p{
+  font-size:14px;
+  color:#dbe7f3;
+}
+
+/* ================= JOBS SECTION ================= */
+.jobs-section{
+  padding:80px 20px;
+  background:var(--light);
+}
+.jobs-title{
+  text-align:center;
+  margin-bottom:30px;
+}
+.jobs-title h2{
+  font-size:34px;
+  color:var(--primary);
+}
+.jobs-title p{
+  color:#555;
+}
+
+/* Filters */
+.job-filters{
+  display:flex;
+  gap:12px;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin-bottom:40px;
+}
+.filter-btn{
+  padding:10px 18px;
+  border-radius:20px;
+  border:2px solid var(--primary);
+  background:#fff;
+  cursor:pointer;
+  font-weight:600;
+}
 .filter-btn.active{
   background:var(--primary);
   color:#fff;
 }
 
-/* ================= GRID ================= */
-.program-grid{
+/* Job Grid */
+.job-grid{
+  max-width:1300px;
+  margin:auto;
   display:grid;
-  grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));
-  gap:30px;
-  align-items:stretch;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:24px;
 }
 
-/* ================= CARD ================= */
-.program-card{
+/* Job Card */
+.job-card{
   background:#fff;
-  border-radius:18px;
+  border-radius:16px;
   overflow:hidden;
-  box-shadow:0 10px 30px rgba(0,0,0,.08);
-  transition:.35s ease;
-
-  display:flex;
-  flex-direction:column;
-  height:100%;
+  box-shadow:0 10px 25px rgba(0,0,0,.08);
+  transition:.3s;
 }
-
-.program-card:hover{
+.job-card:hover{
   transform:translateY(-6px);
-  box-shadow:0 18px 50px rgba(0,0,0,.15);
 }
-
-/* ================= IMAGE ================= */
-.program-img{
-  position:relative;
+.job-img{
   width:100%;
-  height:190px;                 /* 🔥 FIX: force height */
-  background:#e9edf3;
-  overflow:hidden;
+  height:170px;              /* FIXED HEIGHT */
+  background:#e9edf3;        /* Placeholder color */
   display:flex;
   align-items:center;
   justify-content:center;
+  overflow:hidden;
 }
 
-
-.program-img img{
+.job-img img{
   width:100%;
   height:100%;
   object-fit:cover;
   display:block;
 }
 
-/* fallback icon if image fails */
-.program-img::after{
-  content:"💼";
-  position:absolute;
-  font-size:42px;
-  color:#b5bcc7;
-  opacity:.6;
+.job-body{
+  padding:16px;
 }
-
-/* ================= TAG ================= */
-.program-tag{
-  position:absolute;
-  top:12px;
-  right:12px;
-  background:var(--accent);
-  color:#fff;
-  padding:5px 12px;
-  font-size:12px;
-  border-radius:6px;
-  font-weight:700;
-}
-
-/* ================= BODY ================= */
-.program-body{
-  padding:18px;
-  display:flex;
-  flex-direction:column;
-  flex:1;
-}
-
-.program-body h3{
-  font-size:16px;
-  font-weight:700;
-  margin-bottom:14px;
-  min-height:48px;
-  line-height:1.4;
-}
-
-/* ================= META ================= */
-.program-meta{
-  display:flex;
-  gap:18px;
-  font-size:13px;
-  color:#555;
-  margin-bottom:16px;
-  flex-wrap:wrap;
-}
-
-.program-meta span{
-  display:flex;
-  align-items:center;
-  gap:6px;
-}
-
-/* ================= BUTTONS ================= */
-.program-actions{
-  display:flex;
-  gap:12px;
-  margin-top:auto;
-}
-
-.program-actions a{
-  flex:1;
-  padding:10px 0;
-  text-align:center;
-  font-size:14px;
-  font-weight:600;
-  border-radius:8px;
-  transition:.3s ease;
-}
-
-/* APPLY */
-.apply-btn{
-  border:1.6px solid var(--primary);
-  color:var(--primary);
-  background:#fff;
-}
-
-.apply-btn:hover{
-  background:var(--primary);
-  color:#fff;
-}
-
-/* VIEW */
-.view-btn{
-  background:var(--primary);
-  color:#fff;
-}
-
-.view-btn:hover{
-  filter:brightness(.92);
-}
-
-/* ================= MOBILE ================= */
-@media(max-width:600px){
-  .programs-title h2{
-    font-size:28px;
-  }
-
-  .program-body h3{
-    font-size:15px;
-    min-height:auto;
-  }
-
-  .program-actions{
-    flex-direction:column;
-  }
-}
-
-/* ================= HERO FULL ================= */
-
-.hero-full{
-  background:#f6f8fc;
-  padding:60px 20px;
-}
-
-.hero-container{
-  max-width:1200px;
-  margin:auto;
-  background:#fff;
-  border-radius:20px;
-  padding:50px;
-  display:grid;
-  grid-template-columns:1.2fr 1fr;
-  gap:40px;
-  align-items:center;
-  box-shadow:0 20px 50px rgba(0,0,0,.08);
-}
-
-/* LEFT */
-.hero-left h1{
-  font-size:42px;
-  color:#2b3990;
-  font-weight:800;
-}
-
-.hero-desc{
-  margin:16px 0;
-  font-size:17px;
-  min-height:48px;
-  color:#444;
-}
-
-.hero-search{
-  display:flex;
-  gap:12px;
-  margin:22px 0;
-}
-.hero-search input{
-  flex:1;
-  padding:14px;
-  border-radius:8px;
-  border:1.5px solid #ccc;
-  font-size:15px;
-}
-.hero-search button{
-  padding:14px 22px;
-  border:none;
-  border-radius:8px;
-  background:#ff9900;
-  color:#fff;
-  font-weight:700;
-  cursor:pointer;
-}
-
-.hero-points{
-  display:flex;
-  gap:18px;
-  font-size:14px;
-  color:#555;
-}
-
-/* RIGHT MEDIA */
-.hero-right{
-  position:relative;
-  height:320px;
-  border-radius:16px;
-  overflow:hidden;
-}
-
-.media-slide{
-  position:absolute;
-  inset:0;
-  opacity:0;
-  transform:translateY(20px);
-  transition:.8s ease;
-}
-
-.media-slide.active{
-  opacity:1;
-  transform:translateY(0);
-}
-
-.media-slide img,
-.media-slide video{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-/* MEDIA TEXT */
-.media-text{
-  position:absolute;
-  bottom:16px;
-  left:16px;
-  background:rgba(0,0,0,.65);
-  color:#fff;
-  padding:6px 14px;
-  border-radius:20px;
-  font-size:14px;
-}
-
-/* ================= MOBILE ================= */
-@media(max-width:900px){
-  .hero-container{
-    grid-template-columns:1fr;
-    padding:30px;
-    text-align:center;
-  }
-  .hero-search{
-    flex-direction:column;
-  }
-  .hero-points{
-    justify-content:center;
-    flex-wrap:wrap;
-  }
-}
-/* ===== SCROLL REVEAL ANIMATION ===== */
-.program-card{
-  opacity:0;
-  transform:translateY(40px);
-  transition:opacity .6s ease, transform .6s ease;
-}
-
-.program-card.show{
-  opacity:1;
-  transform:translateY(0);
-}
-
-/* Optional subtle hover polish */
-.program-card:hover{
-  transform:translateY(-6px);
-}
-
-/* Smooth page scrolling */
-html{
-  scroll-behavior:smooth;
-}
-/* ================= EDGE SECTION ================= */
-
-.edge-section{
-  background:linear-gradient(135deg,#0b3a66,#021c33);
-  padding:90px 20px;
-  color:#fff;
-}
-
-.edge-container{
-  max-width:1300px;
-  margin:auto;
-  display:grid;
-  grid-template-columns:1fr 1.2fr;
-  gap:60px;
-  align-items:center;
-}
-
-/* IMAGE */
-.edge-image{
-  position:relative;
-  border-radius:18px;
-  overflow:hidden;
-}
-
-.edge-image img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  border-radius:18px;
-}
-
-.edge-accent{
-  position:absolute;
-  bottom:-20px;
-  left:-20px;
-  width:120px;
-  height:120px;
-  background:#ffb703;
-  border-radius:12px;
-  z-index:-1;
-}
-
-/* CONTENT */
-.edge-content h2{
-  font-size:42px;
-  font-weight:800;
-  margin-bottom:36px;
-}
-
-.edge-list{
-  display:flex;
-  flex-direction:column;
-  gap:26px;
-}
-
-/* ITEM */
-.edge-item{
-  display:flex;
-  gap:18px;
-  align-items:flex-start;
-}
-
-.edge-item i{
-  font-size:28px;
-  color:#ffb703;
-  min-width:32px;
-}
-
-.edge-item h4{
+.job-body h3{
   font-size:18px;
+  color:var(--primary);
   margin-bottom:6px;
 }
-
-.edge-item p{
-  font-size:14.5px;
-  color:#d6e4f0;
-  line-height:1.6;
+.job-body p{
+  font-size:14px;
+  color:#555;
 }
 
 /* ================= RESPONSIVE ================= */
@@ -669,21 +420,29 @@ html{
     grid-template-columns:1fr;
     text-align:center;
   }
-
-  .edge-item{
-    justify-content:center;
-    text-align:left;
-  }
-
-  .edge-image{
-    max-width:420px;
-    margin:auto;
-  }
-
-  .edge-content h2{
-    font-size:32px;
-  }
 }
+
+.job-img{
+  contain: content;
+}
+
+.no-scroll{
+  overflow:hidden;
+  height:100%;
+}
+
+.hero-right img,
+.edge-image img,
+.job-img img{
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
 /* =====================================================
    ADVANCED FOOTER
 ===================================================== */
@@ -850,61 +609,19 @@ html{
   }
 }
 
-/* ===== FIX MOBILE SCROLL ISSUE ===== */
-html, body{
-  width:100%;
-  height:auto;
-  overflow-x:hidden;
-  overflow-y:auto;
-  -webkit-overflow-scrolling: touch;
-}
-
-/* Prevent fixed header from blocking scroll */
-header{
-  position:sticky;
-  top:0;
-}
-
-/* Ensure main sections can scroll */
-.hero-full,
-.programs-section,
-.edge-section,
-.footer{
-  position:relative;
-  overflow:visible;
-}
-.menu-desktop a{
-  position: relative;
-}
-
-.menu-desktop a.active{
-  color: #ff9900;
-}
-
-.menu-desktop a.active::after{
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -8px;
-  width: 100%;
-  height: 3px;
-  background: #ff9900;
-  border-radius: 2px;
-}
-
 </style>
 </head>
 
 <body>
 
+<!-- ================= HEADER HTML ================= -->
 <header>
   <div class="nav">
-    <div class="logo">
-      <span>S</span>
-      <h1>SmartHire</h1>
-    </div>
 
-    <!-- DESKTOP MENU -->
+    <a href="index.html" class="logo">
+      <span>S</span><h1>SmartHire</h1>
+    </a>
+
     <div class="menu-desktop">
       <div class="nav-item">
         <a href="#">Home ▾</a>
@@ -918,7 +635,6 @@ header{
       <a href="career.html">Career Services</a>
       <a href="courses.html">Courses</a>
       <a href="contact.html">Contact</a>
-
       <div class="nav-item">
         <a href="#">Dashboard ▾</a>
         <div class="dropdown-menu">
@@ -928,20 +644,18 @@ header{
       </div>
     </div>
 
-    <!-- AUTH -->
     <div class="auth">
       <a href="login.html" class="login">Login</a>
       <a href="register.html" class="register">Register</a>
       <div class="hamburger" onclick="toggleMenu()">☰</div>
     </div>
+
   </div>
 </header>
 
-<div class="menu-backdrop" onclick="toggleMenu()"></div>
+<div class="menu-backdrop" id="menuBackdrop" onclick="toggleMenu()"></div>
 
-<!-- MOBILE MENU -->
 <div class="menu-mobile" id="mobileMenu">
-
   <div class="mobile-parent" onclick="toggleSub(this)">Home ▾</div>
   <div class="mobile-sub">
     <a href="index.html">Home 1</a>
@@ -965,143 +679,59 @@ header{
     <a href="register.html" class="register">Register</a>
   </div>
 </div>
- <!-- ================= HERO FULL ================= -->
-<section class="hero-full">
 
+<section class="hero">
   <div class="hero-container">
-
-    <!-- LEFT CONTENT -->
-    <div class="hero-left">
-      <h1>Find Your First Job Faster</h1>
-      <p class="hero-desc" id="heroTyping"></p>
-
+    <div>
+      <h1>First Job Faster</h1>
+      <p>Apply to verified jobs from top IT & non-IT companies with one-click applications.</p>
       <div class="hero-search">
-        <input type="text" placeholder="Search Job Title, Skills, Company">
+        <input type="text" placeholder="Job title, skill or company">
         <button>Search Jobs</button>
       </div>
-
-      <div class="hero-points">
-        <span>✔ 30,000+ Jobs</span>
-        <span>✔ Top Companies</span>
-        <span>✔ Freshers Friendly</span>
-      </div>
     </div>
-
-    <!-- RIGHT MEDIA -->
     <div class="hero-right">
-      <div class="media-slide active">
-        <video muted autoplay loop playsinline>
-          <source src="https://videos.pexels.com/video-files/3195394/3195394-hd_1920_1080_25fps.mp4">
-        </video>
-        <div class="media-text">AI Matching Jobs</div>
-      </div>
-
-      <div class="media-slide">
-        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d">
-        <div class="media-text">Top IT Companies</div>
-      </div>
-
-      <div class="media-slide">
-        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c">
-        <div class="media-text">Startup Careers</div>
-      </div>
-
-      <div class="media-slide">
-        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c">
-        <div class="media-text">Skill-Based Hiring</div>
-      </div>
+      <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d">
     </div>
+  </div>
+</section>
 
+<!-- ================= JOBS SECTION ================= -->
+<section class="jobs-section">
+
+  <div class="jobs-title">
+    <h2>Latest Job Openings</h2>
+    <p>
+      Explore verified job opportunities from top recruiters across
+      multiple industries.
+    </p>
+  </div>
+
+  <!-- JOB FILTERS -->
+  <div class="job-filters">
+    <button class="filter-btn active" data-cat="all">All Jobs</button>
+    <button class="filter-btn" data-cat="IT">IT Software</button>
+    <button class="filter-btn" data-cat="Sales">Sales</button>
+    <button class="filter-btn" data-cat="BPO">BPO</button>
+    <button class="filter-btn" data-cat="Medical">Medical</button>
+  </div>
+
+  <!-- JOB GRID -->
+  <div class="job-grid" id="jobGrid">
+    <!-- JOB CARDS WILL BE INSERTED BY JS (PART 3) -->
   </div>
 
 </section>
 
-<section class="programs-section">
-  <div class="programs-title">
-  <h2>Browse Jobs</h2>
-  <p>Find jobs by category, role, and location</p>
-</div>
-
-<div class="program-filters">
-  <button class="filter-btn active" data-filter="all">All Jobs</button>
-  <button class="filter-btn" data-filter="IT">IT Software</button>
-  <button class="filter-btn" data-filter="BPO">BPO</button>
-  <button class="filter-btn" data-filter="Sales">Sales</button>
-  <button class="filter-btn" data-filter="Fresher">Fresher</button>
-  <button class="filter-btn" data-filter="Medical">Medical</button>
-</div>
-
-    <!-- GRID ( ALL CARDS MUST BE INSIDE THIS) -->
-    <div class="program-grid" id="programGrid">
-
-      <!-- CARD 1 -->
-      <div class="program-card" data-category="IT">
-        <div class="program-img">
-          <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d">
-          <span class="program-tag">IIM Mumbai</span>
-        </div>
-        <div class="program-body">
-          <h3>Executive MBA in Digital Transformation & AI</h3>
-          <div class="program-meta">
-            <span>⏱ 6 Months</span>
-            <span>💻 Online</span>
-          </div>
-          <div class="program-actions">
-            <a class="apply-btn" href="#">Apply Now</a>
-            <a class="view-btn" href="#">View Program</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- CARD 2 -->
-      <div class="program-card" data-category="BPO">
-        <div class="program-img">
-          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475">
-          <span class="program-tag">IIT Patna</span>
-        </div>
-        <div class="program-body">
-          <h3>M.Tech in Blockchain Technology & Big Data</h3>
-          <div class="program-meta">
-            <span>⏱ 2 Years</span>
-            <span>💻 Online</span>
-          </div>
-          <div class="program-actions">
-            <a class="apply-btn" href="#">Apply Now</a>
-            <a class="view-btn" href="#">View Program</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- CARD 3 -->
-      <div class="program-card" data-category="Fresher">
-        <div class="program-img">
-          <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c">
-          <span class="program-tag">IIT Bhilai</span>
-        </div>
-        <div class="program-body">
-          <h3>Executive MTech in Data Science & Analytics</h3>
-          <div class="program-meta">
-            <span>⏱ 2 Years</span>
-            <span>💻 Online</span>
-          </div>
-          <div class="program-actions">
-            <a class="apply-btn" href="#">Apply Now</a>
-            <a class="view-btn" href="#">View Program</a>
-          </div>
-        </div>
-      </div>
-
-    </div><!-- END program-grid -->
-
-  </div>
-</section>
+<!-- ================= EDGE SECTION ================= -->
 <section class="edge-section">
   <div class="edge-container">
 
     <!-- LEFT IMAGE -->
     <div class="edge-image">
-      <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f" alt="Learning Online">
-      <span class="edge-accent"></span>
+      <img
+        src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f"
+        alt="SmartHire Team Work">
     </div>
 
     <!-- RIGHT CONTENT -->
@@ -1114,7 +744,10 @@ header{
           <i class="fa-solid fa-layer-group"></i>
           <div>
             <h4>Curated Programs</h4>
-            <p>Handpicked programs aligned with industry needs and real-world hiring trends.</p>
+            <p>
+              Handpicked programs aligned with industry needs and real-world
+              hiring trends.
+            </p>
           </div>
         </div>
 
@@ -1122,7 +755,10 @@ header{
           <i class="fa-solid fa-briefcase"></i>
           <div>
             <h4>Industry-Aligned Skills</h4>
-            <p>Develop job-ready skills tailored for today’s fast-changing job market.</p>
+            <p>
+              Develop job-ready skills tailored for today’s fast-changing
+              job market.
+            </p>
           </div>
         </div>
 
@@ -1130,7 +766,10 @@ header{
           <i class="fa-solid fa-star"></i>
           <div>
             <h4>Premier Experience</h4>
-            <p>Learn from expert mentors and top institutions through immersive programs.</p>
+            <p>
+              Learn from expert mentors and top institutions through immersive
+              programs.
+            </p>
           </div>
         </div>
 
@@ -1138,7 +777,10 @@ header{
           <i class="fa-solid fa-graduation-cap"></i>
           <div>
             <h4>Career-Focused Learning</h4>
-            <p>Programs designed to maximize employability and long-term career growth.</p>
+            <p>
+              Programs designed to maximize employability and long-term
+              career growth.
+            </p>
           </div>
         </div>
 
@@ -1146,7 +788,10 @@ header{
           <i class="fa-solid fa-clock"></i>
           <div>
             <h4>Flexible & Accessible</h4>
-            <p>Study anytime, anywhere with self-paced and instructor-led learning options.</p>
+            <p>
+              Study anytime, anywhere with self-paced and instructor-led
+              learning options.
+            </p>
           </div>
         </div>
 
@@ -1154,7 +799,10 @@ header{
           <i class="fa-solid fa-rocket"></i>
           <div>
             <h4>Future-Ready Education</h4>
-            <p>Stay ahead with cutting-edge technology, tools, and domain expertise.</p>
+            <p>
+              Stay ahead with cutting-edge technology, tools, and
+              domain expertise.
+            </p>
           </div>
         </div>
 
@@ -1163,6 +811,7 @@ header{
 
   </div>
 </section>
+
 <!-- ================= FOOTER ================= -->
 <footer class="footer">
   <div class="footer-glass"></div>
@@ -1235,213 +884,143 @@ header{
 
 <script>
 /* ================= MOBILE MENU ================= */
-window.toggleMenu = function(){
-  const menu = document.getElementById("mobileMenu");
-  const backdrop = document.querySelector(".menu-backdrop");
+function toggleMenu(){
+  document.getElementById("mobileMenu").classList.toggle("active");
+  document.getElementById("menuBackdrop").classList.toggle("active");
+document.documentElement.classList.toggle(
+  "no-scroll",
+  document.getElementById("mobileMenu").classList.contains("active")
+);
 
-  menu.classList.toggle("active");
-  backdrop.classList.toggle("active");
-
-  if(menu.classList.contains("active")){
-    document.body.style.overflow = "hidden";
-  }else{
-    document.body.style.overflow = "auto";
-  }
-};
-
-window.toggleSub = function(el){
-  const sub = el.nextElementSibling;
-  if(sub){
-    sub.style.display = sub.style.display === "block" ? "none" : "block";
-  }
-};
-
-/* ================= HERO TYPING ================= */
-const heroTexts = [
-  "Search jobs from top IT & non-IT companies.",
-  "Get hired faster with smart AI recommendations.",
-  "Apply to jobs with one click resume upload."
-];
-let t=0,c=0;
-const el=document.getElementById("heroTyping");
-
-function typeHero(){
-  if(c < heroTexts[t].length){
-    el.textContent += heroTexts[t][c++];
-    setTimeout(typeHero,40);
-  }else{
-    setTimeout(()=>{
-      el.textContent="";
-      c=0;
-      t=(t+1)%heroTexts.length;
-      typeHero();
-    },1500);
-  }
 }
-typeHero();
 
-/* ================= HERO MEDIA SLIDER ================= */
-const slides=document.querySelectorAll(".media-slide");
-let s=0;
-setInterval(()=>{
-  slides.forEach(sl=>sl.classList.remove("active"));
-  s=(s+1)%slides.length;
-  slides[s].classList.add("active");
-},4500);
+function toggleSub(el){
+  const sub = el.nextElementSibling;
+  if(!sub) return;
+  sub.style.display = sub.style.display === "block" ? "none" : "block";
+}
 
-
-
-const grid=document.getElementById("programGrid");
-
-/* ================= JOB DATA (30+) ================= */
-
+/* ================= JOB IMAGES (22 UNIQUE – NO REPEAT) ================= */
 const jobImages = [
-  "https://github.com/sakthimanimchss-sudo/Job-Portal/blob/main/job.img/man-6107416_1280.webp?raw=true",
-  "https://github.com/sakthimanimchss-sudo/Job-Portal/blob/main/job.img/pexels-cottonbro-6153354.jpg?raw=true",
-  "https://github.com/sakthimanimchss-sudo/Job-Portal/blob/main/job.img/pexels-fauxels-3184465.jpg?raw=true",
-  "https://github.com/sakthimanimchss-sudo/Job-Portal/blob/main/job.img/pexels-jakubzerdzicki-34212988.jpg?raw=true",
-  "https://github.com/sakthimanimchss-sudo/Job-Portal/blob/main/job.img/pexels-ofspace-16323581.jpg?raw=true",
-  "https://github.com/sakthimanimchss-sudo/Job-Portal/blob/main/job.img/pexels-pavel-danilyuk-8439082.jpg?raw=true",
-  "https://github.com/sakthimanimchss-sudo/Job-Portal/blob/main/job.img/pexels-ron-lach-9832694.jpg?raw=true",
- "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg",
- "https://images.pexels.com/photos/3184357/pexels-photo-3184357.jpeg",
- "https://images.pexels.com/photos/1181396/pexels-photo-1181396.jpeg",
-"https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg",
-"https://images.pexels.com/photos/3769714/pexels-photo-3769714.jpeg",
-"https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg",
-"https://images.pexels.com/photos/6457579/pexels-photo-6457579.jpeg",
-"https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg",
-"https://images.pexels.com/photos/3184328/pexels-photo-3184328.jpeg",
-"https://images.unsplash.com/photo-1521737604893-d14cc237f11d",
-"https://images.unsplash.com/photo-1519389950473-47ba0277781c",
-"https://images.unsplash.com/photo-1557804506-669a67965ba0",
-"https://images.unsplash.com/photo-1522071820081-009f0129c71c",
-"https://images.unsplash.com/photo-1504384308090-c894fdcc538d",
-"https://images.unsplash.com/photo-1552664730-d307ca884978",
-"https://images.unsplash.com/photo-1543269865-cbf427effbad",
-"https://images.unsplash.com/photo-1553877522-43269d4ea984",
-"https://images.unsplash.com/photo-1498050108023-c5249f4df085",
-"https://images.unsplash.com/photo-1531497865144-0464ef8fb9a9",
-"https://images.unsplash.com/photo-1522202176988-66273c2fd55f",
-"https://images.pexels.com/photos/5327580/pexels-photo-5327580.jpeg",
-"https://images.pexels.com/photos/5905443/pexels-photo-5905443.jpeg",
-"https://images.pexels.com/photos/6147369/pexels-photo-6147369.jpeg",
-"https://images.pexels.com/photos/837358/pexels-photo-837358.jpeg",
-"https://github.com/sakthimanimchss-sudo/Job-Portal/blob/main/job.img/telework-6795505_1280.jpg?raw=true"
-
+  "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
+  "https://images.unsplash.com/photo-1519389950473-47ba0277781c",
+  "https://images.unsplash.com/photo-1552664730-d307ca884978",
+  "https://images.unsplash.com/photo-1521737604893-d14cc237f11d",
+  "https://images.unsplash.com/photo-1543269865-cbf427effbad",
+  "https://images.unsplash.com/photo-1531497865144-0464ef8fb9a9",
+  "https://images.unsplash.com/photo-1557804506-669a67965ba0",
+  "https://images.unsplash.com/photo-1522071820081-009f0129c71c",
+  "https://images.unsplash.com/photo-1504384308090-c894fdcc538d",
+  "https://images.unsplash.com/photo-1553877522-43269d4ea984",
+  "https://images.unsplash.com/photo-1580281657527-47f249e8f8df",
+  "https://images.unsplash.com/photo-1607746882042-944635dfe10e",
+  "https://images.unsplash.com/photo-1603415526960-f7e0328d0e9a",
+  "https://images.unsplash.com/photo-1616587226960-4a03badbe8bf",
+  "https://images.unsplash.com/photo-1525186402429-b4ff38bedbec",
+  "https://images.unsplash.com/photo-1524758631624-e2822e304c36",
+  "https://images.unsplash.com/photo-1492724441997-5dc865305da7",
+  "https://images.unsplash.com/photo-1551434678-e076c223a692",
+  "https://images.unsplash.com/photo-1506784983877-45594efa4cbe",
+  "https://images.unsplash.com/photo-1529333166437-7750a6dd5a70",
+  "https://images.unsplash.com/photo-1521790366321-6f7f2db2f07c",
+  "https://images.unsplash.com/photo-1522202176988-66273c2fd55f"
 ];
 
+/* ================= JOB DATA (22 JOBS) ================= */
 const jobTitles = [
   "Java Developer",
-  "Application Developer",
-  "Content Writer",
+  "Frontend Developer",
+  "Backend Engineer",
+  "UI / UX Designer",
+  "HR Executive",
   "Sales Manager",
-  "HR Manager",
+  "Business Analyst",
   "BPO Executive",
-  "Staff Nurse"
+  "Customer Support",
+  "Digital Marketer",
+  "SEO Specialist",
+  "Content Writer",
+  "Data Analyst",
+  "Python Developer",
+  "Mobile App Developer",
+  "DevOps Engineer",
+  "Network Engineer",
+  "System Administrator",
+  "Staff Nurse",
+  "Medical Lab Technician",
+  "Hospital Administrator",
+  "Pharmacist"
 ];
 
-const jobCategories = ["IT","IT","Fresher","Sales","HR","BPO","Medical"];
-const jobLocations  = ["Bangalore","Hyderabad","Remote","Mumbai","Pune","Chennai","New Delhi"];
-const jobTypes      = ["Full Time","Full Time","Work From Home","Full Time","Full Time","Night Shift","Hospital"];
-const jobTags       = ["IT Software","IT Software","Fresher Job","Sales Job","HR Job","BPO Job","Medical Job"];
+const jobCategories = [
+  "IT","IT","IT","IT",
+  "HR","Sales","Sales","BPO","BPO",
+  "Sales","IT","Sales","IT","IT","IT",
+  "IT","IT","IT",
+  "Medical","Medical","Medical","Medical"
+];
 
-/* CREATE 30+ JOBS */
-const jobs = Array.from({length:28}, (_,i)=>({
-  title: jobTitles[i % jobTitles.length],
-  category: jobCategories[i % jobCategories.length],
+const jobLocations = [
+  "Bangalore","Chennai","Hyderabad","Remote","Mumbai","Pune",
+  "Delhi","Noida","Gurgaon","Kolkata"
+];
+
+const jobTypes = [
+  "Full Time","Work From Home","Hybrid","Night Shift","Office"
+];
+
+/* BUILD JOB OBJECTS */
+const jobs = jobImages.map((img, i) => ({
+  title: jobTitles[i],
+  category: jobCategories[i],
   location: jobLocations[i % jobLocations.length],
   type: jobTypes[i % jobTypes.length],
-  tag: jobTags[i % jobTags.length],
-  img: jobImages[i % jobImages.length]
+  image: img
 }));
 
-
 /* ================= RENDER JOBS ================= */
-function renderPrograms(filter="all"){
-  grid.innerHTML="";
-  jobs
-    .filter(j => filter==="all" || j.category===filter)
-    .forEach(j=>{
-grid.innerHTML += `
-  <div class="program-card">
-    <div class="program-img">
-      <img 
-        src="${j.img}"
-        alt="${j.title} job in ${j.location}"
-        title="${j.title} | ${j.location} | ${j.type}"
-        loading="lazy"
-        onerror="this.src='https://images.unsplash.com/photo-1522071820081-009f0129c71c'">
-      <span class="program-tag">${j.tag}</span>
-    </div>
+const jobGrid = document.getElementById("jobGrid");
 
-        <div class="program-body">
-          <h3>${j.title}</h3>
-          <div class="program-meta">
-            <span>📍 ${j.location}</span>
-            <span>💼 ${j.type}</span>
+function renderJobs(filter = "all"){
+  jobGrid.innerHTML = "";
+
+  jobs
+    .filter(job => filter === "all" || job.category === filter)
+    .forEach(job => {
+      jobGrid.insertAdjacentHTML("beforeend", `
+        <div class="job-card">
+          <div class="job-img">
+<img src="${job.image}"
+     alt="${job.title}"
+     loading="lazy"
+     decoding="async"
+     onerror="this.src='https://images.unsplash.com/photo-1522071820081-009f0129c71c';">
+
           </div>
-          <div class="program-actions">
-            <a class="apply-btn" href="#">Apply Job</a>
-            <a class="view-btn" href="#">View Job</a>
+          <div class="job-body">
+            <h3>${job.title}</h3>
+            <p>📍 ${job.location}</p>
+            <p>💼 ${job.type}</p>
           </div>
         </div>
-      </div>`;
+      `);
     });
-  revealCards();
 }
 
-renderPrograms();
+/* INITIAL LOAD */
+renderJobs();
 
-/* ================= FILTER ================= */
-document.querySelectorAll(".filter-btn").forEach(btn=>{
-  btn.onclick=()=>{
-    document.querySelectorAll(".filter-btn").forEach(b=>b.classList.remove("active"));
+/* ================= FILTER HANDLING ================= */
+document.querySelectorAll(".filter-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".filter-btn")
+      .forEach(b => b.classList.remove("active"));
+
     btn.classList.add("active");
-    renderPrograms(btn.dataset.filter);
-  };
-});
-
-/* ================= SCROLL REVEAL ================= */
-function revealCards(){
-  const cards=document.querySelectorAll(".program-card");
-  const io=new IntersectionObserver(entries=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){
-        e.target.classList.add("show");
-        io.unobserve(e.target);
-      }
-    });
-  },{threshold:0.15});
-  cards.forEach(c=>io.observe(c));
-}
-
-(function () {
-
-  // get current page name safely
-  let currentPage = window.location.pathname.split("/").pop();
-
-  // handle index/home cases
-  if (currentPage === "" || currentPage === "home2.html") {
-    currentPage = "index.html";
-  }
-
-  document.querySelectorAll(".menu-desktop a").forEach(link => {
-
-    const linkPage = link.getAttribute("href");
-
-    // skip dropdown parent links like "#"
-    if (!linkPage || linkPage === "#") return;
-
-    if (linkPage === currentPage) {
-      link.classList.add("active");
-    }
+    renderJobs(btn.dataset.cat);
   });
-
-})();
-
+});
 </script>
-
 
 </body>
 </html>
