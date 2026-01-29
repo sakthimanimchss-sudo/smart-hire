@@ -16,8 +16,7 @@ Includes:
 <title>SmartHire | Jobs, Careers & Hiring Platform</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
-<!-- ✅ FAVICON (WORKING ON ALL PAGES) -->
+<!--  FAVICON (WORKING ON ALL PAGES) -->
 <link rel="icon" type="image/png"
  href="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
 
@@ -168,79 +167,112 @@ header{
   border-radius:8px;
 }
 
-/* ================= HAMBURGER ================= */
-.hamburger{
-  display:none;
-  font-size:26px;
-  cursor:pointer;
+/* ================= MOBILE MENU ================= */
+
+.menu-mobile{
+  position: fixed;
+  top: 70px;                 /* BELOW HEADER */
+  left: 0;
+  width: 78%;
+  max-width: 320px;
+  height: calc(100vh - 70px);
+  background: #fff;
+  padding: 22px;
+  overflow-y: auto;
+  transform: translateX(-100%);
+  transition: transform .3s ease;
+  z-index: 10001;
 }
 
-/* ================= MOBILE MENU ================= */
+.menu-mobile.active{
+  transform: translateX(0);
+}
+
+/* BACKDROP — DOES NOT COVER HEADER */
 .menu-backdrop{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.55);
-  opacity:0;
-  visibility:hidden;
-  transition:.3s;
-  z-index:5900;
+  position: fixed;
+  top: 70px;                 /* HEADER STAYS BRIGHT */
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,.45);
+  display: none;
+  z-index: 10000;
 }
+
 .menu-backdrop.active{
-  opacity:1;
-  visibility:visible;
+  display: block;
 }
-.menu-mobile{
-  position:fixed;
-  top:0;
-  left:-100%;
-  width:82%;
-  max-width:340px;
-  height:100vh;
-  background:#fff;
-  z-index:6000;
-  padding:24px;
-  transition:.4s ease;
-  overflow-y:auto;
-}
-.menu-mobile.active{left:0}
-.menu-mobile .close{
-  font-size:26px;
-  margin-bottom:20px;
-  cursor:pointer;
-}
+
+/* LINKS */
 .menu-mobile a,
 .mobile-parent{
-  display:block;
-  padding:14px 0;
-  font-size:16px;
-  font-weight:600;
+  display: block;
+  padding: 14px 0;
+  font-size: 16px;
+  font-weight: 600;
 }
+
 .mobile-parent{
-  display:flex;
-  justify-content:space-between;
-  cursor:pointer;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
 }
+
 .mobile-sub{
-  display:none;
-  padding-left:14px;
+  display: none;
+  padding-left: 16px;
 }
+
+.mobile-sub a{
+  font-size: 14px;
+  padding: 10px 0;
+}
+
+/* AUTH BUTTONS */
 .mobile-auth{
-  margin-top:30px;
-  display:flex;
-  gap:12px;
+  margin-top: 30px;
+  padding-top: 18px;
+  border-top: 1px solid #eee;
+  display: flex;
+  gap: 14px;
 }
+
 .mobile-auth a{
-  flex:1;
-  text-align:center;
-  padding:12px;
-  border-radius:8px;
+  flex: 1;
+  text-align: center;
+  padding: 12px 0;
+  border-radius: 8px;
+  font-weight: 600;
 }
+
 .mobile-auth .login{
-  border:2px solid var(--primary);
+  border: 2px solid #2b3990;
+  color: #2b3990;
 }
+
 .mobile-auth .register{
-  background:var(--primary);
-  color:#fff;
+  background: #2b3990;
+  color: #fff;
+}
+
+/* BODY LOCK */
+body.menu-open{
+  overflow: hidden;
+}
+
+/* RESPONSIVE */
+@media(max-width:992px){
+  .menu-desktop,
+  .auth .login,
+  .auth .register{
+    display: none !important;
+  }
+  .hamburger{
+    display: block;
+    font-size: 26px;
+    cursor: pointer;
+  }
 }
 
 /* ================= RESPONSIVE ================= */
@@ -425,7 +457,6 @@ HEADER HTML
       <a href="jobs.html">Jobs</a>
       <a href="recruiters.html">Recruiters</a>
       <a href="career.html">Career Services</a>
-      <a href="courses.html">Courses</a>
       <a href="contact.html">Contact</a>
       <div class="nav-item">
         <a href="#">Dashboard ▾</a>
@@ -447,7 +478,7 @@ HEADER HTML
 <div class="menu-backdrop" id="menuBackdrop" onclick="toggleMenu()"></div>
 
 <div class="menu-mobile" id="mobileMenu">
-  <div class="close" onclick="toggleMenu()">✕</div>
+  <div class="close" onclick="toggleMenu()"></div>
 
   <div class="mobile-parent" onclick="toggleSub(this)">Home ▾</div>
   <div class="mobile-sub">
@@ -458,7 +489,6 @@ HEADER HTML
   <a href="jobs.html">Jobs</a>
   <a href="recruiters.html">Recruiters</a>
   <a href="career.html">Career Services</a>
-  <a href="courses.html">Courses</a>
   <a href="contact.html">Contact</a>
 
   <div class="mobile-parent" onclick="toggleSub(this)">Dashboard ▾</div>
@@ -566,6 +596,27 @@ window.addEventListener("scroll", () => {
       searchBox.classList.remove("sticky");
     }
   }
+});
+
+function toggleMenu(){
+  const menu = document.getElementById("mobileMenu");
+  const backdrop = document.getElementById("menuBackdrop");
+
+  menu.classList.toggle("active");
+  backdrop.classList.toggle("active");
+  document.body.classList.toggle("menu-open");
+}
+
+function toggleSub(el){
+  const sub = el.nextElementSibling;
+  if(sub){
+    sub.style.display =
+      sub.style.display === "block" ? "none" : "block";
+  }
+}
+
+document.querySelectorAll(".menu-mobile a").forEach(link=>{
+  link.addEventListener("click", toggleMenu);
 });
 
 </script>
@@ -722,6 +773,123 @@ PLATFORM IMAGE BLOCK
     margin:auto;
   }
 }
+
+/* ================= FULL LAPTOP HERO PLATFORM ================= */
+
+.platform-section{
+  padding:120px 0;                 /* tall section */
+  background:#f5f7fb;
+  width:100%;
+}
+
+/* FULL WIDTH CONTAINER */
+.platform-container{
+  max-width:1560px;                /* 🔥 covers laptop width */
+  margin:0 auto;
+  padding:0 60px;                  /* small safe padding */
+}
+
+/* TITLE */
+.platform-title{
+  text-align:center;
+  margin-bottom:70px;
+}
+.platform-title h2{
+  font-size:52px;                  /* 🔥 big heading */
+  font-weight:900;
+  color:#2b3990;
+}
+.platform-title p{
+  font-size:20px;
+  color:#6b7280;
+  margin-top:8px;
+}
+
+/* MAIN CONTENT */
+.platform-box{
+  display:flex;
+  justify-content:center;
+}
+
+/* GRID */
+.platform-inner{
+  display:grid;
+  grid-template-columns:620px 1fr; /* 🔥 BIG IMAGE */
+  gap:70px;                        /* balanced spacing */
+  align-items:center;
+  width:100%;
+}
+
+/* IMAGE */
+.platform-img img{
+  width:100%;
+  height:auto;
+  border-radius:26px;
+  box-shadow:0 30px 70px rgba(0,0,0,.18);
+}
+
+/* RIGHT CONTENT */
+.platform-points h3{
+  font-size:38px;                  /* 🔥 hero subheading */
+  font-weight:800;
+  color:#2b3990;
+  margin-bottom:26px;
+}
+.platform-points ul{
+  list-style:none;
+  padding:0;
+  margin:0;
+}
+.platform-points li{
+  display:flex;
+  gap:18px;
+  margin-bottom:22px;
+  font-size:20px;                  /* 🔥 big readable text */
+  color:#475569;
+  line-height:1.7;
+}
+.platform-points li::before{
+  content:"✔";
+  color:#ff9900;
+  font-size:22px;
+  font-weight:900;
+  margin-top:4px;
+}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:1200px){
+  .platform-inner{
+    grid-template-columns:520px 1fr;
+    gap:50px;
+  }
+}
+
+@media(max-width:900px){
+  .platform-section{
+    padding:80px 20px;
+  }
+  .platform-container{
+    padding:0;
+  }
+  .platform-inner{
+    grid-template-columns:1fr;
+    text-align:left;
+  }
+  .platform-img img{
+    max-width:520px;
+    margin:0 auto 30px;
+  }
+  .platform-title h2{
+    font-size:36px;
+  }
+  .platform-points h3{
+    font-size:28px;
+  }
+  .platform-points li{
+    font-size:16px;
+  }
+}
+
 /* =========================================================
 CARD
 ========================================================= */
@@ -912,27 +1080,7 @@ SECTION 4 — RECRUITER BENEFITS (FACE IMAGES)
 </section>
 
 <!-- =========================================================
-SECTION 5 — TRUSTED COMPANIES
-========================================================= -->
-<section class="sh2-section sh2-reveal">
-  <div class="sh2-container">
-    <div class="sh2-header">
-      <h2>Trusted Companies</h2>
-      <p>Hiring through SmartHire.</p>
-    </div>
-
-    <div class="sh2-logos">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Accenture.svg">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Infosys_logo.svg">
-    </div>
-  </div>
-</section>
-
-<!-- =========================================================
-SECTION 6 — PLATFORM STATS
+SECTION 5 — PLATFORM STATS
 ========================================================= -->
 <section class="sh2-section sh2-reveal">
   <div class="sh2-container">
@@ -1011,44 +1159,110 @@ NO OVER GAP | CENTERED FAQ | NO SCROLL BUG
   opacity:1;
 }
 
-/* ================== FAQ ================== */
-.sh3-faq-wrap{
-  max-width:1000px;
+/* ================= FAQ BASE ================= */
+.faq-section{
+  padding:90px 20px;
+  background:#f5f7fb;
+}
+
+.faq-container{
+  max-width:1200px;
   margin:auto;
+}
+
+.faq-header{
+  text-align:center;
+  margin-bottom:50px;
+}
+
+.faq-header h2{
+  font-size:36px;
+  font-weight:800;
+  color:#2b3990;
+}
+
+.faq-header p{
+  color:#6b7280;
+  margin-top:6px;
+}
+
+/* ================= DESKTOP LAYOUT (IMAGE 1) ================= */
+.faq-layout{
   display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:40px;
+  grid-template-columns:1.1fr 1fr;
+  gap:60px;
   align-items:center;
 }
-.sh3-faq-img img{
+
+.faq-image img{
   width:100%;
   border-radius:18px;
+  box-shadow:0 20px 40px rgba(0,0,0,.1);
 }
-.sh3-faq{
+
+.faq-list{
   display:flex;
   flex-direction:column;
-  gap:16px;
+  gap:18px;
 }
-.sh3-faq-item{
+
+.faq-item{
+  display:flex;
+  gap:14px;
   background:#fff;
   padding:22px 24px;
   border-radius:16px;
-  box-shadow:0 12px 30px rgba(0,0,0,.08);
-  display:flex;
-  gap:14px;
+  box-shadow:0 15px 35px rgba(0,0,0,.08);
 }
-.sh3-faq-item i{
-  color:#ff9900;
+
+.faq-icon{
   font-size:20px;
+  color:#ff9900;
   margin-top:3px;
 }
-.sh3-faq-item h4{
+
+.faq-item h4{
   font-size:16px;
+  font-weight:700;
   margin-bottom:4px;
 }
-.sh3-faq-item p{
+
+.faq-item p{
   font-size:14px;
   color:#475569;
+}
+
+/* ================= MOBILE ONLY (IMAGE 2 FIX) ================= */
+@media (max-width:768px){
+
+  .faq-section{
+    padding:60px 14px;
+  }
+
+  .faq-layout{
+    grid-template-columns:1fr;   /* STACK */
+    gap:32px;
+  }
+
+  .faq-image{
+    max-width:100%;
+  }
+
+  .faq-item{
+    padding:18px 16px;
+  }
+
+  .faq-header h2{
+    font-size:30px;
+  }
+
+  .faq-item h4{
+    font-size:15.5px;
+  }
+
+  .faq-item p{
+    font-size:14px;
+  }
 }
 
 /* ================== CTA ================== */
@@ -1280,47 +1494,57 @@ body.menu-open{
   </div>
 </section>
 
-<!-- ================= FAQ (CENTERED) ================= -->
-<section class="sh3-section sh3-reveal">
-  <div class="sh3-container">
-    <div class="sh3-header">
+<!-- ================= FAQ SECTION ================= -->
+<section class="faq-section">
+  <div class="faq-container">
+
+    <!-- HEADER -->
+    <div class="faq-header">
       <h2>FAQs</h2>
       <p>Quick answers.</p>
     </div>
 
-    <div class="sh3-faq-wrap">
-      <div class="sh3-faq-img">
-        <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786">
+    <!-- CONTENT -->
+    <div class="faq-layout">
+
+      <!-- IMAGE -->
+      <div class="faq-image">
+        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d" alt="Office discussion">
       </div>
 
-      <div class="sh3-faq">
-        <div class="sh3-faq-item">
-          <i class="fa-solid fa-circle-check"></i>
+      <!-- FAQ LIST -->
+      <div class="faq-list">
+
+        <div class="faq-item">
+          <span class="faq-icon">✔</span>
           <div>
             <h4>Free for job seekers?</h4>
             <p>Yes, completely free.</p>
           </div>
         </div>
 
-        <div class="sh3-faq-item">
-          <i class="fa-solid fa-shield"></i>
+        <div class="faq-item">
+          <span class="faq-icon">🛡</span>
           <div>
             <h4>Recruiters verified?</h4>
             <p>Manually approved companies.</p>
           </div>
         </div>
 
-        <div class="sh3-faq-item">
-          <i class="fa-solid fa-briefcase"></i>
+        <div class="faq-item">
+          <span class="faq-icon">💼</span>
           <div>
             <h4>Industries covered?</h4>
             <p>IT, Non-IT, Finance, Sales.</p>
           </div>
         </div>
+
       </div>
     </div>
+
   </div>
 </section>
+<!-- ================= END FAQ ================= -->
 
 <!-- ================= CTA ================= -->
 <section class="sh3-section sh3-cta sh3-reveal">
